@@ -14,5 +14,5 @@ RUN apt-get update -y \
 RUN pip3 install -U pip
 RUN pip3 install -r /code/requirements/local.txt
 RUN pip3 install -r /code/requirements/production.txt
-RUN cd /code/ && npm install -g yarn && yarn install
+RUN cd /code/ && npm install -g yarn && yarn install --ignore-engines
 LABEL maintainer="pomoc@adminotaur.pl"
