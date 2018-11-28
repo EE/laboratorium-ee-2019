@@ -1,4 +1,4 @@
-Django==1.11.6
+Django==1.11.16
 django_environ==0.4.4
 django_compressor==2.2
 django-compressor-toolkit==0.6.0
