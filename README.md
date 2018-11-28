@@ -31,7 +31,7 @@ You may also use the `run_development.sh` script.
 
 1. Install the Python requirements:
 
-        pipenv install
+        pipenv install --dev
         pipenv shell  # to enter the environment
 
     This project uses [Django 1.11](https://docs.djangoproject.com/en/1.11/)
