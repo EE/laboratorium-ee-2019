@@ -1,4 +1,8 @@
 FROM registry.laboratorium.ee/debian/stretch:latest
+
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
+
 ADD . /code/
 RUN apt-get update -y \
     && apt-get install -y apt-transport-https gnupg \
@@ -13,6 +17,10 @@ RUN apt-get update -y \
     && apt-get clean 
 RUN pip3 install -U pip
 RUN pip3 install pipenv
-RUN pipenv install --system --dev --deploy
-RUN cd /code/ && npm install -g yarn && yarn install --ignore-engines
+
+RUN cd /code/ \
+    && pipenv install --system --dev --deploy \
+    && npm install -g yarn \
+    && yarn install --ignore-engines
+
 LABEL maintainer="pomoc@adminotaur.pl"
