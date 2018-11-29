@@ -23,49 +23,45 @@ You may also use the `run_development.sh` script.
 ### Prerequisites
 
 - [Python 3.5+](https://www.python.org/)
+- [pipenv](https://pipenv.readthedocs.io/en/latest/)
 - [Node.js](https://docs.npmjs.com/getting-started/installing-node)
 - [SASS](http://sass-lang.com/install)
 
 ### Installation instructions
 
-1. Create and enter a Python 3 [virtualenv](https://virtualenv.pypa.io/en/stable/):
+1. Install the Python requirements:
 
-        virtualenv -p python3 venv
-        source venv/bin/activate
-    (alternatively you can use a [conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html) or [Pipenv](https://docs.pipenv.org/))
-
-2. Install the Python requirements:
-
-        pip install -r requirements/local.txt
+        pipenv install --dev
+        pipenv shell  # to enter the environment
 
     This project uses [Django 1.11](https://docs.djangoproject.com/en/1.11/)
 
-3. Install the npm requirements:
+2. Install the npm requirements:
 
         npm install
 
-4. Create and fill out the local settings file:
+3. Create and fill out the local settings file:
 
        cp src/settings/env.local.example src/settings/.env
     (alternatively you can set those settings as environment variables)
 
-5. Configure your local database by filling out `DJANGO_DATABASE_URL` setting in `.env` file.
+4. Configure your local database by filling out `DJANGO_DATABASE_URL` setting in `.env` file.
 
     If there is no good reason to do otherwise, it should be a [Postgres](https://www.postgresql.org/) database since that's what we are using by default on production servers.
 
-6. Run database migrations:
+5. Run database migrations:
 
         python manage.py migrate
 
-7. Install [npm](https://www.npmjs.com/) packages:
+6. Install [npm](https://www.npmjs.com/) packages:
 
         npm install
 
-8. Run test command to make sure everything is in order:
+7. Run test command to make sure everything is in order:
 
         python manage.py test
 
-9. Start the development server:
+8. Start the development server:
 
        python manage.py runserver
 

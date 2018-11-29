@@ -27,12 +27,12 @@ node {
   def envUpdate = System.currentTimeMillis() - 7 * 24 * 60 * 60 * 1000 // days * hours * minutes * seconds * miliseconds
   // From now we want to use private registry
   docker.withRegistry('https://registry.laboratorium.ee/', 'docker-registry-login') { // docker-registry-login is declared in Jenkins secrets
-    // Check if we need to rebuild environment container when requirements or Dockerfile.base is changed
+    // Check if we need to rebuild environment container when Pipfile or Dockerfile.base is changed
     print("Previous commit: $gitVars.GIT_PREVIOUS_COMMIT")
     print("Current commit: $gitVars.GIT_COMMIT")
 
     def shouldRebuild = sh(
-        script: "git diff --name-only $gitVars.GIT_PREVIOUS_COMMIT $gitVars.GIT_COMMIT | egrep 'Dockerfile.base|requirements' -c || true",
+        script: "git diff --name-only $gitVars.GIT_PREVIOUS_COMMIT $gitVars.GIT_COMMIT | egrep 'Dockerfile.base|Pipfile' -c || true",
         returnStdout: true
     ).trim().toInteger()
 
