@@ -5,10 +5,7 @@
   "environments": {
     "test": {
       "addons": [
-        {
-          "plan": "heroku-postgresql:in-dyno",
-          "as": "django_database"
-        }
+        "heroku-postgresql:in-dyno"
       ],
       "scripts": {
         "test": "flake8 && python run_js_scss_linters.py && python manage.py test"
@@ -26,10 +23,7 @@
     }
   },
   "addons": [
-    {
-      "plan": "heroku-postgresql",
-      "as": "django_database"
-    }
+    "heroku-postgresql"
   ],
   "buildpacks": [
     {

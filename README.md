@@ -45,7 +45,7 @@ You may also use the `run_development.sh` script.
        cp src/settings/env.local.example src/settings/.env
     (alternatively you can set those settings as environment variables)
 
-4. Configure your local database by filling out `DJANGO_DATABASE_URL` setting in `.env` file.
+4. Configure your local database by filling out `DATABASE_URL` setting in `.env` file.
 
     If there is no good reason to do otherwise, it should be a [Postgres](https://www.postgresql.org/) database since that's what we are using by default on production servers.
 
