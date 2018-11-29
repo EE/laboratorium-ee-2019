@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    strona główna - {{ block.super }}
+strona główna - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-    <h1>Strona główna</h1>
-    <p>
-        Jeszcze nic tu nie ma. Jeśli potrzebujesz więcej informacji, jak zacząć, zapoznaj się
-        z <a href="https://github.com/EE/generator-ee">Generatorem EE</a>
-        i <a href="https://github.com/EE/bombaatomowa/blob/master/project_development.md">Zasadami rozwijania projektów EE</a>.
-    </p>
+    <div class="container">
+        <div id="app">
+         [[ message ]]
+        </div>
+        <div class="columns">
+            <div class="column">
+                <h6>Government</h6>
+                <h2>We help <span>policymakers</span></h2>
+                <div class="new-lp__desc"><p>Do you want to make social impact with data?</p></div>
+            </div>
+            <div class="column">
+                <img class="new-lp__bg-image" src="https://laboratorium.ee/en/wp-content/uploads/sites/2/2018/06/cd578bf53b6d917050a70165fc90b168.png">
+            </div>
+        </div>
+    </div>
 {% endblock content %}
