@@ -47,6 +47,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # serving static using whitenoise on every environment for consistency
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

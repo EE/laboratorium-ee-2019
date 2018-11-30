@@ -1,4 +1,4 @@
-"""Settings for production development."""
+"""Settings for test server (laboratorium-ee-test.herokuapp.com)."""
 
 # We ignore the 'may be undefined, or defined from star imports' error
 # because we use, and want to continue to use, star imports in settings files.
@@ -11,10 +11,17 @@ from raven.transport.requests import RequestsHTTPTransport
 from .base import *  # noqa
 
 
+ALLOWED_HOSTS = ['laboratorium-ee-test.herokuapp.com']
+
+
 # SENTRY INTEGRATION
 RAVEN_CONFIG = {
     'dsn': env('RAVEN_DSN'),
-    'release': raven.fetch_git_sha(str(BASE_DIR)),
+    'release': env('HEROKU_SLUG_COMMIT', default=''),
     'transport': RequestsHTTPTransport
 }
 INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+
+
+# staticfile serving
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
