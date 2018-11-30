@@ -1,24 +1,6 @@
 # laboratorium-ee-2019
 
-## Installation (local development - Docker)
-
-1. Request appropriate permissions to Docker images on [our Docker registry](https://registry.laboratorium.ee/) from [kazet](mailto:krzysztof.zajac@laboratorium.ee)
-
-2. Log in to our Docker repository:
-
-        docker login registry.laboratorium.ee
-
-3. Build Docker images
-
-        docker-compose build
-
-4. Run Docker images
-
-        docker-compose up
-
-You may also use the `run_development.sh` script.
-
-## Installation (local development - classic)
+## Installation (local development)
 
 ### Prerequisites
 
