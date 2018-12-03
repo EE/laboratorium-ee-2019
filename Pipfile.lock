@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6bb22d29db13c864e8b746da7a41d3cc1b8a291a6970f205b867e6a953e845e9"
+            "sha256": "fc6cf276ca2b2cc43558b2740d8b0990a9ff46ffbd969344fc086f7c506df4f5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -48,11 +48,11 @@
         },
         "django-constance": {
             "hashes": [
-                "sha256:6eec9f3ac4e5657b93e64f3379181d1e727088df10dd34f0398cd12119b9f0b0",
-                "sha256:8e906b084dbfd2ecc9aaa682865314221849718e126d5bc3bff0264ffed4c880"
+                "sha256:5a4fec5361214b4658c64184b45a6678cb8f8bf8d342f56976f87d5c6645860a",
+                "sha256:a49735063b2c30015d2e52a90609ea9798da722ed070f091de51714758a5d018"
             ],
             "index": "pypi",
-            "version": "==2.0.0"
+            "version": "==2.3.1"
         },
         "django-environ": {
             "hashes": [
@@ -64,11 +64,11 @@
         },
         "django-picklefield": {
             "hashes": [
-                "sha256:57e4349c7f75eab08fe7ceb11e7135644fdf771e2777a754db4f07e5c63c191f",
-                "sha256:61e3ba7f6df82d8df9e6be3a8c55ef589eb3bf926c3d25d2b7949b07eae78354"
+                "sha256:9052f2dcf4882c683ce87b4356f29b4d014c0dad645b6906baf9f09571f52bc8",
+                "sha256:f1733a8db1b6046c0d7d738e785f9875aa3c198215de11993463a9339aa4ea24"
             ],
             "index": "pypi",
-            "version": "==1.0.0"
+            "version": "==2.0"
         },
         "django-settings-context-processor": {
             "hashes": [
@@ -168,11 +168,11 @@
         },
         "django-debug-toolbar": {
             "hashes": [
-                "sha256:0b4d2b1ac49a8bc5604518e8e20f56c1c08c0c4873336107e7c773c42537876b",
-                "sha256:e9f08b94f9423ac76cfc287151182bbaddbe7521ae32bef9f9863e2ac58018d3"
+                "sha256:08e0e43f6c1fd9820af4cbdcd54b5fb80bf83a2e08b2cc952547a671174999b8",
+                "sha256:1dcae28d430522debafde2602b3450eb784410b78e16c29a00448032df2a4c90"
             ],
             "index": "pypi",
-            "version": "==1.8"
+            "version": "==1.10.1"
         },
         "flake8": {
             "hashes": [
