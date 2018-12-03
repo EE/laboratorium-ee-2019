@@ -1,8 +1,8 @@
-import { init } from "@sentry/browser";
+import * as sentry from "@sentry/browser";
 
-const DSN_PUBLIC = document.getElementById("DSN_PUBLIC").innerHTML;
+const DSN_PUBLIC = document.getElementById("DSN_PUBLIC").textContent;
 if (DSN_PUBLIC) {
-    init({
+    sentry.init({
         dsn: DSN_PUBLIC,
     });
 }
