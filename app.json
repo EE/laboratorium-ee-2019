@@ -12,6 +12,9 @@
         "test": "flake8 && python run_js_scss_linters.py && python manage.py test"
       },
       "env": {
+        "DJANGO_SECRET_KEY": {
+          "generator": "secret"
+        },
         "RAVEN_DISABLED": "True"
       }
     }
