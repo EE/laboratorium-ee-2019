@@ -1,5 +1,6 @@
 {
-  "name": "laboratorium-ee",
+  "name": "Laboratorium.ee",
+  "repository": "https://github.com/EE/laboratorium-ee-2019",
   "scripts": {
   },
   "environments": {
@@ -15,6 +16,11 @@
   "env": {
     "DJANGO_SECRET_KEY": {
       "generator": "secret"
+    },
+    "DJANGO_SETTINGS_MODULE": "src.settings.heroku",
+    "RAVEN_DSN": {
+      "description": "A unique URL that you receive after setting up a project in Sentry.",
+      "value": ""
     }
   },
   "formation": {
