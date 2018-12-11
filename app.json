@@ -10,6 +10,9 @@
       ],
       "scripts": {
         "test": "flake8 && python run_js_scss_linters.py && python manage.py test"
+      },
+      "env": {
+        "RAVEN_DISABLED": "True"
       }
     }
   },
