@@ -1,23 +1,26 @@
 env:
   browser: true
   es6: true
-extends: 'eslint:recommended'
-globals:
-  Vue: true
+extends: eslint:recommended
 parserOptions:
-  ecmaFeatures:
-    jsx: true
   sourceType: module
 rules:
   indent:
-    - error
-    - 4
+  - error
+  - 4
   linebreak-style:
-    - error
-    - unix
+  - error
+  - unix
   quotes:
-    - error
-    - double
+  - error
+  - double
   semi:
-    - error
-    - always
+  - error
+  - always
+  constructor-super: 1
+  generator-star-spacing: 0
+  no-this-before-super: 0
+  no-var: 1
+  object-shorthand: 0
+  prefer-const: 2
+  no-undef: 0
