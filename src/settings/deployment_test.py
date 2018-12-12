@@ -11,4 +11,5 @@ from raven.transport.requests import RequestsHTTPTransport
 from .heroku import *  # noqa
 
 
+# Raven DSN for Sentry integration on frontend
 DSN_PUBLIC = 'https://194ce8ca6d7441599d3c1c62c9f39e1d@sentry.laboratorium.ee/30'
