@@ -5,19 +5,28 @@ extends: 'eslint:recommended'
 globals:
   Vue: true
 parserOptions:
-  ecmaFeatures:
-    jsx: true
   sourceType: module
 rules:
   indent:
-    - error
-    - 4
+  - error
+  - 4
   linebreak-style:
-    - error
-    - unix
+  - error
+  - unix
   quotes:
-    - error
-    - double
+  - error
+  - double
   semi:
-    - error
-    - always
+  - error
+  - always
+  constructor-super: warn
+  generator-star-spacing: warn
+  no-multiple-empty-lines:
+  - warn
+  - max: 1
+  no-trailing-spaces: warn
+  no-this-before-super: warn
+  no-var: error
+  object-shorthand: warn
+  prefer-const: warn
+  no-undef: error
