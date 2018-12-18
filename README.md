@@ -43,7 +43,11 @@
 
         python manage.py test
 
-8. Start the development server:
+8. Start the frontend dev server:
+
+       npm run start
+       
+9. Start the backend dev server (in a different console):
 
        python manage.py runserver
 

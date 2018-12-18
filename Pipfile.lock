@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "fc6cf276ca2b2cc43558b2740d8b0990a9ff46ffbd969344fc086f7c506df4f5"
+            "sha256": "d27a8e061fae3a1c219729b1e1a21bbe678b8887c7ab036b4e89e0f3c4bb5002"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.5"
+            "python_version": "3.6"
         },
         "sources": [
             {
@@ -23,28 +23,6 @@
             ],
             "index": "pypi",
             "version": "==1.11.16"
-        },
-        "django-appconf": {
-            "hashes": [
-                "sha256:6a4d9aea683b4c224d97ab8ee11ad2d29a37072c0c6c509896dd9857466fb261",
-                "sha256:ddab987d14b26731352c01ee69c090a4ebfc9141ed223bef039d79587f22acd9"
-            ],
-            "version": "==1.0.2"
-        },
-        "django-compressor": {
-            "hashes": [
-                "sha256:7732676cfb9d58498dfb522b036f75f3f253f72ea1345ac036434fdc418c2e57",
-                "sha256:9616570e5b08e92fa9eadc7a1b1b49639cce07ef392fc27c74230ab08075b30f"
-            ],
-            "index": "pypi",
-            "version": "==2.2"
-        },
-        "django-compressor-toolkit": {
-            "hashes": [
-                "sha256:c0640559512f8a8a693fc7a374ca5a8fbca84c0ee0b90268e979d04a2f6bb694"
-            ],
-            "index": "pypi",
-            "version": "==0.6.0"
         },
         "django-constance": {
             "hashes": [
@@ -76,6 +54,14 @@
             ],
             "index": "pypi",
             "version": "==0.2"
+        },
+        "django-webpack-loader": {
+            "hashes": [
+                "sha256:60bab6b9a037a5346fad12d2a70a6bc046afb33154cf75ed640b93d3ebd5f520",
+                "sha256:970b968c2a8975fb7eff56a3bab5d0d90d396740852d1e0c50c5cfe2b824199a"
+            ],
+            "index": "pypi",
+            "version": "==0.6.0"
         },
         "gunicorn": {
             "hashes": [
@@ -135,18 +121,6 @@
             ],
             "index": "pypi",
             "version": "==6.9.0"
-        },
-        "rcssmin": {
-            "hashes": [
-                "sha256:ca87b695d3d7864157773a61263e5abb96006e9ff0e021eff90cbe0e1ba18270"
-            ],
-            "version": "==1.0.6"
-        },
-        "rjsmin": {
-            "hashes": [
-                "sha256:dd9591aa73500b08b7db24367f8d32c6470021f39d5ab4e50c7c02e4401386f1"
-            ],
-            "version": "==1.0.12"
         },
         "whitenoise": {
             "hashes": [

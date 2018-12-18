@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import environ
+import os
 
-BASE_DIR = environ.Path(__file__) - 3
-SRC_DIR = BASE_DIR.path('src')
+BASE_DIR = str(environ.Path(__file__) - 3)
+SRC_DIR = os.path.join(BASE_DIR, 'src')
 env = environ.Env()
 env.read_env()
 
@@ -40,10 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
-    'compressor_toolkit',
-    'settings_context_processor',
 
+    'webpack_loader',
+    'settings_context_processor',
     'constance',
     'constance.backends.database',
 
@@ -68,7 +68,7 @@ ROOT_URLCONF = 'src.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(SRC_DIR.path('templates'))],
+        'DIRS': [os.path.join(SRC_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,19 +130,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = env('STATIC_ROOT', default=str(BASE_DIR.path('staticdir')))
+STATIC_ROOT = env('STATIC_ROOT', default=os.path.join(BASE_DIR, 'staticdir'))
 STATICFILES_DIRS = [
-    str(SRC_DIR.path('static'))
+    os.path.join(SRC_DIR, 'static', 'dist')
 ]
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 ]
 
 
-MEDIA_ROOT = str(BASE_DIR.path('mediadir'))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediadir')
 MEDIA_URL = '/media/'
 
 
@@ -158,13 +157,16 @@ TEMPLATE_VISIBLE_SETTINGS = [
     'DSN_PUBLIC',
 ]
 
-# django-compressor
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'compressor_toolkit.precompilers.SCSSCompiler'),
-    ('module', 'compressor_toolkit.precompilers.ES6Compiler'),
-)
-
-COMPRESS_LOCAL_NPM_INSTALL = True
+# django-webpack-loader
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, '.webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
+    }
+}
 
 # django-constance
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
