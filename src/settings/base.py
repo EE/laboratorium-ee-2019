@@ -61,6 +61,8 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+
+    'src.apps.projects',
 ]
 
 MIDDLEWARE = [
