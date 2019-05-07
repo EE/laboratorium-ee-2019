@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
 
+    'src.apps.main',
     'src.apps.projects',
 ]
 

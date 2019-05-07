@@ -20,13 +20,14 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.views import generic as views_generic
 from django.views import defaults as views_defaults
-from django.urls import re_path, include
+from django.urls import re_path, include, path
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 
 urlpatterns = [
     url(r'^$', views_generic.TemplateView.as_view(template_name='homepage.html'), name='homepage'),
+    path('main/', include('src.apps.main.urls')),
     url(r'^admin/', admin.site.urls),
     re_path(r'^cms/', include(wagtailadmin_urls)),
 
