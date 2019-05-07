@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-- [Python 3.5+](https://www.python.org/)
+- [Python](https://www.python.org/)
 - [pipenv](https://pipenv.readthedocs.io/en/latest/)
 - [Node.js](https://docs.npmjs.com/getting-started/installing-node)
 - [SASS](http://sass-lang.com/install)
@@ -15,8 +15,6 @@
 
         pipenv install --dev
         pipenv shell  # to enter the environment
-
-    This project uses [Django 1.11](https://docs.djangoproject.com/en/1.11/)
 
 2. Install the npm requirements:
 
