@@ -20,6 +20,7 @@ wagtail = "*"
 [dev-packages]
 "flake8" = "==3.6.0"
 django-debug-toolbar = "==1.10.1"
+ipdb = "*"
 
 [requires]
 python_version = "3.6"
