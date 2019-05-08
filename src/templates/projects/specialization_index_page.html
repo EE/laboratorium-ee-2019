@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags %}
+
+{% block content %}
+    <a href={% pageurl page.get_parent %}>do góry</a>
+
+    <h1>{{ page.title }}</h1>
+
+    <ul>
+        {% for specialization in page.specializations.all %}
+            <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
+            <ul>
+                {% for project in specialization.projects.all %}
+                    <li>
+                        <a href="{% pageurl project %}">
+                            {{ project.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+{% endblock content %}
