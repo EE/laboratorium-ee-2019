@@ -1,5 +1,6 @@
 {% load compress %}
 {% load static %}
+{% load wagtailcore_tags %}
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -40,7 +41,7 @@
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
+            <a class="navbar-item" href="/">
                 <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
             </a>
 
@@ -53,13 +54,11 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
-                    Home
-                </a>
-
-                <a class="navbar-item">
-                    Documentation
-                </a>
+                {% for page_in_menu in menus %}
+                    <a class="navbar-item" href="{% pageurl page_in_menu %}">
+                        {{ page_in_menu.title }}
+                    </a>
+                {% endfor %}
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
