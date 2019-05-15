@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7a8f27df08397e252140ddd12b1748397de4d67f372363664d429f23a2d6a3b7"
+            "sha256": "7e6c76c67fbbcc8bf158c22fd0dbd6f85d3ebfa0c58b1225911f7718c5ec3f33"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -91,6 +91,12 @@
             ],
             "version": "==4.4"
         },
+        "django-modeltranslation": {
+            "hashes": [
+                "sha256:55de86a9531d021cfc249552d17472bb5bf21955a4482f7f908be85d4980da36"
+            ],
+            "version": "==0.13.1"
+        },
         "django-picklefield": {
             "hashes": [
                 "sha256:9052f2dcf4882c683ce87b4356f29b4d014c0dad645b6906baf9f09571f52bc8",
@@ -121,10 +127,10 @@
         },
         "djangorestframework": {
             "hashes": [
-                "sha256:1d22971a5fc98becdbbad9710ca2a9148dd339f6cbea4c3ddbed2cb84bab94e1",
-                "sha256:2884763160b997073ff1e937bd820a69d23978902a3ccd0ba53a217e196239f0"
+                "sha256:376f4b50340a46c15ae15ddd0c853085f4e66058f97e4dbe7d43ed62f5e60651",
+                "sha256:c12869cfd83c33d579b17b3cb28a2ae7322a53c3ce85580c2a2ebe4e3f56c4fb"
             ],
-            "version": "==3.9.3"
+            "version": "==3.9.4"
         },
         "draftjs-exporter": {
             "hashes": [
@@ -289,11 +295,18 @@
         },
         "wagtail": {
             "hashes": [
-                "sha256:0b1357bc66873d1c3403791e717a15c8b01d3d0e67083fe5f9eff60d7f7d9d77",
-                "sha256:19de8dd6390429c1c6e921487e997a64fa9334da0c6255f1e9988d30729fce1a"
+                "sha256:6213d91d0624d62723fdd2c8c88c5b2b96a6e5a301b742b305c40a674286172c",
+                "sha256:aa4371d3e6feba01bbb1c48a6ed2569c4aa6b3f715971827c6ca1a68afda0f60"
             ],
             "index": "pypi",
-            "version": "==2.5"
+            "version": "==2.5.1"
+        },
+        "wagtail-modeltranslation": {
+            "hashes": [
+                "sha256:793a27e5b2c21de72ccdd471109a4f8453cd606ce534cfbe4824634f706aa2f5"
+            ],
+            "index": "pypi",
+            "version": "==0.10.1"
         },
         "webencodings": {
             "hashes": [

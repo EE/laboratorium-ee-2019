@@ -16,6 +16,7 @@ gunicorn = "==19.9.0"
 whitenoise = "==4.1.2"
 raven = "==6.9.0"
 wagtail = "*"
+wagtail-modeltranslation = "*"
 
 [dev-packages]
 "flake8" = "==3.6.0"
