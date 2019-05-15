@@ -1,34 +1,32 @@
-from django.conf import settings
-from django.core.mail import EmailMessage, BadHeaderError
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.views.generic.base import View
+from django.urls import reverse
+from django.views.generic import FormView
 
-from src.apps.main.forms import ContactForm
+from src.apps.main.forms import ContactForm, AttachmentContactForm
 
 
-class SendMail(View):
+class SendMailView(FormView):
     form_class = ContactForm
+    template_name = 'email_form.html'
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, 'email_form.html', {'form': form})
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'request': self.request})
+        return kwargs
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            subject = form.cleaned_data['subject']
-            from_email = form.cleaned_data['from_email']
-            message = form.cleaned_data['message']
-            to_email = settings.CONTACT_EMAIL
-            email = EmailMessage(
-                subject, message, from_email, [to_email], reply_to=[from_email]
-            )
-            try:
-                email.send()
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-        return redirect('thanks')
+    def form_valid(self, form):
+        response = form.send_mail()
+        if not response.get('success'):
+            return HttpResponse(f"Could not send email. Reason: {response.get('message')}")
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('thanks')
+
+
+class SendMailWithAttachmentView(SendMailView):
+    form_class = AttachmentContactForm
+    template_name = 'email_with_attachment_form.html'
 
 
 def thanks(request):
