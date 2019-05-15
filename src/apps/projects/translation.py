@@ -4,6 +4,11 @@ from modeltranslation.decorators import register
 from . import models
 
 
+@register(models.SpecializationIndexPage)
+class SpecializationIndexPageTranslationOptions(TranslationOptions):
+    fields = ()
+
+
 @register(models.SpecializationPage)
 class SpecializationPageTranslationOptions(TranslationOptions):
     fields = (
