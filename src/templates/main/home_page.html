@@ -13,6 +13,11 @@ strona główna - {{ block.super }}
             <div class="column">
                 <h6>{{ page.title }}</h6>
                 <h2>{{ page.header }}</h2>
+                <h1>Specjalizujemy się w</h1>
+                {% for specialization_page in page.specializations %}
+                    <h2>{{ specialization_page.title }}</h2>
+                    <p>{{ specialization_page.how_we_work }}</p>
+                {% endfor %}
                 <div class="new-lp__desc"><p>Do you want to make social impact with data?</p></div>
             </div>
             <div class="column">
