@@ -38,7 +38,7 @@ msgstr "O nas"
 
 #: src/templates/base.html:73
 msgid "Jobs"
-msgstr "Wakaty"
+msgstr "Oferty pracy"
 
 #: src/templates/base.html:76
 msgid "Contact"
