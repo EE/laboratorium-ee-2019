@@ -48,6 +48,7 @@
 9. Start the backend dev server (in a different console):
 
        python manage.py runserver
+       python manage.py compilemessages  # to compile translation files
 
 ## Development guidelines
 Before committing to this repository, please read [the official Laboratorium EE development guidelines](https://github.com/EE/bombaatomowa).
