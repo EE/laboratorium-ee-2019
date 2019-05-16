@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-15 13:45+0200\n"
+"POT-Creation-Date: 2019-05-16 10:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,26 +26,30 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: src/templates/base.html:65
+#: src/templates/base.html:66
 msgid "More"
 msgstr ""
 
-#: src/templates/base.html:70
+#: src/templates/base.html:71
 msgid "About"
 msgstr ""
 
-#: src/templates/base.html:73
+#: src/templates/base.html:74
 msgid "Jobs"
 msgstr ""
 
-#: src/templates/base.html:76
+#: src/templates/base.html:77
 msgid "Contact"
 msgstr ""
 
-#: src/templates/base.html:80
+#: src/templates/base.html:81
 msgid "Report an issue"
 msgstr ""
 
-#: src/templates/main/home_page.html:16
+#: src/templates/main/home_page.html:18
 msgid "Our specializations"
+msgstr ""
+
+#: src/templates/main/home_page.html:23
+msgid "Do you want to make social impact with data?"
 msgstr ""
