@@ -179,7 +179,7 @@ MEDIA_URL = '/media/'
 GOOGLE_ANALYTICS_ID = env('GOOGLE_ANALYTICS_ID', default='')
 
 # SENTRY
-SENTYR_DSN = env.str('SENTRY_DSN', default=None)
+SENTRY_DSN = env.str('SENTRY_DSN', default=None)
 
 # settings-context-processor
 TEMPLATE_VISIBLE_SETTINGS = [
