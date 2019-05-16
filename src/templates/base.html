@@ -27,7 +27,7 @@
   {% render_bundle "vendor" "css" %}
   {% render_bundle "main" "css" %}
 
-  <script type="text/plain" id="DSN_PUBLIC">{{ DSN_PUBLIC|default:"" }}</script>
+  <script type="text/plain" id="SENTRY_DSN">{{ SENTRY_DSN|default:"" }}</script>
   {% block extrahead %}
   {% endblock extrahead %}
 </head>
