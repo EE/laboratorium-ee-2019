@@ -1,5 +1,5 @@
-{% load compress %}
 {% load i18n %}
+{% load render_bundle from webpack_loader %}
 {% load static %}
 {% load wagtailcore_tags %}
 
@@ -24,17 +24,10 @@
     </script>
     <!-- End Google Analytics -->
   {% endif %}
+  {% render_bundle "vendor" "css" %}
+  {% render_bundle "main" "css" %}
 
-  {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/main.scss' %}" />
-  {% endcompress %}
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js" integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
-
-  <script type="text/plain" id="DSN_PUBLIC">{{ DSN_PUBLIC }}</script>
-  {% compress js %}
-    <script type="module" src="{% static 'js/main.js' %}"></script>
-  {% endcompress %}
-
+  <script type="text/plain" id="DSN_PUBLIC">{{ DSN_PUBLIC|default:"" }}</script>
   {% block extrahead %}
   {% endblock extrahead %}
 </head>
@@ -100,6 +93,9 @@
     </nav>
   {% block content %}
   {% endblock content %}
+
+  {% render_bundle "vendor" "js" %}
+  {% render_bundle "main" "js" %}
 </body>
 
 </html>
