@@ -179,12 +179,12 @@ MEDIA_URL = '/media/'
 GOOGLE_ANALYTICS_ID = env('GOOGLE_ANALYTICS_ID', default='')
 
 # sentry error reporting for frontend code
-DSN_PUBLIC = env.str('DSN_PUBLIC', default=None)
+SENTYR_DSN = env.str('SENTRY_DSN', default=None)
 
 # settings-context-processor
 TEMPLATE_VISIBLE_SETTINGS = [
     'GOOGLE_ANALYTICS_ID',
-    'DSN_PUBLIC',
+    'SENTRY_DSN',
 ]
 
 # django-webpack-loader
