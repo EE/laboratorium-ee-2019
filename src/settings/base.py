@@ -178,7 +178,7 @@ MEDIA_URL = '/media/'
 # GOOGLE ANALYTICS
 GOOGLE_ANALYTICS_ID = env('GOOGLE_ANALYTICS_ID', default='')
 
-# raven/sentry error reporting
+# sentry error reporting for frontend code
 DSN_PUBLIC = env.str('DSN_PUBLIC', default=None)
 
 # settings-context-processor

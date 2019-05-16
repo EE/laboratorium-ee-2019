@@ -5,8 +5,8 @@
 #
 # flake8: noqa: F999
 
-import raven
-from raven.transport.requests import RequestsHTTPTransport
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 from .base import *  # noqa
 
@@ -15,12 +15,10 @@ ALLOWED_HOSTS = ['laboratorium-ee-test.herokuapp.com']
 
 
 # SENTRY INTEGRATION
-RAVEN_CONFIG = {
-    'dsn': env('RAVEN_DSN'),
-    'release': env('HEROKU_SLUG_COMMIT', default=''),
-    'transport': RequestsHTTPTransport
-}
-INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+sentry_sdk.init(
+    dsn=env('SENTRY_DSN'),
+    integrations=[DjangoIntegration()]
+)
 DSN_PUBLIC = 'https://194ce8ca6d7441599d3c1c62c9f39e1d@sentry.laboratorium.ee/30'
 
 
