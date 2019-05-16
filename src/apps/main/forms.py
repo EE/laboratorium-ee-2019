@@ -39,4 +39,3 @@ class AttachmentContactForm(ContactForm):
         if attachment:
             email.attach(attachment.name, attachment.read(), attachment.content_type)
         return email
-
