@@ -4,14 +4,15 @@
 
 {% block content %}
     <h1>{{ page.title }}</h1>
+    <hr>
     <p>Jak pracujemy</p>
     <p>{{ page.how_we_work }}</p>
-
+    <hr>
     <p>Case study - {{ page.case_study }}</p>
-
+    <hr>
     <p>Narzędzia</p>
     <div>{{ page.tools }}</div>
-
+    <hr>
 
     {% for project in page.projects.all %}
         <li>
