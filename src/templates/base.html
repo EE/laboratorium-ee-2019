@@ -46,50 +46,8 @@
                 <span aria-hidden="true"></span>
             </a>
         </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                {% for page_in_menu in menus %}
-                    <a class="navbar-item" href="{% pageurl page_in_menu %}">
-                        {{ page_in_menu.title }}
-                    </a>
-                {% endfor %}
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        {% trans 'More' %}
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            {% trans 'About' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Jobs' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Contact' %}
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                            {% trans 'Report an issue' %}
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light">
-                            Log in
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="upper-menu">
+            {% upper_menu %}
         </div>
     </nav>
   {% block content %}
