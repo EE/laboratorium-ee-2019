@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load render_bundle from webpack_loader %}
 {% load static %}
+{% load main_tags %}
 {% load wagtailcore_tags %}
 
 <!DOCTYPE html>
@@ -93,7 +94,9 @@
     </nav>
   {% block content %}
   {% endblock content %}
-
+  <div class="contact_form">
+      {% contact_form %}
+  </div>
   {% render_bundle "vendor" "js" %}
   {% render_bundle "main" "js" %}
 </body>

@@ -1,15 +1,7 @@
-{% extends 'base.html' %}
-
-{% block title %}
-contact us
-{% endblock title %}
-
-{% block content %}
-    <form enctype="multipart/form-data" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div>
-          <button type="submit">Send</button>
-        </div>
-    </form>
-{% endblock content %}
+<form enctype="multipart/form-data" method="post" action="{% url 'send_mail_with_attachment' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+      <button type="submit">Send</button>
+    </div>
+</form>
