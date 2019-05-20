@@ -8,8 +8,8 @@ class ContactForm(forms.Form):
     subject = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'choose subject'}))
     message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'how can we help?'}), required=True)
 
-    def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop("request")
+    def __init__(self, request, *args, **kwargs):
+        self.request = request
         super().__init__(*args, **kwargs)
 
     def create_email_message(self):
