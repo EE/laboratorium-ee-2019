@@ -13,6 +13,8 @@ class SpecializationIndexPageTranslationOptions(TranslationOptions):
 class SpecializationPageTranslationOptions(TranslationOptions):
     fields = (
         'how_we_work',
+        'case_study',
+        'tools',
     )
 
 
@@ -20,4 +22,7 @@ class SpecializationPageTranslationOptions(TranslationOptions):
 class ProjectPageTranslationOptions(TranslationOptions):
     fields = (
         'subtitle',
+        'challenge',
+        'process',
+        'quote',
     )

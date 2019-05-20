@@ -7,6 +7,12 @@
     <p>Jak pracujemy</p>
     <p>{{ page.how_we_work }}</p>
 
+    <p>Case study - {{ page.case_study }}</p>
+
+    <p>Narzędzia</p>
+    <div>{{ page.tools }}</div>
+
+
     {% for project in page.projects.all %}
         <li>
             <a href="{% pageurl project %}">

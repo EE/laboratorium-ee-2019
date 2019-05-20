@@ -1,9 +1,29 @@
 from django.db import models
+from wagtail.core import blocks
+from wagtail.core.fields import StreamField, RichTextField
 
 from wagtail.core.models import Page, Orderable
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.search import index
 from modelcluster.fields import ParentalKey
+
+
+class Tile(blocks.StructBlock):
+    heading = blocks.CharBlock()
+    image = ImageChooserBlock()
+
+    class Meta:
+        template = 'projects/tile.html'
+
+
+class TileWithDescription(blocks.StructBlock):
+    heading = blocks.CharBlock()
+    image = ImageChooserBlock()
+    description = blocks.CharBlock()
+
+    class Meta:
+        template = 'projects/tile_with_description.html'
 
 
 class SpecializationIndexPage(Page):
@@ -13,13 +33,23 @@ class SpecializationIndexPage(Page):
 
 
 class SpecializationPage(Page):
-    how_we_work = models.TextField()
+    how_we_work = StreamField([
+        ('text', blocks.CharBlock()),
+        ('tiles_list', blocks.ListBlock(Tile())),
+    ])
+    case_study = StreamField([
+        ('heading', blocks.CharBlock()),
+        ('tiles_list', blocks.ListBlock(Tile())),
+    ], null=True)
 
-    search_fields = Page.search_fields + [
-        index.SearchField('how_we_work'),
-    ]
+    tools = StreamField([
+        ('tiles_with_description_list', blocks.ListBlock(TileWithDescription())),
+    ], null=True)
+
     content_panels = Page.content_panels + [
-        FieldPanel('how_we_work'),
+        StreamFieldPanel('how_we_work'),
+        StreamFieldPanel('case_study'),
+        StreamFieldPanel('tools'),
     ]
 
     parent_page_types = [SpecializationIndexPage]
@@ -31,12 +61,20 @@ class SpecializationPage(Page):
 
 class ProjectPage(Page):
     subtitle = models.CharField(max_length=255, blank=True)
+    challenge = RichTextField(null=True)
+    process = StreamField([
+        ('tiles_list', blocks.ListBlock(Tile())),
+    ], null=True)
+    quote = RichTextField(null=True)
 
     search_fields = Page.search_fields + [
         index.SearchField('subtitle'),
     ]
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('challenge'),
+        StreamFieldPanel('process'),
+        FieldPanel('quote'),
         InlinePanel('metrics'),
     ]
 
