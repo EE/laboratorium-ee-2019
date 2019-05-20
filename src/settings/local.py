@@ -16,7 +16,4 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['*'])
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 CONTACT_EMAIL = env.get_value('CONTACT_EMAIL', default='g.danton@bastille.fr')
 
-# Django Debug Toolbar
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
-INSTALLED_APPS += ['debug_toolbar', ]
 INTERNAL_IPS = ['127.0.0.1', ]
