@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-16 10:40+0200\n"
+"POT-Creation-Date: 2019-05-21 09:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,32 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/settings/base.py:155
+#: src/settings/base.py:154
 msgid "Polish"
 msgstr ""
 
-#: src/settings/base.py:156
+#: src/settings/base.py:155
 msgid "English"
-msgstr ""
-
-#: src/templates/base.html:66
-msgid "More"
-msgstr ""
-
-#: src/templates/base.html:71
-msgid "About"
-msgstr ""
-
-#: src/templates/base.html:74
-msgid "Jobs"
-msgstr ""
-
-#: src/templates/base.html:77
-msgid "Contact"
-msgstr ""
-
-#: src/templates/base.html:81
-msgid "Report an issue"
 msgstr ""
 
 #: src/templates/main/home_page.html:18
@@ -52,4 +32,24 @@ msgstr ""
 
 #: src/templates/main/home_page.html:23
 msgid "Do you want to make social impact with data?"
+msgstr ""
+
+#: src/templates/main/menu.html:14
+msgid "More"
+msgstr ""
+
+#: src/templates/main/menu.html:19
+msgid "About"
+msgstr ""
+
+#: src/templates/main/menu.html:22
+msgid "Jobs"
+msgstr ""
+
+#: src/templates/main/menu.html:25
+msgid "Contact"
+msgstr ""
+
+#: src/templates/main/menu.html:29
+msgid "Report an issue"
 msgstr ""
