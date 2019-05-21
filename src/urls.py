@@ -16,7 +16,6 @@ Including another URLconf
 
 from django.conf import settings
 from django.conf.urls import url
-from django.contrib import admin
 from django.conf.urls.static import static
 from django.views import defaults as views_defaults
 from django.urls import re_path, include, path
@@ -26,7 +25,6 @@ from wagtail.core import urls as wagtail_urls
 
 urlpatterns = [
     path('main/', include('src.apps.main.urls')),
-    url(r'^admin/', admin.site.urls),
     re_path(r'^cms/', include(wagtailadmin_urls)),
 
     re_path(r'', include(wagtail_urls)),

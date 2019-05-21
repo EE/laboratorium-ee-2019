@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     # enable whitenoise static serving for runserver command (for development)
     'whitenoise.runserver_nostatic',
 
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
