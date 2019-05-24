@@ -4,26 +4,10 @@ from wagtail.core.fields import StreamField, RichTextField
 
 from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
-from wagtail.images.blocks import ImageChooserBlock
 from wagtail.search import index
 from modelcluster.fields import ParentalKey
 
-
-class Tile(blocks.StructBlock):
-    heading = blocks.CharBlock()
-    image = ImageChooserBlock()
-
-    class Meta:
-        template = 'projects/tile.html'
-
-
-class TileWithDescription(blocks.StructBlock):
-    heading = blocks.CharBlock()
-    image = ImageChooserBlock()
-    description = blocks.CharBlock()
-
-    class Meta:
-        template = 'projects/tile_with_description.html'
+from src.apps.main.blocks import Tile, TileWithDescription
 
 
 class SpecializationIndexPage(Page):
