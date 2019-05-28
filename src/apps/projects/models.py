@@ -15,6 +15,9 @@ class SpecializationIndexPage(Page):
     def specializations(self):
         return SpecializationPage.objects.live().descendant_of(self)
 
+    parent_page_types = ['main.HomePage']
+    subpage_types = ['SpecializationPage']
+
 
 class SpecializationPage(Page):
     how_we_work = StreamField([
@@ -36,14 +39,20 @@ class SpecializationPage(Page):
         StreamFieldPanel('tools'),
     ]
 
-    parent_page_types = [SpecializationIndexPage]
+    parent_page_types = ['SpecializationIndexPage']
+    subpage_types = ['ProjectPage']
 
     @property
     def projects(self):
         return ProjectPage.objects.live().descendant_of(self)
 
+    @property
+    def two_projects(self):
+        return self.projects[:2]
+
 
 class ProjectPage(Page):
+    self_initiated = models.BooleanField(default=False)
     subtitle = models.CharField(max_length=255, blank=True)
     challenge = RichTextField(null=True)
     process = StreamField([
@@ -55,14 +64,16 @@ class ProjectPage(Page):
         index.SearchField('subtitle'),
     ]
     content_panels = Page.content_panels + [
+        FieldPanel('self_initiated'),
         FieldPanel('subtitle'),
+        InlinePanel('metrics', heading="Metrics"),
         FieldPanel('challenge'),
         StreamFieldPanel('process'),
         FieldPanel('quote'),
-        InlinePanel('metrics'),
     ]
 
-    parent_page_types = [SpecializationPage]
+    parent_page_types = ['SpecializationPage']
+    subpage_types = []
 
     @property
     def similar_projects(self):

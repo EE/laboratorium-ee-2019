@@ -94,9 +94,12 @@
     </nav>
   {% block content %}
   {% endblock content %}
-  <div class="contact_form">
-      {% contact_form %}
-  </div>
+    {% block contact_form %}
+      <div class="contact_form">
+          {% contact_form %}
+      </div>
+    {% endblock contact_form %}
+
   {% render_bundle "vendor" "js" %}
   {% render_bundle "main" "js" %}
 </body>

@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
 
 {% block title %}
 {% trans 'Aktualności' %} - {{ block.super }}
@@ -16,7 +17,7 @@
                 <h4>{{ page.publication_date }}</h4>
                 {% image page.photo width-400 %}
                 <div>
-                    {{ page.body }}
+                    {{ page.body|richtext }}
                 </div>
             </div>
         </div>
