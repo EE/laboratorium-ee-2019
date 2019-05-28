@@ -12,6 +12,7 @@ from wagtail.admin.edit_handlers import (
     MultiFieldPanel,
 )
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.models import register_snippet
 
 from src.apps.main.blocks import Tile
 from src.apps.projects.models import SpecializationPage
@@ -136,3 +137,39 @@ class JobOfferPage(Page):
 
     parent_page_types = ['JobOfferIndexPage']
     subpage_types = []
+
+
+@register_snippet
+class RodoPassAdvert(models.Model):
+    """Czy należałoby z tego zrobić singletone'a??"""
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=256)
+    url = models.URLField()
+    button_text = models.CharField(max_length=50)
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('description'),
+        FieldPanel('url'),
+        FieldPanel('button_text'),
+    ]
+
+
+@register_snippet
+class Footer(models.Model):
+    """Czy należałoby z tego zrobić singletone'a??"""
+    contact = RichTextField()
+    address = RichTextField()
+    how_we_work = RichTextField()
+    privacy_policy = models.URLField()
+
+    panels = [
+        FieldPanel('contact'),
+        FieldPanel('address'),
+        FieldPanel('how_we_work'),
+        FieldPanel('privacy_policy'),
+    ]
+
+    @property
+    def specializations(self):
+        return SpecializationPage.objects.live()
