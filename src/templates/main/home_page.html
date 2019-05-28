@@ -1,25 +1,93 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
 
 {% block title %}
-strona główna - {{ block.super }}
+{% trans 'Home Page' %} - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
     <div class="container">
-        <div id="app">
-         [[ message ]]
-        </div>
         <div class="columns">
             <div class="column">
-                <h6>{{ page.title }}</h6>
+{#            stały tytuł i podtytuł strony głownej #}
+                <h1>{{ page.title }}</h1>
                 <h2>{{ page.header }}</h2>
-                <h1>{% trans 'Our specializations' %}</h1>
-                {% for specialization_page in page.specializations %}
-                    <h2>{{ specialization_page.title }}</h2>
+                <div>
+{#                    miejsce na slider z aktualnościami #}
+                    {% for article in page.latest_articles.all %}
+                        <p>
+                            {{ article.title }}
+                        </p>
+                        <p>
+                            {{ article.headline }}
+                        </p>
+                        <h6><a href="{% pageurl article %}">{% trans 'Find out more' %} ></a></h6>
+                    {% endfor %}
+
+                </div>
+                <hr>
+
+{#                  blok specjalizacje #}
+                <h2>{% trans 'Our specializations' %}</h2>
+                {% for specialization_page in page.specializations.all %}
+                    <h3>{{ specialization_page.title }}</h3>
                     <p>{{ specialization_page.how_we_work }}</p>
+                    <div class="inline-block"> {% trans 'Check it out!' %}
+                    {% for project in specialization_page.two_projects.all %}
+                        <a href="{% pageurl project %}">{{ project.title }}</a>
+                    {% endfor %}
+                    </div>
                 {% endfor %}
+                <hr>
+
+{#              blok Twoje prywatne centrum badawczo rozwojowe #}
+            <div class="private-rd-center">
+                <h2>{% trans 'Your private R&D center' %}</h2>
+                <b>{{ page.r_and_d_center_headline }}</b>
+                <h6>{{ page.r_and_d_center_body }}</h6>
+                <div>
+                    [walka ze smogiem] --> [wsparcie dla seniorów] --> [rewolucja cyfrowa]
+                </div>
+            </div>
+            <hr>
+
+{#           Jak powstają nasze rozwiązania? statyczne #}
+            <div>
+                <h2>
+                    {% trans 'How we create our solutions?' %}
+                </h2>
+                [ ] --> [ ] --> [ ] --> [ ]
+            </div>
+            <hr>
+
+{#            Inicjatywy własne #}
+            <div>
+                <h2>{% trans 'Our inititives' %}</h2>
+                <div class="inline-block">
+                    {% for inititive in page.our_initiatives.all %}
+                        <a href="{% pageurl inititive %}">{{ inititive.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+
+{#            Współpracowali z nami #}
+            <div>
+                <h2>{% trans 'We worked with' %}</h2>
+                <div class="inline-block">
+                    {% for logo in page.cooperators_logos.all %}
+                        {% image logo.image width-200 %}
+                    {% endfor %}
+                </div>
+
+            </div>
+            <hr>
+
+{#             #}
                 <div class="new-lp__desc"><p>{% trans 'Do you want to make social impact with data?' %}</p></div>
             </div>
             <div class="column">

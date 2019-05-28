@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
 {% load wagtailcore_tags %}
+{% load main_tags %}
+
 
 {% block content %}
     <a href={% pageurl page.get_parent %}>do góry</a>
@@ -15,15 +18,54 @@
             </li>
         {% endfor %}
     </ul>
+    
+    <h2>{% trans 'Challenges' %}</h2>
+    <div>
+        <p>
+            {{ page.challenge|richtext }}
+        </p>
+    </div>
+    <hr>
 
-    <p>podobne projekty</p>
-    <ul>
-        {% for project in page.similar_projects.all %}
-            <li>
-                <a href="{% pageurl project %}">
-                    {{ project.title }}
-                </a>
-            </li>
+{#   Proces #}
+    <h2>{% trans 'Process' %}</h2>
+    <div class="inline-block">
+        {% for tile in page.process %}
+            <div>{{ tile }}</div>
         {% endfor %}
-    </ul>
+    </div>
+    <hr>
+
+{#    Cytat #}
+    <div>
+        {{ page.quote|richtext }}
+    </div>
+    <hr>
+
+{#   Formularz Kontaktowy #}
+    <div class="contact_form">
+        <div style="width: 20%; float:left">
+            <p>{% trans 'You like this project?' %}</p>
+            <p>{% trans 'Have a similar idea?' %}</p>
+            <p>{% trans 'Looking for some tech support?' %}</p>
+        </div>
+        <div style="width: 80%; float:right">
+           {% contact_form %}
+        </div>
+      </div>
+    <hr>
+
+{#   Podobne projekty#}
+    <h2>{% trans "Similiar projects" %}</h2>
+    <div class="inline-block">
+        {% for project in page.similar_projects.all %}
+            <a href="{% pageurl project %}">
+                {{ project.title }}
+            </a>
+        {% endfor %}
+    </div>
 {% endblock content %}
+
+{% block contact_form %}
+{#    formualrz kontaktowy tu wyjątkowo jest wyżej, więc ten block zostawiam pusty#}
+{% endblock %}
