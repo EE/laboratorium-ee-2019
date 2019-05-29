@@ -4,9 +4,11 @@
     {% csrf_token %}
     <div class="columns">
         <div class="column">
-            {% trans "Need some help with your " %}<b>{% trans "project?" %}</b><br>
-            {% trans "Looking for interesting " %}<b>{% trans "investments?" %}</b><br>
-            {% trans "Want to change the world with us through " %}<b>{% trans "technology?" %}</b><br>
+            {% blocktrans trimmed %}
+            Need some help with your <b>project?</b><br>
+            Looking for interesting <b>investments?</b><br>
+            Want to change the world with us through <b>technology?</b><br>
+            {% endblocktrans %}
         </div>
         <div class="column">
             {{ form.as_p }}

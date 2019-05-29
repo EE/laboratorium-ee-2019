@@ -42,7 +42,7 @@ class HomePage(Page):
         InlinePanel('cooperators_logos', heading="We work with")
     ]
 
-    parent_page_types = ['wagtailcore.page']
+    parent_page_types = ['wagtailcore.page']  # allow root page only
     subpage_types = ['NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage']
 
     @property
@@ -149,34 +149,42 @@ class JobOfferPage(Page):
 
 @register_snippet
 class RodoPassAdvert(models.Model):
-    """Czy należałoby z tego zrobić singletone'a??"""
+    page = ParentalKey('HomePage', related_name='rodo_pass', unique=True)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=256)
     url = models.URLField()
     button_text = models.CharField(max_length=50)
 
     panels = [
+        FieldPanel('page'),
         FieldPanel('title'),
         FieldPanel('description'),
         FieldPanel('url'),
         FieldPanel('button_text'),
     ]
 
+    def __str__(self):
+        return f'{self.page} Rodo Pass'
+
 
 @register_snippet
 class Footer(models.Model):
-    """Czy należałoby z tego zrobić singletone'a??"""
+    page = ParentalKey('HomePage', related_name='footer', unique=True)
     contact = RichTextField()
     address = RichTextField()
     how_we_work = RichTextField()
     privacy_policy = models.URLField()
 
     panels = [
+        FieldPanel('page'),
         FieldPanel('contact'),
         FieldPanel('address'),
         FieldPanel('how_we_work'),
         FieldPanel('privacy_policy'),
     ]
+
+    def __str__(self):
+        return f'{self.page} footer'
 
     @property
     def specializations(self):
