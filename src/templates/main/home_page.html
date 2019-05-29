@@ -6,7 +6,7 @@
 
 
 {% block title %}
-{% trans 'Home Page' %} - {{ block.super }}
+{{ page.title }} - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
@@ -14,7 +14,6 @@
         <div class="columns">
             <div class="column">
 {#            stały tytuł i podtytuł strony głownej #}
-                <h1>{{ page.title }}</h1>
                 <h2>{{ page.header }}</h2>
                 <div>
 {#                    miejsce na slider z aktualnościami #}
@@ -26,7 +25,8 @@
                 <hr>
 
 {#                  blok specjalizacje #}
-                <h2>{% trans 'Our specializations' %}</h2>
+            <div>
+                <h2>{{ page.specializations_headline }}</h2>
                 {% for specialization_page in page.specializations.all %}
                     <h3>{{ specialization_page.title }}</h3>
                     <p>{{ specialization_page.how_we_work }}</p>
@@ -36,6 +36,7 @@
                     {% endfor %}
                     </div>
                 {% endfor %}
+            </div>
                 <hr>
 
 {#              blok Twoje prywatne centrum badawczo rozwojowe #}
