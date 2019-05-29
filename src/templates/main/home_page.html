@@ -81,11 +81,30 @@
             </div>
             <hr>
 
-{#             #}
-                <div class="new-lp__desc"><p>{% trans 'Do you want to make social impact with data?' %}</p></div>
+{#           Bez nich by sie nie udało #}
+            <div>
+                <h2>{% trans 'It would not work without them' %}</h2>
+                <div class="columns">
+                    {% with page.random_team_member as member %}
+                        <div class="column">
+                            <p>
+                                {{ member.name }}
+                            </p>
+                            <p>
+                                {{ member.description }}
+                            </p>
+                        </div>
+                        <div class="column">
+                            <p>
+                                {% image member.photo width-400 %}
+                            </p>
+                        </div>
+                    {% endwith %}
+                </div>
             </div>
-            <div class="column">
-                <img class="new-lp__bg-image" src="https://laboratorium.ee/en/wp-content/uploads/sites/2/2018/06/cd578bf53b6d917050a70165fc90b168.png">
+            <hr>
+
+{#             #}
             </div>
         </div>
     </div>
