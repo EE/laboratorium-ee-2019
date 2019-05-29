@@ -19,13 +19,7 @@
                 <div>
 {#                    miejsce na slider z aktualnościami #}
                     {% for article in page.latest_articles.all %}
-                        <p>
-                            {{ article.title }}
-                        </p>
-                        <p>
-                            {{ article.headline }}
-                        </p>
-                        <h6><a href="{% pageurl article %}">{% trans 'Find out more' %} ></a></h6>
+                        {% include 'main/articles_slider.html' with article=article %}
                     {% endfor %}
 
                 </div>
@@ -45,7 +39,7 @@
                 <hr>
 
 {#              blok Twoje prywatne centrum badawczo rozwojowe #}
-            <div class="private-rd-center">
+            <div>
                 <h2>{% trans 'Your private R&D center' %}</h2>
                 <b>{{ page.r_and_d_center_headline }}</b>
                 <h6>{{ page.r_and_d_center_body }}</h6>

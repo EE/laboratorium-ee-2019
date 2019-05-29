@@ -57,6 +57,14 @@
           {% contact_form %}
       </div>
     {% endblock contact_form %}
+    <hr>
+    {% block rodo_pass %}
+        {% rodo_pass %}
+    {% endblock rodo_pass %}
+    <hr>
+    {% block footer %}
+        {% footer %}
+    {% endblock footer %}
 
   {% render_bundle "vendor" "js" %}
   {% render_bundle "main" "js" %}

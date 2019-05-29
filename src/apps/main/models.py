@@ -12,6 +12,7 @@ from wagtail.admin.edit_handlers import (
     MultiFieldPanel,
 )
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.models import register_snippet
 
 from src.apps.main.blocks import Tile
 from src.apps.projects.models import SpecializationPage
@@ -41,7 +42,7 @@ class HomePage(Page):
         InlinePanel('cooperators_logos', heading="We work with")
     ]
 
-    parent_page_types = []
+    parent_page_types = ['wagtailcore.page']  # allow root page only
     subpage_types = ['NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage']
 
     @property
@@ -77,12 +78,21 @@ class NewsIndexPage(Page):
     def news(self):
         return NewsPage.objects.live().descendant_of(self)
 
+    @property
+    def latest_news(self):
+        return self.news.order_by('-publication_date')[:3]
+
+    @property
+    def older_news(self):
+        return self.news.order_by('-publication_date')[3:]
+
     parent_page_types = ['HomePage']
     subpage_types = ['NewsPage']
 
 
 class NewsPage(Page):
     headline = models.CharField(max_length=500)
+    body = RichTextField()
     photo = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -91,7 +101,6 @@ class NewsPage(Page):
         related_name='+'
     )
     publication_date = models.DateField(auto_now_add=True)
-    body = RichTextField()
 
     content_panels = Page.content_panels + [
         FieldPanel('headline'),
@@ -136,3 +145,47 @@ class JobOfferPage(Page):
 
     parent_page_types = ['JobOfferIndexPage']
     subpage_types = []
+
+
+@register_snippet
+class RodoPassAdvert(models.Model):
+    page = ParentalKey('HomePage', related_name='rodo_pass', unique=True)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=256)
+    url = models.URLField()
+    button_text = models.CharField(max_length=50)
+
+    panels = [
+        FieldPanel('page'),
+        FieldPanel('title'),
+        FieldPanel('description'),
+        FieldPanel('url'),
+        FieldPanel('button_text'),
+    ]
+
+    def __str__(self):
+        return f'{self.page} Rodo Pass'
+
+
+@register_snippet
+class Footer(models.Model):
+    page = ParentalKey('HomePage', related_name='footer', unique=True)
+    contact = RichTextField()
+    address = RichTextField()
+    how_we_work = RichTextField()
+    privacy_policy = models.URLField()
+
+    panels = [
+        FieldPanel('page'),
+        FieldPanel('contact'),
+        FieldPanel('address'),
+        FieldPanel('how_we_work'),
+        FieldPanel('privacy_policy'),
+    ]
+
+    def __str__(self):
+        return f'{self.page} footer'
+
+    @property
+    def specializations(self):
+        return SpecializationPage.objects.live()

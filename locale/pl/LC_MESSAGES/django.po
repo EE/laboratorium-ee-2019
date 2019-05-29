@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 09:45+0200\n"
+"POT-Creation-Date: 2019-05-29 11:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,20 +20,93 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: src/settings/base.py:154
+#: src/settings/base.py:153
 msgid "Polish"
 msgstr "Polski"
 
-#: src/settings/base.py:155
+#: src/settings/base.py:154
 msgid "English"
 msgstr "Angielski"
 
-#: src/templates/main/home_page.html:18
+#: src/templates/email_form.html:7
+msgid ""
+"Need some help with your <b>project?</b><br> Looking for interesting "
+"<b>investments?</b><br> Want to change the world with us through "
+"<b>technology?</b><br>"
+msgstr ""
+
+#: src/templates/email_form.html:16
+msgid "send"
+msgstr ""
+
+#: src/templates/main/articles_slider.html:13
+msgid "Find out more"
+msgstr ""
+
+#: src/templates/main/footer.html:7 src/templates/main/menu.html:25
+msgid "Contact"
+msgstr "Kontakt"
+
+#: src/templates/main/footer.html:11
+msgid "Address"
+msgstr ""
+
+#: src/templates/main/footer.html:16
+msgid "Privacy policy"
+msgstr ""
+
+#: src/templates/main/footer.html:21
+msgid "How we work?"
+msgstr ""
+
+#: src/templates/main/footer.html:28
+#, fuzzy
+#| msgid "Our specializations"
+msgid "Specializations"
+msgstr "Specjalizujemy się w"
+
+#: src/templates/main/footer.html:39
+msgid "Partners"
+msgstr ""
+
+#: src/templates/main/home_page.html:9
+msgid "Home Page"
+msgstr ""
+
+#: src/templates/main/home_page.html:29
 msgid "Our specializations"
 msgstr "Specjalizujemy się w"
 
-#: src/templates/main/home_page.html:23
+#: src/templates/main/home_page.html:33
+msgid "Check it out!"
+msgstr ""
+
+#: src/templates/main/home_page.html:43
+msgid "Your private R&D center"
+msgstr ""
+
+#: src/templates/main/home_page.html:55
+msgid "How we create our solutions?"
+msgstr ""
+
+#: src/templates/main/home_page.html:63
+msgid "Our inititives"
+msgstr ""
+
+#: src/templates/main/home_page.html:74
+msgid "We worked with"
+msgstr ""
+
+#: src/templates/main/home_page.html:85
 msgid "Do you want to make social impact with data?"
+msgstr ""
+
+#: src/templates/main/job_offer_page.html:7
+msgid "Oferty Pracy"
+msgstr ""
+
+#: src/templates/main/job_offer_page.html:19
+msgid "Aplikuj"
 msgstr ""
 
 #: src/templates/main/menu.html:14
@@ -48,10 +121,50 @@ msgstr "O nas"
 msgid "Jobs"
 msgstr "Oferty pracy"
 
-#: src/templates/main/menu.html:25
-msgid "Contact"
-msgstr "Kontakt"
-
 #: src/templates/main/menu.html:29
 msgid "Report an issue"
 msgstr "Zgłoś problem"
+
+#: src/templates/main/news_index_page.html:7
+msgid "News"
+msgstr ""
+
+#: src/templates/main/news_index_page.html:15
+msgid "Latest"
+msgstr ""
+
+#: src/templates/main/news_index_page.html:22
+msgid "Other"
+msgstr ""
+
+#: src/templates/main/news_index_page.html:26
+msgid "No more articles"
+msgstr ""
+
+#: src/templates/main/news_page.html:8
+msgid "Aktualności"
+msgstr ""
+
+#: src/templates/projects/project_page.html:22
+msgid "Challenges"
+msgstr ""
+
+#: src/templates/projects/project_page.html:31
+msgid "Process"
+msgstr ""
+
+#: src/templates/projects/project_page.html:48
+msgid "You like this project?"
+msgstr ""
+
+#: src/templates/projects/project_page.html:49
+msgid "Have a similar idea?"
+msgstr ""
+
+#: src/templates/projects/project_page.html:50
+msgid "Looking for some tech support?"
+msgstr ""
+
+#: src/templates/projects/project_page.html:59
+msgid "Similiar projects"
+msgstr ""

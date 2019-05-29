@@ -28,3 +28,13 @@ class JobOfferIndexPageTranslationOptions(TranslationOptions):
 @register(models.JobOfferPage)
 class JobOfferPageTranslationOptions(TranslationOptions):
     fields = ('body',)
+
+
+@register(models.RodoPassAdvert)
+class RodoPassAdvertTranslationOptions(TranslationOptions):
+    fields = ('title', 'description', 'button_text')
+
+
+@register(models.Footer)
+class FooterTranslationOptions(TranslationOptions):
+    fields = ('contact', 'address', 'how_we_work')
