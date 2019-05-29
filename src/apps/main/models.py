@@ -1,5 +1,8 @@
+import random
+
 from django.db import models
 from django.apps import apps
+from django.db.models import Max
 from modelcluster.fields import ParentalKey
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
@@ -43,7 +46,9 @@ class HomePage(Page):
     ]
 
     parent_page_types = ['wagtailcore.page']  # allow root page only
-    subpage_types = ['NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage', 'projects.TeamIndexPage']
+    subpage_types = [
+        'NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage', 'projects.TeamIndexPage'
+    ]
 
     @property
     def specializations(self):
@@ -58,6 +63,22 @@ class HomePage(Page):
     def our_initiatives(self):
         ProjectPage = apps.get_model('projects', 'ProjectPage')
         return ProjectPage.objects.live().filter(self_initiated=True)
+
+    @property
+    def random_team_member(self):
+        """
+        Every hit on home page should present a randomly picked team member. This method of random selection is based
+        on https://books.agiliq.com/projects/django-orm-cookbook/en/latest/random.html
+        Should be more efficient than Model.objects.order_by("?").first()
+        """
+        TeamMember = apps.get_model('projects', 'TeamMember')
+        team_member_queryset = TeamMember.objects.live().descendant_of(self)
+        max_id = team_member_queryset.aggregate(max_id=Max("id"))['max_id']
+        while True:
+            pk = random.randint(1, max_id)
+            team_member = team_member_queryset.filter(pk=pk).first()
+            if team_member:
+                return team_member.specific
 
 
 class CooperatorLogo(Orderable):
