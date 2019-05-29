@@ -7,7 +7,7 @@ class Tile(blocks.StructBlock):
     image = ImageChooserBlock()
 
     class Meta:
-        template = 'projects/tile.html'
+        template = 'main/blocks/tile.html'
 
 
 class TileWithDescription(blocks.StructBlock):
@@ -16,4 +16,4 @@ class TileWithDescription(blocks.StructBlock):
     description = blocks.CharBlock()
 
     class Meta:
-        template = 'projects/tile_with_description.html'
+        template = 'main/blocks/tile_with_description.html'

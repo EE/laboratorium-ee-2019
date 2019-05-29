@@ -1,7 +1,18 @@
+{% load i18n %}
+
 <form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <div>
-      <button type="submit">Send</button>
+    <div class="columns">
+        <div class="column">
+            {% trans "Need some help with your " %}<b>{% trans "project?" %}</b><br>
+            {% trans "Looking for interesting " %}<b>{% trans "investments?" %}</b><br>
+            {% trans "Want to change the world with us through " %}<b>{% trans "technology?" %}</b><br>
+        </div>
+        <div class="column">
+            {{ form.as_p }}
+            <div>
+                <button type="submit">{% trans 'send' %}</button>
+            </div>
+        </div>
     </div>
 </form>

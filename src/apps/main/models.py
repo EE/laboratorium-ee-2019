@@ -78,12 +78,21 @@ class NewsIndexPage(Page):
     def news(self):
         return NewsPage.objects.live().descendant_of(self)
 
+    @property
+    def latest_news(self):
+        return self.news.order_by('-publication_date')[:3]
+
+    @property
+    def older_news(self):
+        return self.news.order_by('-publication_date')[3:]
+
     parent_page_types = ['HomePage']
     subpage_types = ['NewsPage']
 
 
 class NewsPage(Page):
     headline = models.CharField(max_length=500)
+    body = RichTextField()
     photo = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -92,7 +101,6 @@ class NewsPage(Page):
         related_name='+'
     )
     publication_date = models.DateField(auto_now_add=True)
-    body = RichTextField()
 
     content_panels = Page.content_panels + [
         FieldPanel('headline'),
