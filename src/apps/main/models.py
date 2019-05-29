@@ -42,7 +42,7 @@ class HomePage(Page):
         InlinePanel('cooperators_logos', heading="We work with")
     ]
 
-    parent_page_types = []
+    parent_page_types = ['wagtailcore.page']
     subpage_types = ['NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage']
 
     @property
