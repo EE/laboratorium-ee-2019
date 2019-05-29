@@ -43,7 +43,7 @@ class HomePage(Page):
     ]
 
     parent_page_types = ['wagtailcore.page']  # allow root page only
-    subpage_types = ['NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage']
+    subpage_types = ['NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage', 'projects.TeamIndexPage']
 
     @property
     def specializations(self):
