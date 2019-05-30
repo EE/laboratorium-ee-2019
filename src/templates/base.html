@@ -33,21 +33,17 @@
   {% endblock extrahead %}
 </head>
 
-<body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-            </a>
-
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div class="upper-menu">
-            {% upper_menu %}
+<body class="has-navbar-fixed-top">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">
+                    <img src="{% static "logotyp-ee-01.png" %}">
+                </a>
+            </div>
+            <div class="navbar-end">
+                {% upper_menu %}
+            </div>
         </div>
     </nav>
   {% block content %}
