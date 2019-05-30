@@ -74,6 +74,9 @@ class HomePage(Page):
         TeamMember = apps.get_model('projects', 'TeamMember')
         team_member_queryset = TeamMember.objects.live().descendant_of(self)
         max_id = team_member_queryset.aggregate(max_id=Max("id"))['max_id']
+        if max_id is None:
+            # there are no team members specified
+            return None
         while True:
             pk = random.randint(1, max_id)
             team_member = team_member_queryset.filter(pk=pk).first()
