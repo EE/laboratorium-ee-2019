@@ -83,27 +83,29 @@
             <hr>
 
 {#           Bez nich by sie nie udało #}
-            <div>
-                <h2>{% trans 'It would not work without them' %}</h2>
-                <div class="columns">
-                    {% with page.random_team_member as member %}
-                        <div class="column">
-                            <p>
-                                {{ member.name }}
-                            </p>
-                            <p>
-                                {{ member.description }}
-                            </p>
+                {% with page.random_team_member as member %}
+                    {% if member %}
+                        <div>
+                            <h2>{% trans 'It would not work without them' %}</h2>
+                            <div class="columns">
+                                <div class="column">
+                                    <p>
+                                        {{ member.name }}
+                                    </p>
+                                    <p>
+                                        {{ member.description }}
+                                    </p>
+                                </div>
+                                <div class="column">
+                                    <p>
+                                        {% image member.photo width-400 %}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="column">
-                            <p>
-                                {% image member.photo width-400 %}
-                            </p>
-                        </div>
-                    {% endwith %}
-                </div>
-            </div>
-            <hr>
+                        <hr>
+                    {% endif %}
+                {% endwith %}
 
 {#             #}
             </div>
