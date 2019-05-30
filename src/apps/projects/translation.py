@@ -26,3 +26,13 @@ class ProjectPageTranslationOptions(TranslationOptions):
         'process',
         'quote',
     )
+
+
+@register(models.TeamIndexPage)
+class TeamIndexPageTranslationOptions(TranslationOptions):
+    fields = ('who_we_are', 'our_values')
+
+
+@register(models.TeamMember)
+class TeamMemberTranslationOptions(TranslationOptions):
+    fields = ('description', )

@@ -1,9 +1,12 @@
 from django.db import models
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField, RichTextField
 
 from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from modelcluster.fields import ParentalKey
 
@@ -78,6 +81,53 @@ class ProjectPage(Page):
     @property
     def similar_projects(self):
         return ProjectPage.objects.live().descendant_of(self.get_parent()).exclude(id=self.id)
+
+
+class TeamIndexPage(Page):
+    who_we_are = RichTextField()
+    our_values = StreamField([
+        ('description', blocks.RichTextBlock()),
+        ('tiles_list', blocks.ListBlock(Tile())),
+    ])
+
+    content_panels = Page.content_panels + [
+        FieldPanel('who_we_are'),
+        StreamFieldPanel('our_values'),
+    ]
+
+    parent_page_types = ['main.HomePage']
+    subpage_types = ['TeamMember']
+
+    @property
+    def team_members(self):
+        return TeamMember.objects.live().descendant_of(self)
+
+
+class TeamMemberSpecializationTag(TaggedItemBase):
+    content_object = ParentalKey('TeamMember', on_delete=models.CASCADE, related_name='tagged_items')
+
+
+class TeamMember(Page):
+    name = models.CharField(max_length=128)
+    description = models.CharField(max_length=516)
+    photo = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    specializations = ClusterTaggableManager(through=TeamMemberSpecializationTag, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('name'),
+        FieldPanel('description'),
+        ImageChooserPanel('photo'),
+        FieldPanel('specializations'),
+    ]
+
+    parent_page_types = ['TeamIndexPage']
+    subpage_types = []
 
 
 class ProjectMetric(Orderable, models.Model):
