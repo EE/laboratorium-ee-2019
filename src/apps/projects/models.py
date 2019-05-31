@@ -1,3 +1,5 @@
+import textwrap
+
 from django.db import models
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
@@ -128,6 +130,12 @@ class TeamMember(Page):
 
     parent_page_types = ['TeamIndexPage']
     subpage_types = []
+
+    @property
+    def trunc_description(self):
+        """Return a short version of team member description. I takes the first sentence and if its longer than 100
+        characters will be truncated not on word."""
+        return textwrap.shorten(self.description.split('.')[0], width=100, placeholder='...')
 
 
 class ProjectMetric(Orderable, models.Model):

@@ -27,11 +27,13 @@
         <div>
             <p>{{ member.name }}</p>
             <p>{% image member.photo width-150 %}</p>
-            <p>{{ member.description }}</p>
-            <p>{% for foo in member.specializations.all %}
-                {{ foo }}
-            {% endfor %}
+            <p>{{ member.short_description }}</p>
+            <p>
+                {% for tag in member.specializations.all %}
+                    {{ tag }}
+                {% endfor %}
             </p>
+
         </div>
     {% endfor %}
 
