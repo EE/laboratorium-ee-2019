@@ -28,6 +28,10 @@
             <p>{{ member.name }}</p>
             <p>{% image member.photo width-150 %}</p>
             <p>{{ member.description }}</p>
+            <p>{% for foo in member.specializations.all %}
+                {{ foo }}
+            {% endfor %}
+            </p>
         </div>
     {% endfor %}
 
