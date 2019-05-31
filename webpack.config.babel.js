@@ -73,7 +73,7 @@ export default {
     output: {
         path: path.resolve(outputDir),
         filename: "[name]-[hash].js",
-        publicPath: hotReload ? "http://localhost:8080/" : ""
+        publicPath: hotReload ? "http://localhost:8080/" : "/static/bundles/",
     },
     devtool: devMode ? "cheap-eval-source-map" : "source-map",
     devServer: {
