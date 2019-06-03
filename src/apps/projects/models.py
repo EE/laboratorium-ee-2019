@@ -1,3 +1,5 @@
+import random
+
 from django.db import models
 from django.utils.translation import gettext as _
 
@@ -52,7 +54,12 @@ class SpecializationPage(Page):
 
     @property
     def two_projects(self):
-        return self.projects[:2]
+        """Returns two random projects related to given specialization"""
+        ids = list(self.projects.values_list('id', flat=True))
+        if len(ids) <= 2:
+            return self.projects[:2]
+        two_random_ids = random.sample(ids, 2)
+        return self.projects.filter(id__in=two_random_ids)
 
 
 class ProjectPage(Page):
