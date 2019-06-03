@@ -7,8 +7,13 @@ register = template.Library()
 
 
 @register.inclusion_tag('email_form.html', takes_context=True)
-def contact_form(context):
-    return {'form': ContactForm(request=context.get('request'))}
+def contact_form(context, default_text=True):
+    """
+    Returns basic email contact form. Param 'default_text' decides if the standard text block should be shown next
+    to form. If a custom message is preferable just set it ot False in template.
+    Ex. src/templates/projects/project_page.html
+    """
+    return {'form': ContactForm(request=context.get('request')), 'default_text': default_text}
 
 
 @register.inclusion_tag('email_with_attachment_form.html', takes_context=True)
