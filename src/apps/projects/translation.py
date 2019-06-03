@@ -35,4 +35,4 @@ class TeamIndexPageTranslationOptions(TranslationOptions):
 
 @register(models.TeamMember)
 class TeamMemberTranslationOptions(TranslationOptions):
-    fields = ('description', )
+    fields = ('short_description', 'long_description')

@@ -1,11 +1,10 @@
-import textwrap
-
 from django.db import models
+from django.utils.translation import gettext as _
+
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField, RichTextField
-
 from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -111,7 +110,14 @@ class TeamMemberSpecializationTag(TaggedItemBase):
 
 class TeamMember(Page):
     name = models.CharField(max_length=128)
-    description = models.CharField(max_length=516)
+    short_description = models.CharField(
+        max_length=128,
+        help_text=_('Description shown on TeamIndex page.'),
+    )
+    long_description = models.CharField(
+        max_length=516,
+        help_text=_('More comprehensive description visible on Home Page'),
+    )
     photo = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -123,19 +129,14 @@ class TeamMember(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('name'),
-        FieldPanel('description'),
+        FieldPanel('short_description'),
+        FieldPanel('long_description'),
         ImageChooserPanel('photo'),
         FieldPanel('specializations'),
     ]
 
     parent_page_types = ['TeamIndexPage']
     subpage_types = []
-
-    @property
-    def trunc_description(self):
-        """Return a short version of team member description. I takes the first sentence and if its longer than 100
-        characters will be truncated not on word."""
-        return textwrap.shorten(self.description.split('.')[0], width=100, placeholder='...')
 
 
 class ProjectMetric(Orderable, models.Model):
