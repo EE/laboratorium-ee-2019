@@ -3,6 +3,7 @@ import random
 from django.db import models
 from django.apps import apps
 from django.db.models import Max
+from django.utils.translation import gettext as _
 from modelcluster.fields import ParentalKey
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
@@ -57,7 +58,7 @@ class HomePage(Page):
     @property
     def latest_articles(self):
         """Returns 3 latest articles"""
-        return NewsPage.objects.live().order_by('-publication_date')[:3]
+        return NewsPage.objects.live().descendant_of(self).order_by('-marked', '-publication_date')[:3]
 
     @property
     def our_initiatives(self):
@@ -102,13 +103,21 @@ class NewsIndexPage(Page):
     def news(self):
         return NewsPage.objects.live().descendant_of(self)
 
-    @property
-    def latest_news(self):
-        return self.news.order_by('-publication_date')[:3]
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        top, rest = self.get_top_news_and_the_rest()
 
-    @property
-    def older_news(self):
-        return self.news.order_by('-publication_date')[3:]
+        context['top_article'] = top
+        context['rest_of_articles'] = rest
+        return context
+
+    def get_top_news_and_the_rest(self):
+        """
+        On the top of NewsIndexPage we want to show the marked news, but if there is none, the newest will be alright.
+        Then we want to
+        """
+        queryset = self.news.order_by('-marked', '-publication_date')
+        return queryset.first(), queryset[1:]
 
     parent_page_types = ['HomePage']
     subpage_types = ['NewsPage']
@@ -125,8 +134,14 @@ class NewsPage(Page):
         related_name='+'
     )
     publication_date = models.DateField(auto_now_add=True)
+    marked = models.BooleanField(
+        default=False,
+        help_text=_('If True, this article would be visible on HomePage and on top of NewsIndexPage. Only one article '
+                    'can be marked, so old one will be unmarked automatically.'),
+    )
 
     content_panels = Page.content_panels + [
+        FieldPanel('marked'),
         FieldPanel('headline'),
         FieldPanel('body', classname="full"),
         ImageChooserPanel('photo'),
@@ -134,6 +149,18 @@ class NewsPage(Page):
 
     parent_page_types = ['NewsIndexPage']
     subpage_types = []
+
+    def save(self, *args, **kwargs):
+        """
+        We want to have only one marked NewsPage related to one home page.
+        To achieve that we update all possible NewsPages having marked=True to marked=False.
+        """
+        if self.marked:
+            marked_pages = NewsPage.objects.live().descendant_of(self.get_parent()).filter(marked=True)
+            if marked_pages:
+                marked_pages.update(marked=False)
+
+        super().save(*args, **kwargs)
 
 
 class JobOfferIndexPage(Page):
