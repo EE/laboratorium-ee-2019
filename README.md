@@ -29,9 +29,17 @@
 
     If there is no good reason to do otherwise, it should be a [Postgres](https://www.postgresql.org/) database since that's what we are using by default on production servers.
 
-5. Run database migrations:
+5. Run database migrations if you want an empty database or use saved database state with basic models:
 
         python manage.py migrate
+      or
+        
+       cat dump.sql | ./manage.py dbshell
+      You can log in as superuser using the following data:
+      
+       username: admin
+    
+       password: cWEO3CTqIVU
 
 6. Install [npm](https://www.npmjs.com/) packages:
 
@@ -50,5 +58,8 @@
        python manage.py runserver
        python manage.py compilemessages  # to compile translation files
 
+
 ## Development guidelines
-Before committing to this repository, please read [the official Laboratorium EE development guidelines](https://github.com/EE/bombaatomowa).
+In order to cast current DB state use:
+    
+        pg_dump -c -O -U USERNAM DB_NAME -h HOST -p PORT --disable-dollar-quoting -F p > FILENAME.sql
