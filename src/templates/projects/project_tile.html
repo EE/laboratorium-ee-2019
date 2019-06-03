@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+<a href="{% pageurl project %}">
+    {% image project.icon width-150 %}
+    <p>
+        {{ project.title }}
+    </p>
+</a>

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
+{% load wagtailimages_tags %}
 {% load wagtailcore_tags %}
 {% load main_tags %}
 
@@ -9,6 +10,7 @@
     <a href={% pageurl page.get_parent %}>do góry</a>
 
     <h1>{{ page.title }}</h1>
+    <p>{% image page.icon width-500 %}</p>
     <p>{{ page.subtitle }}</p>
 
     <ul>
@@ -59,11 +61,11 @@
 
 {#   Podobne projekty#}
     <h2>{% trans "Similiar projects" %}</h2>
-    <div class="inline-block">
+    <div class="columns">
         {% for project in page.similar_projects.all %}
-            <a href="{% pageurl project %}">
-                {{ project.title }}
-            </a>
+            <div class="column">
+                {% include 'projects/project_tile.html' with project=project %}
+            </div>
         {% endfor %}
     </div>
 {% endblock content %}
