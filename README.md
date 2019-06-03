@@ -34,8 +34,13 @@
         python manage.py migrate
       or
         
-        cat dump.sql | ./manage.py dbshell
-        
+       cat dump.sql | ./manage.py dbshell
+      You can log in as superuser using the following data:
+      
+       username: admin
+    
+       password: cWEO3CTqIVU
+
 6. Install [npm](https://www.npmjs.com/) packages:
 
         npm install
@@ -53,19 +58,8 @@
        python manage.py runserver
        python manage.py compilemessages  # to compile translation files
 
-10. Load fixtures
-    
-        ./manage.py load_db HOST_NAME USERNAME DB_NAME
-    for example
-        
-        ./manage.py load_db 127.0.0.1 postgres my_db
-        
-    Now you can log as admin using following data:
-    
-    username: admin
-    
-    password: cWEO3CTqIVU
-
 
 ## Development guidelines
-Before committing to this repository, please read [the official Laboratorium EE development guidelines](https://github.com/EE/bombaatomowa).
+In order to cast current DB state use:
+    
+        pg_dump -c -O -U USERNAM DB_NAME -h HOST -p PORT --disable-dollar-quoting -F p > FILENAME.sql
