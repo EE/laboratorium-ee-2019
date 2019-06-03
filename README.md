@@ -29,10 +29,13 @@
 
     If there is no good reason to do otherwise, it should be a [Postgres](https://www.postgresql.org/) database since that's what we are using by default on production servers.
 
-5. Run database migrations:
+5. Run database migrations if you want an empty database or use saved database state with basic models:
 
         python manage.py migrate
-
+      or
+        
+        cat dump.sql | ./manage.py dbshell
+        
 6. Install [npm](https://www.npmjs.com/) packages:
 
         npm install
