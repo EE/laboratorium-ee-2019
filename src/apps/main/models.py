@@ -3,6 +3,7 @@ import random
 from django.db import models
 from django.apps import apps
 from django.db.models import Max
+from django.utils.translation import gettext as _
 from modelcluster.fields import ParentalKey
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
@@ -135,7 +136,8 @@ class NewsPage(Page):
     publication_date = models.DateField(auto_now_add=True)
     marked = models.BooleanField(
         default=False,
-        help_text='If True, this article would be visible on HomePage and on top of NewsIndexPage',
+        help_text=_('If True, this article would be visible on HomePage and on top of NewsIndexPage. Only one article '
+                    'can be marked, so old one will be unmarked automatically.'),
     )
 
     content_panels = Page.content_panels + [
