@@ -3,6 +3,7 @@
 <form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}">
     {% csrf_token %}
     <div class="columns">
+    {% if default_text %}
         <div class="column">
             {% blocktrans trimmed %}
             Need some help with your <b>project?</b><br>
@@ -10,6 +11,7 @@
             Want to change the world with us through <b>technology?</b><br>
             {% endblocktrans %}
         </div>
+    {% endif %}
         <div class="column">
             {{ form.as_p }}
             <div>

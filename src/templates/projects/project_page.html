@@ -45,12 +45,14 @@
 {#   Formularz Kontaktowy #}
     <div class="contact_form columns">
         <div class="column">
-            <p>{% trans 'You like this project?' %}</p>
-            <p>{% trans 'Have a similar idea?' %}</p>
-            <p>{% trans 'Looking for some tech support?' %}</p>
+            {% blocktrans trimmed %}
+            You like this <b>project?</b><br>
+            Have a similar <b>idea?</b><br>
+            Looking for some <b>tech support?</b><br>
+            {% endblocktrans %}
         </div>
         <div class="column">
-           {% contact_form %}
+           {% contact_form False %}
         </div>
       </div>
     <hr>
