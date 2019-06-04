@@ -1,7 +1,10 @@
+import random
+
 from django.db import models
 from django.utils.translation import gettext as _
 
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField, RichTextField
@@ -9,7 +12,6 @@ from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-from modelcluster.fields import ParentalKey
 
 from src.apps.main.blocks import Tile, TileWithDescription
 
@@ -52,12 +54,25 @@ class SpecializationPage(Page):
 
     @property
     def two_projects(self):
-        return self.projects[:2]
+        """Returns two random projects related to given specialization"""
+        ids = list(self.projects.values_list('id', flat=True))
+        if len(ids) <= 2:
+            return self.projects[:2]
+        two_random_ids = random.sample(ids, 2)
+        return self.projects.filter(id__in=two_random_ids)
 
 
 class ProjectPage(Page):
+    short_name = models.CharField(max_length=32, blank=True, default='', help_text=_('Brief name of the project'))
     self_initiated = models.BooleanField(default=False)
     subtitle = models.CharField(max_length=255, blank=True)
+    icon = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     challenge = RichTextField(null=True)
     process = StreamField([
         ('tiles_list', blocks.ListBlock(Tile())),
@@ -68,8 +83,10 @@ class ProjectPage(Page):
         index.SearchField('subtitle'),
     ]
     content_panels = Page.content_panels + [
+        FieldPanel('short_name'),
         FieldPanel('self_initiated'),
         FieldPanel('subtitle'),
+        ImageChooserPanel('icon'),
         InlinePanel('metrics', heading="Metrics"),
         FieldPanel('challenge'),
         StreamFieldPanel('process'),
@@ -78,6 +95,11 @@ class ProjectPage(Page):
 
     parent_page_types = ['SpecializationPage']
     subpage_types = []
+
+    @property
+    def short_name_or_full(self):
+        """If project does not have any short_name declared, return full name"""
+        return self.short_name or self.title
 
     @property
     def similar_projects(self):

@@ -32,7 +32,7 @@
                     <p>{{ specialization_page.how_we_work }}</p>
                     <div class="inline-block"> {% trans 'Check it out!' %}
                     {% for project in specialization_page.two_projects.all %}
-                        <a href="{% pageurl project %}">{{ project.title }}</a>
+                        <a href="{% pageurl project %}">{{ project.short_name_or_full }}</a>
                     {% endfor %}
                     </div>
                 {% endfor %}
@@ -62,9 +62,11 @@
 {#            Inicjatywy własne #}
             <div>
                 <h2>{% trans 'Our inititives' %}</h2>
-                <div class="inline-block">
+                <div class="columns">
                     {% for inititive in page.our_initiatives.all %}
-                        <a href="{% pageurl inititive %}">{{ inititive.title }}</a>
+                        <div class="column">
+                            {% include 'projects/project_tile.html' with project=inititive %}
+                        </div>
                     {% endfor %}
                 </div>
             </div>
