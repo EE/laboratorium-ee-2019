@@ -3,22 +3,46 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    <hr>
-    <p>Jak pracujemy</p>
-    <p>{{ page.how_we_work }}</p>
-    <hr>
-    <p>Case study - {{ page.case_study }}</p>
-    <hr>
-    <p>Narzędzia</p>
-    <div>{{ page.tools }}</div>
-    <hr>
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                {{ page.title }}
+            </h1>
+        </div>
+    </div>
+</section>
 
-    {% for project in page.projects.all %}
-        <li>
-            <a href="{% pageurl project %}">
-                {{ project.title }}
-            </a>
-        </li>
-    {% endfor %}
+<section class="section">
+    <div class="container">
+        <p>Jak pracujemy</p>
+        <p>{{ page.how_we_work }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <p>Case study - {{ page.case_study }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <p>Narzędzia</p>
+        <div>{{ page.tools }}</div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        {% for project in page.projects.all %}
+            <li>
+                <a href="{% pageurl project %}">
+                    {{ project.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </div>
+</section>
+
 {% endblock content %}

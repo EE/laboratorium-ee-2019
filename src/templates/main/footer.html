@@ -1,48 +1,52 @@
 {% load i18n %}
 {% load wagtailcore_tags %}
 
-<div>LOGO EE</div>
-<div class="columns">
-    <div class="column">
-        {% trans 'Contact' %}
-        <div>
-            {{ footer.contact|richtext }}
-        </div>
-        {% trans 'Address' %}
-        <div>
-            {{ footer.address|richtext }}
-        </div>
-        <div>
-            <a href="{{ footer.privacy_policy }}">{% trans 'Privacy policy' %}</a>
-        </div>
-    </div>
+<footer class="footer">
+    <div class="container">
+        <div>LOGO EE</div>
 
-    <div class="column">
-        {% trans 'How we work?' %}
-        <div>
-            {{ footer.how_we_work|richtext }}
+        <div class="columns">
+            <div class="column">
+                <h1 class="subtitle">{% trans 'Contact' %}</h1>
+                <div class="content">
+                    {{ footer.contact|richtext }}
+                </div>
+                <h1 class="subtitle">{% trans 'Address' %}</h1>
+                <div class="content">
+                    {{ footer.address|richtext }}
+                </div>
+                <div class="content">
+                    <a href="{{ footer.privacy_policy }}">{% trans 'Privacy policy' %}</a>
+                </div>
+            </div>
+
+            <div class="column">
+                <h1 class="subtitle">{% trans 'How we work?' %}</h1>
+                <div class="content">
+                    {{ footer.how_we_work|richtext }}
+                </div>
+            </div>
+
+            <div class="column">
+                <h1 class="subtitle">{% trans 'Specializations' %}</h1>
+                {% for specialization in footer.specializations.all %}
+                    <div>
+                        <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {# loga partnerów proponuję jednak na sztwyno #}
+            <div class="column">
+                <h1 class="subtitle">{% trans 'Partners' %}</h1>
+                <figure class="image is-128x128">
+                    <img src="https://centrumcyfrowe.pl/wp-content/uploads/sites/16/2018/06/CClogo.jpg">
+                </figure>
+                <figure class="image is-128x128">
+                    <img src="https://bulldogjob.pl/system/companies/logos/000/000/141/original/adminotaur-white-bg-square.png">
+                </figure>
+            </div>
+
         </div>
     </div>
-    
-    <div class="column">
-        {% trans 'Specializations' %}
-        {% for specialization in footer.specializations.all %}
-            <p>
-                <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
-            </p>
-        {% endfor %}
-    </div>
-
-{# loga partnerów proponuję jednak na sztwyno #}
-    <div class="column">
-        <p>
-            {% trans 'Partners' %}
-        </p>
-        <p>
-          <img style="width: 100px" src="https://centrumcyfrowe.pl/wp-content/uploads/sites/16/2018/06/CClogo.jpg" alt="" >
-        </p>
-          <p>
-            <img style="width: 100px" src="https://bulldogjob.pl/system/companies/logos/000/000/141/original/adminotaur-white-bg-square.png" alt="">
-          </p>
-    </div>
-</div>
+</footer>
