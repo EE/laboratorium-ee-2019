@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.8 (Ubuntu 10.8-1.pgdg18.04+1)
--- Dumped by pg_dump version 11.3 (Ubuntu 11.3-1.pgdg18.04+1)
+-- Dumped from database version 11.3
+-- Dumped by pg_dump version 11.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -56,6 +56,7 @@ ALTER TABLE ONLY public.projects_specializationpage DROP CONSTRAINT projects_spe
 ALTER TABLE ONLY public.projects_specializationindexpage DROP CONSTRAINT projects_specializat_page_ptr_id_a20c5746_fk_wagtailco;
 ALTER TABLE ONLY public.projects_projectpage DROP CONSTRAINT projects_projectpage_page_ptr_id_2eccd927_fk_wagtailco;
 ALTER TABLE ONLY public.projects_projectpage DROP CONSTRAINT projects_projectpage_image_id_d50212f0_fk_wagtailim;
+ALTER TABLE ONLY public.projects_projectpage DROP CONSTRAINT projects_projectpage_icon_id_1145692d_fk_wagtailimages_image_id;
 ALTER TABLE ONLY public.projects_projectmetric DROP CONSTRAINT projects_projectmetr_project_id_b982bf7a_fk_projects_;
 ALTER TABLE ONLY public.main_rodopassadvert DROP CONSTRAINT main_rodopassadvert_page_id_947351d7_fk_main_home;
 ALTER TABLE ONLY public.main_newspage DROP CONSTRAINT main_newspage_photo_id_ff5a2d19_fk_wagtailimages_image_id;
@@ -129,6 +130,7 @@ DROP INDEX public.projects_teammemberspecializationtag_tag_id_73959981;
 DROP INDEX public.projects_teammemberspecializationtag_content_object_id_023d4610;
 DROP INDEX public.projects_teammember_photo_id_10ff7e07;
 DROP INDEX public.projects_projectpage_image_id_d50212f0;
+DROP INDEX public.projects_projectpage_icon_id_1145692d;
 DROP INDEX public.projects_projectmetric_project_id_b982bf7a;
 DROP INDEX public.main_newspage_photo_id_ff5a2d19;
 DROP INDEX public.main_cooperatorlogo_page_id_ea52fbe3;
@@ -923,7 +925,9 @@ CREATE TABLE public.projects_projectpage (
     quote_en text,
     quote_pl text,
     self_initiated boolean NOT NULL,
-    image_id integer
+    image_id integer,
+    icon_id integer,
+    short_name character varying(32) NOT NULL
 );
 
 
@@ -2514,6 +2518,8 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 145	projects	0009_auto_20190530_1630	2019-05-30 16:30:08.606676+02
 146	main	0010_newspage_marked	2019-05-31 14:32:07.90285+02
 147	projects	0008_auto_20190603_1117	2019-06-03 11:21:26.196642+02
+148	main	0011_auto_20190603_1326	2019-06-10 11:24:27.979539+02
+149	projects	0009_auto_20190603_1358	2019-06-10 11:24:28.103585+02
 \.
 
 
@@ -2621,8 +2627,8 @@ COPY public.projects_projectmetric (id, sort_order, value, property_name, projec
 -- Data for Name: projects_projectpage; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.projects_projectpage (page_ptr_id, subtitle, subtitle_en, subtitle_pl, challenge, challenge_en, challenge_pl, process, process_en, process_pl, quote, quote_en, quote_pl, self_initiated, image_id) FROM stdin;
-9	We gonna earn shitload of money	We gonna earn shitload of money	Zarobimy na nim kupe hajsu	<p></p><p><b>Beginnings can be difficult</b></p><p>But then it&#x27;s already down the hill in general horny</p>	<p></p><p><b>Beginnings can be difficult</b></p><p>But then it&#x27;s already down the hill in general horny</p>	<p><b>Początki bywają trudne</b></p><p>Ale potem już jest z górki i w ogóle zajebiście</p>	[{"type": "tiles_list", "value": [{"heading": "rodzisz si\\u0119", "image": 9}, {"heading": "dorastasz", "image": 10}, {"heading": "a potem troche przypa\\u0142", "image": 11}], "id": "1250077e-e6ef-4b39-8b00-27cc4cd0f19c"}]	[{"type": "tiles_list", "value": [{"heading": "rodzisz si\\u0119", "image": 9}, {"heading": "dorastasz", "image": 10}, {"heading": "a potem troche przypa\\u0142", "image": 11}], "id": "1250077e-e6ef-4b39-8b00-27cc4cd0f19c"}]	[{"type": "tiles_list", "value": [{"heading": "rodzisz si\\u0119", "image": 9}, {"heading": "dorastasz", "image": 10}, {"heading": "a potem troche przypa\\u0142", "image": 11}], "id": "49d77b92-2286-4262-9853-a41c878c1525"}]	<h2></h2><embed alt="quote.jpg" embedtype="image" format="fullwidth" id="12"/><p></p>	<h2></h2><embed alt="quote.jpg" embedtype="image" format="fullwidth" id="12"/><p></p>	<h2></h2><embed alt="quote.jpg" embedtype="image" format="fullwidth" id="12"/><p></p>	t	\N
+COPY public.projects_projectpage (page_ptr_id, subtitle, subtitle_en, subtitle_pl, challenge, challenge_en, challenge_pl, process, process_en, process_pl, quote, quote_en, quote_pl, self_initiated, image_id, icon_id, short_name) FROM stdin;
+9	We gonna earn shitload of money	We gonna earn shitload of money	Zarobimy na nim kupe hajsu	<p></p><p><b>Beginnings can be difficult</b></p><p>But then it&#x27;s already down the hill in general horny</p>	<p></p><p><b>Beginnings can be difficult</b></p><p>But then it&#x27;s already down the hill in general horny</p>	<p><b>Początki bywają trudne</b></p><p>Ale potem już jest z górki i w ogóle zajebiście</p>	[{"type": "tiles_list", "value": [{"heading": "rodzisz si\\u0119", "image": 9}, {"heading": "dorastasz", "image": 10}, {"heading": "a potem troche przypa\\u0142", "image": 11}], "id": "1250077e-e6ef-4b39-8b00-27cc4cd0f19c"}]	[{"type": "tiles_list", "value": [{"heading": "rodzisz si\\u0119", "image": 9}, {"heading": "dorastasz", "image": 10}, {"heading": "a potem troche przypa\\u0142", "image": 11}], "id": "1250077e-e6ef-4b39-8b00-27cc4cd0f19c"}]	[{"type": "tiles_list", "value": [{"heading": "rodzisz si\\u0119", "image": 9}, {"heading": "dorastasz", "image": 10}, {"heading": "a potem troche przypa\\u0142", "image": 11}], "id": "49d77b92-2286-4262-9853-a41c878c1525"}]	<h2></h2><embed alt="quote.jpg" embedtype="image" format="fullwidth" id="12"/><p></p>	<h2></h2><embed alt="quote.jpg" embedtype="image" format="fullwidth" id="12"/><p></p>	<h2></h2><embed alt="quote.jpg" embedtype="image" format="fullwidth" id="12"/><p></p>	t	\N	\N	
 \.
 
 
@@ -3095,7 +3101,7 @@ SELECT pg_catalog.setval('public.django_content_type_id_seq', 44, true);
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 147, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 149, true);
 
 
 --
@@ -3998,6 +4004,13 @@ CREATE INDEX projects_projectmetric_project_id_b982bf7a ON public.projects_proje
 
 
 --
+-- Name: projects_projectpage_icon_id_1145692d; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX projects_projectpage_icon_id_1145692d ON public.projects_projectpage USING btree (icon_id);
+
+
+--
 -- Name: projects_projectpage_image_id_d50212f0; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -4526,6 +4539,14 @@ ALTER TABLE ONLY public.main_rodopassadvert
 
 ALTER TABLE ONLY public.projects_projectmetric
     ADD CONSTRAINT projects_projectmetr_project_id_b982bf7a_fk_projects_ FOREIGN KEY (project_id) REFERENCES public.projects_projectpage(page_ptr_id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: projects_projectpage projects_projectpage_icon_id_1145692d_fk_wagtailimages_image_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.projects_projectpage
+    ADD CONSTRAINT projects_projectpage_icon_id_1145692d_fk_wagtailimages_image_id FOREIGN KEY (icon_id) REFERENCES public.wagtailimages_image(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
