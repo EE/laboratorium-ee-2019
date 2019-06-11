@@ -7,34 +7,57 @@
 
 {% block content %}
 
-    <h1>{{ page.title }}</h1>
-    <div>
-        {% trans 'Who we are?' %}
-    </div>
-    <div>
-        {{ page.who_we_are|richtext }}
-    </div>
-    <hr>
-
-    <div>
-        {{ page.our_values }}
-    </div>
-    <hr>
-
-    <div>
-        {% trans 'Team' %}
-    {% for member in page.team_members.all %}
-        <div>
-            <p>{{ member.name }}</p>
-            <p>{% image member.photo width-150 %}</p>
-            <p>{{ member.short_description }}</p>
-            <p>
-                {% for tag in member.specializations.all %}
-                    {{ tag }}
-                {% endfor %}
-            </p>
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                {{ page.title }}
+            </h1>
         </div>
-    {% endfor %}
-
     </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">
+            {% trans 'Who we are?' %}
+        </h2>
+        <div class="content">
+            {{ page.who_we_are|richtext }}
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">
+            {% trans 'Our values' %}
+        </h2>
+        <div class="content">
+            {{ page.our_values }}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">
+            {% trans 'Team' %}
+        </h2>
+        {% for member in page.team_members.all %}
+            <div>
+                <p>{{ member.name }}</p>
+                <p>{% image member.photo width-150 %}</p>
+                <p>{{ member.short_description }}</p>
+                <p>
+                    {% for tag in member.specializations.all %}
+                        {{ tag }}
+                    {% endfor %}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
 {% endblock content %}

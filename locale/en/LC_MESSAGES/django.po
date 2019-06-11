@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-29 11:11+0200\n"
+"POT-Creation-Date: 2019-06-10 14:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/settings/base.py:153
-msgid "Polish"
+#: src/apps/main/models.py:139
+msgid ""
+"If True, this article would be visible on HomePage and on top of "
+"NewsIndexPage. Only one article can be marked, so old one will be unmarked "
+"automatically."
+msgstr ""
+
+#: src/apps/projects/models.py:66
+msgid "Brief name of the project"
+msgstr ""
+
+#: src/apps/projects/models.py:137
+msgid "Description shown on TeamIndex page."
+msgstr ""
+
+#: src/apps/projects/models.py:141
+msgid "More comprehensive description visible on Home Page"
 msgstr ""
 
 #: src/settings/base.py:154
+msgid "Polish"
+msgstr ""
+
+#: src/settings/base.py:155
 msgid "English"
 msgstr ""
 
-#: src/templates/email_form.html:7
+#: src/templates/email_form.html:8
 msgid ""
 "Need some help with your <b>project?</b><br> Looking for interesting "
 "<b>investments?</b><br> Want to change the world with us through "
 "<b>technology?</b><br>"
 msgstr ""
 
-#: src/templates/email_form.html:16
+#: src/templates/email_form.html:18
 msgid "send"
 msgstr ""
 
@@ -41,60 +60,52 @@ msgstr ""
 msgid "Find out more"
 msgstr ""
 
-#: src/templates/main/footer.html:7 src/templates/main/menu.html:25
+#: src/templates/main/footer.html:10
 msgid "Contact"
 msgstr ""
 
-#: src/templates/main/footer.html:11
+#: src/templates/main/footer.html:14
 msgid "Address"
 msgstr ""
 
-#: src/templates/main/footer.html:16
+#: src/templates/main/footer.html:19
 msgid "Privacy policy"
 msgstr ""
 
-#: src/templates/main/footer.html:21
+#: src/templates/main/footer.html:24
 msgid "How we work?"
 msgstr ""
 
-#: src/templates/main/footer.html:28
+#: src/templates/main/footer.html:31
 msgid "Specializations"
 msgstr ""
 
-#: src/templates/main/footer.html:39
+#: src/templates/main/footer.html:41
 msgid "Partners"
 msgstr ""
 
-#: src/templates/main/home_page.html:9
-msgid "Home Page"
-msgstr ""
-
-#: src/templates/main/home_page.html:29
-msgid "Our specializations"
-msgstr ""
-
-#: src/templates/main/home_page.html:33
+#: src/templates/main/home_page.html:41
 msgid "Check it out!"
 msgstr ""
 
-#: src/templates/main/home_page.html:43
+#: src/templates/main/home_page.html:53
 msgid "Your private R&D center"
 msgstr ""
 
-#: src/templates/main/home_page.html:55
+#: src/templates/main/home_page.html:66
 msgid "How we create our solutions?"
 msgstr ""
 
-#: src/templates/main/home_page.html:63
+#: src/templates/main/home_page.html:73
 msgid "Our inititives"
 msgstr ""
 
-#: src/templates/main/home_page.html:74
+#: src/templates/main/home_page.html:85
 msgid "We worked with"
 msgstr ""
 
-#: src/templates/main/home_page.html:85
-msgid "Do you want to make social impact with data?"
+#: src/templates/main/home_page.html:98
+msgid "It would not work without them"
 msgstr ""
 
 #: src/templates/main/job_offer_page.html:7
@@ -103,22 +114,6 @@ msgstr ""
 
 #: src/templates/main/job_offer_page.html:19
 msgid "Aplikuj"
-msgstr ""
-
-#: src/templates/main/menu.html:14
-msgid "More"
-msgstr ""
-
-#: src/templates/main/menu.html:19
-msgid "About"
-msgstr ""
-
-#: src/templates/main/menu.html:22
-msgid "Jobs"
-msgstr ""
-
-#: src/templates/main/menu.html:29
-msgid "Report an issue"
 msgstr ""
 
 #: src/templates/main/news_index_page.html:7
@@ -141,26 +136,32 @@ msgstr ""
 msgid "Aktualności"
 msgstr ""
 
-#: src/templates/projects/project_page.html:22
+#: src/templates/projects/project_page.html:42
 msgid "Challenges"
 msgstr ""
 
-#: src/templates/projects/project_page.html:31
+#: src/templates/projects/project_page.html:52
 msgid "Process"
 msgstr ""
 
-#: src/templates/projects/project_page.html:48
-msgid "You like this project?"
+#: src/templates/projects/project_page.html:75
+msgid ""
+"You like this <b>project?</b><br> Have a similar <b>idea?</b><br> Looking "
+"for some <b>tech support?</b><br>"
 msgstr ""
 
-#: src/templates/projects/project_page.html:49
-msgid "Have a similar idea?"
-msgstr ""
-
-#: src/templates/projects/project_page.html:50
-msgid "Looking for some tech support?"
-msgstr ""
-
-#: src/templates/projects/project_page.html:59
+#: src/templates/projects/project_page.html:92
 msgid "Similiar projects"
+msgstr ""
+
+#: src/templates/projects/team_index_page.html:23
+msgid "Who we are?"
+msgstr ""
+
+#: src/templates/projects/team_index_page.html:35
+msgid "Our values"
+msgstr ""
+
+#: src/templates/projects/team_index_page.html:46
+msgid "Team"
 msgstr ""
