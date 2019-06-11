@@ -11,20 +11,48 @@
 
 {% block content %}
 
-<section class="hero">
+<section class="hero is-large">
+    <!--<div class="custom-hero-carousel">
+        {% for article in page.latest_articles.all %}
+            <div class="has-background">
+                {% image article.photo original class='is-background' %}
+                <!--<div class="hero-foot">
+                    <div class="container">
+                        <h2 class="subtitle">
+                            {{ article.title }}
+                        </h2>
+                        <p>
+                            {{ article.headline }}
+                        </p>
+                        <h6><a href="{% pageurl article %}">{% trans 'Find out more' %} ></a></h6>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>-->
     <div class="hero-body">
         <div class="container">
             <h1 class="title">
                 {{ page.header }}
             </h1>
-            <h2 class="subtitle">
-                Hero subtitle
-            </h2>
         </div>
-        <div>
-            {% for article in page.latest_articles.all %}
-                {% include 'main/articles_slider.html' with article=article %}
-            {% endfor %}
+    </div>
+    <div class="hero-foot">
+        <div class="container">
+            <!-- Start Carousel -->
+            <div class="carousel">
+                {% for article in page.latest_articles.all %}
+                    <div class="item-1">
+                        <h2 class="subtitle">
+                            {{ article.title }}
+                        </h2>
+                        <p>
+                            {{ article.headline }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- End Carousel -->
         </div>
     </div>
 </section>
