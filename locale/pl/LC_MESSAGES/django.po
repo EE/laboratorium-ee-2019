@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-10 14:22+0200\n"
+"POT-Creation-Date: 2019-06-11 11:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,6 +58,7 @@ msgstr ""
 msgid "send"
 msgstr ""
 
+#: src/templates/main/article_card.html:18
 #: src/templates/main/articles_slider.html:13
 msgid "Find out more"
 msgstr ""
@@ -118,24 +119,16 @@ msgstr ""
 msgid "Aplikuj"
 msgstr ""
 
-#: src/templates/main/news_index_page.html:7
-msgid "News"
-msgstr ""
-
-#: src/templates/main/news_index_page.html:15
+#: src/templates/main/news_index_page.html:25
 msgid "Latest"
 msgstr ""
 
-#: src/templates/main/news_index_page.html:22
+#: src/templates/main/news_index_page.html:33
 msgid "Other"
 msgstr ""
 
-#: src/templates/main/news_index_page.html:26
+#: src/templates/main/news_index_page.html:40
 msgid "No more articles"
-msgstr ""
-
-#: src/templates/main/news_page.html:8
-msgid "Aktualności"
 msgstr ""
 
 #: src/templates/projects/project_page.html:42
