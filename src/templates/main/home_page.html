@@ -30,20 +30,24 @@
 <section class="section">
     <div class="container">
         <h3 class="subtitle is-4">{{ page.specializations_headline }}</h2>
-        {% for specialization_page in page.specializations.all %}
-            <h4 class="subtitle is-5">{{ specialization_page.title }}</h3>
-            <div class="content">
-                <p>{{ specialization_page.how_we_work }}</p>
-                {% if specialization_page.two_projects.all %}
-                    <p>
-                        {% trans 'Check it out!' %}
-                        {% for project in specialization_page.two_projects.all %}
-                            <a href="{% pageurl project %}">{{ project.short_name_or_full }}</a>
-                        {% endfor %}
-                    </p>
-                {% endif %}
-            </div>
-        {% endfor %}
+        <div class="columns is-multiline">
+            {% for specialization_page in page.specializations.all %}
+                <div class="column is-one-third">
+                    <h4 class="subtitle is-5">{{ specialization_page.title }}</h3>
+                    <div class="content">
+                        <p>{{ specialization_page.how_we_work }}</p>
+                        {% if specialization_page.two_projects.all %}
+                            <p>
+                                {% trans 'Check it out!' %}
+                                {% for project in specialization_page.two_projects.all %}
+                                    <a href="{% pageurl project %}">{{ project.short_name_or_full }}</a>
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 
