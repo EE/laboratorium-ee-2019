@@ -11,110 +11,116 @@
 
 {% block content %}
 
-<section class="hero">
+<section class="hero is-large has-carousel">
+    <div class="hero-carousel">
+        {% for article in page.latest_articles.all %}
+            <div class="carousel-item has-background">
+                {% image article.photo original class='is-background' %}
+            </div>
+        {% endfor %}
+    </div>
     <div class="hero-body">
         <div class="container">
-            <h1 class="title">
-                {{ page.header }}
-            </h1>
-            <h2 class="subtitle">
-                Hero subtitle
-            </h2>
-        </div>
-        <div>
-            {% for article in page.latest_articles.all %}
-                {% include 'main/articles_slider.html' with article=article %}
-            {% endfor %}
+            <h1 class="title">{{ page.header }}</h1>
         </div>
     </div>
 </section>
 
 {# blok specjalizacje #}
-<div class="container">
-    <h3 class="subtitle is-4">{{ page.specializations_headline }}</h2>
-    {% for specialization_page in page.specializations.all %}
-        <h4 class="subtitle is-5">{{ specialization_page.title }}</h3>
-        <div class="content">
-            <p>{{ specialization_page.how_we_work }}</p>
-            {% if specialization_page.two_projects.all %}
-                <p>
-                    {% trans 'Check it out!' %}
-                    {% for project in specialization_page.two_projects.all %}
-                        <a href="{% pageurl project %}">{{ project.short_name_or_full }}</a>
-                    {% endfor %}
-                </p>
-            {% endif %}
-        </div>
-    {% endfor %}
-</div>
-
-{# blok Twoje prywatne centrum badawczo rozwojowe #}
-<div class="container">
-    <h2 class="subtitle">{% trans 'Your private R&D center' %}</h2>
-    <div class="content">
-        <b>{{ page.r_and_d_center_headline }}</b>
-        <h6>{{ page.r_and_d_center_body }}</h6>
-        <p>
-            [walka ze smogiem] --> [wsparcie dla seniorów] --> [rewolucja cyfrowa]
-        </p>
-    </div>
-</div>
-
-{# Jak powstają nasze rozwiązania? statyczne #}
-<div class="container">
-    <h2 class="subtitle">
-        {% trans 'How we create our solutions?' %}
-    </h2>
-    <div class="content"><p>[ ] --> [ ] --> [ ] --> [ ]</p></div>
-</div>
-
-{# Inicjatywy własne #}
-<div class="container">
-    <h2 class="subtitle">{% trans 'Our inititives' %}</h2>
-    <div class="columns">
-        {% for inititive in page.our_initiatives.all %}
-            <div class="column">
-                {% include 'projects/project_tile.html' with project=inititive %}
+<section class="section">
+    <div class="container">
+        <h3 class="subtitle is-4">{{ page.specializations_headline }}</h2>
+        {% for specialization_page in page.specializations.all %}
+            <h4 class="subtitle is-5">{{ specialization_page.title }}</h3>
+            <div class="content">
+                <p>{{ specialization_page.how_we_work }}</p>
+                {% if specialization_page.two_projects.all %}
+                    <p>
+                        {% trans 'Check it out!' %}
+                        {% for project in specialization_page.two_projects.all %}
+                            <a href="{% pageurl project %}">{{ project.short_name_or_full }}</a>
+                        {% endfor %}
+                    </p>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
-</div>
+</section>
+
+{# blok Twoje prywatne centrum badawczo rozwojowe #}
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">{% trans 'Your private R&D center' %}</h2>
+        <div class="content">
+            <b>{{ page.r_and_d_center_headline }}</b>
+            <h6>{{ page.r_and_d_center_body }}</h6>
+            <p>
+                [walka ze smogiem] --> [wsparcie dla seniorów] --> [rewolucja cyfrowa]
+            </p>
+        </div>
+    </div>
+</section>
+
+{# Jak powstają nasze rozwiązania? statyczne #}
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">
+            {% trans 'How we create our solutions?' %}
+        </h2>
+        <div class="content"><p>[ ] --> [ ] --> [ ] --> [ ]</p></div>
+    </div>
+</section>
+
+{# Inicjatywy własne #}
+<section class="section">>
+    <div class="container">
+        <h2 class="subtitle">{% trans 'Our inititives' %}</h2>
+        <div class="columns">
+            {% for inititive in page.our_initiatives.all %}
+                <div class="column">
+                    {% include 'projects/project_tile.html' with project=inititive %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
 {# Współpracowali z nami #}
-<div class="container">
-    <h2 class="subtitle">{% trans 'We worked with' %}</h2>
-    <div class="inline-block">
-        {% for logo in page.cooperators_logos.all %}
-            {% image logo.image width-200 %}
-        {% endfor %}
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">{% trans 'We worked with' %}</h2>
+        <div class="inline-block">
+            {% for logo in page.cooperators_logos.all %}
+                {% image logo.image width-200 %}
+            {% endfor %}
+        </div>
     </div>
-
-</div>
+</section>
 
 {# Bez nich by sie nie udało #}
 {% with page.random_team_member as member %}
     {% if member %}
-        <div class="container">
-            <h2 class="subtitle">{% trans 'It would not work without them' %}</h2>
-            <div class="columns">
-                <div class="column">
-                    <p>
-                        {{ member.name }}
-                    </p>
-                    <p>
-                        {{ member.long_description }}
-                    </p>
-                </div>
-                <div class="column">
-                    <p>
-                        {% image member.photo width-400 %}
-                    </p>
+        <section class="section">
+            <div class="container">
+                <h2 class="subtitle">{% trans 'It would not work without them' %}</h2>
+                <div class="columns">
+                    <div class="column">
+                        <p>
+                            {{ member.name }}
+                        </p>
+                        <p>
+                            {{ member.long_description }}
+                        </p>
+                    </div>
+                    <div class="column">
+                        <p>
+                            {% image member.photo width-400 %}
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
+        </section>
     {% endif %}
 {% endwith %}
-
 
 {% endblock content %}
