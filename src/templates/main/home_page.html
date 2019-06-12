@@ -34,8 +34,8 @@
             {% for specialization_page in page.specializations.all %}
                 <div class="column is-one-third">
                     <h4 class="subtitle is-5">{{ specialization_page.title }}</h3>
-                    <div class="content">
-                        <p>{{ specialization_page.how_we_work }}</p>
+                    <div>
+                        {{ specialization_page.how_we_work }}
                         {% if specialization_page.two_projects.all %}
                             <p>
                                 {% trans 'Check it out!' %}
@@ -76,12 +76,12 @@
 </section>
 
 {# Inicjatywy własne #}
-<section class="section">>
+<section class="section">
     <div class="container">
         <h2 class="subtitle">{% trans 'Our inititives' %}</h2>
-        <div class="columns">
+        <div class="columns is-multiline">
             {% for inititive in page.our_initiatives.all %}
-                <div class="column">
+                <div class="column is-one-third">
                     {% include 'projects/project_tile.html' with project=inititive %}
                 </div>
             {% endfor %}
@@ -93,9 +93,13 @@
 <section class="section">
     <div class="container">
         <h2 class="subtitle">{% trans 'We worked with' %}</h2>
-        <div class="inline-block">
+        <div class="columns is-multiline">
             {% for logo in page.cooperators_logos.all %}
-                {% image logo.image width-200 %}
+                <div class="column is-one-quarter">
+                    <figure class="image">
+                        {% image logo.image original %}
+                    </figure>
+                </div>
             {% endfor %}
         </div>
     </div>

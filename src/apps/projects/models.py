@@ -28,11 +28,11 @@ class SpecializationIndexPage(Page):
 class SpecializationPage(Page):
     how_we_work = StreamField([
         ('text', blocks.CharBlock()),
-        ('tiles_list', blocks.ListBlock(Tile())),
+        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
     ])
     case_study = StreamField([
         ('heading', blocks.CharBlock()),
-        ('tiles_list', blocks.ListBlock(Tile())),
+        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
     ], null=True)
 
     tools = StreamField([
