@@ -6,4 +6,8 @@
 
 @import "~bulma/bulma";
 
-@import "~bulma-carousel/src/sass/index"
+@import "~bulma-carousel/src/sass/index";
+
+.card.is-equal-height {
+    height: 100%
+};

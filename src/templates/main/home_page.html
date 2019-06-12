@@ -33,18 +33,7 @@
         <div class="columns is-multiline">
             {% for specialization_page in page.specializations.all %}
                 <div class="column is-one-third">
-                    <h4 class="subtitle is-5">{{ specialization_page.title }}</h3>
-                    <div>
-                        {{ specialization_page.how_we_work }}
-                        {% if specialization_page.two_projects.all %}
-                            <p>
-                                {% trans 'Check it out!' %}
-                                {% for project in specialization_page.two_projects.all %}
-                                    <a href="{% pageurl project %}">{{ project.short_name_or_full }}</a>
-                                {% endfor %}
-                            </p>
-                        {% endif %}
-                    </div>
+                    {% include 'projects/specialization_card.html' with specialization_page=specialization_page %}
                 </div>
             {% endfor %}
         </div>
