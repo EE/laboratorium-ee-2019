@@ -8,7 +8,7 @@
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-from .base import *  # noqa
+from .deployment_prod import *  # noqa
 
 
 ALLOWED_HOSTS = ['laboratorium-ee-test.herokuapp.com']
