@@ -65,6 +65,8 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
 
+    'bulma',  # for automatic form rendering
+
     'src.apps.main',
     'src.apps.projects',
 ]
