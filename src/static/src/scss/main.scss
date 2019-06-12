@@ -1,10 +1,12 @@
 @import "~bulma/sass/utilities/initial-variables";
+@import "~bulmaswatch/cyborg/_variables";
 
 @import "colors";
 @import "constants";
 @import "fonts";
 
 @import "~bulma/bulma";
+@import "~bulmaswatch/cyborg/_overrides";
 
 @import "~bulma-carousel/src/sass/index";
 
