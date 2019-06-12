@@ -26,13 +26,21 @@ class SpecializationIndexPage(Page):
 
 
 class SpecializationPage(Page):
+    short_description = models.TextField()
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     how_we_work = StreamField([
         ('text', blocks.CharBlock()),
-        ('tiles_list', blocks.ListBlock(Tile())),
+        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
     ])
     case_study = StreamField([
         ('heading', blocks.CharBlock()),
-        ('tiles_list', blocks.ListBlock(Tile())),
+        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
     ], null=True)
 
     tools = StreamField([
@@ -40,6 +48,8 @@ class SpecializationPage(Page):
     ], null=True)
 
     content_panels = Page.content_panels + [
+        FieldPanel('short_description'),
+        ImageChooserPanel('background_image'),
         StreamFieldPanel('how_we_work'),
         StreamFieldPanel('case_study'),
         StreamFieldPanel('tools'),

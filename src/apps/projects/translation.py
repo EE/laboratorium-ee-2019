@@ -12,6 +12,7 @@ class SpecializationIndexPageTranslationOptions(TranslationOptions):
 @register(models.SpecializationPage)
 class SpecializationPageTranslationOptions(TranslationOptions):
     fields = (
+        'short_description',
         'how_we_work',
         'case_study',
         'tools',
