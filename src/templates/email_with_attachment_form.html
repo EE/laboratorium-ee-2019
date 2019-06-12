@@ -1,7 +1,10 @@
+{% load bulma_tags %}
+{% load i18n %}
+
 <form enctype="multipart/form-data" method="post" action="{% url 'send_mail_with_attachment' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <div>
-      <button type="submit">Send</button>
+    {{ form|bulma }}
+    <div class="control">
+        <button type="submit" class="button is-link">{% trans 'send' %}</button>
     </div>
 </form>

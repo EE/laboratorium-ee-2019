@@ -53,9 +53,20 @@
 
     {% block contact_form %}
         <section class="section">
-          <div class="container">
-              {% contact_form %}
-          </div>
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        {% blocktrans trimmed %}
+                            Need some help with your <b>project?</b><br>
+                            Looking for interesting <b>investments?</b><br>
+                            Want to change the world with us through <b>technology?</b><br>
+                        {% endblocktrans %}
+                    </div>
+                    <div class="column">
+                        {% contact_form %}
+                    </div>
+                </div>
+            </div>
         </section>
     {% endblock contact_form %}
 
