@@ -40,27 +40,50 @@
     </div>
 </section>
 
-{# blok Twoje prywatne centrum badawczo rozwojowe #}
-<section class="section">
-    <div class="container">
-        <h2 class="subtitle">{% trans 'Your private R&D center' %}</h2>
-        <div class="content">
-            <b>{{ page.r_and_d_center_headline }}</b>
-            <h6>{{ page.r_and_d_center_body }}</h6>
-            <p>
-                [walka ze smogiem] --> [wsparcie dla seniorów] --> [rewolucja cyfrowa]
-            </p>
-        </div>
-    </div>
-</section>
-
 {# Jak powstają nasze rozwiązania? statyczne #}
 <section class="section">
     <div class="container">
-        <h2 class="subtitle">
+        <h2 class="title is-3">
             {% trans 'How we create our solutions?' %}
         </h2>
-        <div class="content"><p>[ ] --> [ ] --> [ ] --> [ ]</p></div>
+        <div class="columns is-gapless is-mobile">
+            <div class="column">
+                <div class="container is-fluid">
+                    <p class="heading">[lupa]</p>
+                </div>
+                <hr/>
+                <div class="container is-fluid">
+                    <p class="subtitle is-5">{% trans 'Needs analysis' %}</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="container is-fluid">
+                    <p class="heading">[kartka]</p>
+                </div>
+                <hr/>
+                <div class="container is-fluid">
+                    <p class="subtitle is-5">{% trans 'Warsztaty partycypacyjne i Google design sprint' %}</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="container is-fluid">
+                    <p class="heading">[gear]</p>
+                </div>
+                <hr/>
+                <div class="container is-fluid">
+                    <p class="subtitle is-5">{% trans 'Prototype &amp; minimum viable product' %}</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="container is-fluid">
+                    <p class="heading">[yingyang]</p>
+                </div>
+                <hr class="arrow"/>
+                <div class="container is-fluid">
+                    <p class="subtitle is-5">{% trans 'Wdrażanie zwinne' %}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
