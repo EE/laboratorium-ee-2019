@@ -9,6 +9,11 @@
 {{ page.title }} - {{ block.super }}
 {% endblock title %}
 
+{% block facebook_pixel_events %}
+    {{ block.super }}
+    fbq('track', 'ViewContent');
+{% endblock %}
+
 {% block navbar %}
     {# navbar is displayed in hero-head #}
 {% endblock %}
