@@ -1,0 +1,29 @@
+{% load i18n %}
+{% load wagtailcore_tags %}
+{% load webpack_static from webpack_loader %}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="{% webpack_static 'images/logotyp-ee.png' %}">
+        </a>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="ee-navbar">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div id="ee-navbar" class="navbar-menu">
+        <div class="navbar-start">
+        </div>
+        <div class="navbar-end">
+
+            {% for page_in_menu in menus %}
+                <a class="navbar-item" href="{% pageurl page_in_menu %}">
+                    {{ page_in_menu.title }}
+                </a>
+            {% endfor %}
+
+        </div>
+    </div>
+</nav>

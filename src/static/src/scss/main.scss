@@ -8,8 +8,10 @@
 @import "~bulma/bulma";
 @import "~bulmaswatch/cyborg/_overrides";
 
-@import "~bulma-carousel/src/sass/index";
-
 .card.is-equal-height {
     height: 100%
 };
+
+.is-top-padded {
+    padding-top: 4rem;
+}

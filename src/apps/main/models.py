@@ -11,9 +11,10 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import (
     FieldPanel,
-    StreamFieldPanel,
     InlinePanel,
     MultiFieldPanel,
+    PageChooserPanel,
+    StreamFieldPanel,
 )
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
@@ -124,6 +125,13 @@ class NewsIndexPage(Page):
 
 
 class NewsPage(Page):
+    specialization = models.ForeignKey(
+        'projects.SpecializationPage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='news_pages',
+    )
     headline = models.CharField(max_length=500)
     body = RichTextField()
     photo = models.ForeignKey(
@@ -145,6 +153,7 @@ class NewsPage(Page):
         FieldPanel('headline'),
         FieldPanel('body', classname="full"),
         ImageChooserPanel('photo'),
+        PageChooserPanel('specialization'),
     ]
 
     parent_page_types = ['NewsIndexPage']

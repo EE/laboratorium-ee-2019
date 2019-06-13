@@ -1,30 +1,38 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
+{% load main_tags %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
-
 
 {% block title %}
 {{ page.title }} - {{ block.super }}
 {% endblock title %}
 
+{% block navbar %}
+    {# navbar is displayed in hero-head #}
+{% endblock %}
+
 {% block content %}
 
-<section class="hero is-large has-carousel">
-    <div class="hero-carousel">
-        {% for article in page.latest_articles.all %}
-            <div class="carousel-item has-background">
-                {% image article.photo original class='is-background' %}
-            </div>
-        {% endfor %}
-    </div>
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">{{ page.header }}</h1>
+{% with page.latest_articles.first as article %}
+    {% image article.photo original as background_image %}
+    <section class="hero is-fullheight" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
+        <div class="hero-head">
+            {% navbar %}
         </div>
-    </div>
-</section>
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1">{{ page.header }}</h1>
+                <div class="is-top-padded">
+                    <p class="subtitle is-6 is-uppercase">{{ article.specialization.title }}</p>
+                    <h3 class="title is-3">{{ article.title }}</h3>
+                    <h6 class="subtitle is-6">{{ article.headline }}</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endwith %}
 
 {# blok specjalizacje #}
 <section class="section">
