@@ -1,15 +1,19 @@
 @import "~bulma/sass/utilities/initial-variables";
-@import "~bulmaswatch/cyborg/_variables";
+@import "~bulmaswatch/cyborg/variables";
 
 @import "colors";
 @import "constants";
 @import "fonts";
 
 @import "~bulma/bulma";
-@import "~bulmaswatch/cyborg/_overrides";
+@import "~bulmaswatch/cyborg/overrides";
 
-@import "~bulma-carousel/src/sass/index";
+.card {
+    is-equal-height {
+        height: 100%;
+    };
+};
 
-.card.is-equal-height {
-    height: 100%
+.is-top-padded {
+    padding-top: 4rem;
 };
