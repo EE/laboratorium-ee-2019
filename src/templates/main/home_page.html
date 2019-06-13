@@ -99,13 +99,13 @@
 <section class="section">
     <div class="container">
         <h2 class="subtitle">{% trans 'Our inititives' %}</h2>
-        <div class="columns is-multiline">
-            {% for inititive in page.our_initiatives.all %}
-                <div class="column is-one-third">
-                    {% include 'projects/project_tile.html' with project=inititive %}
-                </div>
-            {% endfor %}
-        </div>
+    </div>
+    <div class="columns is-multiline is-gapless">
+        {% for inititive in page.our_initiatives.all %}
+            <div class="column is-one-third">
+                {% include 'projects/partials/project_card.html' with project=inititive %}
+            </div>
+        {% endfor %}
     </div>
 </section>
 

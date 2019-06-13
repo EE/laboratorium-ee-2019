@@ -83,6 +83,13 @@ class ProjectPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     challenge = RichTextField(null=True)
     process = StreamField([
         ('tiles_list', blocks.ListBlock(Tile())),
@@ -97,6 +104,7 @@ class ProjectPage(Page):
         FieldPanel('self_initiated'),
         FieldPanel('subtitle'),
         ImageChooserPanel('icon'),
+        ImageChooserPanel('background_image'),
         InlinePanel('metrics', heading="Metrics"),
         FieldPanel('challenge'),
         StreamFieldPanel('process'),

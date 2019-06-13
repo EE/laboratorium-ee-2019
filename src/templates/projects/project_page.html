@@ -90,10 +90,10 @@
     <section class="section">
         <div class="container">
             <h2>{% trans "Similiar projects" %}</h2>
-            <div class="columns">
+            <div class="columns is-multiline">
                 {% for project in page.similar_projects.all %}
                     <div class="column">
-                        {% include 'projects/project_tile.html' with project=project %}
+                        {% include 'projects/partials/project_card.html' with project=project %}
                     </div>
                 {% endfor %}
             </div>
@@ -104,5 +104,5 @@
 {% endblock content %}
 
 {% block contact_form %}
-    {# formualrz kontaktowy tu wyjątkowo jest wyżej, więc ten block zostawiam pusty#}
+    {# formualrz kontaktowy tu wyjątkowo jest wyżej, więc ten block zostawiam pusty #}
 {% endblock %}

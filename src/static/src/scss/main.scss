@@ -8,10 +8,8 @@
 @import "~bulma/bulma";
 @import "~bulmaswatch/cyborg/overrides";
 
-.card {
-    is-equal-height {
-        height: 100%;
-    };
+.card.is-equal-height {
+    height: 100%;
 };
 
 .is-top-padded {
