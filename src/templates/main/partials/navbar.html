@@ -19,11 +19,16 @@
         <div class="navbar-end">
 
             {% for page_in_menu in menus %}
-                <a class="navbar-item" href="{% pageurl page_in_menu %}">
+                <a class="navbar-item is-uppercase" href="{% pageurl page_in_menu %}">
                     {{ page_in_menu.title }}
                 </a>
             {% endfor %}
 
+            <div class="navbar-item">
+                <a class="button is-outlined is-light is-uppercase is-radiusless" href="#contact">
+                    {% trans 'Napisz do nas' %}
+                </a>
+            </div>
         </div>
     </div>
 </nav>
