@@ -73,6 +73,8 @@ class SpecializationPage(Page):
 
 
 class TopicPage(Page):
+    """Topic is a classification of work orthogonal to specializations.
+    Examples for topics are: "fighting smog", "design for elderly"."""
     marked = models.BooleanField(
         default=False,
         help_text=_('If True, this topic would be visible on HomePage.'),
