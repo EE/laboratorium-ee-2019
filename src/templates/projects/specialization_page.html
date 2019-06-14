@@ -1,47 +1,69 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+{% load main_tags %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+{{ page.title }} - {{ block.super }}
+{% endblock title %}
+
+{% block facebook_pixel_events %}
+    {{ block.super }}
+    fbq('track', 'ViewContent');
+{% endblock %}
+
+{% block navbar %}
+    {# navbar is displayed in hero-head #}
+{% endblock %}
 
 {% block content %}
-<section class="hero is-primary">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
-                {{ page.title }}
-            </h1>
+    {% image page.background_image original as background_image %}
+    <section class="hero" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
+        <div class="hero-head">
+            {% navbar %}
         </div>
-    </div>
-</section>
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1">
+                    {{ page.title }}
+                </h1>
+            </div>
+        </div>
+    </section>
 
 <section class="section">
     <div class="container">
-        <p>Jak pracujemy</p>
+        <p class="subtitle is-3">{% trans 'Jak pracujemy' %}</p>
         <p>{{ page.how_we_work }}</p>
     </div>
 </section>
 
 <section class="section">
     <div class="container">
-        <p>Case study - {{ page.case_study }}</p>
+        <p class="subtitle is-3">Case study</p>
+        <p>{{ page.case_study }}</p>
     </div>
 </section>
 
 <section class="section">
     <div class="container">
-        <p>Narzędzia</p>
+        <p class="subtitle is-3">Narzędzia</p>
         <div>{{ page.tools }}</div>
     </div>
 </section>
 
 <section class="section">
     <div class="container">
-        {% for project in page.projects.all %}
-            <li>
-                <a href="{% pageurl project %}">
-                    {{ project.title }}
-                </a>
-            </li>
-        {% endfor %}
+        <h2 class="subtitle is-3">{% trans 'Projects' %}</h2>
+        <div class="columns is-multiline">
+            {% for project in page.projects.all %}
+                <div class="column is-one-third">
+                    {% include 'projects/partials/project_card.html' with project=project %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 
