@@ -53,6 +53,23 @@
     </div>
 </section>
 
+{# spis tematów #}
+{% if page.topics %}
+    {% image page.topics.all.0.background_image original as background_image %}
+    <section class="section" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
+        <div class="container">
+            <h1 class="title is-2">{% trans 'Działamy w obszarach' %}</h1>
+            <div class="columns">
+                <div class="column is-one-quarter buttons">
+                    {% for topic in page.topics.all %}
+                        <a href="{% pageurl topic %}" class="button is-outlined is-light is-uppercase is-radiusless is-fullwidth">{{ topic.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
 {# Jak powstają nasze rozwiązania? statyczne #}
 <section class="section">
     <div class="container">
