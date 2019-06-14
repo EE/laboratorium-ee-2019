@@ -19,7 +19,11 @@
                     {{ footer.address|richtext }}
                 </div>
                 <div class="content">
-                    <a href="{{ footer.privacy_policy }}">{% trans 'Privacy policy' %}</a>
+                    {% for info_page in footer.page.info_pages %}
+                        <div>
+                            <a href="{% pageurl info_page %}">{{ info_page.title }}</a>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
 

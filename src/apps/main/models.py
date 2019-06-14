@@ -49,7 +49,8 @@ class HomePage(Page):
 
     parent_page_types = ['wagtailcore.page']  # allow root page only
     subpage_types = [
-        'NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage', 'projects.TeamIndexPage'
+        'NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage', 'projects.TeamIndexPage',
+        'InfoPage',
     ]
 
     @property
@@ -65,6 +66,10 @@ class HomePage(Page):
     def our_initiatives(self):
         ProjectPage = apps.get_model('projects', 'ProjectPage')
         return ProjectPage.objects.live().filter(self_initiated=True)
+
+    @property
+    def info_pages(self):
+        return InfoPage.objects.live().descendant_of(self)
 
     @property
     def random_team_member(self):
@@ -207,6 +212,15 @@ class JobOfferPage(Page):
     subpage_types = []
 
 
+class InfoPage(Page):
+    """Static content page linked in footer."""
+    content = RichTextField()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('content'),
+    ]
+
+
 @register_snippet
 class RodoPassAdvert(models.Model):
     page = ParentalKey('HomePage', related_name='rodo_pass', unique=True)
@@ -233,14 +247,12 @@ class Footer(models.Model):
     contact = RichTextField()
     address = RichTextField()
     how_we_work = RichTextField()
-    privacy_policy = models.URLField()
 
     panels = [
         FieldPanel('page'),
         FieldPanel('contact'),
         FieldPanel('address'),
         FieldPanel('how_we_work'),
-        FieldPanel('privacy_policy'),
     ]
 
     def __str__(self):

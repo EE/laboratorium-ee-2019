@@ -30,6 +30,11 @@ class JobOfferPageTranslationOptions(TranslationOptions):
     fields = ('body',)
 
 
+@register(models.InfoPage)
+class InfoPageTranslationOptions(TranslationOptions):
+    fields = ('content',)
+
+
 @register(models.RodoPassAdvert)
 class RodoPassAdvertTranslationOptions(TranslationOptions):
     fields = ('title', 'description', 'button_text')
