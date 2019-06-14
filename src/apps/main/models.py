@@ -20,7 +20,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from src.apps.main.blocks import Tile
-from src.apps.projects.models import SpecializationPage
+from src.apps.projects.models import SpecializationPage, TopicPage
 
 
 class HomePage(Page):
@@ -51,6 +51,7 @@ class HomePage(Page):
     subpage_types = [
         'NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage', 'projects.TeamIndexPage',
         'InfoPage',
+        'projects.TopicPage',
     ]
 
     @property
@@ -70,6 +71,10 @@ class HomePage(Page):
     @property
     def info_pages(self):
         return InfoPage.objects.live().descendant_of(self)
+
+    @property
+    def topics(self):
+        return TopicPage.objects.live().descendant_of(self).filter(marked=True)
 
     @property
     def random_team_member(self):

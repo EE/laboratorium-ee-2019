@@ -72,6 +72,27 @@ class SpecializationPage(Page):
         return self.projects.filter(id__in=two_random_ids)
 
 
+class TopicPage(Page):
+    marked = models.BooleanField(
+        default=False,
+        help_text=_('If True, this topic would be visible on HomePage.'),
+    )
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    content = RichTextField()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('marked'),
+        ImageChooserPanel('background_image'),
+        FieldPanel('content'),
+    ]
+
+
 class ProjectPage(Page):
     short_name = models.CharField(max_length=32, blank=True, default='', help_text=_('Brief name of the project'))
     self_initiated = models.BooleanField(default=False)
@@ -90,6 +111,8 @@ class ProjectPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    topics = models.ManyToManyField(TopicPage, blank=True, related_name='projects')
+
     challenge = RichTextField(null=True)
     process = StreamField([
         ('tiles_list', blocks.ListBlock(Tile())),

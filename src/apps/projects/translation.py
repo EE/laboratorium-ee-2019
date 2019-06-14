@@ -19,6 +19,13 @@ class SpecializationPageTranslationOptions(TranslationOptions):
     )
 
 
+@register(models.TopicPage)
+class SpecializationPageTranslationOptions(TranslationOptions):
+    fields = (
+        'content',
+    )
+
+
 @register(models.ProjectPage)
 class ProjectPageTranslationOptions(TranslationOptions):
     fields = (
