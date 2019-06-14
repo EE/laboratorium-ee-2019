@@ -154,7 +154,12 @@ USE_TZ = True
 
 LANGUAGES = [
     ('pl', _('Polish')),
-    ('en', _('English')),
+    # temporarily disabled
+    # ('en', _('English')),
+]
+MODELTRANSLATION_LANGUAGES = [
+    'pl',
+    'en',
 ]
 
 # Static files (CSS, JavaScript, Images)
