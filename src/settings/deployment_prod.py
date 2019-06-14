@@ -3,6 +3,6 @@
 # ignore the 'may be undefined, or defined from star imports' error
 # flake8: noqa: F999
 
-from base import *  # noqa
+from .base import *  # noqa
 
 GOOGLE_ANALYTICS_ID = 'UA-86468922-1'
