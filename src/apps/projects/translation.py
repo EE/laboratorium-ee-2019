@@ -20,7 +20,7 @@ class SpecializationPageTranslationOptions(TranslationOptions):
 
 
 @register(models.TopicPage)
-class SpecializationPageTranslationOptions(TranslationOptions):
+class TopicPageTranslationOptions(TranslationOptions):
     fields = (
         'content',
     )
