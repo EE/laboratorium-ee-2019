@@ -1,0 +1,32 @@
+{% load i18n %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<div class="card is-equal-height">
+    <header class="card-header">
+        <p class="card-header-title"></p>
+        <div class="card-header-icon">
+            <time datetime="2016-1-1">
+                {{ article.publication_date }}
+            </time>
+        </div>
+    </header>
+    <div class="card-image">
+        <figure class="image is-3by1">
+            {% image article.photo fill-1200x400 %}
+        </figure>
+    </div>
+    <div class="card-content">
+        <h4 class="title is-4">{{ article.title }}</h4>
+
+        <div class="content">
+            {{ article.headline }}
+        </div>
+    </div>
+    <footer class="card-footer">
+        <div class="card-footer-item">
+            <a href="{% pageurl article %}" class="button is-outlined is-light is-uppercase is-radiusless">{% trans 'Find out more' %}</a>
+        </div>
+    </footer>
+</div>
+

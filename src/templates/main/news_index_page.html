@@ -22,19 +22,17 @@
 {% if top_article %}
     <section class="section">
         <div class="container">
-            <h2 class="subtitle">{% trans 'Latest' %}</h2>
-            {% include 'main/article_card.html' with article=top_article %}
+            {% include 'main/partials/article_card.html' with article=top_article %}
         </div>
     </section>
 {% endif %}
 
 <section class="section">
     <div class="container">
-        <h2 class="subtitle">{% trans 'Other' %}</h2>
         <div class="columns is-multiline">
             {% for article in rest_of_articles %}
                 <div class="column is-one-third">
-                    {% include 'main/article_card.html' with article=article %}
+                    {% include 'main/partials/article_card.html' with article=article %}
                 </div>
             {% empty %}
                 <p>{% trans 'No more articles' %}</p>
