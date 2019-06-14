@@ -14,7 +14,7 @@
             <div class="columns">
                 {% for project in specialization.projects.all %}
                     <div class="column">
-                        {% include 'projects/project_tile.html' with project=project %}
+                        {% include 'projects/partials/project_card.html' with project=project %}
                     </div>
                 {% endfor %}
             </div>

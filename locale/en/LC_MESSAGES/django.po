@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-11 11:10+0200\n"
+"POT-Creation-Date: 2019-06-13 16:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,46 +18,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/apps/main/models.py:139
+#: src/apps/main/models.py:147
 msgid ""
 "If True, this article would be visible on HomePage and on top of "
 "NewsIndexPage. Only one article can be marked, so old one will be unmarked "
 "automatically."
 msgstr ""
 
-#: src/apps/projects/models.py:66
+#: src/apps/projects/models.py:76
 msgid "Brief name of the project"
 msgstr ""
 
-#: src/apps/projects/models.py:137
+#: src/apps/projects/models.py:155
 msgid "Description shown on TeamIndex page."
 msgstr ""
 
-#: src/apps/projects/models.py:141
+#: src/apps/projects/models.py:159
 msgid "More comprehensive description visible on Home Page"
 msgstr ""
 
-#: src/settings/base.py:154
+#: src/settings/base.py:156
 msgid "Polish"
 msgstr ""
 
-#: src/settings/base.py:155
+#: src/settings/base.py:157
 msgid "English"
 msgstr ""
 
-#: src/templates/email_form.html:8
+#: src/templates/base.html:49
 msgid ""
 "Need some help with your <b>project?</b><br> Looking for interesting "
 "<b>investments?</b><br> Want to change the world with us through "
 "<b>technology?</b><br>"
 msgstr ""
 
-#: src/templates/email_form.html:18
+#: src/templates/email_form.html:8
+#: src/templates/email_with_attachment_form.html:8
 msgid "send"
 msgstr ""
 
 #: src/templates/main/article_card.html:18
 #: src/templates/main/articles_slider.html:13
+#: src/templates/projects/partials/project_card.html:22
 msgid "Find out more"
 msgstr ""
 
@@ -85,27 +87,35 @@ msgstr ""
 msgid "Partners"
 msgstr ""
 
-#: src/templates/main/home_page.html:41
-msgid "Check it out!"
-msgstr ""
-
-#: src/templates/main/home_page.html:53
-msgid "Your private R&D center"
-msgstr ""
-
-#: src/templates/main/home_page.html:66
+#: src/templates/main/home_page.html:55
 msgid "How we create our solutions?"
 msgstr ""
 
+#: src/templates/main/home_page.html:64
+msgid "Needs analysis"
+msgstr ""
+
 #: src/templates/main/home_page.html:73
+msgid "Warsztaty partycypacyjne i Google design sprint"
+msgstr ""
+
+#: src/templates/main/home_page.html:82
+msgid "Prototype &amp; minimum viable product"
+msgstr ""
+
+#: src/templates/main/home_page.html:91
+msgid "Wdrażanie zwinne"
+msgstr ""
+
+#: src/templates/main/home_page.html:101
 msgid "Our inititives"
 msgstr ""
 
-#: src/templates/main/home_page.html:85
+#: src/templates/main/home_page.html:115
 msgid "We worked with"
 msgstr ""
 
-#: src/templates/main/home_page.html:98
+#: src/templates/main/home_page.html:133
 msgid "It would not work without them"
 msgstr ""
 
@@ -145,6 +155,10 @@ msgstr ""
 
 #: src/templates/projects/project_page.html:92
 msgid "Similiar projects"
+msgstr ""
+
+#: src/templates/projects/specialization_card.html:13
+msgid "Check it out!"
 msgstr ""
 
 #: src/templates/projects/team_index_page.html:23
