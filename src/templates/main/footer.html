@@ -1,12 +1,15 @@
 {% load i18n %}
 {% load wagtailcore_tags %}
+{% load webpack_static from webpack_loader %}
 
 <footer class="footer">
     <div class="container">
-        <div>LOGO EE</div>
 
         <div class="columns">
             <div class="column">
+                <figure class="image">
+                    <img src="{% webpack_static 'images/logotyp-ee.png' %}" class="has-colors-inverted">
+                </figure>
                 <h1 class="subtitle">{% trans 'Contact' %}</h1>
                 <div class="content">
                     {{ footer.contact|richtext }}

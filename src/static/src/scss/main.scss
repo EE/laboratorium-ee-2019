@@ -21,3 +21,7 @@
 .is-top-padded {
     padding-top: 4rem;
 };
+
+.has-colors-inverted {
+    filter: invert(100%);
+};
