@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-13 16:33+0200\n"
+"POT-Creation-Date: 2019-06-14 15:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,22 +19,48 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: src/apps/main/models.py:147
+#: src/apps/main/forms.py:9
+msgid "your email"
+msgstr "twój adres email"
+
+#: src/apps/main/forms.py:10
+msgid "choose subject"
+msgstr "wybierz temat"
+
+#: src/apps/main/forms.py:11
+msgid "how can we help?"
+msgstr "jak możemy pomóc?"
+
+#: src/apps/main/forms.py:13
+msgid ""
+"Zapoznałem sie z i akceptuję <a href=\"#\">Regulamin serwisu</a> oraz <a "
+"href=\"#\">Politykę prywatności</a>"
+msgstr ""
+
+#: src/apps/main/forms.py:39
+msgid "załącznik"
+msgstr ""
+
+#: src/apps/main/models.py:157
 msgid ""
 "If True, this article would be visible on HomePage and on top of "
 "NewsIndexPage. Only one article can be marked, so old one will be unmarked "
 "automatically."
 msgstr ""
 
-#: src/apps/projects/models.py:76
+#: src/apps/projects/models.py:80
+msgid "If True, this topic would be visible on HomePage."
+msgstr ""
+
+#: src/apps/projects/models.py:99
 msgid "Brief name of the project"
 msgstr "Krótka nazwa projektu"
 
-#: src/apps/projects/models.py:155
+#: src/apps/projects/models.py:180
 msgid "Description shown on TeamIndex page."
 msgstr "Opis pokazywany na stronie TeamIndex."
 
-#: src/apps/projects/models.py:159
+#: src/apps/projects/models.py:184
 msgid "More comprehensive description visible on Home Page"
 msgstr "Bardziej wyczerpujący opis widoczny na Home Page"
 
@@ -43,11 +68,7 @@ msgstr "Bardziej wyczerpujący opis widoczny na Home Page"
 msgid "Polish"
 msgstr "Polski"
 
-#: src/settings/base.py:157
-msgid "English"
-msgstr "Angielski"
-
-#: src/templates/base.html:49
+#: src/templates/base.html:73
 msgid ""
 "Need some help with your <b>project?</b><br> Looking for interesting "
 "<b>investments?</b><br> Want to change the world with us through "
@@ -59,65 +80,59 @@ msgstr ""
 msgid "send"
 msgstr "wyślij"
 
-#: src/templates/main/article_card.html:18
-#: src/templates/main/articles_slider.html:13
-#: src/templates/projects/partials/project_card.html:22
-msgid "Find out more"
-msgstr "Dowiedz się wiecej"
-
-#: src/templates/main/footer.html:10
+#: src/templates/main/footer.html:13
 msgid "Contact"
 msgstr "Kontakt"
 
-#: src/templates/main/footer.html:14
+#: src/templates/main/footer.html:17
 msgid "Address"
 msgstr "Adres"
 
-#: src/templates/main/footer.html:19
-msgid "Privacy policy"
-msgstr "Polityka prywatności"
-
-#: src/templates/main/footer.html:24
+#: src/templates/main/footer.html:31
 msgid "How we work?"
 msgstr "Jak pracujemy"
 
-#: src/templates/main/footer.html:31
+#: src/templates/main/footer.html:38
 msgid "Specializations"
 msgstr "Specjalizacje"
 
-#: src/templates/main/footer.html:41
+#: src/templates/main/footer.html:48
 msgid "Partners"
 msgstr "Partnerzy"
 
-#: src/templates/main/home_page.html:55
+#: src/templates/main/home_page.html:61
+msgid "Działamy w obszarach"
+msgstr ""
+
+#: src/templates/main/home_page.html:77
 msgid "How we create our solutions?"
 msgstr "Jak tworzymy rozwiązania?"
 
-#: src/templates/main/home_page.html:64
+#: src/templates/main/home_page.html:86
 msgid "Needs analysis"
 msgstr "Analiza potrzeb"
 
-#: src/templates/main/home_page.html:73
+#: src/templates/main/home_page.html:95
 msgid "Warsztaty partycypacyjne i Google design sprint"
 msgstr ""
 
-#: src/templates/main/home_page.html:82
+#: src/templates/main/home_page.html:104
 msgid "Prototype &amp; minimum viable product"
 msgstr "Prototyp i minimalny żywotny produkt"
 
-#: src/templates/main/home_page.html:91
+#: src/templates/main/home_page.html:113
 msgid "Wdrażanie zwinne"
 msgstr ""
 
-#: src/templates/main/home_page.html:101
+#: src/templates/main/home_page.html:123
 msgid "Our inititives"
 msgstr "Nasze inicjatywy"
 
-#: src/templates/main/home_page.html:115
+#: src/templates/main/home_page.html:137
 msgid "We worked with"
 msgstr "Pracowaliśmy z"
 
-#: src/templates/main/home_page.html:133
+#: src/templates/main/home_page.html:155
 msgid "It would not work without them"
 msgstr "Bez nich by się nie udało"
 
@@ -129,17 +144,18 @@ msgstr ""
 msgid "Aplikuj"
 msgstr ""
 
-#: src/templates/main/news_index_page.html:25
-msgid "Latest"
-msgstr "Ostatnie"
-
-#: src/templates/main/news_index_page.html:33
-msgid "Other"
-msgstr "Inne"
-
-#: src/templates/main/news_index_page.html:40
+#: src/templates/main/news_index_page.html:38
 msgid "No more articles"
 msgstr "Nie ma więcej artykułów"
+
+#: src/templates/main/partials/article_card.html:28
+#: src/templates/projects/partials/project_card.html:22
+msgid "Find out more"
+msgstr "Dowiedz się wiecej"
+
+#: src/templates/main/partials/navbar.html:29
+msgid "Napisz do nas"
+msgstr ""
 
 #: src/templates/projects/project_page.html:42
 msgid "Challenges"
@@ -154,6 +170,8 @@ msgid ""
 "You like this <b>project?</b><br> Have a similar <b>idea?</b><br> Looking "
 "for some <b>tech support?</b><br>"
 msgstr ""
+"Podoba Ci się ten <b>projekt?</b><br> Masz podobny <b>pomysł?</b><br> "
+"Szukasz <b>wsparcia technicznego?</b><br>"
 
 #: src/templates/projects/project_page.html:92
 msgid "Similiar projects"
