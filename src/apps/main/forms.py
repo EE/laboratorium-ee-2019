@@ -1,12 +1,17 @@
 from django import forms
 from django.conf import settings
 from django.core.mail import EmailMessage, BadHeaderError
+from django.utils.translation import gettext as _
+from django.utils.safestring import mark_safe
 
 
 class ContactForm(forms.Form):
-    from_email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'placeholder': 'your email'}))
-    subject = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'choose subject'}))
-    message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'how can we help?'}), required=True)
+    from_email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'placeholder': _('your email')}))
+    subject = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': _('choose subject')}))
+    message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': _('how can we help?')}), required=True)
+    terms_accepted = forms.BooleanField(required=True, label=mark_safe(_(
+        'Zapoznałem sie z i akceptuję <a href="#">Regulamin serwisu</a> oraz <a href="#">Politykę prywatności</a>',
+    )))
 
     def __init__(self, request, *args, **kwargs):
         self.request = request
@@ -31,7 +36,15 @@ class ContactForm(forms.Form):
 
 
 class AttachmentContactForm(ContactForm):
-    attachment = forms.FileField(allow_empty_file=True, required=False)
+    attachment = forms.FileField(allow_empty_file=True, required=False, label=_('załącznik'))
+
+    field_order = [
+        'from_email',
+        'subject',
+        'message',
+        'attachment',
+        'terms_accepted',
+    ]
 
     def create_email_message(self):
         email = super().create_email_message()
