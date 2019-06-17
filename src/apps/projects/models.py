@@ -35,16 +35,19 @@ class SpecializationPage(Page):
         related_name='+'
     )
     how_we_work = StreamField([
-        ('text', blocks.CharBlock()),
+        ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
         ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
     ])
     case_study = StreamField([
-        ('heading', blocks.CharBlock()),
+        ('heading', blocks.CharBlock(template='projects/blocks/heading.html')),
         ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
     ], null=True)
 
     tools = StreamField([
-        ('tiles_with_description_list', blocks.ListBlock(TileWithDescription())),
+        (
+            'tiles_with_description_list',
+            blocks.ListBlock(TileWithDescription(), template='projects/blocks/tiles_list.html'),
+        ),
     ], null=True)
 
     content_panels = Page.content_panels + [
