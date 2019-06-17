@@ -256,12 +256,14 @@ class Footer(models.Model):
     contact = RichTextField()
     address = RichTextField()
     how_we_work = RichTextField()
+    partners = RichTextField()
 
     panels = [
         FieldPanel('page'),
         FieldPanel('contact'),
         FieldPanel('address'),
         FieldPanel('how_we_work'),
+        FieldPanel('partners'),
     ]
 
     def __str__(self):

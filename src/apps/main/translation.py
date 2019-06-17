@@ -42,4 +42,4 @@ class RodoPassAdvertTranslationOptions(TranslationOptions):
 
 @register(models.Footer)
 class FooterTranslationOptions(TranslationOptions):
-    fields = ('contact', 'address', 'how_we_work')
+    fields = ('contact', 'address', 'how_we_work', 'partners')

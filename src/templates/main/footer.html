@@ -43,15 +43,11 @@
                 {% endfor %}
             </div>
 
-            {# loga partnerów proponuję jednak na sztwyno #}
             <div class="column">
                 <h1 class="subtitle">{% trans 'Partners' %}</h1>
-                <figure class="image is-128x128">
-                    <img src="https://centrumcyfrowe.pl/wp-content/uploads/sites/16/2018/06/CClogo.jpg">
-                </figure>
-                <figure class="image is-128x128">
-                    <img src="https://bulldogjob.pl/system/companies/logos/000/000/141/original/adminotaur-white-bg-square.png">
-                </figure>
+                <div class="content">
+                    {{ footer.partners|richtext }}
+                </div>
             </div>
 
         </div>
