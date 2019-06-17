@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 12:06+0200\n"
+"POT-Creation-Date: 2019-06-17 12:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,10 +20,8 @@ msgstr ""
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: src/apps/main/forms.py:14
-#, fuzzy
-#| msgid "your email"
 msgid "Adres email"
-msgstr "twój adres email"
+msgstr ""
 
 #: src/apps/main/forms.py:15
 msgid "your email"
@@ -65,19 +63,19 @@ msgid ""
 "whether this document is linked in consent checkbox under the contact form"
 msgstr ""
 
-#: src/apps/projects/models.py:80
+#: src/apps/projects/models.py:83
 msgid "If True, this topic would be visible on HomePage."
 msgstr ""
 
-#: src/apps/projects/models.py:99
+#: src/apps/projects/models.py:102
 msgid "Brief name of the project"
 msgstr "Krótka nazwa projektu"
 
-#: src/apps/projects/models.py:180
+#: src/apps/projects/models.py:183
 msgid "Description shown on TeamIndex page."
 msgstr "Opis pokazywany na stronie TeamIndex."
 
-#: src/apps/projects/models.py:184
+#: src/apps/projects/models.py:187
 msgid "More comprehensive description visible on Home Page"
 msgstr "Bardziej wyczerpujący opis widoczny na Home Page"
 
@@ -159,15 +157,15 @@ msgstr "Prototyp i minimalny żywotny produkt"
 msgid "Wdrażanie zwinne"
 msgstr ""
 
-#: src/templates/main/home_page.html:133
+#: src/templates/main/home_page.html:134
 msgid "Initiatives we have started"
 msgstr "Inicjatywy, które sami zapoczątkowaliśmy"
 
-#: src/templates/main/home_page.html:147
+#: src/templates/main/home_page.html:149
 msgid "We worked with"
 msgstr "Pracowaliśmy z"
 
-#: src/templates/main/home_page.html:165
+#: src/templates/main/home_page.html:167
 msgid "It would not work without them"
 msgstr "Bez nich by się nie udało"
 
@@ -207,9 +205,17 @@ msgstr "Podobne projekty"
 msgid "Jak pracujemy"
 msgstr ""
 
-#: src/templates/projects/specialization_page.html:59
-msgid "Projects"
+#: src/templates/projects/specialization_page.html:47
+msgid "Case study"
+msgstr "Studium przypadku"
+
+#: src/templates/projects/specialization_page.html:56
+msgid "Narzędzia"
 msgstr ""
+
+#: src/templates/projects/specialization_page.html:66
+msgid "Projects"
+msgstr "Projekty"
 
 #: src/templates/projects/team_index_page.html:23
 msgid "Who we are?"
