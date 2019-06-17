@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 11:50+0200\n"
+"POT-Creation-Date: 2019-06-17 12:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: src/apps/main/models.py:224
 msgid ""
-"whether this document is linked in consent checkbox uder the contact form"
+"whether this document is linked in consent checkbox under the contact form"
 msgstr ""
 
 #: src/apps/projects/models.py:80
