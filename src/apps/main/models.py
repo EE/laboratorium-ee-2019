@@ -220,9 +220,13 @@ class JobOfferPage(Page):
 class InfoPage(Page):
     """Static content page linked in footer."""
     content = RichTextField()
+    consent_required = models.BooleanField(
+        help_text=_('whether this document is linked in consent checkbox under the contact form'),
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('content'),
+        FieldPanel('consent_required'),
     ]
 
 

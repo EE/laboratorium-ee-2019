@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 09:00+0200\n"
+"POT-Creation-Date: 2019-06-17 12:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/apps/main/forms.py:9
+#: src/apps/main/forms.py:14
+msgid "Adres email"
+msgstr ""
+
+#: src/apps/main/forms.py:15
 msgid "your email"
 msgstr ""
 
-#: src/apps/main/forms.py:10
+#: src/apps/main/forms.py:19
+msgid "Temat"
+msgstr ""
+
+#: src/apps/main/forms.py:20
 msgid "choose subject"
 msgstr ""
 
-#: src/apps/main/forms.py:11
+#: src/apps/main/forms.py:24
+msgid "Wiadomość"
+msgstr ""
+
+#: src/apps/main/forms.py:25
 msgid "how can we help?"
 msgstr ""
 
-#: src/apps/main/forms.py:13
-msgid ""
-"Zapoznałem sie z i akceptuję <a href=\"#\">Regulamin serwisu</a> oraz <a "
-"href=\"#\">Politykę prywatności</a>"
+#: src/apps/main/forms.py:48
+msgid "Zapoznałem się z dokumentami {} i akceptuję ich postanowienia."
 msgstr ""
 
-#: src/apps/main/forms.py:39
+#: src/apps/main/forms.py:72
 msgid "załącznik"
 msgstr ""
 
@@ -44,6 +54,11 @@ msgid ""
 "If True, this article would be visible on HomePage and on top of "
 "NewsIndexPage. Only one article can be marked, so old one will be unmarked "
 "automatically."
+msgstr ""
+
+#: src/apps/main/models.py:224
+msgid ""
+"whether this document is linked in consent checkbox under the contact form"
 msgstr ""
 
 #: src/apps/projects/models.py:80
