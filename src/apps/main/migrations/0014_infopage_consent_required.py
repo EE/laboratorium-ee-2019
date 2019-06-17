@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='infopage',
             name='consent_required',
-            field=models.BooleanField(default=False, help_text='whether this document is linked in consent checkbox uder the contact form'),
+            field=models.BooleanField(default=False, help_text='whether this document is linked in consent checkbox under the contact form'),
             preserve_default=False,
         ),
     ]
