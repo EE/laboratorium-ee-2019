@@ -182,9 +182,11 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediadir')
 MEDIA_URL = '/media/'
 
-
 # GOOGLE ANALYTICS
 GOOGLE_ANALYTICS_ID = env('GOOGLE_ANALYTICS_ID', default='')
+
+# hotjar
+HOTJAR_ID = None
 
 # SENTRY
 SENTRY_DSN = env.str('SENTRY_DSN', default=None)
@@ -196,6 +198,7 @@ FACEBOOK_PIXEL_ID = None
 TEMPLATE_VISIBLE_SETTINGS = [
     'FACEBOOK_PIXEL_ID',
     'GOOGLE_ANALYTICS_ID',
+    'HOTJAR_ID',
     'SENTRY_DSN',
 ]
 
