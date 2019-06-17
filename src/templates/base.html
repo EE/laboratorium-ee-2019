@@ -3,6 +3,7 @@
 {% load render_bundle from webpack_loader %}
 {% load static %}
 {% load wagtailcore_tags %}
+{% load webpack_static from webpack_loader %}
 
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
@@ -12,7 +13,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{% block meta_description %}{% endblock %}"/>
-  <title>{% block title %}laboratorium-ee-2019{% endblock title %}</title>
+
+    <link rel="icon" type="image/png" href="{% webpack_static 'images/fav_ee.png' %}">
+    <title>{% block title %}{{ request.site.root_page.title }}{% endblock title %}</title>
+
   {% if GOOGLE_ANALYTICS_ID %}
     <!-- Google Analytics -->
     <script>
