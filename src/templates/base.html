@@ -70,13 +70,21 @@
             <div class="container">
                 <div class="columns">
                     <div class="column">
-                        {% blocktrans trimmed %}
-                            Need some help with your <b>project?</b><br>
-                            Looking for interesting <b>investments?</b><br>
-                            Want to change the world with us through <b>technology?</b><br>
-                        {% endblocktrans %}
+                        <p class="subtitle is-uppercase">
+                            {% trans 'Jeżeli' %}
+                        </p>
+                        <p class="is-size-3">
+                            {% blocktrans trimmed %}
+                                Need some help with your <b>project?</b><br>
+                                Looking for interesting <b>investments?</b><br>
+                                Want to change the world with us through <b>technology?</b><br>
+                            {% endblocktrans %}
+                        </p>
                     </div>
                     <div class="column">
+                        <p class="subtitle is-uppercase">
+                            {% trans 'Napisz do nas' %}
+                        </p>
                         {% contact_form %}
                     </div>
                 </div>
