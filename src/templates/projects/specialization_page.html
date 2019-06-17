@@ -36,8 +36,8 @@
 <section class="section">
     <div class="container">
         <p class="subtitle is-3">{% trans 'Jak pracujemy' %}</p>
-        {% for b in page.how_we_work %}
-            {{ b }}
+        {% for block in page.how_we_work %}
+            {{ block }}
         {% endfor %}
     </div>
 </section>
@@ -45,8 +45,8 @@
 <section class="section">
     <div class="container">
         <p class="subtitle is-3">{% trans 'Case study' %}</p>
-        {% for b in page.case_study %}
-            {{ b }}
+        {% for block in page.case_study %}
+            {{ block }}
         {% endfor %}
     </div>
 </section>
@@ -54,8 +54,8 @@
 <section class="section">
     <div class="container">
         <p class="subtitle is-3">{% trans 'Narzędzia' %}</p>
-        {% for b in page.tools %}
-            {{ b }}
+        {% for block in page.tools %}
+            {{ block }}
         {% endfor %}
     </div>
 </section>
