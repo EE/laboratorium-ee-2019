@@ -3,19 +3,52 @@ from django.conf import settings
 from django.core.mail import EmailMessage, BadHeaderError
 from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
+from django.utils.html import escape
+
+from .models import InfoPage
 
 
 class ContactForm(forms.Form):
-    from_email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'placeholder': _('your email')}))
-    subject = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': _('choose subject')}))
-    message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': _('how can we help?')}), required=True)
-    terms_accepted = forms.BooleanField(required=True, label=mark_safe(_(
-        'Zapoznałem sie z i akceptuję <a href="#">Regulamin serwisu</a> oraz <a href="#">Politykę prywatności</a>',
-    )))
+    from_email = forms.EmailField(
+        required=True,
+        label=_('Adres email'),
+        widget=forms.TextInput(attrs={'placeholder': _('your email')}),
+    )
+    subject = forms.CharField(
+        required=True,
+        label=_('Temat'),
+        widget=forms.TextInput(attrs={'placeholder': _('choose subject')}),
+    )
+    message = forms.CharField(
+        required=True,
+        label=_("Wiadomość"),
+        widget=forms.Textarea(attrs={'placeholder': _('how can we help?')}),
+    )
 
     def __init__(self, request, *args, **kwargs):
-        self.request = request
         super().__init__(*args, **kwargs)
+        self.request = request
+
+        # generate consent checkbox based on info pages
+        consents = InfoPage.objects.live().filter(consent_required=True).descendant_of(
+            self.request.site.root_page,
+        )
+        if consents:
+            consents_html = ', '.join([
+                '<a href="{doc_url}" target=\"_blank\">{doc_title}</a>'.format(
+                    doc_url=consent.url,
+                    doc_title=escape(consent.title),
+                )
+                for consent in consents
+            ])
+            self.fields['terms_accepted'] = forms.BooleanField(
+                required=True,
+                label=mark_safe(
+                    _(
+                        "Zapoznałem się z dokumentami {} i akceptuję ich postanowienia."
+                    ).format(consents_html),
+                ),
+            )
 
     def create_email_message(self):
         subject = self.cleaned_data['subject']
