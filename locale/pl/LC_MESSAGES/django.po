@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-14 16:05+0200\n"
+"POT-Creation-Date: 2019-06-17 09:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,11 +68,22 @@ msgstr "Bardziej wyczerpujący opis widoczny na Home Page"
 msgid "Polish"
 msgstr "Polski"
 
-#: src/templates/base.html:73
+#: src/templates/base.html:74
+msgid "Jeżeli"
+msgstr ""
+
+#: src/templates/base.html:77
 msgid ""
 "Need some help with your <b>project?</b><br> Looking for interesting "
 "<b>investments?</b><br> Want to change the world with us through "
 "<b>technology?</b><br>"
+msgstr ""
+"Potrzebujesz pomocy ze swoim <b>projektem?</b><br> Szukasz interesujących "
+"<b>inwestycji?</b><br> Chcesz z nami zmieniać świat przez <b>technologię?</"
+"b><br>"
+
+#: src/templates/base.html:86 src/templates/main/partials/navbar.html:29
+msgid "Napisz do nas"
 msgstr ""
 
 #: src/templates/email_form.html:8
@@ -100,39 +111,46 @@ msgstr "Specjalizacje"
 msgid "Partners"
 msgstr "Partnerzy"
 
-#: src/templates/main/home_page.html:61
+#: src/templates/main/home_page.html:37
+#: src/templates/main/partials/article_card.html:28
+#: src/templates/projects/partials/project_card.html:22
+#: src/templates/projects/partials/specialization_card.html:15
+msgid "Find out more"
+msgstr "Dowiedz się wiecej"
+
+#: src/templates/main/home_page.html:63
 msgid "Działamy w obszarach"
 msgstr ""
 
-#: src/templates/main/home_page.html:77
+#: src/templates/main/home_page.html:79
 msgid "How we create our solutions?"
 msgstr "Jak tworzymy rozwiązania?"
 
-#: src/templates/main/home_page.html:86
+#: src/templates/main/home_page.html:90
 msgid "Needs analysis"
 msgstr "Analiza potrzeb"
 
-#: src/templates/main/home_page.html:95
+#: src/templates/main/home_page.html:101
 msgid "Warsztaty partycypacyjne i Google design sprint"
 msgstr ""
 
-#: src/templates/main/home_page.html:104
+#: src/templates/main/home_page.html:112
 msgid "Prototype &amp; minimum viable product"
 msgstr "Prototyp i minimalny żywotny produkt"
 
-#: src/templates/main/home_page.html:113
+#: src/templates/main/home_page.html:123
 msgid "Wdrażanie zwinne"
 msgstr ""
 
-#: src/templates/main/home_page.html:123
-msgid "Our inititives"
-msgstr "Nasze inicjatywy"
+#: src/templates/main/home_page.html:133
+msgid "Initiatives we have started"
+msgstr "Inicjatywy, które sami zapoczątkowaliśmy"
 
-#: src/templates/main/home_page.html:137
+#: src/templates/main/home_page.html:147
 msgid "We worked with"
 msgstr "Pracowaliśmy z"
 
-#: src/templates/main/home_page.html:155
+#: src/templates/main/home_page.html:165
 msgid "It would not work without them"
 msgstr "Bez nich by się nie udało"
 
@@ -147,15 +165,6 @@ msgstr ""
 #: src/templates/main/news_index_page.html:38
 msgid "No more articles"
 msgstr "Nie ma więcej artykułów"
-
-#: src/templates/main/partials/article_card.html:28
-#: src/templates/projects/partials/project_card.html:22
-msgid "Find out more"
-msgstr "Dowiedz się wiecej"
-
-#: src/templates/main/partials/navbar.html:29
-msgid "Napisz do nas"
-msgstr ""
 
 #: src/templates/projects/project_page.html:42
 msgid "Challenges"
@@ -177,9 +186,13 @@ msgstr ""
 msgid "Similiar projects"
 msgstr "Podobne projekty"
 
-#: src/templates/projects/specialization_card.html:13
-msgid "Check it out!"
-msgstr "Sprawdź to!"
+#: src/templates/projects/specialization_page.html:38
+msgid "Jak pracujemy"
+msgstr ""
+
+#: src/templates/projects/specialization_page.html:59
+msgid "Projects"
+msgstr ""
 
 #: src/templates/projects/team_index_page.html:23
 msgid "Who we are?"
