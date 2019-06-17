@@ -1,6 +1,14 @@
 {% load wagtailimages_tags %}
 
-<div>
-    <h2>{{ value.heading }}</h2>
-    {% image value.image width-200 %}
+<div class="card is-equal-height">
+    <header class="card-title">
+        <p class="card-header-title">
+            {{ value.heading }}
+        </p>
+    </header>
+    <div class="card-image is-small">
+        <figure class="image">
+            {% image value.image original %}
+        </figure>
+    </div>
 </div>

@@ -6,7 +6,9 @@
 @import "fonts";
 
 @import "~bulma/bulma";
-@import "~bulmaswatch/cyborg/overrides";
+// we deliberately don't include bulmaswatch overrides for cyborg theme because they are making bulma less configurable
+// (for example it's impossible to configure global card background color)
+// @import "~bulmaswatch/cyborg/overrides";
 
 .card.is-equal-height {
     display: flex;
@@ -25,3 +27,7 @@
 .has-colors-inverted {
     filter: invert(100%);
 };
+
+.card-image.is-small {
+    padding: 0 35% 0 35%;
+}
