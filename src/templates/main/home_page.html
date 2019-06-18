@@ -18,7 +18,7 @@
 {% block content %}
 
 {% with page.latest_articles.first as article %}
-    {% image article.photo original as background_image %}
+    {% image article.photo max-2560x2048 as background_image %}
     <section class="hero is-fullheight" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
         <div class="hero-head">
             {% navbar %}
