@@ -11,18 +11,18 @@ from .models import InfoPage
 class ContactForm(forms.Form):
     from_email = forms.EmailField(
         required=True,
-        label=_('Adres email'),
+        label='',
         widget=forms.TextInput(attrs={'placeholder': _('your email')}),
     )
     subject = forms.CharField(
         required=True,
-        label=_('Temat'),
+        label='',
         widget=forms.TextInput(attrs={'placeholder': _('choose subject')}),
     )
     message = forms.CharField(
         required=True,
-        label=_("Wiadomość"),
-        widget=forms.Textarea(attrs={'placeholder': _('how can we help?')}),
+        label='',
+        widget=forms.Textarea(attrs={'placeholder': _('how can we help?'), 'rows': 3}),
     )
 
     def __init__(self, request, *args, **kwargs):

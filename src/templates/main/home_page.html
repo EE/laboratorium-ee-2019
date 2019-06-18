@@ -25,12 +25,23 @@
         </div>
         <div class="hero-body">
             <div class="container">
-                <h1 class="title is-1">{{ page.header }}</h1>
-                <div class="is-top-padded">
-                    <p class="subtitle is-6 is-uppercase">{{ article.specialization.title }}</p>
-                    <h3 class="title is-3">{{ article.title }}</h3>
-                    <h6 class="subtitle is-6">{{ article.headline }}</h3>
-                    <a href="{% pageurl article %}" class="button is-outlined is-light is-uppercase is-radiusless">{% trans 'Find out more' %}</a>
+                <div class="columns">
+                    <div class="column is-half">
+                        <h1 class="title is-1 is-size-2-touch has-text-weight-light">{{ page.header }}</h1>
+                        <div class="is-top-padded">
+                            <a class="tag is-black is-uppercase" href="{% pageurl article.specialization %}">{{ article.specialization.title }}</a>
+                            <h3 class="title is-3">{{ article.title }}</h3>
+                            <h6 class="subtitle is-6">{{ article.headline }}</h3>
+                            <a href="{% pageurl article %}" class="button is-outlined is-light is-uppercase is-radiusless">{% trans 'Find out more' %}</a>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+                        <article class="message is-small">
+                            <div class="message-body">
+                                To jest wstępna wersja naszej strony. Sami ją tworzymy, nie mamy fronta na pokładzie, ale Bartek potrzebuje komunikować nową strategię, dlatego ją publikujemy jak najszybciej.
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,9 +49,9 @@
 {% endwith %}
 
 {# blok specjalizacje #}
-<section class="section">
+<section class="section is-medium">
     <div class="container">
-        <h3 class="subtitle is-3">{{ page.specializations_headline }}</h2>
+        <h3 class="subtitle is-section-title">{{ page.specializations_headline }}</h2>
         <div class="columns is-multiline">
             {% for specialization_page in page.specializations.all %}
                 <div class="column is-one-third">
@@ -54,9 +65,9 @@
 {# spis tematów #}
 {% if page.topics %}
     {% image page.topics.all.0.background_image original as background_image %}
-    <section class="section" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
+    <section class="section is-medium" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
         <div class="container">
-            <h1 class="subtitle is-3">{% trans 'Działamy w obszarach' %}</h1>
+            <h1 class="subtitle is-section-title">{% trans 'Działamy w obszarach' %}</h1>
             <div class="columns">
                 <div class="column is-one-quarter buttons">
                     {% for topic in page.topics.all %}
@@ -69,52 +80,60 @@
 {% endif %}
 
 {# Jak powstają nasze rozwiązania? statyczne #}
-<section class="section">
+<section class="section is-medium">
     <div class="container">
-        <h2 class="subtitle is-3">
+        <h2 class="subtitle is-section-title">
             {% trans 'How we create our solutions?' %}
         </h2>
-        <div class="columns is-gapless is-mobile">
+        <div class="columns is-gapless is-mobile has-text-centered">
             <div class="column">
                 <div class="container is-fluid">
-                    <figure class="image is-48x48">
+                    <figure class="image is-48x48 has-margin-auto">
                         <img src="{% webpack_static 'images/ico-lupka.svg' %}"/>
                     </figure>
                 </div>
-                <hr/>
+                <figure class="image is-marginless is-paddingless">
+                    <img src="{% webpack_static 'images/linia.svg' %}"/>
+                </figure>
                 <div class="container is-fluid">
                     <p class="subtitle is-5">{% trans 'Needs analysis' %}</p>
                 </div>
             </div>
             <div class="column">
                 <div class="container is-fluid">
-                    <figure class="image is-48x48">
+                    <figure class="image is-48x48 has-margin-auto">
                         <img src="{% webpack_static 'images/ico-post-it.svg' %}"/>
                     </figure>
                 </div>
-                <hr/>
+                <figure class="image is-marginless is-paddingless">
+                    <img src="{% webpack_static 'images/linia.svg' %}"/>
+                </figure>
                 <div class="container is-fluid">
                     <p class="subtitle is-5">{% trans 'Warsztaty partycypacyjne i Google design sprint' %}</p>
                 </div>
             </div>
             <div class="column">
                 <div class="container is-fluid">
-                    <figure class="image is-48x48">
+                    <figure class="image is-48x48 has-margin-auto">
                         <img src="{% webpack_static 'images/ico-proto.svg' %}"/>
                     </figure>
                 </div>
-                <hr/>
+                <figure class="image is-marginless is-paddingless">
+                    <img src="{% webpack_static 'images/linia.svg' %}"/>
+                </figure>
                 <div class="container is-fluid">
                     <p class="subtitle is-5">{% trans 'Prototype &amp; minimum viable product' %}</p>
                 </div>
             </div>
             <div class="column">
                 <div class="container is-fluid">
-                    <figure class="image is-48x48">
+                    <figure class="image is-48x48 has-margin-auto">
                         <img src="{% webpack_static 'images/ico-agile.svg' %}"/>
                     </figure>
                 </div>
-                <hr class="arrow"/>
+                <figure class="image is-marginless is-paddingless">
+                    <img src="{% webpack_static 'images/linia-str.svg' %}"/>
+                </figure>
                 <div class="container is-fluid">
                     <p class="subtitle is-5">{% trans 'Wdrażanie zwinne' %}</p>
                 </div>
@@ -125,9 +144,9 @@
 
     {# Inicjatywy własne #}
     {% if page.our_initiatives.all %}
-        <section class="section">
+        <section class="section is-medium">
             <div class="container">
-                <h2 class="subtitle is-3">{% trans 'Initiatives we have started' %}</h2>
+                <h2 class="subtitle is-section-title">{% trans 'Initiatives we have started' %}</h2>
                 <div class="columns is-multiline">
                     {% for inititive in page.our_initiatives.all %}
                         <div class="column is-one-third">
@@ -140,9 +159,9 @@
     {% endif %}
 
 {# Współpracowali z nami #}
-<section class="section">
+<section class="section is-medium">
     <div class="container">
-        <h2 class="subtitle is-3">{% trans 'We worked with' %}</h2>
+        <h2 class="subtitle is-section-title">{% trans 'We worked with' %}</h2>
         <div class="columns is-multiline is-vcentered is-mobile">
             {% for logo in page.cooperators_logos.all %}
                 <div class="column is-one-quarter">
@@ -158,9 +177,9 @@
 {# Bez nich by sie nie udało #}
 {% with page.random_team_member as member %}
     {% if member %}
-        <section class="section">
+        <section class="section is-medium">
             <div class="container">
-                <h2 class="subtitle is-3">{% trans 'It would not work without them' %}</h2>
+                <h2 class="subtitle is-section-title">{% trans 'It would not work without them' %}</h2>
                 <div class="columns">
                     <div class="column">
                         <p>
