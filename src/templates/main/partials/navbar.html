@@ -2,7 +2,7 @@
 {% load wagtailcore_tags %}
 {% load webpack_static from webpack_loader %}
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
             <img src="{% webpack_static 'images/logoEE.svg' %}">
@@ -37,13 +37,3 @@
         </div>
     </div>
 </nav>
-
-<section class="navbar">
-    <div class="navbar-item">
-        <div class="container">
-            <p class="is-size-7">
-                (To jest wstępna wersja naszej strony. Sami ją tworzymy, nie mamy fronta na pokładzie, ale Bartek potrzebuje komunikować nową strategię, dlatego ją publikujemy jak najszybciej.)
-            </p>
-        </div>
-    </div>
-</section>

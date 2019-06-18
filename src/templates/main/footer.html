@@ -3,13 +3,16 @@
 {% load webpack_static from webpack_loader %}
 
 <footer class="footer">
+    <div class="container is-bottom-padded">
+        <a class="subtitle" href="/">
+            <img src="{% webpack_static 'images/logoEE.svg' %}" style="height: 2em;">
+        </a>
+    </div>
+
     <div class="container">
 
         <div class="columns">
             <div class="column">
-                <h1 class="subtitle">
-                    <img src="{% webpack_static 'images/logoEE.svg' %}" style="height: 2em;">
-                </h1>
                 <h1 class="subtitle">{% trans 'Contact' %}</h1>
                 <div class="content">
                     {{ footer.contact|richtext }}

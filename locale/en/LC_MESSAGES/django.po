@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 12:23+0200\n"
+"POT-Creation-Date: 2019-06-18 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/apps/main/forms.py:14
-msgid "Adres email"
-msgstr ""
-
 #: src/apps/main/forms.py:15
 msgid "your email"
 msgstr ""
 
-#: src/apps/main/forms.py:19
-msgid "Temat"
-msgstr ""
-
 #: src/apps/main/forms.py:20
 msgid "choose subject"
-msgstr ""
-
-#: src/apps/main/forms.py:24
-msgid "Wiadomość"
 msgstr ""
 
 #: src/apps/main/forms.py:25
@@ -81,18 +69,23 @@ msgstr ""
 msgid "Polish"
 msgstr ""
 
-#: src/templates/base.html:74
+#: src/templates/base.html:92
 msgid "Jeżeli"
 msgstr ""
 
-#: src/templates/base.html:77
-msgid ""
-"Need some help with your <b>project?</b><br> Looking for interesting "
-"<b>investments?</b><br> Want to change the world with us through "
-"<b>technology?</b><br>"
+#: src/templates/base.html:96
+msgid "Need some help with your <b>project?</b>"
 msgstr ""
 
-#: src/templates/base.html:86 src/templates/main/partials/navbar.html:29
+#: src/templates/base.html:99
+msgid "Looking for interesting <b>investments?</b>"
+msgstr ""
+
+#: src/templates/base.html:102
+msgid "Want to change the world with us through <b>technology?</b>"
+msgstr ""
+
+#: src/templates/base.html:108 src/templates/main/partials/navbar.html:34
 msgid "Napisz do nas"
 msgstr ""
 
@@ -101,66 +94,66 @@ msgstr ""
 msgid "send"
 msgstr ""
 
-#: src/templates/main/footer.html:13
+#: src/templates/main/footer.html:16
 msgid "Contact"
 msgstr ""
 
-#: src/templates/main/footer.html:17
+#: src/templates/main/footer.html:20
 msgid "Address"
 msgstr ""
 
-#: src/templates/main/footer.html:31
+#: src/templates/main/footer.html:34
 msgid "How we work?"
 msgstr ""
 
-#: src/templates/main/footer.html:38
+#: src/templates/main/footer.html:41
 msgid "Specializations"
 msgstr ""
 
-#: src/templates/main/footer.html:48
+#: src/templates/main/footer.html:50
 msgid "Partners"
 msgstr ""
 
-#: src/templates/main/home_page.html:37
+#: src/templates/main/home_page.html:35
 #: src/templates/main/partials/article_card.html:28
 #: src/templates/projects/partials/project_card.html:22
-#: src/templates/projects/partials/specialization_card.html:15
+#: src/templates/projects/partials/specialization_card.html:16
 msgid "Find out more"
 msgstr ""
 
-#: src/templates/main/home_page.html:63
+#: src/templates/main/home_page.html:70
 msgid "Działamy w obszarach"
 msgstr ""
 
-#: src/templates/main/home_page.html:79
+#: src/templates/main/home_page.html:86
 msgid "How we create our solutions?"
 msgstr ""
 
-#: src/templates/main/home_page.html:90
+#: src/templates/main/home_page.html:99
 msgid "Needs analysis"
 msgstr ""
 
-#: src/templates/main/home_page.html:101
+#: src/templates/main/home_page.html:112
 msgid "Warsztaty partycypacyjne i Google design sprint"
 msgstr ""
 
-#: src/templates/main/home_page.html:112
+#: src/templates/main/home_page.html:125
 msgid "Prototype &amp; minimum viable product"
 msgstr ""
 
-#: src/templates/main/home_page.html:123
+#: src/templates/main/home_page.html:138
 msgid "Wdrażanie zwinne"
 msgstr ""
 
-#: src/templates/main/home_page.html:134
+#: src/templates/main/home_page.html:149
 msgid "Initiatives we have started"
 msgstr ""
 
-#: src/templates/main/home_page.html:149
+#: src/templates/main/home_page.html:164
 msgid "We worked with"
 msgstr ""
 
-#: src/templates/main/home_page.html:167
+#: src/templates/main/home_page.html:182
 msgid "It would not work without them"
 msgstr ""
 

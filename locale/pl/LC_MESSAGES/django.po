@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 12:23+0200\n"
+"POT-Creation-Date: 2019-06-18 16:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,25 +19,13 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: src/apps/main/forms.py:14
-msgid "Adres email"
-msgstr ""
-
 #: src/apps/main/forms.py:15
 msgid "your email"
 msgstr "twój adres email"
 
-#: src/apps/main/forms.py:19
-msgid "Temat"
-msgstr ""
-
 #: src/apps/main/forms.py:20
 msgid "choose subject"
 msgstr "wybierz temat"
-
-#: src/apps/main/forms.py:24
-msgid "Wiadomość"
-msgstr ""
 
 #: src/apps/main/forms.py:25
 msgid "how can we help?"
@@ -83,21 +71,23 @@ msgstr "Bardziej wyczerpujący opis widoczny na Home Page"
 msgid "Polish"
 msgstr "Polski"
 
-#: src/templates/base.html:74
+#: src/templates/base.html:92
 msgid "Jeżeli"
 msgstr ""
 
-#: src/templates/base.html:77
-msgid ""
-"Need some help with your <b>project?</b><br> Looking for interesting "
-"<b>investments?</b><br> Want to change the world with us through "
-"<b>technology?</b><br>"
-msgstr ""
-"Potrzebujesz pomocy ze swoim <b>projektem?</b><br> Szukasz interesujących "
-"<b>inwestycji?</b><br> Chcesz z nami zmieniać świat przez <b>technologię?</"
-"b><br>"
+#: src/templates/base.html:96
+msgid "Need some help with your <b>project?</b>"
+msgstr "Potrzebujesz pomocy ze swoim <b>projektem?</b>"
 
-#: src/templates/base.html:86 src/templates/main/partials/navbar.html:29
+#: src/templates/base.html:99
+msgid "Looking for interesting <b>investments?</b>"
+msgstr "Szukasz interesujących <b>inwestycji?</b>"
+
+#: src/templates/base.html:102
+msgid "Want to change the world with us through <b>technology?</b>"
+msgstr "Chcesz z nami zmieniać świat przez <b>technologię?</b>"
+
+#: src/templates/base.html:108 src/templates/main/partials/navbar.html:34
 msgid "Napisz do nas"
 msgstr ""
 
@@ -106,66 +96,66 @@ msgstr ""
 msgid "send"
 msgstr "wyślij"
 
-#: src/templates/main/footer.html:13
+#: src/templates/main/footer.html:16
 msgid "Contact"
 msgstr "Kontakt"
 
-#: src/templates/main/footer.html:17
+#: src/templates/main/footer.html:20
 msgid "Address"
 msgstr "Adres"
 
-#: src/templates/main/footer.html:31
+#: src/templates/main/footer.html:34
 msgid "How we work?"
 msgstr "Jak pracujemy"
 
-#: src/templates/main/footer.html:38
+#: src/templates/main/footer.html:41
 msgid "Specializations"
 msgstr "Specjalizacje"
 
-#: src/templates/main/footer.html:48
+#: src/templates/main/footer.html:50
 msgid "Partners"
 msgstr "Partnerzy"
 
-#: src/templates/main/home_page.html:37
+#: src/templates/main/home_page.html:35
 #: src/templates/main/partials/article_card.html:28
 #: src/templates/projects/partials/project_card.html:22
-#: src/templates/projects/partials/specialization_card.html:15
+#: src/templates/projects/partials/specialization_card.html:16
 msgid "Find out more"
-msgstr "Dowiedz się wiecej"
+msgstr "Dowiedz się więcej"
 
-#: src/templates/main/home_page.html:63
+#: src/templates/main/home_page.html:70
 msgid "Działamy w obszarach"
 msgstr ""
 
-#: src/templates/main/home_page.html:79
+#: src/templates/main/home_page.html:86
 msgid "How we create our solutions?"
 msgstr "Jak tworzymy rozwiązania?"
 
-#: src/templates/main/home_page.html:90
+#: src/templates/main/home_page.html:99
 msgid "Needs analysis"
 msgstr "Analiza potrzeb"
 
-#: src/templates/main/home_page.html:101
+#: src/templates/main/home_page.html:112
 msgid "Warsztaty partycypacyjne i Google design sprint"
 msgstr ""
 
-#: src/templates/main/home_page.html:112
+#: src/templates/main/home_page.html:125
 msgid "Prototype &amp; minimum viable product"
 msgstr "Prototyp i minimalny żywotny produkt"
 
-#: src/templates/main/home_page.html:123
+#: src/templates/main/home_page.html:138
 msgid "Wdrażanie zwinne"
 msgstr ""
 
-#: src/templates/main/home_page.html:134
+#: src/templates/main/home_page.html:149
 msgid "Initiatives we have started"
 msgstr "Inicjatywy, które sami zapoczątkowaliśmy"
 
-#: src/templates/main/home_page.html:149
+#: src/templates/main/home_page.html:164
 msgid "We worked with"
 msgstr "Pracowaliśmy z"
 
-#: src/templates/main/home_page.html:167
+#: src/templates/main/home_page.html:182
 msgid "It would not work without them"
 msgstr "Bez nich by się nie udało"
 
