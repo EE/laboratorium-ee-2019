@@ -26,7 +26,7 @@ class SpecializationIndexPage(Page):
 
 
 class SpecializationPage(Page):
-    short_description = models.TextField()
+    short_description = RichTextField()
     background_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
