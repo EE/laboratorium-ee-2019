@@ -20,7 +20,7 @@
 
 {% block content %}
 
-{% image page.background_image original as background_image %}
+{% image page.background_image max-2560x2048 as background_image %}
 <section class="hero is-fullheight" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
     <div class="hero-head">
         {% navbar %}
