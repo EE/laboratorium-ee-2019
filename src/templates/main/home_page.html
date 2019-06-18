@@ -143,10 +143,10 @@
 <section class="section">
     <div class="container">
         <h2 class="subtitle is-3">{% trans 'We worked with' %}</h2>
-        <div class="columns is-multiline">
+        <div class="columns is-multiline is-vcentered is-mobile">
             {% for logo in page.cooperators_logos.all %}
                 <div class="column is-one-quarter">
-                    <figure class="image">
+                    <figure class="image is-small">
                         {% image logo.image original %}
                     </figure>
                 </div>
