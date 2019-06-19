@@ -1,37 +1,51 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
+{% load main_tags %}
+{% load wagtailimages_tags %}
 {% load wagtailcore_tags %}
 
 {% block title %}
 {{ page.title }} - {{ block.super }}
 {% endblock title %}
 
+{% block navbar %}
+    {# navbar is displayed in hero-head #}
+{% endblock %}
+
 {% block content %}
 
-<section class="hero">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
-                {{ page.title }}
-            </h1>
-        </div>
-    </div>
-</section>
-
-{% if top_article %}
-    <section class="section">
-        <div class="container">
-            {% include 'main/partials/article_card.html' with article=top_article %}
-        </div>
-    </section>
-{% endif %}
+    {% if top_article %}
+        {% image top_article.photo max-2560x2048 as hero_background %}
+        <section class="hero" style="background: url('{{ hero_background.url }}') center center; background-size: cover;">
+            <div class="hero-head">
+                {% navbar %}
+            </div>
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column is-half">
+                            <span class="tag is-black is-uppercase">
+                                Wyróżnione
+                            </span>
+                            <h1 class="title is-2">
+                                {{ top_article.title }}
+                            </h1>
+                            <a href="{% pageurl top_article %}" class="button is-outlined is-light is-uppercase is-radiusless">
+                                {% trans 'Find out more' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
 
 <section class="section">
     <div class="container">
         <div class="columns is-multiline">
             {% for article in rest_of_articles %}
-                <div class="column is-one-third">
+                <div class="column is-half-tablet is-one-third-widescreen">
                     {% include 'main/partials/article_card.html' with article=article %}
                 </div>
             {% empty %}

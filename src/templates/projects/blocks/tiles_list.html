@@ -1,8 +1,8 @@
 {% load wagtailcore_tags %}
 
-<div class="columns">
+<div class="columns is-gapless is-mobile has-text-centered is-multiline">
     {% for item in value %}
-        <div class="column">
+        <div class="column is-4">
             {% include_block item %}
         </div>
     {% endfor %}

@@ -4,14 +4,21 @@
 
 <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-            <img src="{% webpack_static 'images/logoEE.svg' %}">
-        </a>
-        <div class="navbar-item">
-                <a class="tag is-warning" href="/aktualności/strona-v1">
-                    v1.0
+        <div class="columns is-vcentered is-marginless is-paddingless is-gapless">
+            <div class="column is-marginless is-paddingless is-narrow">
+                <a class="navbar-item" href="/">
+                    <img src="{% webpack_static 'images/logoEE.svg' %}">
                 </a>
             </div>
+            <div class="column is-marginless is-paddingless">
+                <article class="message is-small" style="background: transparent;">
+                    <div class="message-body">
+                        To jest wersja <span class="tag is-warning">v1.0</span>.
+                        Ulepszamy ją iteracyjne.
+                    </div>
+                </article>
+            </div>
+        </div>
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="ee-navbar">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>

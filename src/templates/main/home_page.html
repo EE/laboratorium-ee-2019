@@ -35,13 +35,6 @@
                             <a href="{% pageurl article %}" class="button is-outlined is-light is-uppercase is-radiusless">{% trans 'Find out more' %}</a>
                         </div>
                     </div>
-                    <div class="column is-half">
-                        <article class="message is-small">
-                            <div class="message-body">
-                                To jest wstępna wersja naszej strony. Sami ją tworzymy, nie mamy fronta na pokładzie, ale Bartek potrzebuje komunikować nową strategię, dlatego ją publikujemy jak najszybciej.
-                            </div>
-                        </article>
-                    </div>
                 </div>
             </div>
         </div>
@@ -92,9 +85,7 @@
                         <img src="{% webpack_static 'images/ico-lupka.svg' %}"/>
                     </figure>
                 </div>
-                <figure class="image is-marginless is-paddingless">
-                    <img src="{% webpack_static 'images/linia.svg' %}"/>
-                </figure>
+                {% include 'main/partials/horizontal_line.html' %}
                 <div class="container is-fluid">
                     <p class="subtitle is-5">{% trans 'Needs analysis' %}</p>
                 </div>
@@ -105,11 +96,9 @@
                         <img src="{% webpack_static 'images/ico-post-it.svg' %}"/>
                     </figure>
                 </div>
-                <figure class="image is-marginless is-paddingless">
-                    <img src="{% webpack_static 'images/linia.svg' %}"/>
-                </figure>
+                {% include 'main/partials/horizontal_line.html' %}
                 <div class="container is-fluid">
-                    <p class="subtitle is-5">{% trans 'Warsztaty partycypacyjne i Google design sprint' %}</p>
+                    <p class="subtitle is-5">{% trans 'Warsztaty wydobywcze / partycypacyjne' %}</p>
                 </div>
             </div>
             <div class="column">
@@ -118,11 +107,9 @@
                         <img src="{% webpack_static 'images/ico-proto.svg' %}"/>
                     </figure>
                 </div>
-                <figure class="image is-marginless is-paddingless">
-                    <img src="{% webpack_static 'images/linia.svg' %}"/>
-                </figure>
+                {% include 'main/partials/horizontal_line.html' %}
                 <div class="container is-fluid">
-                    <p class="subtitle is-5">{% trans 'Prototype &amp; minimum viable product' %}</p>
+                    <p class="subtitle is-5">{% trans 'Prototyp i testy użyteczności' %}</p>
                 </div>
             </div>
             <div class="column">
@@ -135,7 +122,7 @@
                     <img src="{% webpack_static 'images/linia-str.svg' %}"/>
                 </figure>
                 <div class="container is-fluid">
-                    <p class="subtitle is-5">{% trans 'Wdrażanie zwinne' %}</p>
+                    <p class="subtitle is-5">{% trans 'Wdrożenie i rozwój iteracyjny rozwiązania' %}</p>
                 </div>
             </div>
         </div>
