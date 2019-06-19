@@ -1,6 +1,6 @@
 $family-sans-serif: "Noyh", sans-serif;
 $navbar-item-img-max-height: 3rem;
-$card-background-color: transparent;
+$card-background-color: rgba(255, 255, 255, 0.1);
 $link: $grey-lighter;
 $label-color: $grey-light;
 $button-border-width: 2px;
@@ -16,6 +16,5 @@ $input-background-color: transparent;
 $input-focus-box-shadow-size: 0 0 0 0;
 $input-hover-color: $grey-light;
 
-
-
-//$body-line-height: 3;
+// content
+$body-line-height: 1.3;
