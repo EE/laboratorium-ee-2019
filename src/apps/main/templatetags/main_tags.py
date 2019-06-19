@@ -27,7 +27,7 @@ def navbar(context):
 
 
 # RODOPass snippet
-@register.inclusion_tag('main/rodopass.html', takes_context=True)
+@register.inclusion_tag('main/partials/rodopass.html', takes_context=True)
 def rodo_pass(context):
     try:
         rodo_pass = context['request'].site.root_page.specific.rodo_pass.get()
@@ -37,7 +37,7 @@ def rodo_pass(context):
 
 
 # Footer
-@register.inclusion_tag('main/footer.html', takes_context=True)
+@register.inclusion_tag('main/partials/footer.html', takes_context=True)
 def footer(context):
     try:
         footer = context['request'].site.root_page.specific.footer.get()

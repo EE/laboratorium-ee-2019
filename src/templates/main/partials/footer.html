@@ -22,6 +22,8 @@
                     {{ footer.address|richtext }}
                 </div>
                 <div class="content">
+                    Strona korzysta z plików cookies.
+                    Szczegóły znajdziesz na podstronach:
                     {% for info_page in footer.page.info_pages %}
                         <div>
                             <a href="{% pageurl info_page %}">{{ info_page.title }}</a>
