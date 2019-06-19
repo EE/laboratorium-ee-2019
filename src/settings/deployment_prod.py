@@ -1,4 +1,4 @@
-"""Settings for prodution server (not deployed yet)."""
+"""Settings for prodution server (deployed at strona-ee-prod.herokuapp.com)."""
 
 # ignore the 'may be undefined, or defined from star imports' error
 # flake8: noqa: F999
@@ -11,7 +11,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from .deployment_prod import *  # noqa
 
 
-ALLOWED_HOSTS = ['laboratorium.ee', 'laboratorium-ee-prod.herokuapp.com']
+ALLOWED_HOSTS = ['laboratorium.ee', 'strona-ee-prod.herokuapp.com']
 
 
 # SENTRY INTEGRATION
