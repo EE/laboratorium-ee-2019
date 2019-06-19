@@ -1,6 +1,6 @@
 from django import forms
 from django.conf import settings
-from django.core.mail import EmailMessage, BadHeaderError
+from django.core.mail import EmailMessage
 from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
 from django.utils.html import escape
