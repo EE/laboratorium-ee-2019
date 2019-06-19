@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                {{ page.title }}
+            </h1>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">
+            {% trans 'Who we are?' %}
+        </h2>
+        <div class="content">
+            {{ page.who_we_are|richtext }}
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">
+            {% trans 'Our values' %}
+        </h2>
+        <div class="content">
+            {{ page.our_values }}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">
+            {% trans 'Team' %}
+        </h2>
+        {% for member in page.team_members.all %}
+            <div>
+                <p>{{ member.name }}</p>
+                <p>{% image member.photo width-150 %}</p>
+                <p>{{ member.short_description }}</p>
+                <p>
+                    {% for tag in member.specializations.all %}
+                        {{ tag }}
+                    {% endfor %}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock content %}

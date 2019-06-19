@@ -1,0 +1,46 @@
+{% load i18n %}
+{% load wagtailcore_tags %}
+{% load webpack_static from webpack_loader %}
+
+<nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <div class="columns is-vcentered is-marginless is-paddingless is-gapless">
+            <div class="column is-marginless is-paddingless is-narrow">
+                <a class="navbar-item" href="/">
+                    <img src="{% webpack_static 'images/logoEE.svg' %}">
+                </a>
+            </div>
+            <div class="column is-marginless is-paddingless">
+                <article class="message is-small" style="background: transparent;">
+                    <div class="message-body">
+                        To jest wersja <span class="tag is-warning">v1.0</span>.
+                        Ulepszamy ją iteracyjnie.
+                    </div>
+                </article>
+            </div>
+        </div>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="ee-navbar">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div id="ee-navbar" class="navbar-menu">
+        <div class="navbar-start">
+        </div>
+        <div class="navbar-end">
+
+            {% for page_in_menu in menus %}
+                <a class="navbar-item is-uppercase" href="{% pageurl page_in_menu %}">
+                    {{ page_in_menu.title }}
+                </a>
+            {% endfor %}
+
+            <div class="navbar-item">
+                <a class="button is-outlined is-light is-uppercase is-radiusless" href="#contact">
+                    {% trans 'Napisz do nas' %}
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

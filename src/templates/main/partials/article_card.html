@@ -1,0 +1,32 @@
+{% load i18n %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<div class="card is-equal-height">
+    <div class="card-image">
+        <figure class="image is-3by1">
+            {% image article.photo fill-2400x800 %}
+        </figure>
+    </div>
+    <div class="card-content">
+        <h4 class="title is-4">{{ article.title }}</h4>
+
+        <p class="subtitle is-6">
+            {{ article.headline }}
+        </p>
+
+        <div class="columns is-vcentered">
+            <div class="column">
+                <a href="{% pageurl article %}" class="button is-outlined is-light is-uppercase is-radiusless">
+                    {% trans 'Find out more' %}
+                </a>
+            </div>
+            <div class="column has-text-right">
+                <time>
+                    {{ article.publication_date|date:"Y-m-d" }}
+                </time>
+            </div>
+        </div>
+    </div>
+</div>
+

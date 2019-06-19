@@ -10,10 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+from django.utils.translation import gettext_lazy as _
 import environ
+import os
 
-BASE_DIR = environ.Path(__file__) - 3
-SRC_DIR = BASE_DIR.path('src')
+BASE_DIR = str(environ.Path(__file__) - 3)
+SRC_DIR = os.path.join(BASE_DIR, 'src')
 env = environ.Env()
 env.read_env()
 
@@ -31,29 +33,60 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[])
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # enable whitenoise static serving for runserver command (for development)
+    'whitenoise.runserver_nostatic',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
-    'compressor_toolkit',
-    'settings_context_processor',
 
+    'webpack_loader',
+    'settings_context_processor',
     'constance',
     'constance.backends.database',
 
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+    'wagtail_modeltranslation',
+    'wagtail_modeltranslation.makemigrations',
+    'wagtail_modeltranslation.migrate',
+
+    'modelcluster',
+    'taggit',
+
+    'bulma',  # for automatic form rendering
+
+    'src.apps.main',
+    'src.apps.projects',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    # serving static using whitenoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'src.urls'
@@ -61,14 +94,15 @@ ROOT_URLCONF = 'src.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(SRC_DIR.path('templates'))],
+        'DIRS': [os.path.join(SRC_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.request',
                 'settings_context_processor.context_processors.settings',
             ],
         },
@@ -82,7 +116,7 @@ WSGI_APPLICATION = 'src.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DJANGO_DATABASE_URL'),
+    'default': env.db('DATABASE_URL'),
 }
 
 
@@ -118,45 +152,71 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('pl', _('Polish')),
+    # temporarily disabled
+    # ('en', _('English')),
+]
+MODELTRANSLATION_LANGUAGES = [
+    'pl',
+    'en',
+]
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = env('STATIC_ROOT', default=str(BASE_DIR.path('staticdir')))
+STATIC_ROOT = env('STATIC_ROOT', default=os.path.join(BASE_DIR, 'staticdir'))
 STATICFILES_DIRS = [
-    str(SRC_DIR.path('static'))
+    os.path.join(SRC_DIR, 'static', 'dist')
 ]
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 ]
 
 
-MEDIA_ROOT = str(BASE_DIR.path('mediadir'))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediadir')
 MEDIA_URL = '/media/'
-
 
 # GOOGLE ANALYTICS
 GOOGLE_ANALYTICS_ID = env('GOOGLE_ANALYTICS_ID', default='')
 
+# hotjar
+HOTJAR_ID = None
+
+# SENTRY
+SENTRY_DSN = env.str('SENTRY_DSN', default=None)
+
+# Facebook pixel
+FACEBOOK_PIXEL_ID = None
+
 # settings-context-processor
 TEMPLATE_VISIBLE_SETTINGS = [
-    'GOOGLE_ANALYTICS_ID'
+    'FACEBOOK_PIXEL_ID',
+    'GOOGLE_ANALYTICS_ID',
+    'HOTJAR_ID',
+    'SENTRY_DSN',
 ]
 
-# django-compressor
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'compressor_toolkit.precompilers.SCSSCompiler'),
-    ('module', 'compressor_toolkit.precompilers.ES6Compiler'),
-)
-
-COMPRESS_LOCAL_NPM_INSTALL = True
+# django-webpack-loader
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, '.webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
+    }
+}
 
 # django-constance
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_CONFIG = {
     'SITE_TITLE': ('laboratorium-ee-2019', 'THE TITLE OF YOUR SITE', str),
 }
+
+WAGTAIL_SITE_NAME = 'Laboratorium EE'

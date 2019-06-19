@@ -1,0 +1,12 @@
+{% load wagtailimages_tags %}
+{% load webpack_static from webpack_loader %}
+
+<div class="container is-fluid">
+    <figure class="image is-96x96 has-margin-auto">
+        {% image value.image original %}
+    </figure>
+</div>
+{% include 'main/partials/horizontal_line.html' %}
+<div class="container is-fluid">
+    <p class="subtitle is-5">{{ value.heading }}</p>
+</div>

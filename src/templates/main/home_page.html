@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load main_tags %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load webpack_static from webpack_loader %}
+
+{% block facebook_pixel_events %}
+    {{ block.super }}
+    fbq('track', 'ViewContent');
+{% endblock %}
+
+{% block navbar %}
+    {# navbar is displayed in hero-head #}
+{% endblock %}
+
+{% block content %}
+
+{% with page.latest_articles.first as article %}
+    {% image article.photo max-2560x2048 as background_image %}
+    <section class="hero is-fullheight" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
+        <div class="hero-head">
+            {% navbar %}
+        </div>
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-half">
+                        <h1 class="title is-1 is-size-2-touch has-text-weight-light">{{ page.header }}</h1>
+                        <div class="is-top-padded">
+                            <a class="tag is-black is-uppercase" href="{% pageurl article.specialization %}">{{ article.specialization.title }}</a>
+                            <h3 class="title is-3">{{ article.title }}</h3>
+                            <h6 class="subtitle is-6">{{ article.headline }}</h3>
+                            <a href="{% pageurl article %}" class="button is-outlined is-light is-uppercase is-radiusless">{% trans 'Find out more' %}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endwith %}
+
+{# blok specjalizacje #}
+<section class="section is-medium">
+    <div class="container">
+        <h3 class="subtitle is-section-title">{{ page.specializations_headline }}</h2>
+        <div class="columns is-multiline">
+            {% for specialization_page in page.specializations.all %}
+                <div class="column is-one-third">
+                    {% include 'projects/partials/specialization_card.html' with specialization_page=specialization_page %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# spis tematów #}
+{% if page.topics %}
+    {% image page.topics.all.0.background_image original as background_image %}
+    <section class="section is-medium" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
+        <div class="container">
+            <h1 class="subtitle is-section-title">{% trans 'Działamy w obszarach' %}</h1>
+            <div class="columns">
+                <div class="column is-one-quarter buttons">
+                    {% for topic in page.topics.all %}
+                        <a href="{% pageurl topic %}" class="button is-outlined is-light is-uppercase is-radiusless is-fullwidth">{{ topic.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{# Jak powstają nasze rozwiązania? statyczne #}
+<section class="section is-medium">
+    <div class="container">
+        <h2 class="subtitle is-section-title">
+            {% trans 'How we create our solutions?' %}
+        </h2>
+        <div class="columns is-gapless is-mobile has-text-centered">
+            <div class="column">
+                <div class="container is-fluid">
+                    <figure class="image is-48x48 has-margin-auto">
+                        <img src="{% webpack_static 'images/ico-lupka.svg' %}"/>
+                    </figure>
+                </div>
+                {% include 'main/partials/horizontal_line.html' %}
+                <div class="container is-fluid">
+                    <p class="subtitle is-5">{% trans 'Needs analysis' %}</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="container is-fluid">
+                    <figure class="image is-48x48 has-margin-auto">
+                        <img src="{% webpack_static 'images/ico-post-it.svg' %}"/>
+                    </figure>
+                </div>
+                {% include 'main/partials/horizontal_line.html' %}
+                <div class="container is-fluid">
+                    <p class="subtitle is-5">{% trans 'Warsztaty wydobywcze / partycypacyjne' %}</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="container is-fluid">
+                    <figure class="image is-48x48 has-margin-auto">
+                        <img src="{% webpack_static 'images/ico-proto.svg' %}"/>
+                    </figure>
+                </div>
+                {% include 'main/partials/horizontal_line.html' %}
+                <div class="container is-fluid">
+                    <p class="subtitle is-5">{% trans 'Prototyp i testy użyteczności' %}</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="container is-fluid">
+                    <figure class="image is-48x48 has-margin-auto">
+                        <img src="{% webpack_static 'images/ico-agile.svg' %}"/>
+                    </figure>
+                </div>
+                <figure class="image is-marginless is-paddingless">
+                    <img src="{% webpack_static 'images/linia-str.svg' %}"/>
+                </figure>
+                <div class="container is-fluid">
+                    <p class="subtitle is-5">{% trans 'Wdrożenie i rozwój iteracyjny rozwiązania' %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    {# Inicjatywy własne #}
+    {% if page.our_initiatives.all %}
+        <section class="section is-medium">
+            <div class="container">
+                <h2 class="subtitle is-section-title">{% trans 'Initiatives we have started' %}</h2>
+                <div class="columns is-multiline">
+                    {% for inititive in page.our_initiatives.all %}
+                        <div class="column is-one-third">
+                            {% include 'projects/partials/project_card.html' with project=inititive %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+{# Współpracowali z nami #}
+<section class="section is-medium">
+    <div class="container">
+        <h2 class="subtitle is-section-title">{% trans 'We worked with' %}</h2>
+        <div class="columns is-multiline is-vcentered is-mobile">
+            {% for logo in page.cooperators_logos.all %}
+                <div class="column is-one-quarter">
+                    <figure class="image is-small">
+                        {% image logo.image original %}
+                    </figure>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# Bez nich by sie nie udało #}
+{% with page.random_team_member as member %}
+    {% if member %}
+        <section class="section is-medium">
+            <div class="container">
+                <h2 class="subtitle is-section-title">{% trans 'It would not work without them' %}</h2>
+                <div class="columns">
+                    <div class="column">
+                        <p>
+                            {{ member.name }}
+                        </p>
+                        <p>
+                            {{ member.long_description }}
+                        </p>
+                    </div>
+                    <div class="column">
+                        <p>
+                            {% image member.photo width-400 %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endwith %}
+
+{% endblock content %}

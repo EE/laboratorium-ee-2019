@@ -1,15 +1,22 @@
-{% load compress %}
+{% load i18n %}
+{% load main_tags %}
+{% load render_bundle from webpack_loader %}
 {% load static %}
+{% load wagtailcore_tags %}
+{% load webpack_static from webpack_loader %}
 
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="{{ LANGUAGE_CODE }}">
 
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{% block meta_description %}{% endblock %}"/>
-  <title>{% block title %}laboratorium-ee-2019{% endblock title %}</title>
+
+    <link rel="icon" type="image/png" href="{% webpack_static 'images/fav_ee.png' %}">
+    <title>{% block title %}{{ request.site.root_page.title }}{% endblock title %}</title>
+
   {% if GOOGLE_ANALYTICS_ID %}
     <!-- Google Analytics -->
     <script>
@@ -23,21 +30,100 @@
     <!-- End Google Analytics -->
   {% endif %}
 
-  {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/main.scss' %}" />
-  {% endcompress %}
+    {% if FACEBOOK_PIXEL_ID %}
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '{{ FACEBOOK_PIXEL_ID }}');
+            {% block facebook_pixel_events %}
+                fbq('track', 'PageView');
+            {% endblock %}
+        </script>
+        <noscript>
+            <img height="1" width="1"
+                src="https://www.facebook.com/tr?id={{ FACEBOOK_PIXEL_ID }}&ev=PageView&noscript=1"/>
+        </noscript>
+        <!-- End Facebook Pixel Code -->
+    {% endif %}
 
-  {% compress js %}
-    <script type="module" src="{% static 'js/main.js' %}"></script>
-  {% endcompress %}
+    {% if HOTJAR_ID %}
+        <!-- Hotjar Tracking Code for laboratorium.ee -->
+        <script>
+           (function(h,o,t,j,a,r){
+               h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+               h._hjSettings={hjid:{{ HOTJAR_ID }},hjsv:6};
+               a=o.getElementsByTagName('head')[0];
+               r=o.createElement('script');r.async=1;
+               r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+               a.appendChild(r);
+           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
+    {% endif %}
 
+  {% render_bundle "vendor" "css" %}
+  {% render_bundle "main" "css" %}
+
+  <script type="text/plain" id="SENTRY_DSN">{{ SENTRY_DSN|default:"" }}</script>
   {% block extrahead %}
   {% endblock extrahead %}
 </head>
 
 <body>
-  {% block content %}
-  {% endblock content %}
+    {% block navbar %}
+        {% navbar %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block contact_form %}
+        <section class="section is-medium" id="contact">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <p class="subtitle is-uppercase has-text-weight-bold">
+                            {% trans 'Jeżeli' %}
+                        </p>
+                        <div class="content">
+                        <p class="is-size-3">
+                                {% trans 'Need some help with your <b>project?</b>' %}
+                        </p>
+                        <p class="is-size-3">
+                                {% trans 'Looking for interesting <b>investments?</b>' %}
+                        </p>
+                        <p class="is-size-3">
+                                {% trans 'Want to change the world with us through <b>technology?</b>' %}
+                        </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <p class="subtitle is-uppercase has-text-weight-bold">
+                            {% trans 'Napisz do nas' %}
+                        </p>
+                        {% contact_form %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock contact_form %}
+
+    {% block rodo_pass %}
+        {% rodo_pass %}
+    {% endblock rodo_pass %}
+
+    {% block footer %}
+        {% footer %}
+    {% endblock footer %}
+
+    {% render_bundle "vendor" "js" %}
+    {% render_bundle "main" "js" %}
 </body>
 
 </html>

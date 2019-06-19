@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django-environ = "==0.4.5"
+django-settings-context-processor = "==0.2"
+"psycopg2" = "*"
+django-picklefield = "==2.0"
+django-constance = "==2.3.1"
+django-webpack-loader = "*"
+Django = "==2.2.*"
+django_compressor = "==2.2"
+gunicorn = "==19.9.0"
+whitenoise = "==4.1.2"
+wagtail = "*"
+wagtail-modeltranslation = "*"
+sentry-sdk = "*"
+django-storages = "*"
+boto3 = "*"
+django-bulma = "*"
+
+[dev-packages]
+"flake8" = "==3.6.0"
+ipdb = "*"
+
+[requires]
+python_version = "3.6"

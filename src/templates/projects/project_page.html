@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load main_tags %}
+
+
+{% block content %}
+
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                {{ page.title }}
+            </h1>
+            <h2 class="subtitle">
+                {{ page.subtitle }}
+            </h2>
+            {% image page.icon width-500 %}
+        </div>
+    </div>
+
+    <div class="hero-foot">
+        <div class="container">
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    {% for metric in page.metrics.all %}
+                        <div>
+                            <p class="heading">{{ metric.property_name }}</p>
+                            <p class="title">{{ metric.value }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">{% trans 'Challenges' %}</h2>
+        <div class="content">
+            {{ page.challenge|richtext }}
+        </div>
+    </div>
+</section>
+
+{# Proces #}
+<section class="section">
+    <div class="container">
+        <h2 class="subtitle">{% trans 'Process' %}</h2>
+        <div>
+            {% for tile in page.process %}
+                <div>{{ tile }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# Cytat #}
+<section class="section">
+    <div class="container">
+        <div class="content">
+            {{ page.quote|richtext }}
+        </div>
+    </div>
+</section>
+
+{# Formularz Kontaktowy #}
+<section class="section" id="contact">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                {% blocktrans trimmed %}
+                    You like this <b>project?</b><br>
+                    Have a similar <b>idea?</b><br>
+                    Looking for some <b>tech support?</b><br>
+                {% endblocktrans %}
+            </div>
+            <div class="column">
+               {% contact_form %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Podobne projekty #}
+{% if page.similar_projects.all %}
+    <section class="section">
+        <div class="container">
+            <h2>{% trans "Similiar projects" %}</h2>
+            <div class="columns is-multiline">
+                {% for project in page.similar_projects.all %}
+                    <div class="column">
+                        {% include 'projects/partials/project_card.html' with project=project %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% endblock content %}
+
+{% block contact_form %}
+    {# formualrz kontaktowy tu wyjątkowo jest wyżej, więc ten block zostawiam pusty #}
+{% endblock %}

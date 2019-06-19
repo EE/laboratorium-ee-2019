@@ -1,0 +1,15 @@
+{% if rodo_pass %}
+    <section class="section">
+        <div class="container">
+            <h2 class="subtitle">
+                <b>{{ rodo_pass.title }}</b>
+            </h2>
+            <div class="content">
+                <p>
+                    {{ rodo_pass.description }}
+                </p>
+            </div>
+            <a href="{{ rodo_pass.url }}" class="button is-outlined is-light is-uppercase is-radiusless">{{ rodo_pass.button_text }}</a>
+        </div>
+    </section>
+{% endif %}

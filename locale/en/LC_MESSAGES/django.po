@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-19 15:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/apps/main/forms.py:15
+msgid "your email"
+msgstr ""
+
+#: src/apps/main/forms.py:20
+msgid "subject"
+msgstr ""
+
+#: src/apps/main/forms.py:25
+msgid "how can we help?"
+msgstr ""
+
+#: src/apps/main/forms.py:48
+msgid "Zapoznałem się z dokumentami {} i akceptuję ich postanowienia."
+msgstr ""
+
+#: src/apps/main/forms.py:68
+msgid "załącznik"
+msgstr ""
+
+#: src/apps/main/models.py:157
+msgid ""
+"If True, this article would be visible on HomePage and on top of "
+"NewsIndexPage. Only one article can be marked, so old one will be unmarked "
+"automatically."
+msgstr ""
+
+#: src/apps/main/models.py:224
+msgid ""
+"whether this document is linked in consent checkbox under the contact form"
+msgstr ""
+
+#: src/apps/projects/models.py:83
+msgid "If True, this topic would be visible on HomePage."
+msgstr ""
+
+#: src/apps/projects/models.py:102
+msgid "Brief name of the project"
+msgstr ""
+
+#: src/apps/projects/models.py:183
+msgid "Description shown on TeamIndex page."
+msgstr ""
+
+#: src/apps/projects/models.py:187
+msgid "More comprehensive description visible on Home Page"
+msgstr ""
+
+#: src/settings/base.py:156
+msgid "Polish"
+msgstr ""
+
+#: src/templates/base.html:92
+msgid "Jeżeli"
+msgstr ""
+
+#: src/templates/base.html:96
+msgid "Need some help with your <b>project?</b>"
+msgstr ""
+
+#: src/templates/base.html:99
+msgid "Looking for interesting <b>investments?</b>"
+msgstr ""
+
+#: src/templates/base.html:102
+msgid "Want to change the world with us through <b>technology?</b>"
+msgstr ""
+
+#: src/templates/base.html:108 src/templates/main/partials/navbar.html:41
+msgid "Napisz do nas"
+msgstr ""
+
+#: src/templates/email_form.html:8
+#: src/templates/email_with_attachment_form.html:8
+msgid "send"
+msgstr ""
+
+#: src/templates/main/home_page.html:35
+#: src/templates/main/news_index_page.html:35
+#: src/templates/main/partials/article_card.html:21
+#: src/templates/projects/partials/project_card.html:22
+#: src/templates/projects/partials/specialization_card.html:16
+msgid "Find out more"
+msgstr ""
+
+#: src/templates/main/home_page.html:63
+msgid "Działamy w obszarach"
+msgstr ""
+
+#: src/templates/main/home_page.html:79
+msgid "How we create our solutions?"
+msgstr ""
+
+#: src/templates/main/home_page.html:90
+msgid "Needs analysis"
+msgstr ""
+
+#: src/templates/main/home_page.html:101
+msgid "Warsztaty wydobywcze / partycypacyjne"
+msgstr ""
+
+#: src/templates/main/home_page.html:112
+msgid "Prototyp i testy użyteczności"
+msgstr ""
+
+#: src/templates/main/home_page.html:125
+msgid "Wdrożenie i rozwój iteracyjny rozwiązania"
+msgstr ""
+
+#: src/templates/main/home_page.html:136
+msgid "Initiatives we have started"
+msgstr ""
+
+#: src/templates/main/home_page.html:151
+msgid "We worked with"
+msgstr ""
+
+#: src/templates/main/home_page.html:169
+msgid "It would not work without them"
+msgstr ""
+
+#: src/templates/main/job_offer_page.html:7
+msgid "Oferty Pracy"
+msgstr ""
+
+#: src/templates/main/job_offer_page.html:19
+msgid "Aplikuj"
+msgstr ""
+
+#: src/templates/main/news_index_page.html:52
+msgid "No more articles"
+msgstr ""
+
+#: src/templates/main/partials/footer.html:16
+msgid "Contact"
+msgstr ""
+
+#: src/templates/main/partials/footer.html:20
+msgid "Address"
+msgstr ""
+
+#: src/templates/main/partials/footer.html:36
+msgid "How we work?"
+msgstr ""
+
+#: src/templates/main/partials/footer.html:43
+msgid "Specializations"
+msgstr ""
+
+#: src/templates/main/partials/footer.html:52
+msgid "Partners"
+msgstr ""
+
+#: src/templates/projects/project_page.html:42
+msgid "Challenges"
+msgstr ""
+
+#: src/templates/projects/project_page.html:52
+msgid "Process"
+msgstr ""
+
+#: src/templates/projects/project_page.html:75
+msgid ""
+"You like this <b>project?</b><br> Have a similar <b>idea?</b><br> Looking "
+"for some <b>tech support?</b><br>"
+msgstr ""
+
+#: src/templates/projects/project_page.html:92
+msgid "Similiar projects"
+msgstr ""
+
+#: src/templates/projects/specialization_page.html:41
+msgid "Jak pracujemy"
+msgstr ""
+
+#: src/templates/projects/specialization_page.html:52
+msgid "Case study"
+msgstr ""
+
+#: src/templates/projects/specialization_page.html:63
+msgid "Narzędzia"
+msgstr ""
+
+#: src/templates/projects/specialization_page.html:78
+msgid "Projects"
+msgstr ""
+
+#: src/templates/projects/team_index_page.html:23
+msgid "Who we are?"
+msgstr ""
+
+#: src/templates/projects/team_index_page.html:35
+msgid "Our values"
+msgstr ""
+
+#: src/templates/projects/team_index_page.html:46
+msgid "Team"
+msgstr ""

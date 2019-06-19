@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load main_tags %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block title %}
+{{ page.title }} - {{ block.super }}
+{% endblock title %}
+
+{% block facebook_pixel_events %}
+    {{ block.super }}
+    fbq('track', 'ViewContent');
+{% endblock %}
+
+{% block navbar %}
+    {# navbar is displayed in hero-head #}
+{% endblock %}
+
+{% block content %}
+
+{% image page.background_image max-2560x2048 as background_image %}
+<section class="hero is-fullheight" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
+    <div class="hero-head">
+        {% navbar %}
+    </div>
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title is-2">
+                {{ page.title }}
+            </h1>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="content">
+            {{ page.content|richtext }}
+        </div>
+    </div>
+</section>
+{% endblock content %}
