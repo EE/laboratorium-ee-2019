@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 16:25+0200\n"
+"POT-Creation-Date: 2019-06-19 15:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgid "your email"
 msgstr "twój adres email"
 
 #: src/apps/main/forms.py:20
-msgid "choose subject"
-msgstr "wybierz temat"
+msgid "subject"
+msgstr "temat"
 
 #: src/apps/main/forms.py:25
 msgid "how can we help?"
@@ -35,7 +35,7 @@ msgstr "jak możemy pomóc?"
 msgid "Zapoznałem się z dokumentami {} i akceptuję ich postanowienia."
 msgstr ""
 
-#: src/apps/main/forms.py:72
+#: src/apps/main/forms.py:68
 msgid "załącznik"
 msgstr ""
 
@@ -87,7 +87,7 @@ msgstr "Szukasz interesujących <b>inwestycji?</b>"
 msgid "Want to change the world with us through <b>technology?</b>"
 msgstr "Chcesz z nami zmieniać świat przez <b>technologię?</b>"
 
-#: src/templates/base.html:108 src/templates/main/partials/navbar.html:34
+#: src/templates/base.html:108 src/templates/main/partials/navbar.html:41
 msgid "Napisz do nas"
 msgstr ""
 
@@ -96,66 +96,47 @@ msgstr ""
 msgid "send"
 msgstr "wyślij"
 
-#: src/templates/main/footer.html:16
-msgid "Contact"
-msgstr "Kontakt"
-
-#: src/templates/main/footer.html:20
-msgid "Address"
-msgstr "Adres"
-
-#: src/templates/main/footer.html:34
-msgid "How we work?"
-msgstr "Jak pracujemy"
-
-#: src/templates/main/footer.html:41
-msgid "Specializations"
-msgstr "Specjalizacje"
-
-#: src/templates/main/footer.html:50
-msgid "Partners"
-msgstr "Partnerzy"
-
 #: src/templates/main/home_page.html:35
-#: src/templates/main/partials/article_card.html:28
+#: src/templates/main/news_index_page.html:35
+#: src/templates/main/partials/article_card.html:21
 #: src/templates/projects/partials/project_card.html:22
 #: src/templates/projects/partials/specialization_card.html:16
 msgid "Find out more"
 msgstr "Dowiedz się więcej"
 
-#: src/templates/main/home_page.html:70
+#: src/templates/main/home_page.html:63
 msgid "Działamy w obszarach"
 msgstr ""
 
-#: src/templates/main/home_page.html:86
+#: src/templates/main/home_page.html:79
 msgid "How we create our solutions?"
 msgstr "Jak tworzymy rozwiązania?"
 
-#: src/templates/main/home_page.html:99
+#: src/templates/main/home_page.html:90
 msgid "Needs analysis"
 msgstr "Analiza potrzeb"
 
+#: src/templates/main/home_page.html:101
+msgid "Warsztaty wydobywcze / partycypacyjne"
+msgstr ""
+
 #: src/templates/main/home_page.html:112
-msgid "Warsztaty partycypacyjne i Google design sprint"
+msgid "Prototyp i testy użyteczności"
 msgstr ""
 
 #: src/templates/main/home_page.html:125
-msgid "Prototype &amp; minimum viable product"
-msgstr "Prototyp i minimalny żywotny produkt"
-
-#: src/templates/main/home_page.html:138
-msgid "Wdrażanie zwinne"
+msgid "Wdrożenie i rozwój iteracyjny rozwiązania"
 msgstr ""
 
-#: src/templates/main/home_page.html:149
+#: src/templates/main/home_page.html:136
 msgid "Initiatives we have started"
 msgstr "Inicjatywy, które sami zapoczątkowaliśmy"
 
-#: src/templates/main/home_page.html:164
+#: src/templates/main/home_page.html:151
 msgid "We worked with"
 msgstr "Pracowaliśmy z"
 
-#: src/templates/main/home_page.html:182
+#: src/templates/main/home_page.html:169
 msgid "It would not work without them"
 msgstr "Bez nich by się nie udało"
 
@@ -167,9 +148,29 @@ msgstr ""
 msgid "Aplikuj"
 msgstr ""
 
-#: src/templates/main/news_index_page.html:38
+#: src/templates/main/news_index_page.html:52
 msgid "No more articles"
 msgstr "Nie ma więcej artykułów"
+
+#: src/templates/main/partials/footer.html:16
+msgid "Contact"
+msgstr "Kontakt"
+
+#: src/templates/main/partials/footer.html:20
+msgid "Address"
+msgstr "Adres"
+
+#: src/templates/main/partials/footer.html:36
+msgid "How we work?"
+msgstr "Jak pracujemy"
+
+#: src/templates/main/partials/footer.html:43
+msgid "Specializations"
+msgstr "Specjalizacje"
+
+#: src/templates/main/partials/footer.html:52
+msgid "Partners"
+msgstr "Partnerzy"
 
 #: src/templates/projects/project_page.html:42
 msgid "Challenges"
@@ -191,19 +192,19 @@ msgstr ""
 msgid "Similiar projects"
 msgstr "Podobne projekty"
 
-#: src/templates/projects/specialization_page.html:38
+#: src/templates/projects/specialization_page.html:41
 msgid "Jak pracujemy"
 msgstr ""
 
-#: src/templates/projects/specialization_page.html:47
+#: src/templates/projects/specialization_page.html:52
 msgid "Case study"
 msgstr "Studium przypadku"
 
-#: src/templates/projects/specialization_page.html:56
+#: src/templates/projects/specialization_page.html:63
 msgid "Narzędzia"
 msgstr ""
 
-#: src/templates/projects/specialization_page.html:66
+#: src/templates/projects/specialization_page.html:78
 msgid "Projects"
 msgstr "Projekty"
 

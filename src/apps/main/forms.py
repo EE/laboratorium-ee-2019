@@ -1,6 +1,6 @@
 from django import forms
 from django.conf import settings
-from django.core.mail import EmailMessage, BadHeaderError
+from django.core.mail import EmailMessage
 from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
 from django.utils.html import escape
@@ -17,7 +17,7 @@ class ContactForm(forms.Form):
     subject = forms.CharField(
         required=True,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': _('choose subject')}),
+        widget=forms.TextInput(attrs={'placeholder': _('subject')}),
     )
     message = forms.CharField(
         required=True,
@@ -61,11 +61,7 @@ class ContactForm(forms.Form):
 
     def send_mail(self):
         email = self.create_email_message()
-        try:
-            email.send()
-        except BadHeaderError:
-            return {'success': False, 'message': 'Invalid header found.'}
-        return {'success': True}
+        email.send()
 
 
 class AttachmentContactForm(ContactForm):

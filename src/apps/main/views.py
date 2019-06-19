@@ -1,13 +1,12 @@
-from django.http import HttpResponse
 from django.urls import reverse
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 
 from src.apps.main.forms import ContactForm, AttachmentContactForm
 
 
 class SendMailView(FormView):
     form_class = ContactForm
-    template_name = 'email_form.html'
+    template_name = 'main/send_mail.html'
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -15,19 +14,17 @@ class SendMailView(FormView):
         return kwargs
 
     def form_valid(self, form):
-        response = form.send_mail()
-        if not response.get('success'):
-            return HttpResponse(f"Could not send email. Reason: {response.get('message')}")
+        form.send_mail()
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('thanks')
+        return reverse('send_mail_done')
 
 
 class SendMailWithAttachmentView(SendMailView):
     form_class = AttachmentContactForm
-    template_name = 'email_with_attachment_form.html'
+    template_name = 'main/send_mail_with_attachment.html'
 
 
-def thanks(request):
-    return HttpResponse('Thank you for your message.')
+class SendMailSuccessView(TemplateView):
+    template_name = "main/send_mail_done.html"
