@@ -41,7 +41,7 @@ $arbitrary-padding-value: 2.5rem;
     padding-bottom: 10%;
 }
 
-.has-margin-auto {
+figure.has-margin-auto {
     margin: auto;
 }
 
@@ -85,4 +85,12 @@ $arbitrary-padding-value: 2.5rem;
 
 .input, .textarea {
     border-width: 0 0 2px 0;
+}
+
+.has-background-transparent {
+    background-color: transparent;
+}
+
+hr {
+    background-color: white;
 }

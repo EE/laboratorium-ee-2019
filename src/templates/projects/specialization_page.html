@@ -33,37 +33,49 @@
         </div>
     </section>
 
-<section class="section">
-    <div class="container">
-        <p class="subtitle is-3">{% trans 'Jak pracujemy' %}</p>
-        {% for block in page.how_we_work %}
-            {{ block }}
-        {% endfor %}
-    </div>
-</section>
+    <div class="columns is-centered">
+        <div class="column is-half">
 
-<section class="section">
-    <div class="container">
-        <p class="subtitle is-3">{% trans 'Case study' %}</p>
-        {% for block in page.case_study %}
-            {{ block }}
-        {% endfor %}
-    </div>
-</section>
+            <section class="section is-medium">
+                <div class="container">
+                    <p class="subtitle is-section-title">{% trans 'Jak pracujemy' %}</p>
+                    <div class="content">
+                        {% for block in page.how_we_work %}
+                            {{ block }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
 
-<section class="section">
-    <div class="container">
-        <p class="subtitle is-3">{% trans 'Narzędzia' %}</p>
-        {% for block in page.tools %}
-            {{ block }}
-        {% endfor %}
+            <section class="section is-medium">
+                <div class="container">
+                    <p class="subtitle is-section-title">{% trans 'Case study' %}</p>
+                    <div class="content">
+                        {% for block in page.case_study %}
+                            {{ block }}
+                        {% endfor %}
+                    <div class="content">
+                </div>
+            </section>
+
+            <section class="section is-medium">
+                <div class="container">
+                    <p class="subtitle is-section-title">{% trans 'Narzędzia' %}</p>
+                    <div class="content">
+                        {% for block in page.tools %}
+                            {{ block }}
+                        {% endfor %}
+                    <div class="content">
+                </div>
+            </section>
+
+        </div>
     </div>
-</section>
 
     {% if page.projects.all %}
-        <section class="section">
+        <section class="section is-medium">
             <div class="container">
-                <h2 class="subtitle is-3">{% trans 'Projects' %}</h2>
+                <h2 class="subtitle is-section-title">{% trans 'Projects' %}</h2>
                 <div class="columns is-multiline">
                     {% for project in page.projects.all %}
                         <div class="column is-one-third">
