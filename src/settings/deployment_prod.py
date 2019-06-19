@@ -11,7 +11,11 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from .deployment_prod import *  # noqa
 
 
-ALLOWED_HOSTS = ['laboratorium.ee', 'strona-ee-prod.herokuapp.com']
+ALLOWED_HOSTS = [
+    'laboratorium.ee',
+    'www.laboratorium.ee',
+    'strona-ee-prod.herokuapp.com',
+]
 
 
 # SENTRY INTEGRATION
