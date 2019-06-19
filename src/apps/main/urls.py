@@ -15,7 +15,7 @@ urlpatterns = [
     ),
     url(
         r'^thanks/$',
-        views.thanks,
-        name='thanks'
+        views.SendMailSuccessView.as_view(),
+        name='send_mail_done',
     ),
 ]

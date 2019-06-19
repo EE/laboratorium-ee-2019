@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load main_tags %}
+
+{% block contact_form %}
+    <section class="section is-medium" id="contact">
+        <div class="container">
+            {% contact_form_with_attachment %}
+        </div>
+    </section>
+{% endblock %}
