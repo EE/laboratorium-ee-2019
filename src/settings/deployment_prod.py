@@ -28,7 +28,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # mediafiles on AWS S3
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = 'TODO'
+AWS_ACCESS_KEY_ID = 'AKIAZ64OAD7G5NBWB6PF'
 AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'strona-ee-prod'
 AWS_DEFAULT_ACL = 'public-read'
