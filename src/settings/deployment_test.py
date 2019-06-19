@@ -22,29 +22,12 @@ sentry_sdk.init(
 )
 
 
-# staticfile serving
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
 # mediafiles on AWS S3
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = 'AKIAZ64OAD7GVKVUGVEY'
-AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'strona-ee-test'
-AWS_DEFAULT_ACL = 'public-read'
-AWS_BUCKET_ACL = 'public-read'
-AWS_QUERYSTRING_AUTH = False
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
 
 
 # AWS email
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'email-smtp.eu-west-1.amazonaws.com'
-EMAIL_HOST_USER = 'AKIAILU4IYP6CYNB2F5A'
-EMAIL_HOST_PASSWORD = env('AWS_SMTP_PASSWORD')
-EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'strona-ee-test@laboratorium.ee'
-CONTACT_EMAIL = 'jan.rydzewski@laboratorium.ee'  # just for testing
+CONTACT_EMAIL = 'kontakt-test@laboratorium.ee'
