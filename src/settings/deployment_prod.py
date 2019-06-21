@@ -11,8 +11,16 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from .deployment_prod import *  # noqa
 
 
-ALLOWED_HOSTS = ['laboratorium.ee', 'strona-ee-prod.herokuapp.com']
+ALLOWED_HOSTS = [
+    'laboratorium.ee',
+    'www.laboratorium.ee',
+    'strona-ee-prod.herokuapp.com',
+]
 
+# TLS/SSL related
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # SENTRY INTEGRATION
 SENTRY_DSN = 'https://8a7c4d6f462a4bb5821f8d3bf3bf308a@sentry.io/1485846'
