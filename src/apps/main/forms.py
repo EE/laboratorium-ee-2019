@@ -56,7 +56,9 @@ class ContactForm(forms.Form):
         message = self.cleaned_data['message']
         to_email = settings.CONTACT_EMAIL
         return EmailMessage(
-            subject, message, from_email, [to_email], reply_to=[from_email]
+            subject, message,
+            settings.DEFAULT_FROM_EMAIL,
+            [to_email], reply_to=[from_email],
         )
 
     def send_mail(self):
