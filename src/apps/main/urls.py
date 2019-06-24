@@ -9,9 +9,9 @@ urlpatterns = [
         name='send_mail'
     ),
     url(
-        r'^send_mail_with_attachment/$',
-        views.SendMailWithAttachmentView.as_view(),
-        name='send_mail_with_attachment'
+        r'^recruitment-contact/$',
+        views.RecruitmentContactView.as_view(),
+        name='recruitment_contact'
     ),
     url(
         r'^thanks/$',

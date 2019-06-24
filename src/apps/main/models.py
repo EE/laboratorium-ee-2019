@@ -185,8 +185,8 @@ class NewsPage(Page):
 class JobOfferIndexPage(Page):
     cooperation = models.CharField(max_length=500)
     recruitment = StreamField([
-        ('text', blocks.CharBlock()),
-        ('tiles_list', blocks.ListBlock(Tile())),
+        ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
+        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
     ])
 
     @property
@@ -203,11 +203,19 @@ class JobOfferIndexPage(Page):
 
 
 class JobOfferPage(Page):
+    icon = models.ForeignKey(
+        'wagtailimages.Image',
+        # icon is required. null=True is here just to make migration easy
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
     salary = models.CharField(max_length=50)
     employment_form = models.CharField(max_length=50)
     body = RichTextField()
 
     content_panels = Page.content_panels + [
+        ImageChooserPanel('icon'),
         FieldPanel('salary'),
         FieldPanel('employment_form'),
         FieldPanel('body', classname="full"),
