@@ -1,7 +1,8 @@
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.translation import gettext as _
 
-from src.apps.main.forms import ContactForm, AttachmentContactForm
+from src.apps.main.forms import ContactForm, RecruitmentContactForm
 
 register = template.Library()
 
@@ -14,9 +15,13 @@ def contact_form(context):
     return {'form': ContactForm(request=context.get('request'))}
 
 
-@register.inclusion_tag('email_with_attachment_form.html', takes_context=True)
-def contact_form_with_attachment(context):
-    return {'form': AttachmentContactForm(request=context.get('request'))}
+@register.inclusion_tag('main/partials/recruitment_contact_form.html', takes_context=True)
+def recruitment_contact_form(context):
+    subject = _('Aplikacja na stanowisko {}').format(context['page'].title)
+    return {'form': RecruitmentContactForm(
+        request=context.get('request'),
+        initial={'subject': subject},
+    )}
 
 
 @register.inclusion_tag('main/partials/navbar.html', takes_context=True)

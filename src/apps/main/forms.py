@@ -8,30 +8,13 @@ from django.utils.html import escape
 from .models import InfoPage
 
 
-class ContactForm(forms.Form):
-    from_email = forms.EmailField(
-        required=True,
-        label='',
-        widget=forms.TextInput(attrs={'placeholder': _('your email')}),
-    )
-    subject = forms.CharField(
-        required=True,
-        label='',
-        widget=forms.TextInput(attrs={'placeholder': _('subject')}),
-    )
-    message = forms.CharField(
-        required=True,
-        label='',
-        widget=forms.Textarea(attrs={'placeholder': _('how can we help?'), 'rows': 3}),
-    )
-
+class ConsentsMixin:
     def __init__(self, request, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.request = request
 
         # generate consent checkbox based on info pages
         consents = InfoPage.objects.live().filter(consent_required=True).descendant_of(
-            self.request.site.root_page,
+            request.site.root_page,
         )
         if consents:
             consents_html = ', '.join([
@@ -50,6 +33,24 @@ class ContactForm(forms.Form):
                 ),
             )
 
+
+class ContactForm(ConsentsMixin, forms.Form):
+    from_email = forms.EmailField(
+        required=True,
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': _('your email')}),
+    )
+    subject = forms.CharField(
+        required=True,
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': _('subject')}),
+    )
+    message = forms.CharField(
+        required=True,
+        label='',
+        widget=forms.Textarea(attrs={'placeholder': _('how can we help?'), 'rows': 3}),
+    )
+
     def create_email_message(self):
         subject = self.cleaned_data['subject']
         from_email = self.cleaned_data['from_email']
@@ -66,20 +67,41 @@ class ContactForm(forms.Form):
         email.send()
 
 
-class AttachmentContactForm(ContactForm):
-    attachment = forms.FileField(allow_empty_file=True, required=False, label=_('załącznik'))
+class RecruitmentContactForm(ConsentsMixin, forms.Form):
+    reply_to = forms.CharField(
+        required=True,
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': _('adres email lub numer telefonu')}),
+    )
+    subject = forms.CharField(
+        widget=forms.HiddenInput(),
+    )
+    message = forms.CharField(
+        required=False,
+        label='',
+        widget=forms.Textarea(attrs={'placeholder': _('opcjonalna notatka o sobie'), 'rows': 3}),
+    )
+    attachment = forms.FileField(allow_empty_file=True, required=False, label=_('załącz CV'))
 
-    field_order = [
-        'from_email',
-        'subject',
-        'message',
-        'attachment',
-        'terms_accepted',
-    ]
+    def __init__(self, request, *args, **kwargs):
+        super().__init__(request, *args, **kwargs)
+        self.request = request
 
     def create_email_message(self):
-        email = super().create_email_message()
+        email = EmailMessage(
+            self.cleaned_data['subject'],
+            self.cleaned_data['message'],
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.CONTACT_EMAIL],
+            reply_to=[self.cleaned_data['reply_to']],
+        )
+
         attachment = self.request.FILES.get('attachment')
         if attachment:
             email.attach(attachment.name, attachment.read(), attachment.content_type)
+
         return email
+
+    def send_mail(self):
+        email = self.create_email_message()
+        email.send()

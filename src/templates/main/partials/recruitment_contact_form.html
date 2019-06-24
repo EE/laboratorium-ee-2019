@@ -1,7 +1,7 @@
 {% load bulma_tags %}
 {% load i18n %}
 
-<form enctype="multipart/form-data" method="post" action="{% url 'send_mail_with_attachment' %}">
+<form enctype="multipart/form-data" method="post" action="{% url 'recruitment_contact' %}">
     {% csrf_token %}
     {{ form|bulma }}
     <div class="control">

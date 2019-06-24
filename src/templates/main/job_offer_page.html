@@ -1,25 +1,61 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
-{% load wagtailimages_tags %}
+{% load main_tags %}
+{% load wagtailcore_tags %}
 
 {% block title %}
-{% trans 'Oferty Pracy' %} - {{ block.super }}
+    {{ page.title }} - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-    <div class="container">
-        <div class="columns">
-            <div class="column">
-                <h1>{{ page.title }}</h1>
-                <div>{{ page.salary }} ({{ page.employment_form }}</div>
-                <div>{{ page.body }}</div>
-                <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>{% trans 'Aplikuj' %}p</strong>
-                    </a>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <p class="title">
+                    {{ page.title }}
+                </p>
+                <p class="subtitle">
+                    {{ page.salary }} ({{ page.employment_form }})
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="content">
+                        {{ page.body|richtext }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock content %}
+
+{% block contact_form %}
+    <section class="section is-medium" id="contact">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="content">
+                        <p class="is-size-3">
+                            {% trans 'Jesteś <b>zainteresowana ofertą?</b>' %}
+                        </p>
+                        <p class="is-size-3">
+                            {% trans 'Want to change the world with us through <b>technology?</b>' %}
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <p class="subtitle is-uppercase has-text-weight-bold">
+                        {% trans 'Aplikuj!' %}
+                    </p>
+                    {% recruitment_contact_form %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

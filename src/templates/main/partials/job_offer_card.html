@@ -1,0 +1,23 @@
+{% load i18n %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<div class="card is-equal-height">
+    <div class="card-image is-small">
+        <figure class="image">
+            {% image offer.icon original %}
+        </figure>
+    </div>
+    <div class="card-content">
+        <h4 class="title is-4">
+            {{ offer.title }}
+        </h4>
+        <p class="subtitle is-6">
+            {{ offer.salary }}
+        </p>
+        <a href="{% pageurl offer %}" class="button is-outlined is-light is-uppercase is-radiusless">
+            {% trans 'Find out more' %}
+        </a>
+    </div>
+</div>
+
