@@ -120,7 +120,7 @@ class ProjectPage(Page):
 
     challenge = RichTextField(null=True)
     process = StreamField([
-        ('tiles_list', blocks.ListBlock(Tile())),
+        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
     ], null=True)
     quote = RichTextField(null=True)
 
