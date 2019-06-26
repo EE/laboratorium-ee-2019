@@ -43,8 +43,6 @@ INSTALLED_APPS = [
 
     'webpack_loader',
     'settings_context_processor',
-    'constance',
-    'constance.backends.database',
     'captcha',
 
     'wagtail.contrib.forms',
@@ -209,11 +207,6 @@ WEBPACK_LOADER = {
     }
 }
 
-# django-constance
-CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
-CONSTANCE_CONFIG = {
-    'SITE_TITLE': ('laboratorium-ee-2019', 'THE TITLE OF YOUR SITE', str),
-}
 
 WAGTAIL_SITE_NAME = 'Laboratorium EE'
 
