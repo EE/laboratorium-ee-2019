@@ -4,12 +4,12 @@ from src.apps.main import views
 
 urlpatterns = [
     url(
-        r'^send_mail/$',
+        r'^contact-form/$',
         views.SendMailView.as_view(),
         name='send_mail'
     ),
     url(
-        r'^recruitment-contact/$',
+        r'^recruitment-contact-form/$',
         views.RecruitmentContactView.as_view(),
         name='recruitment_contact'
     ),

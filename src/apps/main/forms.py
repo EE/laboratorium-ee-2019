@@ -1,3 +1,5 @@
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 from django import forms
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -34,6 +36,16 @@ class ConsentsMixin:
             )
 
 
+recaptcha_kwargs = dict(
+    label='',
+    widget=ReCaptchaV2Checkbox(
+        attrs={
+            'data-theme': 'dark',
+        },
+    ),
+)
+
+
 class ContactForm(ConsentsMixin, forms.Form):
     from_email = forms.EmailField(
         required=True,
@@ -50,6 +62,7 @@ class ContactForm(ConsentsMixin, forms.Form):
         label='',
         widget=forms.Textarea(attrs={'placeholder': _('how can we help?'), 'rows': 3}),
     )
+    captcha = ReCaptchaField(**recaptcha_kwargs)
 
     def create_email_message(self):
         subject = self.cleaned_data['subject']
@@ -82,6 +95,7 @@ class RecruitmentContactForm(ConsentsMixin, forms.Form):
         widget=forms.Textarea(attrs={'placeholder': _('opcjonalna notatka o sobie'), 'rows': 3}),
     )
     attachment = forms.FileField(allow_empty_file=True, required=False, label=_('załącz CV'))
+    captcha = ReCaptchaField(**recaptcha_kwargs)
 
     def __init__(self, request, *args, **kwargs):
         super().__init__(request, *args, **kwargs)
