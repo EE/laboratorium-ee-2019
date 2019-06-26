@@ -14,8 +14,7 @@
       "env": {
         "DJANGO_SECRET_KEY": {
           "generator": "secret"
-        },
-        "RAVEN_DISABLED": "True"
+        }
       }
     }
   },
@@ -23,11 +22,7 @@
     "DJANGO_SECRET_KEY": {
       "generator": "secret"
     },
-    "DJANGO_SETTINGS_MODULE": "src.settings.heroku",
-    "RAVEN_DSN": {
-      "description": "A unique URL that you receive after setting up a project in Sentry.",
-      "value": ""
-    }
+    "DJANGO_SETTINGS_MODULE": "src.settings.heroku"
   },
   "formation": {
     "web": {

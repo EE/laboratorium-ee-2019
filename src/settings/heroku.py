@@ -4,8 +4,6 @@
 # because we use, and want to continue to use, star imports in settings files.
 #
 # flake8: noqa: F999
-from raven.transport.requests import RequestsHTTPTransport
-
 from .base import *  # noqa
 
 

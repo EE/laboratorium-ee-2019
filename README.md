@@ -11,7 +11,7 @@
 
 ### Installation instructions
 
-1. Install the Python requirements and enter the virtual environment:
+1. Install the Python requirements:
 
        pipenv install --dev
        pipenv shell  # to enter the environment
