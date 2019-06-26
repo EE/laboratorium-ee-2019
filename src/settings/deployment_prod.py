@@ -3,24 +3,17 @@
 # ignore the 'may be undefined, or defined from star imports' error
 # flake8: noqa: F999
 
-from .base import *  # noqa
+from .heroku import *  # noqa
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-from .deployment_prod import *  # noqa
-
-
-ALLOWED_HOSTS = [
-    'laboratorium.ee',
-    'www.laboratorium.ee',
-    'strona-ee-prod.herokuapp.com',
-]
 
 # TLS/SSL related
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
 
 # SENTRY INTEGRATION
 SENTRY_DSN = 'https://8a7c4d6f462a4bb5821f8d3bf3bf308a@sentry.io/1485846'
@@ -28,10 +21,6 @@ sentry_sdk.init(
     dsn=SENTRY_DSN,
     integrations=[DjangoIntegration()]
 )
-
-
-# staticfile serving
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # mediafiles on AWS S3
@@ -57,6 +46,7 @@ EMAIL_PORT = 587
 
 DEFAULT_FROM_EMAIL = 'strona-ee@laboratorium.ee'
 CONTACT_EMAIL = 'kontakt@laboratorium.ee'
+
 
 # frontend integrations
 GOOGLE_ANALYTICS_ID = 'UA-86468922-1'

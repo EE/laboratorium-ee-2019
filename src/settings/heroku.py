@@ -6,23 +6,20 @@
 # flake8: noqa: F999
 from raven.transport.requests import RequestsHTTPTransport
 
-from .production import *  # noqa
+from .base import *  # noqa
+
 
 # This is supposed to be secure on Heroku:
 # https://github.com/heroku/django-heroku/issues/5
 ALLOWED_HOSTS = ['*']
 
-# SENTRY INTEGRATION
-if not env('RAVEN_DISABLED', default=False):
-    RAVEN_CONFIG = {
-        'dsn': env('RAVEN_DSN'),
-        'release': env('HEROKU_SLUG_COMMIT', default=''),
-        'transport': RequestsHTTPTransport
-    }
-    INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
 
 # staticfile serving
-MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware',] + MIDDLEWARE
+# insert whitenoise after security middleware
+MIDDLEWARE.insert(
+    MIDDLEWARE.index('django.middleware.security.SecurityMiddleware') + 1,
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
