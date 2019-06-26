@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'settings_context_processor',
     'constance',
     'constance.backends.database',
+    'captcha',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

@@ -1,1 +1,12 @@
 {% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block contact_form %}
+    <section class="section is-medium" id="contact">
+        <div class="container">
+            <p class="title">{% trans 'Napisz do nas' %}</p>
+            {% include 'email_form.html' %}
+        </div>
+    </section>
+{% endblock %}

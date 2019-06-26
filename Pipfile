@@ -20,6 +20,7 @@ sentry-sdk = "*"
 django-storages = "*"
 boto3 = "*"
 django-bulma = "*"
+django-recaptcha = "*"
 
 [dev-packages]
 "flake8" = "==3.6.0"

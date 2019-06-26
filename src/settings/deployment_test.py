@@ -28,3 +28,7 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # AWS email
 DEFAULT_FROM_EMAIL = 'strona-ee-test@laboratorium.ee'
 CONTACT_EMAIL = 'kontakt-test@laboratorium.ee'
+
+
+# recaptha
+RECAPTCHA_PUBLIC_KEY = '6Leuu6oUAAAAAJDawsl8RLG7gGvWzBzHHmN64GAS'
