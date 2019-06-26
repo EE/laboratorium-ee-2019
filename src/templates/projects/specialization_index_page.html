@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
 {% load wagtailimages_tags %}
 {% load wagtailcore_tags %}
 
@@ -18,12 +19,16 @@
     {% for specialization in page.specializations.all %}
         <section class="section">
             <div class="container">
-                <a href="{% pageurl specialization %}" class="subtitle is-3">{{ specialization.title }}</a>
+                <p class="subtitle is-section-title">
+                    <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
+                </p>
                 <div class="columns is-multiline">
                     {% for project in specialization.projects.all %}
                         <div class="column is-one-quarter">
                             {% include 'projects/partials/project_card.html' with project=project %}
                         </div>
+                    {% empty %}
+                        <div class="column">{% trans 'Brak projektów' %}</div>
                     {% endfor %}
                 </div>
             </div>

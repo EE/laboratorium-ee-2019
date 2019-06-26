@@ -14,7 +14,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{% block meta_description %}{% endblock %}"/>
 
-    <link rel="icon" type="image/png" href="{% webpack_static 'images/fav_ee.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% webpack_static 'images/favicon192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% webpack_static 'images/favicon96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% webpack_static 'images/favicon32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% webpack_static 'images/favicon16x16.png' %}">
+
     <title>{% block title %}{{ request.site.root_page.title }}{% endblock title %}</title>
 
   {% if GOOGLE_ANALYTICS_ID %}

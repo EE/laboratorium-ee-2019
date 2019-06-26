@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 from django.utils.translation import gettext_lazy as _
+from wagtail.core import hooks
 import environ
 import os
+
 
 BASE_DIR = str(environ.Path(__file__) - 3)
 SRC_DIR = os.path.join(BASE_DIR, 'src')
@@ -220,3 +222,12 @@ CONSTANCE_CONFIG = {
 }
 
 WAGTAIL_SITE_NAME = 'Laboratorium EE'
+
+
+# enable features for wagtail's richtext field
+@hooks.register('register_rich_text_features')
+def register_extra_features(features):
+    features.default_features.extend([
+        'blockquote',
+        'code',
+    ])
