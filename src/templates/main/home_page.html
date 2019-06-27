@@ -133,6 +133,44 @@
     </div>
 </section>
 
+    {# dołącz do naszego zespołu #}
+    {% image page.join_us_background max-2560x2048 as join_us_background %}
+    <section class="section is-medium" style="background: url('{{ join_us_background.url }}') center center; background-size: cover;">
+        <div class="container">
+            <p class="subtitle is-section-title">
+                {{ page.join_us_headline }}
+            </p>
+            <div class="columns">
+                <div class="column is-half content">
+                    <p>
+                        {{ page.join_us_body }}
+                    </p>
+                    <div class="buttons">
+                        {% for job_offer_index in page.job_offer_indexes %}
+                            <a href="{% pageurl job_offer_index %}" class="button is-light is-uppercase is-radiusless is-fullwidth">
+                                {% trans 'Sprawdź aktualne oferty' %}
+                            </a>
+                        {% endfor %}
+                        <a href="#contact" class="button is-outlined is-light is-uppercase is-radiusless is-fullwidth">
+                            {% trans 'Skontaktuj się z nami' %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="level is-uppercase">
+                <div class="level-item">
+                    <p>{% trans 'Stawiamy na rozwiązania' %}</p>
+                </div>
+                <div class="level-item">
+                    <p>{% trans 'Pobudzamy kreatywność' %}</p>
+                </div>
+                <div class="level-item">
+                    <p>{% trans 'Nie boimy się myśleć samodzielnie' %}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     {# Inicjatywy własne #}
     {% if page.our_initiatives.all %}
         <section class="section is-medium">
