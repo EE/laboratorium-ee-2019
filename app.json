@@ -1,5 +1,6 @@
 {
-  "name": "laboratorium-ee",
+  "name": "Laboratorium.ee",
+  "repository": "https://github.com/EE/laboratorium-ee-2019",
   "scripts": {
   },
   "environments": {
@@ -9,13 +10,19 @@
       ],
       "scripts": {
         "test": "flake8 && python run_js_scss_linters.py && python manage.py test"
+      },
+      "env": {
+        "DJANGO_SECRET_KEY": {
+          "generator": "secret"
+        }
       }
     }
   },
   "env": {
     "DJANGO_SECRET_KEY": {
       "generator": "secret"
-    }
+    },
+    "DJANGO_SETTINGS_MODULE": "src.settings.heroku"
   },
   "formation": {
     "web": {

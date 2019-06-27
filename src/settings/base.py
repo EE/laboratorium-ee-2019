@@ -35,9 +35,6 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[])
 # Application definition
 
 INSTALLED_APPS = [
-    # enable whitenoise static serving for runserver command (for development)
-    'whitenoise.runserver_nostatic',
-
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -46,8 +43,7 @@ INSTALLED_APPS = [
 
     'webpack_loader',
     'settings_context_processor',
-    'constance',
-    'constance.backends.database',
+    'captcha',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -75,10 +71,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-
-    # serving static using whitenoise
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -215,11 +207,6 @@ WEBPACK_LOADER = {
     }
 }
 
-# django-constance
-CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
-CONSTANCE_CONFIG = {
-    'SITE_TITLE': ('laboratorium-ee-2019', 'THE TITLE OF YOUR SITE', str),
-}
 
 WAGTAIL_SITE_NAME = 'Laboratorium EE'
 

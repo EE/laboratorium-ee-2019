@@ -11,9 +11,6 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from .deployment_prod import *  # noqa
 
 
-ALLOWED_HOSTS = ['laboratorium-ee-test.herokuapp.com']
-
-
 # SENTRY INTEGRATION
 SENTRY_DSN = 'https://ddd596a35b2b4645a2d7682c5c1c8189@sentry.io/1460928'
 sentry_sdk.init(
@@ -31,3 +28,7 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # AWS email
 DEFAULT_FROM_EMAIL = 'strona-ee-test@laboratorium.ee'
 CONTACT_EMAIL = 'kontakt-test@laboratorium.ee'
+
+
+# recaptha
+RECAPTCHA_PUBLIC_KEY = '6Leuu6oUAAAAAJDawsl8RLG7gGvWzBzHHmN64GAS'
