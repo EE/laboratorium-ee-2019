@@ -7,7 +7,7 @@ from src.apps.main.forms import ContactForm, RecruitmentContactForm
 register = template.Library()
 
 
-@register.inclusion_tag('email_form.html', takes_context=True)
+@register.inclusion_tag('main/partials/contact_form.html', takes_context=True)
 def contact_form(context):
     """
     Returns basic email contact form.
