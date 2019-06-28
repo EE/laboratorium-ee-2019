@@ -69,7 +69,9 @@ if (devMode) {
 /* WEBPACK OPTIONS */
 export default {
     context: __dirname, // eslint-disable-line no-undef
-    entry: `${inputDir}/js/main.js`,
+    entry: [
+        `${inputDir}/js/main.js`,
+    ],
     output: {
         path: path.resolve(outputDir),
         filename: "[name]-[hash].js",
@@ -79,7 +81,8 @@ export default {
     devServer: {
         hot: true,
         quiet: false,
-        headers: { "Access-Control-Allow-Origin": "*" }
+        headers: { "Access-Control-Allow-Origin": "*" },
+        port: 8080,
     },
     module: { rules: [vueRule, jsRule, styleRule, assetRule] },
     plugins,
