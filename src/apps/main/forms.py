@@ -177,6 +177,6 @@ class RecruitmentContactForm(ConsentsMixin, forms.Form):
 
         return email
 
-    def send_mail(self):
+    def process(self):
         email = self.create_email_message()
         email.send()
