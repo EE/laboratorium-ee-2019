@@ -1,0 +1,25 @@
+.ee-section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ee-section__title-container {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+}
+
+.ee-section__title {
+    padding-block: 6rem 4rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 700;
+    color: rgba(white, 0.7);
+}
+
+.ee-section__triptych {
+    flex-basis: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

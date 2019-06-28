@@ -10,5 +10,5 @@ $fonts-files: (
 );
 
 @each $font-file, $font-weight in $fonts-files {
-    @include font-face(Spartan, "../fonts/spartan/#{$font-file}", $font-weight, normal, woff2 woff);
+  @include font-face(Spartan, "../fonts/spartan/#{$font-file}", $font-weight, normal, woff2 woff);
 }
