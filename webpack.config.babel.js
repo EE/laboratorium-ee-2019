@@ -69,9 +69,7 @@ if (devMode) {
 /* WEBPACK OPTIONS */
 export default {
     context: __dirname, // eslint-disable-line no-undef
-    entry: [
-        `${inputDir}/js/main.js`,
-    ],
+    entry: `${inputDir}/js/main.js`,
     output: {
         path: path.resolve(outputDir),
         filename: "[name]-[hash].js",
