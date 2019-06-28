@@ -6,7 +6,9 @@ from . import models
 @register(models.HomePage)
 class HomePageTranslationOptions(TranslationOptions):
     fields = (
-        'header', 'specializations_headline', 'r_and_d_center_headline', 'r_and_d_center_body',
+        'header', 'specializations_headline',
+        'r_and_d_center_headline', 'r_and_d_center_body',
+        'join_us_headline', 'join_us_body',
     )
 
 
@@ -33,6 +35,14 @@ class JobOfferPageTranslationOptions(TranslationOptions):
 @register(models.InfoPage)
 class InfoPageTranslationOptions(TranslationOptions):
     fields = ('content',)
+
+
+@register(models.ContactForm)
+class ContactFormTranslationOptions(TranslationOptions):
+    fields = (
+        'condition_body',
+        'after_send_text',
+    )
 
 
 @register(models.RodoPassAdvert)

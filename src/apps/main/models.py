@@ -1,14 +1,10 @@
 import random
 
-from django.db import models
 from django.apps import apps
+from django.db import models
 from django.db.models import Max
 from django.utils.translation import gettext as _
 from modelcluster.fields import ParentalKey
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField, StreamField
-
-from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     InlinePanel,
@@ -16,6 +12,9 @@ from wagtail.admin.edit_handlers import (
     PageChooserPanel,
     StreamFieldPanel,
 )
+from wagtail.core import blocks
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page, Orderable, Site
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
@@ -26,6 +25,7 @@ from src.apps.projects.models import SpecializationPage, TopicPage
 class HomePage(Page):
     header = models.CharField(max_length=255)
     specializations_headline = models.CharField(max_length=128)
+
     r_and_d_center_headline = models.CharField(
         max_length=128,
         null=True,
@@ -37,6 +37,15 @@ class HomePage(Page):
         blank=True
     )
 
+    join_us_headline = models.CharField(max_length=128)
+    join_us_body = models.TextField()
+    join_us_background = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
     content_panels = Page.content_panels + [
         FieldPanel('header'),
         FieldPanel('specializations_headline'),
@@ -44,6 +53,11 @@ class HomePage(Page):
             FieldPanel('r_and_d_center_headline', classname="full"),
             FieldPanel('r_and_d_center_body'),
         ], heading="R&D center section"),
+        MultiFieldPanel([
+            FieldPanel('join_us_headline', classname="full"),
+            FieldPanel('join_us_body'),
+            ImageChooserPanel('join_us_background'),
+        ], heading=_("Join us section")),
         InlinePanel('cooperators_logos', heading="We work with")
     ]
 
@@ -94,6 +108,10 @@ class HomePage(Page):
             team_member = team_member_queryset.filter(pk=pk).first()
             if team_member:
                 return team_member.specific
+
+    @property
+    def job_offer_indexes(self):
+        return JobOfferIndexPage.objects.live().descendant_of(self)
 
 
 class CooperatorLogo(Orderable):
@@ -235,6 +253,24 @@ class InfoPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('content'),
         FieldPanel('consent_required'),
+    ]
+
+
+@register_snippet
+class ContactForm(models.Model):
+    site = models.OneToOneField(
+        Site,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='contact_form',
+    )
+    condition_body = RichTextField()
+    after_send_text = RichTextField()
+
+    panels = [
+        FieldPanel('site'),
+        FieldPanel('condition_body'),
+        FieldPanel('after_send_text'),
     ]
 
 

@@ -1,0 +1,161 @@
+@import "~bulma/sass/utilities/all";
+@import "../utilities/index.mixins";
+
+.ee-hero-carousel {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.ee-hero-carousel__fixed-header {
+  position: absolute;
+  width: 100vw;
+  top: 15rem;
+  z-index: 9090;
+  font-size: 3rem;
+
+  @include touch {
+    font-size: 2rem;
+    padding-inline: 1rem;
+    top: 10rem;
+  }
+}
+
+.ee-hero-carousel__controls {
+  position: absolute;
+  width: 100vw;
+  bottom: 5rem;
+  z-index: 9090;
+}
+
+.ee-hero-carousel__controls-container {
+  display: flex;
+  justify-content: flex-end;
+
+  @include touch {
+    display: none;
+  };
+}
+
+.ee-hero-carousel__control-button {
+  width: 2rem;
+  height: 4px;
+  background-color: rgba(white, 0.4);
+  cursor: pointer;
+  @include transition();
+
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+
+  &:hover {
+    background-color: white;
+  }
+
+  &.active {
+    background-color: white;
+    width: 3rem;
+  }
+}
+
+.ee-hero-carousel__container {
+  display: flex;
+  @include transition();
+}
+
+.ee-hero-carousel__content {
+  display: flex;
+  align-items: flex-end;
+  width: 100vw;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ee-hero-carousel__content-container {
+  padding: 5rem 0;
+
+  @include touch {
+    padding-inline: 1rem;
+  }
+}
+
+.ee-hero-carousel__content-tags {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.ee-hero-carousel__content-title {
+  flex-basis: 50%;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+
+  @include touch {
+    font-size: 2rem;
+  }
+}
+
+.ee-hero-carousel__content-subtitle {
+  flex-basis: 100%;
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  color: rgba(white, 0.7);
+
+  @include touch {
+    font-size: 1rem;
+  }
+}
+
+.ee-hero-carousel__content-buttons {
+  & > *:not(:last-child) {
+    margin-right: 2rem;
+  }
+
+  @include touch {
+    & > * {
+      display: flex;
+      justify-content: center;
+    }
+
+    & > *:not(:last-child) {
+      margin: 0 0 1rem;
+    }
+  }
+}
+
+// =================================
+// R&D Block
+// =================================
+
+.ee-rd-block {
+  margin-block: 10rem;
+  padding-block: 4rem;
+}
+
+.ee-rd-block__title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.ee-rd-block__subtitle {
+  font-size: 1.4rem;
+  color: rgba(white, 0.7);
+  line-height: 1.8;
+}
+
+.ee-rd-block__items {
+  margin-top: 4rem;
+}
+
+.ee-rd-block__item-title {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.ee-rd-block__item-subtitle {
+  margin-top: 1rem;
+  line-height: 1.8;
+  color: rgba(white, 0.7);
+}

@@ -1,0 +1,76 @@
+@import "../utilities/index.mixins";
+
+@mixin ee-navbar-item() {
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
+
+.ee-navbar {
+  position: fixed;
+  width: 100vw;
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, rgba(black, 0.9) 20%, rgba(black, 0.3) 80%, rgba(black, 0));
+    z-index: 10500;
+
+  @include touch {
+  }
+}
+
+.ee-navbar-end {
+  .ee-navbar-item {
+    @include ee-navbar-item;
+    @include transition($time: 160ms);
+    margin-right: 4.2rem;
+    border-bottom: 1px solid rgba(white, 0);
+
+    &:hover {
+      background-color: unset;
+      border-bottom: 1px solid white;
+    }
+  }
+
+  .ee-contact-us-button {
+    @include ee-navbar-item;
+    padding: 1rem 2rem;
+    @include transition();
+
+    &:hover {
+      @include shadow();
+    }
+  }
+
+  @include touch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: white;
+    padding-block: 10rem;
+
+    .ee-navbar-item {
+      flex-basis: 100vw;
+      color: black;
+      margin: 0;
+      text-align: center;
+    }
+
+
+  }
+}
+
+.ee-navbar-close-button {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  @include touch {
+    display: block;
+  }
+}

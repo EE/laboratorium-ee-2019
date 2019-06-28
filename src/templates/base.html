@@ -87,36 +87,30 @@
     {% block content %}
     {% endblock content %}
 
-    {% block contact_form %}
-        <section class="section is-medium" id="contact">
-            <div class="container">
-                <div class="columns">
-                    <div class="column">
-                        <p class="subtitle is-uppercase has-text-weight-bold">
-                            {% trans 'Jeżeli' %}
-                        </p>
-                        <div class="content">
-                        <p class="is-size-3">
-                                {% trans 'Need some help with your <b>project?</b>' %}
-                        </p>
-                        <p class="is-size-3">
-                                {% trans 'Looking for interesting <b>investments?</b>' %}
-                        </p>
-                        <p class="is-size-3">
-                                {% trans 'Want to change the world with us through <b>technology?</b>' %}
-                        </p>
+    {% if request.site.contact_form %}
+        {% block contact_form %}
+            <section class="section is-medium" id="contact">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column">
+                            <p class="subtitle is-uppercase has-text-weight-bold">
+                                {% trans 'Jeżeli' %}
+                            </p>
+                            <div class="content">
+                                {{ request.site.contact_form.condition_body|richtext }}
+                            </div>
+                        </div>
+                        <div class="column">
+                            <p class="subtitle is-uppercase has-text-weight-bold">
+                                {% trans 'Napisz do nas' %}
+                            </p>
+                            {% contact_form %}
                         </div>
                     </div>
-                    <div class="column">
-                        <p class="subtitle is-uppercase has-text-weight-bold">
-                            {% trans 'Napisz do nas' %}
-                        </p>
-                        {% contact_form %}
-                    </div>
                 </div>
-            </div>
-        </section>
-    {% endblock contact_form %}
+            </section>
+        {% endblock contact_form %}
+    {% endif %}
 
     {% block rodo_pass %}
         {% rodo_pass %}
