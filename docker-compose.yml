@@ -1,0 +1,20 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    ports:
+    - "8000:8000"
+    volumes:
+    - .:/code
+    entrypoint: "pipenv run ./manage.py runserver"
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    ports:
+    - "8080:8080"
+    volumes:
+    - .:/code
+    entrypoint: "npm run start"
