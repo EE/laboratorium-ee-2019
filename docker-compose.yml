@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   backend:
     build:
       context: .
@@ -9,12 +10,18 @@ services:
     volumes:
     - .:/code
     entrypoint: "pipenv run ./manage.py runserver"
+    depends_on:
+    - db
+
   frontend:
     build:
       context: .
       dockerfile: docker/frontend.Dockerfile
-    ports:
-    - "8080:8080"
     volumes:
-    - .:/code
-    entrypoint: "npm run start"
+      - ./:/home/node/app
+    expose:
+      - "8080"
+    command: "npm run start"
+
+  db:
+    image: postgres

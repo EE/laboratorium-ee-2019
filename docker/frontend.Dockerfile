@@ -1,6 +1,5 @@
-FROM alpine:latest
-RUN apk add npm
-
-COPY package.json package-lock.json /code/
-WORKDIR /code
+FROM node
+RUN apt-get update && apt-get install -y build-essential
+COPY package.json package-lock.json /home/node/app/
+WORKDIR /home/node/app
 RUN npm install
