@@ -79,7 +79,8 @@ export default {
     devServer: {
         hot: true,
         quiet: false,
-        headers: { "Access-Control-Allow-Origin": "*" }
+        headers: { "Access-Control-Allow-Origin": "*" },
+        port: 8080,
     },
     module: { rules: [vueRule, jsRule, styleRule, assetRule] },
     plugins,
