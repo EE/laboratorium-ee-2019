@@ -134,11 +134,13 @@ class ContactForm(ConsentsMixin, forms.Form):
         ).send()
 
     def process(self):
-        {
+        handlers = {
             'offer': self.process_offer,
             'recruitment': self.process_recruitment,
             'other': self.process_other,
-        }[self.cleaned_data['subject']]()
+        }
+        subject = self.cleaned_data['subject']
+        return handlers[subject]()
 
 
 class RecruitmentContactForm(ConsentsMixin, forms.Form):
