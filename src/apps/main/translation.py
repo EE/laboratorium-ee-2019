@@ -37,6 +37,14 @@ class InfoPageTranslationOptions(TranslationOptions):
     fields = ('content',)
 
 
+@register(models.ContactForm)
+class ContactFormTranslationOptions(TranslationOptions):
+    fields = (
+        'condition_body',
+        'after_send_text',
+    )
+
+
 @register(models.RodoPassAdvert)
 class RodoPassAdvertTranslationOptions(TranslationOptions):
     fields = ('title', 'description', 'button_text')

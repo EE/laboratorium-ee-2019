@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% load main_tags %}
+{% load wagtailcore_tags %}
 
 {% block contact_form %}
     <section class="section is-medium">
         <div class="container">
-            <p class="title">Dzięki za kontakt!</p>
+            <div class="content">
+                {{ request.site.contact_form.after_send_text|richtext }}
+            </div>
         </div>
     </section>
 {% endblock %}
