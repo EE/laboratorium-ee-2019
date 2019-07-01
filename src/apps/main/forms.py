@@ -7,16 +7,16 @@ from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
 from django.utils.html import escape
 
-from .models import InfoPage
+from .models import InfoPage, JobOfferPage
 
 
 class ConsentsMixin:
-    def __init__(self, request, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         # generate consent checkbox based on info pages
         consents = InfoPage.objects.live().filter(consent_required=True).descendant_of(
-            request.site.root_page,
+            self.request.site.root_page,
         )
         if consents:
             consents_html = ', '.join([
@@ -63,10 +63,11 @@ class ContactForm(ConsentsMixin, forms.Form):
             ('other', _('Other')),
         ]
     )
-    recruitment_position = forms.CharField(
+    recruitment_position = forms.ModelChoiceField(
         required=False,
+        queryset=None,  # setting this in the constructor
         label='',
-        widget=forms.TextInput(attrs={'placeholder': _('stanowisko')}),
+        empty_label='wybierz stanowisko',
     )
     organization_name = forms.CharField(
         required=False,
@@ -84,6 +85,13 @@ class ContactForm(ConsentsMixin, forms.Form):
         label=_('załącz CV'),
     )
     captcha = ReCaptchaField(**recaptcha_kwargs)
+
+    def __init__(self, request, *args, **kwargs):
+        self.request = request
+        super().__init__(*args, **kwargs)
+        self.fields['recruitment_position'].queryset = JobOfferPage.objects.descendant_of(
+            self.request.site.root_page,
+        ).live()
 
     def clean(self):
         subject = self.cleaned_data['subject']
@@ -161,8 +169,8 @@ class RecruitmentContactForm(ConsentsMixin, forms.Form):
     captcha = ReCaptchaField(**recaptcha_kwargs)
 
     def __init__(self, request, *args, **kwargs):
-        super().__init__(request, *args, **kwargs)
         self.request = request
+        super().__init__(*args, **kwargs)
 
     def create_email_message(self):
         email = EmailMessage(
