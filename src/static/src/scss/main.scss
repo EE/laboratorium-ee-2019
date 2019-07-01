@@ -87,6 +87,15 @@ figure.has-margin-auto {
     border-width: 0 0 2px 0;
 }
 
+
+.select select {
+    border-width: 0px 0px 2px 0px;
+}
+
+.select select option {
+    color: black;
+}
+
 .has-background-transparent {
     background-color: transparent;
 }
