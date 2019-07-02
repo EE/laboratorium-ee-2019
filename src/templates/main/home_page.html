@@ -7,12 +7,12 @@
 {% load webpack_static from webpack_loader %}
 
 {% block facebook_pixel_events %}
-{{ block.super }}
-fbq('track', 'ViewContent');
+    {{ block.super }}
+    fbq('track', 'ViewContent');
 {% endblock %}
 
 {% block navbar %}
-{# navbar is displayed in hero-head #}
+    {# navbar is displayed in hero-head #}
 {% navbar %}
 {% endblock %}
 

@@ -33,12 +33,14 @@
 5. Run database migrations if you want an empty database or use saved database state with basic models:
 
        python manage.py migrate
-      or
+
+   or
 
        cat dump.sql | ./manage.py dbshell
        python manage.py migrate  # just to be sure
 
-      You can log in as superuser using the following data:
+   You can log in as superuser using the following data:
+
        username: admin
        password: cWEO3CTqIVU
 

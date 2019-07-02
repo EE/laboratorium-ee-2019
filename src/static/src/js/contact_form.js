@@ -28,6 +28,9 @@ const updateForm = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    formField("subject").addEventListener("change", updateForm);
-    updateForm();
+    const subjectField = formField("subject");
+    if (subjectField) {
+        subjectField.addEventListener("change", updateForm);
+        updateForm();
+    }
 });
