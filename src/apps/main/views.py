@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.views.generic import FormView, TemplateView
 
-from src.apps.main.forms import ContactForm, RecruitmentContactForm
+from src.apps.main.forms import ContactForm
 
 
 class SendMailView(FormView):
@@ -19,11 +19,6 @@ class SendMailView(FormView):
 
     def get_success_url(self):
         return reverse('send_mail_done')
-
-
-class RecruitmentContactView(SendMailView):
-    form_class = RecruitmentContactForm
-    template_name = 'main/recruitment_contact.html'
 
 
 class SendMailSuccessView(TemplateView):
