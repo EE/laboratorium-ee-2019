@@ -218,3 +218,9 @@ def register_extra_features(features):
         'blockquote',
         'code',
     ])
+
+
+# salesforce integration
+SALESFORCE_INSTANCE = 'laboratoriumee.salesforce.com'
+SALESFORCE_TEST = True
+SALESFORCE_SECRET_TOKEN = env.str('SALESFORCE_SECRET_TOKEN', default=None)

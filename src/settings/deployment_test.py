@@ -32,3 +32,7 @@ CONTACT_EMAIL = 'kontakt-test@laboratorium.ee'
 
 # recaptha
 RECAPTCHA_PUBLIC_KEY = '6Leuu6oUAAAAAJDawsl8RLG7gGvWzBzHHmN64GAS'
+
+
+# salesforce
+SALESFORCE_TEST = True

@@ -8,6 +8,7 @@ from django.utils.safestring import mark_safe
 from django.utils.html import escape
 
 from .models import InfoPage, JobOfferPage
+from .salesforce import salesforce
 
 
 class ConsentsMixin:
@@ -116,6 +117,10 @@ class ContactForm(ConsentsMixin, forms.Form):
             [settings.CONTACT_EMAIL],
             reply_to=[self.cleaned_data['reply_to']],
         ).send()
+        salesforce.Contact.create({
+            'LastName': 'Smith',
+            'Email': 'example@example.com',
+        })
 
     def process_recruitment(self):
         email = EmailMessage(
