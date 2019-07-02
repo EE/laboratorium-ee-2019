@@ -29,3 +29,7 @@ SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 
 RELEASE_STRING = 'dev'
+
+
+# salesforce
+SALESFORCE_DOMAIN = env.str('SALESFORCE_DOMAIN', default=None)

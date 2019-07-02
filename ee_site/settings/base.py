@@ -233,3 +233,17 @@ RICHTEXT_BLOCK_FEATURES = [
     'image', 'embed',
     'blockquote', 'code',
 ]
+
+
+# ### salesforce integration ###
+
+# Environment to use.
+#  * 'login' is production environment
+#  * 'test' is test environment (it's name may be reconfigured via salesforce console)
+#  * None is special case - it disables salesforce integration completely
+SALESFORCE_DOMAIN = 'login'
+
+SALESFORCE_INSTANCE = 'laboratoriumee.my.salesforce.com'
+SALESFORCE_CLIENT_ID = '3MVG9I5UQ_0k_hTmaSws_TCivIuKUH8XiFhTOBY9TAlIbOu8zhRfYxujafSKRGXISgxS4jyIz1A6LIHePNrnZ'
+SALESFORCE_CLIENT_SECRET = env.str('SALESFORCE_CLIENT_SECRET', default='')
+SALESFORCE_ACCESS_TOKEN = env.str('SALESFORCE_ACCESS_TOKEN', default='')
