@@ -3,6 +3,11 @@
 {% load main_tags %}
 {% load wagtailcore_tags %}
 
+{% block facebook_pixel_events %}
+    {{ block.super }}
+    fbq('track', 'Contact');
+{% endblock %}
+
 {% block contact_form %}
     <section class="section is-medium">
         <div class="container">

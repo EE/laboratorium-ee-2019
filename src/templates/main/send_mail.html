@@ -2,6 +2,11 @@
 
 {% load i18n %}
 
+{% block facebook_pixel_events %}
+    {{ block.super }}
+    fbq('track', 'Lead');
+{% endblock %}
+
 {% block contact_form %}
     <section class="section is-medium" id="contact">
         <div class="container">
