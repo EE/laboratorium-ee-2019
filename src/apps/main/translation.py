@@ -19,7 +19,10 @@ class NewsIndexPageTranslationOptions(TranslationOptions):
 
 @register(models.NewsPage)
 class NewsPageTranslationOptions(TranslationOptions):
-    fields = ('headline', 'body')
+    fields = (
+        'headline', 'body',
+        'cta_question',
+    )
 
 
 @register(models.JobOfferIndexPage)
