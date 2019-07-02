@@ -13,67 +13,114 @@
 
 {% block navbar %}
     {# navbar is displayed in hero-head #}
+{% navbar %}
 {% endblock %}
 
 {% block content %}
 
-{% with page.latest_articles.first as article %}
-    {% image article.photo max-2560x2048 as background_image %}
-    <section class="hero is-fullheight" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
-        <div class="hero-head">
-            {% navbar %}
+<section class="ee-hero-carousel">
+    <div class="ee-hero-carousel__fixed-header">
+        <div class="container">
+            Poznaj nas przez nasze historie
         </div>
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-half">
-                        <h1 class="title is-1 is-size-2-touch has-text-weight-light">{{ page.header }}</h1>
-                        <div class="is-top-padded">
-                            {% if article.specialization %}
-                                <a class="tag is-black is-uppercase" href="{% pageurl article.specialization %}">
-                                    {{ article.specialization.title }}
-                                </a>
-                            {% endif %}
-                            <h3 class="title is-3">{{ article.title }}</h3>
-                            <h6 class="subtitle is-6">{{ article.headline }}</h3>
-                            <a href="{% pageurl article %}" class="button is-outlined is-light is-uppercase is-radiusless">{% trans 'Find out more' %}</a>
-                        </div>
-                    </div>
+    </div>
+    <div class="ee-hero-carousel__controls">
+        <div class="container ee-hero-carousel__controls-container">
+
+        </div>
+    </div>
+    <div class="ee-hero-carousel__container">
+        {% for article in page.latest_articles %}
+        {% image article.photo max-2560x2048 as background_image %}
+        <div class="ee-hero-carousel__content" style="background-image: url('{{ background_image.url }}')">
+            <div class="container ee-hero-carousel__content-container">
+                {% if article.specialization %}
+                <a class="ee-hero-carousel__content-tags" href="{% pageurl article.specialization %}">
+                    #{{ article.specialization.title}}
+                </a>
+                {% endif %}
+                <div class="ee-hero-carousel__content-title">
+                    {{ article.title }}
+                </div>
+                <div class="ee-hero-carousel__content-subtitle">
+                    {{ article.headline }}
+                </div>
+                <div class="ee-hero-carousel__content-buttons">
+                    <a href="" class="button is-light is-radiusless ee-button">{% trans 'Check us out' %}</a>
+                    <a href="{% pageurl article %}" class="button is-outlined is-light is-radiusless ee-button">
+                        {% trans 'Find out more' %}
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
-{% endwith %}
-
-{# blok specjalizacje #}
-<section class="section is-medium">
-    <div class="container">
-        <p class="subtitle is-section-title">{{ page.specializations_headline }}</p>
-        <div class="columns is-multiline">
-            {% for specialization_page in page.specializations.all %}
-                <div class="column is-one-third">
-                    {% include 'projects/partials/specialization_card.html' with specialization_page=specialization_page %}
-                </div>
-            {% endfor %}
-        </div>
+        {% endfor %}
     </div>
 </section>
 
-{# spis tematów #}
-{% if page.topics %}
-    {% image page.topics.all.0.background_image original as background_image %}
-    <section class="section is-medium" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
-        <div class="container">
-            <h1 class="subtitle is-section-title">{% trans 'Działamy w obszarach' %}</h1>
-            <div class="columns">
-                <div class="column is-one-quarter buttons">
-                    {% for topic in page.topics.all %}
-                        <a href="{% pageurl topic %}" class="button is-outlined is-light is-uppercase is-radiusless is-fullwidth">{{ topic.title }}</a>
-                    {% endfor %}
-                </div>
+{# blok specjalizacje #}
+<section class="ee-section">
+    <div class="ee-section__title-container">
+        <h2 class="ee-section__title">{{ page.specializations_headline }}</h2>
+    </div>
+    <div class="ee-section__triptych">
+        {% for specialization_page in page.specializations.all %}
+            {% include 'projects/partials/specialization_card.html' with specialization_page=specialization_page %}
+        {% endfor %}
+    </div>
+</section>
+
+{# blok Your private R&D #}
+<div class="section ee-rd-block" style="background-image: url({% webpack_static 'images/twoje-prywatne-centrum-badawcze.jpg' %})" alt="Close">
+    <div class="container has-text-right">
+        <div class="columns">
+            <div class="column is-half is-offset-6">
+                <h2 class="ee-rd-block__title">Twoje prywatne centrum badawczo-rozwojowe</h2>
+                <h3 class="ee-rd-block__subtitle">Skupiamy się na dokładnej analizie stawianych przed nami wyzwań. Tworzymy rozwiązania szyte na miarę,
+                    innowacyjne, które stale udoskonalamy i rozbodowujemy.</h3>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="container">
+        <div class="columns ee-rd-block__items">
+            <div class="column">
+                <h4 class="ee-rd-block__item-title">2019</h4>
+                <p class="ee-rd-block__item-subtitle">
+                    To właśnie w tym roku otrzymaliśmy tytuł prywatnego centrum badawczo-rozwojowego.
+                </p>
+            </div>
+            <div class="column">
+                <h4 class="ee-rd-block__item-title">20%</h4>
+                <p class="ee-rd-block__item-subtitle">
+                    Tyle podatku możesz odliczyć pracując z nami
+                </p>
+            </div>
+            <div class="column">
+                <h4 class="ee-rd-block__item-title">R&D</h4>
+                <p class="ee-rd-block__item-subtitle">
+                    Prężnie działamy w obszarze Research & Development
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# spis tematów #}
+{% if page.topics %}
+{% image page.topics.all.0.background_image original as background_image %}
+<section class="section is-medium"
+         style="background: url('{{ background_image.url }}') center center; background-size: cover;">
+    <div class="container">
+        <h1 class="subtitle is-section-title">{% trans 'Działamy w obszarach' %}</h1>
+        <div class="columns">
+            <div class="column is-one-quarter buttons">
+                {% for topic in page.topics.all %}
+                <a href="{% pageurl topic %}"
+                   class="button is-outlined is-light is-uppercase is-radiusless is-fullwidth">{{ topic.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 {% endif %}
 
 {# Jak powstają nasze rozwiązania? statyczne #}
@@ -133,59 +180,61 @@
     </div>
 </section>
 
-    {# dołącz do naszego zespołu #}
-    {% image page.join_us_background max-2560x2048 as join_us_background %}
-    <section class="section is-medium" style="background: url('{{ join_us_background.url }}') center center; background-size: cover;">
-        <div class="container">
-            <p class="subtitle is-section-title">
-                {{ page.join_us_headline }}
-            </p>
-            <div class="columns">
-                <div class="column is-half content">
-                    <p>
-                        {{ page.join_us_body }}
-                    </p>
-                    <div class="buttons">
-                        {% for job_offer_index in page.job_offer_indexes %}
-                            <a href="{% pageurl job_offer_index %}" class="button is-light is-uppercase is-radiusless is-fullwidth">
-                                {% trans 'Sprawdź aktualne oferty' %}
-                            </a>
-                        {% endfor %}
-                        <a href="#contact" class="button is-outlined is-light is-uppercase is-radiusless is-fullwidth">
-                            {% trans 'Skontaktuj się z nami' %}
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="level is-uppercase">
-                <div class="level-item">
-                    <p>{% trans 'Stawiamy na rozwiązania' %}</p>
-                </div>
-                <div class="level-item">
-                    <p>{% trans 'Pobudzamy kreatywność' %}</p>
-                </div>
-                <div class="level-item">
-                    <p>{% trans 'Nie boimy się myśleć samodzielnie' %}</p>
+{# dołącz do naszego zespołu #}
+{% image page.join_us_background max-2560x2048 as join_us_background %}
+<section class="section is-medium"
+         style="background: url('{{ join_us_background.url }}') center center; background-size: cover;">
+    <div class="container">
+        <p class="subtitle is-section-title">
+            {{ page.join_us_headline }}
+        </p>
+        <div class="columns">
+            <div class="column is-half content">
+                <p>
+                    {{ page.join_us_body }}
+                </p>
+                <div class="buttons">
+                    {% for job_offer_index in page.job_offer_indexes %}
+                    <a href="{% pageurl job_offer_index %}"
+                       class="button is-light is-uppercase is-radiusless is-fullwidth">
+                        {% trans 'Sprawdź aktualne oferty' %}
+                    </a>
+                    {% endfor %}
+                    <a href="#contact" class="button is-outlined is-light is-uppercase is-radiusless is-fullwidth">
+                        {% trans 'Skontaktuj się z nami' %}
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
-
-    {# Inicjatywy własne #}
-    {% if page.our_initiatives.all %}
-        <section class="section is-medium">
-            <div class="container">
-                <h2 class="subtitle is-section-title">{% trans 'Initiatives we have started' %}</h2>
-                <div class="columns is-multiline">
-                    {% for inititive in page.our_initiatives.all %}
-                        <div class="column is-one-third">
-                            {% include 'projects/partials/project_card.html' with project=inititive %}
-                        </div>
-                    {% endfor %}
-                </div>
+        <div class="level is-uppercase">
+            <div class="level-item">
+                <p>{% trans 'Stawiamy na rozwiązania' %}</p>
             </div>
-        </section>
-    {% endif %}
+            <div class="level-item">
+                <p>{% trans 'Pobudzamy kreatywność' %}</p>
+            </div>
+            <div class="level-item">
+                <p>{% trans 'Nie boimy się myśleć samodzielnie' %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Inicjatywy własne #}
+{% if page.our_initiatives.all %}
+<section class="section is-medium">
+    <div class="container">
+        <h2 class="subtitle is-section-title">{% trans 'Initiatives we have started' %}</h2>
+        <div class="columns is-multiline">
+            {% for inititive in page.our_initiatives.all %}
+            <div class="column is-one-third">
+                {% include 'projects/partials/project_card.html' with project=inititive %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
 
 {# Współpracowali z nami #}
 <section class="section is-medium">
@@ -193,11 +242,11 @@
         <h2 class="subtitle is-section-title">{% trans 'We worked with' %}</h2>
         <div class="columns is-multiline is-vcentered is-mobile">
             {% for logo in page.cooperators_logos.all %}
-                <div class="column is-one-quarter">
-                    <figure class="image is-small">
-                        {% image logo.image original %}
-                    </figure>
-                </div>
+            <div class="column is-one-quarter">
+                <figure class="image is-small">
+                    {% image logo.image original %}
+                </figure>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -205,28 +254,28 @@
 
 {# Bez nich by sie nie udało #}
 {% with page.random_team_member as member %}
-    {% if member %}
-        <section class="section is-medium">
-            <div class="container">
-                <h2 class="subtitle is-section-title">{% trans 'It would not work without them' %}</h2>
-                <div class="columns">
-                    <div class="column">
-                        <p>
-                            {{ member.name }}
-                        </p>
-                        <p>
-                            {{ member.long_description }}
-                        </p>
-                    </div>
-                    <div class="column">
-                        <p>
-                            {% image member.photo width-400 %}
-                        </p>
-                    </div>
-                </div>
+{% if member %}
+<section class="section is-medium">
+    <div class="container">
+        <h2 class="subtitle is-section-title">{% trans 'It would not work without them' %}</h2>
+        <div class="columns">
+            <div class="column">
+                <p>
+                    {{ member.name }}
+                </p>
+                <p>
+                    {{ member.long_description }}
+                </p>
             </div>
-        </section>
-    {% endif %}
+            <div class="column">
+                <p>
+                    {% image member.photo width-400 %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
 {% endwith %}
 
 {% endblock content %}

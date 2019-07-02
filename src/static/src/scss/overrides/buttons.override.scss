@@ -1,0 +1,15 @@
+@import "../utilities/index.mixins";
+
+.ee-button {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  padding: 1rem 2rem;
+  @include transition();
+
+  &:hover {
+    @include shadow();
+    transform: translateY(-2px);
+  }
+}
