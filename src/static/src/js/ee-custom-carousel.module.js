@@ -1,21 +1,32 @@
-import * as $ from "jquery";
-
 (function () {
-    const carouselSlidesContainer = $(".ee-hero-carousel__container");
-    const carouselSlides = $(".ee-hero-carousel__container .ee-hero-carousel__content");
-    const carouselControls = $(".ee-hero-carousel__controls");
-    const carouselSlidesCount = carouselSlides.get().length;
+    const carouselSlidesContainer = document.querySelector(".ee-hero-carousel__container");
+    const carouselSlides = document.querySelectorAll(".ee-hero-carousel__container .ee-hero-carousel__content");
+    const carouselControls = document.querySelector(".ee-hero-carousel__controls");
+    const carouselSlidesCount = carouselSlides.values().length;
+    let carouselControlsButtons = null;
 
-    carouselSlidesContainer.css("width", `${100 * carouselSlidesCount}vw`);
-    carouselSlides.each((idx) => {
-        const defaultActive = idx === 0 ? "active" : "";
-        carouselControls.find(".container").append(`<div class="ee-hero-carousel__control-button ${defaultActive}" id="ee-carousel-control-${idx}"></div>`);
+    carouselSlidesContainer.style.width = `${100 * carouselSlidesCount}vw`;
+
+    [ ...carouselSlides.keys() ].forEach((el, idx) => {
+        const defaultActive = idx === 0 ? "active" : null;
+        const controlButton = document.createElement("div");
+        controlButton.classList.add("ee-hero-carousel__control-button");
+        if (defaultActive) {
+            controlButton.classList.add(defaultActive);
+        }
+        controlButton.setAttribute("id", `ee-carousel-control-${idx}`);
+        carouselControls.querySelector(".container").appendChild(controlButton);
+        carouselControlsButtons = carouselControls.querySelectorAll(".ee-hero-carousel__control-button");
     });
 
-    carouselControls.find(".ee-hero-carousel__control-button").click(e => {
-        const controlIndex = $(e.target).attr("id").slice(-1);
-        carouselSlidesContainer.css("transform", `translateX(-${controlIndex * 100}vw)`);
-        carouselControls.find(".ee-hero-carousel__control-button").removeClass("active");
-        $(e.target).addClass("active");
+    [ ...carouselControlsButtons.values() ].forEach((el) => {
+        el.addEventListener("click", e => {
+            const controlIndex = e.target.getAttribute("id").slice(-1);
+            carouselSlidesContainer.style.transform = `translateX(-${controlIndex * 100}vw)`;
+            [ ...carouselControlsButtons.values() ].forEach((el) => {
+                el.classList.remove("active");
+            });
+            el.classList.add("active");
+        });
     });
 })();

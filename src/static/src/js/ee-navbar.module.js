@@ -1,7 +1,7 @@
-import * as $ from "jquery";
-
 (function () {
-    $(".ee-navbar-close-button").click(() => {
-        $(".navbar-menu, .navbar-burger").removeClass("is-active");
+    document.querySelector(".ee-navbar-close-button").addEventListener("click", () => {
+        [...document.querySelectorAll(".navbar-menu, .navbar-burger").values()].forEach(el => {
+            el.classList.remove("is-active");
+        });
     });
 })();
