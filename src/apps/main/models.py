@@ -175,6 +175,10 @@ class NewsPage(Page):
         help_text=_('If True, this article would be visible on HomePage and on top of NewsIndexPage. Only one article '
                     'can be marked, so old one will be unmarked automatically.'),
     )
+    cta_question = models.CharField(
+        max_length=200,
+        blank=True,
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('marked'),
@@ -182,6 +186,7 @@ class NewsPage(Page):
         FieldPanel('body', classname="full"),
         ImageChooserPanel('photo'),
         PageChooserPanel('specialization'),
+        FieldPanel('cta_question'),
     ]
 
     parent_page_types = ['NewsIndexPage']

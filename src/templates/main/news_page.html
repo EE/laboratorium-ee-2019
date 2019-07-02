@@ -51,6 +51,14 @@
                     <h3>{{ page.headline }}</h2>
                     {{ page.body|richtext }}
                 </div>
+                {% if page.cta_question %}
+                    <p>
+                        {{ page.cta_question }}
+                        <a href="#contact" class="button is-light is-radiusless ee-button is-inline">
+                            {% trans 'Napisz do nas' %}
+                        </a>
+                    </p>
+                {% endif %}
             </div>
         </div>
     </div>
