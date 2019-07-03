@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 10:55+0200\n"
+"POT-Creation-Date: 2019-07-03 12:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,15 +89,15 @@ msgstr ""
 msgid "If True, this topic would be visible on HomePage."
 msgstr ""
 
-#: src/apps/projects/models.py:102
+#: src/apps/projects/models.py:110
 msgid "Brief name of the project"
 msgstr ""
 
-#: src/apps/projects/models.py:183
+#: src/apps/projects/models.py:191
 msgid "Description shown on TeamIndex page."
 msgstr ""
 
-#: src/apps/projects/models.py:187
+#: src/apps/projects/models.py:195
 msgid "More comprehensive description visible on Home Page"
 msgstr ""
 
@@ -132,36 +132,56 @@ msgstr ""
 msgid "Find out more"
 msgstr ""
 
-#: src/templates/main/home_page.html:130
+#: src/templates/main/home_page.html:109
+msgid "Działamy w tematach"
+msgstr ""
+
+#: src/templates/main/home_page.html:138
 msgid "Jak powstają nasze rozwiązania?"
 msgstr ""
 
-#: src/templates/main/home_page.html:187
+#: src/templates/main/home_page.html:148
+msgid "Needs analysis"
+msgstr ""
+
+#: src/templates/main/home_page.html:157
+msgid "Warsztaty partycypacyjne i Google Design Sprint"
+msgstr ""
+
+#: src/templates/main/home_page.html:166
+msgid "Prototyp i Minimum Viable Product"
+msgstr ""
+
+#: src/templates/main/home_page.html:175
+msgid "Wdrażanie Zwinne"
+msgstr ""
+
+#: src/templates/main/home_page.html:195
 msgid "Sprawdź aktualne oferty"
 msgstr ""
 
-#: src/templates/main/home_page.html:191
+#: src/templates/main/home_page.html:199
 msgid "Contact us"
 msgstr ""
 
-#: src/templates/main/home_page.html:222
+#: src/templates/main/home_page.html:230
 msgid "Our initiatives"
 msgstr ""
 
-#: src/templates/main/home_page.html:234
+#: src/templates/main/home_page.html:242
 msgid "We have worked with"
 msgstr ""
 
-#: src/templates/main/home_page.html:251
+#: src/templates/main/home_page.html:259
 #: src/templates/projects/team_index_page.html:46
 msgid "Team"
 msgstr ""
 
-#: src/templates/main/home_page.html:257
+#: src/templates/main/home_page.html:265
 msgid "Poznaj nas"
 msgstr ""
 
-#: src/templates/main/home_page.html:258
+#: src/templates/main/home_page.html:266
 msgid "Join us"
 msgstr ""
 
