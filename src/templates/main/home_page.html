@@ -171,47 +171,50 @@
     </div>
 </section>
 
-{# block Join the Team #}
-<section class="ee-join-us-block" style="background: url({% webpack_static 'images/join-the-team.png' %})">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-half ee-join-us-block__content-container">
-                <div class="ee-join-us-block__content">
-                <h2 class="ee-join-us-block__content-title">{{ page.join_us_headline }}</h2>
-                <p class="ee-join-us-block__content-body">{{ page.join_us_body }}</p>
-                </div>
-                <div class="ee-join-us-block__buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">
-                        Sprawdź aktualne oferty
-                    </a>
-                    <a href="" class="button is-outlined is-light is-radiusless ee-button">
-                        Skontaktuj się z nami
-                    </a>
-                </div>
-            </div>
-            <div class="column ee-join-us-block__items-container">
-                <div class="ee-join-us-block__item">
-                    <div class="ee-join-us-block__item-icon">
-                        {% svg 'join-us-icon-1' %}
+    {# block Join the Team #}
+    {% image page.join_us_background max-2560x2048 as join_us_background %}
+    <section class="ee-join-us-block" style="background: url({{ join_us_background.url }})">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half ee-join-us-block__content-container">
+                    <div class="ee-join-us-block__content">
+                    <h2 class="ee-join-us-block__content-title">{{ page.join_us_headline }}</h2>
+                    <p class="ee-join-us-block__content-body">{{ page.join_us_body }}</p>
                     </div>
-                    <div class="ee-join-us-block__item-title">Stawiamy na rozwiązania</div>
-                </div>
-                <div class="ee-join-us-block__item">
-                    <div class="ee-join-us-block__item-icon">
-                        {% svg 'join-us-icon-2' %}
+                    <div class="ee-join-us-block__buttons">
+                        {% for job_offer_index in page.job_offer_indexes %}
+                            <a href="{% pageurl job_offer_index %}" class="button is-light is-radiusless ee-button">
+                                {% trans 'Sprawdź aktualne oferty' %}
+                            </a>
+                        {% endfor %}
+                        <a href="#contact" class="button is-outlined is-light is-radiusless ee-button">
+                            {% trans 'Contact us' %}
+                        </a>
                     </div>
-                    <div class="ee-join-us-block__item-title">Pobudzamy kreatywność</div>
                 </div>
-                <div class="ee-join-us-block__item">
-                    <div class="ee-join-us-block__item-icon">
-                        {% svg 'join-us-icon-3' %}
+                <div class="column ee-join-us-block__items-container">
+                    <div class="ee-join-us-block__item">
+                        <div class="ee-join-us-block__item-icon">
+                            {% svg 'join-us-icon-1' %}
+                        </div>
+                        <div class="ee-join-us-block__item-title">Stawiamy na rozwiązania</div>
                     </div>
-                    <div class="ee-join-us-block__item-title">Nie boimy się myśleć samodzielnie</div>
+                    <div class="ee-join-us-block__item">
+                        <div class="ee-join-us-block__item-icon">
+                            {% svg 'join-us-icon-2' %}
+                        </div>
+                        <div class="ee-join-us-block__item-title">Pobudzamy kreatywność</div>
+                    </div>
+                    <div class="ee-join-us-block__item">
+                        <div class="ee-join-us-block__item-icon">
+                            {% svg 'join-us-icon-3' %}
+                        </div>
+                        <div class="ee-join-us-block__item-title">Nie boimy się myśleć samodzielnie</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     {# block Initiatives #}
     <section class="ee-section">

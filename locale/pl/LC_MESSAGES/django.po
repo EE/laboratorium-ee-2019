@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 10:45+0200\n"
+"POT-Creation-Date: 2019-07-03 10:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,43 +119,51 @@ msgstr ""
 msgid "Napisz do nas"
 msgstr ""
 
-#: src/templates/main/home_page.html:50
+#: src/templates/main/home_page.html:45
 msgid "Check us out"
 msgstr "Sprawdź nas"
 
-#: src/templates/main/home_page.html:52
+#: src/templates/main/home_page.html:47
 #: src/templates/main/news_index_page.html:35
 #: src/templates/main/partials/article_card.html:21
 #: src/templates/main/partials/job_offer_card.html:19
-#: src/templates/main/partials/rodopass.html:15
+#: src/templates/main/partials/rodopass.html:17
 #: src/templates/projects/partials/project_card.html:22
 #: src/templates/projects/partials/project_card_initiative.html:14
 #: src/templates/projects/partials/specialization_card.html:14
 msgid "Find out more"
 msgstr "Dowiedz się więcej"
 
-#: src/templates/main/home_page.html:135
+#: src/templates/main/home_page.html:130
 msgid "Jak powstają nasze rozwiązania?"
 msgstr ""
 
-#: src/templates/main/home_page.html:224
+#: src/templates/main/home_page.html:187
+msgid "Sprawdź aktualne oferty"
+msgstr ""
+
+#: src/templates/main/home_page.html:191
+msgid "Contact us"
+msgstr "Skontaktuj się z nami"
+
+#: src/templates/main/home_page.html:222
 msgid "Our initiatives"
 msgstr "Nasze inicjatywy"
 
-#: src/templates/main/home_page.html:236
+#: src/templates/main/home_page.html:234
 msgid "We have worked with"
 msgstr "Współpracowaliśmy z"
 
-#: src/templates/main/home_page.html:253
+#: src/templates/main/home_page.html:251
 #: src/templates/projects/team_index_page.html:46
 msgid "Team"
 msgstr "Zespół"
 
-#: src/templates/main/home_page.html:259
+#: src/templates/main/home_page.html:257
 msgid "Poznaj nas"
 msgstr ""
 
-#: src/templates/main/home_page.html:260
+#: src/templates/main/home_page.html:258
 msgid "Join us"
 msgstr "Dołącz do nas"
 
