@@ -286,25 +286,28 @@
     </div>
 </section>
 
-{# block Team #}
-<section class="section ee-team-block" style="background-image: url({% webpack_static 'images/team-1.png' %});">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-one-third">
-                <h2 class="ee-team-block__title">Zespół</h2>
-                <h3 class="ee-team-block__headline">Ludwik Trammer</h3>
-                <p class="ee-team-block__body">
-                    Były nauczyciel, obecnie student uczelni Georgia Tech. Programista i maniak komputerowy, uwielbiający podcasty,
-                    wegańskie jedzenie i kozy. Lubi uczyć i rozwijać się w IT, a w szczególności Machine Learningu, AI i sieciach
-                    neuronowych.
-                </p>
-                <div class="ee-team-block__buttons-container">
-                    <a href="" class="button is-light is-radiusless ee-button">Poznaj nas</a>
-                    <a href="" class="button is-light is-outlined is-radiusless ee-button">Dołącz do nas</a>
+    {# block Team #}
+    {% with page.random_team_member as member %}
+        {% if member %}
+            {% image member.photo max-2560x2048 as team_background %}
+            <section class="section ee-team-block" style="background-image: url({{ team_background.url }});">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column is-one-third">
+                            <h2 class="ee-team-block__title">{% trans 'Team' %}</h2>
+                            <h3 class="ee-team-block__headline">{{ member.name }}</h3>
+                            <p class="ee-team-block__body">
+                                {{ member.long_description }}
+                            </p>
+                            <div class="ee-team-block__buttons-container">
+                                <a href="" class="button is-light is-radiusless ee-button">{% trans 'Poznaj nas' %}</a>
+                                <a href="" class="button is-light is-outlined is-radiusless ee-button">{% trans 'Join us' %}</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
+        {% endif %}
+    {% endwith %}
 
 {% endblock content %}
