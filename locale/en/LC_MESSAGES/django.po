@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 10:07+0200\n"
+"POT-Creation-Date: 2019-07-03 10:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,16 +135,20 @@ msgstr ""
 msgid "Jak powstają nasze rozwiązania?"
 msgstr ""
 
-#: src/templates/main/home_page.html:297
+#: src/templates/main/home_page.html:275
+msgid "We have worked with"
+msgstr ""
+
+#: src/templates/main/home_page.html:292
 #: src/templates/projects/team_index_page.html:46
 msgid "Team"
 msgstr ""
 
-#: src/templates/main/home_page.html:303
+#: src/templates/main/home_page.html:298
 msgid "Poznaj nas"
 msgstr ""
 
-#: src/templates/main/home_page.html:304
+#: src/templates/main/home_page.html:299
 msgid "Join us"
 msgstr ""
 

@@ -269,22 +269,17 @@
     </div>
 </section>
 
-{# block Cooperation #}
-<section class="ee-section">
-    <div class="ee-section__title-container">
-        <h2 class="ee-section__title">Współpracowaliśmy z</h2>
-    </div>
-    <div class="container ee-coop-block__logo-container">
-        <img src="{% webpack_static 'images/agora_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/biblioteka-narodowa_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/inea_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/instytut-lacznosci_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/J&J_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/miasto-jest-nasze_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/ministerstwo_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/nask_logo.png' %}" alt="">
-    </div>
-</section>
+    {# block Cooperation #}
+    <section class="ee-section">
+        <div class="ee-section__title-container">
+            <h2 class="ee-section__title">{% trans 'We have worked with' %}</h2>
+        </div>
+        <div class="container ee-coop-block__logo-container">
+            {% for logo in page.cooperators_logos.all %}
+                {% image logo.image original %}
+            {% endfor %}
+        </div>
+    </section>
 
     {# block Team #}
     {% with page.random_team_member as member %}
