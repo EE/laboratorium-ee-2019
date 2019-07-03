@@ -2,59 +2,45 @@
 {% load wagtailcore_tags %}
 {% load webpack_static from webpack_loader %}
 
-<footer class="footer">
-    <div class="container is-bottom-padded">
-        <a class="subtitle" href="/">
-            <img src="{% webpack_static 'images/logoEE.svg' %}" style="height: 2em;">
-        </a>
-    </div>
-
+<footer class="ee-footer">
     <div class="container">
-
         <div class="columns">
             <div class="column">
-                <h1 class="subtitle">{% trans 'Contact' %}</h1>
-                <div class="content">
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <img src="{% webpack_static 'images/logoEE.svg' %}" class="ee-footer__logo">
+                <h2 class="ee-footer__headline">{% trans 'Contact' %}</h2>
+                <div class="ee-footer__body">
                     {{ footer.contact|richtext }}
                 </div>
-                <h1 class="subtitle">{% trans 'Address' %}</h1>
-                <div class="content">
+                <h2 class="ee-footer__headline">{% trans 'Address' %}</h2>
+                <div class="ee-footer__body">
                     {{ footer.address|richtext }}
                 </div>
-                <div class="content">
-                    Strona korzysta z plików cookies.
-                    Szczegóły znajdziesz na podstronach:
-                    {% for info_page in footer.page.info_pages %}
-                        <div>
-                            <a href="{% pageurl info_page %}">{{ info_page.title }}</a>
-                        </div>
-                    {% endfor %}
-                </div>
             </div>
-
-            <div class="column">
-                <h1 class="subtitle">{% trans 'How we work?' %}</h1>
-                <div class="content">
+            <div class="column is-one-quarter">
+                <h1 class="ee-footer__headline">{% trans 'How we work?' %}</h1>
+                <div class="ee-footer__body">
                     {{ footer.how_we_work|richtext }}
                 </div>
             </div>
-
-            <div class="column">
-                <h1 class="subtitle">{% trans 'Specializations' %}</h1>
+            <div class="column is-half ee-footer__last-column">
+                <h1 class="ee-footer__headline">{% trans 'Specializations' %}</h1>
                 {% for specialization in footer.specializations.all %}
-                    <div>
-                        <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
-                    </div>
+                <div class="ee-footer__body">
+                    <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
+                </div>
                 {% endfor %}
-            </div>
-
-            <div class="column">
-                <h1 class="subtitle">{% trans 'Partners' %}</h1>
-                <div class="content">
+                <h1 class="ee-footer__headline">{% trans 'Partners' %}</h1>
+                <div class="ee-footer__body">
                     {{ footer.partners|richtext }}
                 </div>
             </div>
-
         </div>
     </div>
 </footer>

@@ -18,6 +18,7 @@ import os
 
 BASE_DIR = str(environ.Path(__file__) - 3)
 SRC_DIR = os.path.join(BASE_DIR, 'src')
+SVG_DIRS = [ os.path.join(SRC_DIR, 'static', 'src', 'images') ]
 env = environ.Env()
 env.read_env()
 
@@ -67,6 +68,7 @@ INSTALLED_APPS = [
 
     'src.apps.main',
     'src.apps.projects',
+    'svg'
 ]
 
 MIDDLEWARE = [
