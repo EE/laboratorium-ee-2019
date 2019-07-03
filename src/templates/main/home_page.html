@@ -218,56 +218,17 @@
     </div>
 </section>
 
-{# block Initiatives #}
-<section class="ee-section">
-    <div class="ee-section__title-container">
-        <h2 class="ee-section__title">Nasze inicjatywy</h2>
-    </div>
-    <div class="ee-section__triptych">
-        <div class="ee-initiatives-card" style="background-image: url({% webpack_static 'images/initiative-1.png' %});">
-            <div class="ee-initiatives-card__content">
-                <h2 class="ee-initiatives-card__title">RODO PASS</h2>
-                <div class="ee-initiatives-card__headline">
-                    To trzymodułowa aplikacja wspierająca pamięć u seniorów. Trening, kalendarz i przechowalnia
-                    wspomnień sprawiają, że proces degeneracji pamięci zatrzymuje się.
-                </div>
-                <div class="ee-initiatives-card__buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">
-                        {% trans 'Find out more' %}
-                    </a>
-                </div>
-            </div>
+    {# block Initiatives #}
+    <section class="ee-section">
+        <div class="ee-section__title-container">
+            <h2 class="ee-section__title">{% trans 'Our initiatives' %}</h2>
         </div>
-        <div class="ee-initiatives-card" style="background-image: url({% webpack_static 'images/initiative-2.png' %});">
-            <div class="ee-initiatives-card__content">
-                <h2 class="ee-initiatives-card__title">MEMO</h2>
-                <div class="ee-initiatives-card__headline">
-                    To trzymodułowa aplikacja wspierająca pamięć u seniorów. Trening, kalendarz i przechowalnia
-                    wspomnień sprawiają, że proces degeneracji pamięci zatrzymuje się.
-                </div>
-                <div class="ee-initiatives-card__buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">
-                        {% trans 'Find out more' %}
-                    </a>
-                </div>
-            </div>
+        <div class="ee-section__triptych">
+            {% for inititive in page.our_initiatives.all %}
+                {% include 'projects/partials/project_card_initiative.html' with project=inititive %}
+            {% endfor %}
         </div>
-        <div class="ee-initiatives-card" style="background-image: url({% webpack_static 'images/initiative-3.png' %});">
-            <div class="ee-initiatives-card__content">
-                <h2 class="ee-initiatives-card__title">DARE magazine</h2>
-                <div class="ee-initiatives-card__headline">
-                    To trzymodułowa aplikacja wspierająca pamięć u seniorów. Trening, kalendarz i przechowalnia
-                    wspomnień sprawiają, że proces degeneracji pamięci zatrzymuje się.
-                </div>
-                <div class="ee-initiatives-card__buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">
-                        {% trans 'Find out more' %}
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     {# block Cooperation #}
     <section class="ee-section">
