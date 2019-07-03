@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 10:16+0200\n"
+"POT-Creation-Date: 2019-07-03 10:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,7 +103,7 @@ msgstr "Opis pokazywany na stronie TeamIndex."
 msgid "More comprehensive description visible on Home Page"
 msgstr "Bardziej wyczerpujący opis widoczny na Home Page"
 
-#: src/settings/base.py:152
+#: src/settings/base.py:151
 msgid "Polish"
 msgstr "Polski"
 
@@ -123,12 +123,12 @@ msgstr ""
 msgid "Check us out"
 msgstr "Sprawdź nas"
 
-#: src/templates/main/home_page.html:52 src/templates/main/home_page.html:236
-#: src/templates/main/home_page.html:250 src/templates/main/home_page.html:264
+#: src/templates/main/home_page.html:52
 #: src/templates/main/news_index_page.html:35
 #: src/templates/main/partials/article_card.html:21
 #: src/templates/main/partials/job_offer_card.html:19
 #: src/templates/projects/partials/project_card.html:22
+#: src/templates/projects/partials/project_card_initiative.html:14
 #: src/templates/projects/partials/specialization_card.html:14
 msgid "Find out more"
 msgstr "Dowiedz się więcej"
@@ -137,20 +137,24 @@ msgstr "Dowiedz się więcej"
 msgid "Jak powstają nasze rozwiązania?"
 msgstr ""
 
-#: src/templates/main/home_page.html:275
+#: src/templates/main/home_page.html:224
+msgid "Our initiatives"
+msgstr "Nasze inicjatywy"
+
+#: src/templates/main/home_page.html:236
 msgid "We have worked with"
 msgstr "Współpracowaliśmy z"
 
-#: src/templates/main/home_page.html:292
+#: src/templates/main/home_page.html:253
 #: src/templates/projects/team_index_page.html:46
 msgid "Team"
 msgstr "Zespół"
 
-#: src/templates/main/home_page.html:298
+#: src/templates/main/home_page.html:259
 msgid "Poznaj nas"
 msgstr ""
 
-#: src/templates/main/home_page.html:299
+#: src/templates/main/home_page.html:260
 msgid "Join us"
 msgstr "Dołącz do nas"
 
@@ -260,9 +264,6 @@ msgstr "Nasze wartości"
 
 #~ msgid "Needs analysis"
 #~ msgstr "Analiza potrzeb"
-
-#~ msgid "Initiatives we have started"
-#~ msgstr "Inicjatywy, które sami zapoczątkowaliśmy"
 
 #~ msgid "It would not work without them"
 #~ msgstr "Bez nich by się nie udało"
