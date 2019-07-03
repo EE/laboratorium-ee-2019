@@ -1,6 +1,6 @@
 @import "../utilities/index.mixins";
 
-.ee-specialization-card {
+.ee-initiatives-card {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -14,26 +14,26 @@
         transform: scale(1.05);
         @include shadow($size: xl, $tint: #f7cd87, $alpha: 0.2);
 
-        .ee-specialization-card__headline, .ee-specialization-card__buttons {
+        .ee-initiatives-card__headline, .ee-initiatives-card__buttons {
             opacity: 1;
         }
     }
 }
 
-.ee-specialization-card__content {
+.ee-initiatives-card__content {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
     height: 70%;
 }
 
-.ee-specialization-card__title {
+.ee-initiatives-card__title {
     flex-basis: 100%;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
 }
 
-.ee-specialization-card__headline {
+.ee-initiatives-card__headline {
     flex-basis: 100%;
     font-size: 1rem;
     color: rgba(white, 0.7);
@@ -42,7 +42,7 @@
     @include transition();
 }
 
-.ee-specialization-card__buttons {
+.ee-initiatives-card__buttons {
     display: flex;
     align-items: flex-end;
     flex-basis: 100%;

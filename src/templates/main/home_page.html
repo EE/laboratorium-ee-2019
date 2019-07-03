@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load svg %}
 {% load i18n %}
 {% load main_tags %}
 {% load wagtailcore_tags %}
@@ -13,7 +14,7 @@
 
 {% block navbar %}
     {# navbar is displayed in hero-head #}
-{% navbar %}
+    {% navbar %}
 {% endblock %}
 
 {% block content %}
@@ -21,7 +22,7 @@
 <section class="ee-hero-carousel">
     <div class="ee-hero-carousel__fixed-header">
         <div class="container">
-            Poznaj nas przez nasze historie
+            Poznaj nas <strong>przez nasze historie</strong>
         </div>
     </div>
     <div class="ee-hero-carousel__controls">
@@ -57,7 +58,7 @@
     </div>
 </section>
 
-{# blok specjalizacje #}
+{# block Specializations #}
 <section class="ee-section">
     <div class="ee-section__title-container">
         <h2 class="ee-section__title">{{ page.specializations_headline }}</h2>
@@ -104,178 +105,206 @@
     </div>
 </div>
 
-{# spis tematów #}
-{% if page.topics %}
-{% image page.topics.all.0.background_image original as background_image %}
-<section class="section is-medium"
-         style="background: url('{{ background_image.url }}') center center; background-size: cover;">
+{# block Topics #}
+<section class="section ee-topics-block" style="background-image: url({% webpack_static 'images/topics-1.png' %})">
     <div class="container">
-        <h1 class="subtitle is-section-title">{% trans 'Działamy w obszarach' %}</h1>
         <div class="columns">
-            <div class="column is-one-quarter buttons">
-                {% for topic in page.topics.all %}
-                <a href="{% pageurl topic %}"
-                   class="button is-outlined is-light is-uppercase is-radiusless is-fullwidth">{{ topic.title }}</a>
-                {% endfor %}
+            <div class="column is-one-third ee-topics-block__content">
+                <h3 class="ee-topics-block__title">Działamy w tematach</h3>
+                <div class="ee-topics-block__buttons">
+                    <a class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-1">Ochrona środowiska</a>
+                    <a class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-2">Seniorzy</a>
+                    <a class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-3">Media</a>
+                    <a class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-4">Prawo</a>
+                </div>
+            </div>
+            <div class="column ee-topics-block__image-container">
+                <img src="{% webpack_static 'images/topics-target-1.png' %}" alt="" id="ee-topics-1" class="ee-topics-block__image active">
+                <img src="{% webpack_static 'images/topics-target-2.png' %}" alt="" id="ee-topics-2" class="ee-topics-block__image">
+                <img src="{% webpack_static 'images/topics-target-3.png' %}" alt="" id="ee-topics-3" class="ee-topics-block__image">
+                <img src="{% webpack_static 'images/topics-target-4.png' %}" alt="" id="ee-topics-4" class="ee-topics-block__image">
             </div>
         </div>
     </div>
 </section>
-{% endif %}
 
-{# Jak powstają nasze rozwiązania? statyczne #}
-<section class="section is-medium">
-    <div class="container">
-        <h2 class="subtitle is-section-title">
-            {% trans 'How we create our solutions?' %}
+{# block Solutions #}
+<section class="ee-solutions-block">
+    <div class="ee-solutions-block__title-container">
+        <h2 class="ee-solutions-block__title">
+            {% trans 'Jak powstają nasze rozwiązania?' %}
         </h2>
-        <div class="columns is-gapless is-mobile has-text-centered">
-            <div class="column">
-                <div class="container is-fluid">
-                    <figure class="image is-48x48 has-margin-auto">
-                        <img src="{% webpack_static 'images/ico-lupka.svg' %}"/>
-                    </figure>
+    </div>
+    <div class="container">
+        <div class="ee-solutions-block__items-container">
+            <div class="ee-solutions-block__item">
+                <div class="ee-solutions-block__item-icon">
+                    {% svg 'ico-lupka' %}
                 </div>
-                {% include 'main/partials/horizontal_line.html' %}
-                <div class="container is-fluid">
-                    <p class="subtitle is-5">{% trans 'Needs analysis' %}</p>
-                </div>
+                <h3 class="ee-solutions-block__item-title">
+                    Analiza potrzeb
+                </h3>
             </div>
-            <div class="column">
-                <div class="container is-fluid">
-                    <figure class="image is-48x48 has-margin-auto">
-                        <img src="{% webpack_static 'images/ico-post-it.svg' %}"/>
-                    </figure>
+            <div class="ee-solutions-block__item-spacer"></div>
+            <div class="ee-solutions-block__item">
+                <div class="ee-solutions-block__item-icon">
+                    {% svg 'ico-post-it' %}
                 </div>
-                {% include 'main/partials/horizontal_line.html' %}
-                <div class="container is-fluid">
-                    <p class="subtitle is-5">{% trans 'Warsztaty wydobywcze / partycypacyjne' %}</p>
-                </div>
+                <h3 class="ee-solutions-block__item-title">
+                    Warsztaty partycypacyjne i Google Design Sprint
+                </h3>
             </div>
-            <div class="column">
-                <div class="container is-fluid">
-                    <figure class="image is-48x48 has-margin-auto">
-                        <img src="{% webpack_static 'images/ico-proto.svg' %}"/>
-                    </figure>
+            <div class="ee-solutions-block__item-spacer"></div>
+            <div class="ee-solutions-block__item">
+                <div class="ee-solutions-block__item-icon">
+                    {% svg 'ico-proto' %}
                 </div>
-                {% include 'main/partials/horizontal_line.html' %}
-                <div class="container is-fluid">
-                    <p class="subtitle is-5">{% trans 'Prototyp i testy użyteczności' %}</p>
-                </div>
+                <h3 class="ee-solutions-block__item-title">
+                    Prototyp i Minimum Viable Product
+                </h3>
             </div>
-            <div class="column">
-                <div class="container is-fluid">
-                    <figure class="image is-48x48 has-margin-auto">
-                        <img src="{% webpack_static 'images/ico-agile.svg' %}"/>
-                    </figure>
+            <div class="ee-solutions-block__item-spacer"></div>
+            <div class="ee-solutions-block__item">
+                <div class="ee-solutions-block__item-icon">
+                    {% svg 'ico-agile' %}
                 </div>
-                <figure class="image is-marginless is-paddingless">
-                    <img src="{% webpack_static 'images/linia-str.svg' %}"/>
-                </figure>
-                <div class="container is-fluid">
-                    <p class="subtitle is-5">{% trans 'Wdrożenie i rozwój iteracyjny rozwiązania' %}</p>
-                </div>
+                <h3 class="ee-solutions-block__item-title">
+                    Wdrażanie Zwinne
+                </h3>
             </div>
         </div>
     </div>
 </section>
 
-{# dołącz do naszego zespołu #}
-{% image page.join_us_background max-2560x2048 as join_us_background %}
-<section class="section is-medium"
-         style="background: url('{{ join_us_background.url }}') center center; background-size: cover;">
+{# block Join the Team #}
+<section class="ee-join-us-block" style="background: url({% webpack_static 'images/join-the-team.png' %})">
     <div class="container">
-        <p class="subtitle is-section-title">
-            {{ page.join_us_headline }}
-        </p>
         <div class="columns">
-            <div class="column is-half content">
-                <p>
-                    {{ page.join_us_body }}
-                </p>
-                <div class="buttons">
-                    {% for job_offer_index in page.job_offer_indexes %}
-                    <a href="{% pageurl job_offer_index %}"
-                       class="button is-light is-uppercase is-radiusless is-fullwidth">
-                        {% trans 'Sprawdź aktualne oferty' %}
+            <div class="column is-half ee-join-us-block__content-container">
+                <div class="ee-join-us-block__content">
+                <h2 class="ee-join-us-block__content-title">{{ page.join_us_headline }}</h2>
+                <p class="ee-join-us-block__content-body">{{ page.join_us_body }}</p>
+                </div>
+                <div class="ee-join-us-block__buttons">
+                    <a href="" class="button is-light is-radiusless ee-button">
+                        Sprawdź aktualne oferty
                     </a>
-                    {% endfor %}
-                    <a href="#contact" class="button is-outlined is-light is-uppercase is-radiusless is-fullwidth">
-                        {% trans 'Skontaktuj się z nami' %}
+                    <a href="" class="button is-outlined is-light is-radiusless ee-button">
+                        Skontaktuj się z nami
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="level is-uppercase">
-            <div class="level-item">
-                <p>{% trans 'Stawiamy na rozwiązania' %}</p>
-            </div>
-            <div class="level-item">
-                <p>{% trans 'Pobudzamy kreatywność' %}</p>
-            </div>
-            <div class="level-item">
-                <p>{% trans 'Nie boimy się myśleć samodzielnie' %}</p>
+            <div class="column ee-join-us-block__items-container">
+                <div class="ee-join-us-block__item">
+                    <div class="ee-join-us-block__item-icon">
+                        {% svg 'join-us-icon-1' %}
+                    </div>
+                    <div class="ee-join-us-block__item-title">Stawiamy na rozwiązania</div>
+                </div>
+                <div class="ee-join-us-block__item">
+                    <div class="ee-join-us-block__item-icon">
+                        {% svg 'join-us-icon-2' %}
+                    </div>
+                    <div class="ee-join-us-block__item-title">Pobudzamy kreatywność</div>
+                </div>
+                <div class="ee-join-us-block__item">
+                    <div class="ee-join-us-block__item-icon">
+                        {% svg 'join-us-icon-3' %}
+                    </div>
+                    <div class="ee-join-us-block__item-title">Nie boimy się myśleć samodzielnie</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-{# Inicjatywy własne #}
-{% if page.our_initiatives.all %}
-<section class="section is-medium">
+{# block Initiatives #}
+<section class="ee-section">
+    <div class="ee-section__title-container">
+        <h2 class="ee-section__title">Nasze inicjatywy</h2>
+    </div>
+    <div class="ee-section__triptych">
+        <div class="ee-initiatives-card" style="background-image: url({% webpack_static 'images/initiative-1.png' %});">
+            <div class="ee-initiatives-card__content">
+                <h2 class="ee-initiatives-card__title">RODO PASS</h2>
+                <div class="ee-initiatives-card__headline">
+                    To trzymodułowa aplikacja wspierająca pamięć u seniorów. Trening, kalendarz i przechowalnia
+                    wspomnień sprawiają, że proces degeneracji pamięci zatrzymuje się.
+                </div>
+                <div class="ee-initiatives-card__buttons">
+                    <a href="" class="button is-light is-radiusless ee-button">
+                        {% trans 'Find out more' %}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="ee-initiatives-card" style="background-image: url({% webpack_static 'images/initiative-2.png' %});">
+            <div class="ee-initiatives-card__content">
+                <h2 class="ee-initiatives-card__title">MEMO</h2>
+                <div class="ee-initiatives-card__headline">
+                    To trzymodułowa aplikacja wspierająca pamięć u seniorów. Trening, kalendarz i przechowalnia
+                    wspomnień sprawiają, że proces degeneracji pamięci zatrzymuje się.
+                </div>
+                <div class="ee-initiatives-card__buttons">
+                    <a href="" class="button is-light is-radiusless ee-button">
+                        {% trans 'Find out more' %}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="ee-initiatives-card" style="background-image: url({% webpack_static 'images/initiative-3.png' %});">
+            <div class="ee-initiatives-card__content">
+                <h2 class="ee-initiatives-card__title">DARE magazine</h2>
+                <div class="ee-initiatives-card__headline">
+                    To trzymodułowa aplikacja wspierająca pamięć u seniorów. Trening, kalendarz i przechowalnia
+                    wspomnień sprawiają, że proces degeneracji pamięci zatrzymuje się.
+                </div>
+                <div class="ee-initiatives-card__buttons">
+                    <a href="" class="button is-light is-radiusless ee-button">
+                        {% trans 'Find out more' %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# block Cooperation #}
+<section class="ee-section">
+    <div class="ee-section__title-container">
+        <h2 class="ee-section__title">Współpracowaliśmy z</h2>
+    </div>
+    <div class="container ee-coop-block__logo-container">
+        <img src="{% webpack_static 'images/agora_logo.png' %}" alt="">
+        <img src="{% webpack_static 'images/biblioteka-narodowa_logo.png' %}" alt="">
+        <img src="{% webpack_static 'images/inea_logo.png' %}" alt="">
+        <img src="{% webpack_static 'images/instytut-lacznosci_logo.png' %}" alt="">
+        <img src="{% webpack_static 'images/J&J_logo.png' %}" alt="">
+        <img src="{% webpack_static 'images/miasto-jest-nasze_logo.png' %}" alt="">
+        <img src="{% webpack_static 'images/ministerstwo_logo.png' %}" alt="">
+        <img src="{% webpack_static 'images/nask_logo.png' %}" alt="">
+    </div>
+</section>
+
+{# block Team #}
+<section class="section ee-team-block" style="background-image: url({% webpack_static 'images/team-1.png' %});">
     <div class="container">
-        <h2 class="subtitle is-section-title">{% trans 'Initiatives we have started' %}</h2>
-        <div class="columns is-multiline">
-            {% for inititive in page.our_initiatives.all %}
+        <div class="columns">
             <div class="column is-one-third">
-                {% include 'projects/partials/project_card.html' with project=inititive %}
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
-
-{# Współpracowali z nami #}
-<section class="section is-medium">
-    <div class="container">
-        <h2 class="subtitle is-section-title">{% trans 'We worked with' %}</h2>
-        <div class="columns is-multiline is-vcentered is-mobile">
-            {% for logo in page.cooperators_logos.all %}
-            <div class="column is-one-quarter">
-                <figure class="image is-small">
-                    {% image logo.image original %}
-                </figure>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-{# Bez nich by sie nie udało #}
-{% with page.random_team_member as member %}
-{% if member %}
-<section class="section is-medium">
-    <div class="container">
-        <h2 class="subtitle is-section-title">{% trans 'It would not work without them' %}</h2>
-        <div class="columns">
-            <div class="column">
-                <p>
-                    {{ member.name }}
+                <h2 class="ee-team-block__title">Zespół</h2>
+                <h3 class="ee-team-block__headline">Ludwik Trammer</h3>
+                <p class="ee-team-block__body">
+                    Były nauczyciel, obecnie student uczelni Georgia Tech. Programista i maniak komputerowy, uwielbiający podcasty,
+                    wegańskie jedzenie i kozy. Lubi uczyć i rozwijać się w IT, a w szczególności Machine Learningu, AI i sieciach
+                    neuronowych.
                 </p>
-                <p>
-                    {{ member.long_description }}
-                </p>
-            </div>
-            <div class="column">
-                <p>
-                    {% image member.photo width-400 %}
-                </p>
+                <div class="ee-team-block__buttons-container">
+                    <a href="" class="button is-light is-radiusless ee-button">Poznaj nas</a>
+                    <a href="" class="button is-light is-outlined is-radiusless ee-button">Dołącz do nas</a>
+                </div>
             </div>
         </div>
     </div>
 </section>
-{% endif %}
-{% endwith %}
 
 {% endblock content %}

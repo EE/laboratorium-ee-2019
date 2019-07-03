@@ -87,7 +87,7 @@
     {% block content %}
     {% endblock content %}
 
-    {% if request.site.contact_form %}
+    {% if not request.site.contact_form %}
         {% block contact_form %}
             <section class="section is-medium" id="contact">
                 <div class="container">

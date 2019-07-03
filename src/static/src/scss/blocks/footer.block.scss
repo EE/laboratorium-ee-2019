@@ -1,0 +1,27 @@
+.ee-footer {
+    background-color: black;
+    padding: 4rem 0;
+    color: rgba(white, 0.7);
+}
+
+.ee-footer__logo {
+    height: 4rem;
+}
+
+.ee-footer__headline {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 0 1rem;
+
+    &:not(:first-child) {
+        margin: 2rem 0 1rem;
+    }
+}
+
+.ee-footer__body {
+    line-height: 1.8;
+}
+
+.ee-footer__last-column {
+    text-align: right;
+}

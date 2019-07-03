@@ -1,4 +1,4 @@
-@mixin shadow($size: medium, $tint: #000, $alpha: 0.2) {
+@mixin shadow($size: medium, $tint: #000, $alpha: 0.6) {
   $shadow-size: map-get((
     small: 0 2px 4px,
     medium: 0 4px 16px,
