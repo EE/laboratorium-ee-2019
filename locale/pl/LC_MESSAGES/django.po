@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 10:35+0200\n"
+"POT-Creation-Date: 2019-07-03 10:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,6 +127,7 @@ msgstr "Sprawdź nas"
 #: src/templates/main/news_index_page.html:35
 #: src/templates/main/partials/article_card.html:21
 #: src/templates/main/partials/job_offer_card.html:19
+#: src/templates/main/partials/rodopass.html:15
 #: src/templates/projects/partials/project_card.html:22
 #: src/templates/projects/partials/project_card_initiative.html:14
 #: src/templates/projects/partials/specialization_card.html:14
