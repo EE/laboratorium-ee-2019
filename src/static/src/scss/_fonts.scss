@@ -1,33 +1,14 @@
-// sass-lint:disable no-duplicate-properties
+@import "utilities/font-face.mixin";
 
-@font-face {
-    font-family: "Noyh";
-    font-style: normal;
-    font-weight: 900;
-    src: url("../fonts/313AC8_1D_0.eot");
-    src: url("../fonts/313AC8_1D_0.eot?#iefix") format("embedded-opentype"), url("../fonts/313AC8_1D_0.woff2") format("woff2"), url("../fonts/313AC8_1D_0.woff") format("woff"), url("../fonts/313AC8_1D_0.ttf") format("truetype");
-}
+$fonts-files: (
+    "spartanmb-light-webfont": 300,
+    "spartanmb-regular-webfont": 400,
+    "spartanmb-semibold-webfont": 600,
+    "spartanmb-bold-webfont": 700,
+    "spartanmb-extra-bold-webfont": 800,
+    "spartanmb-black-webfont": 900
+);
 
-@font-face {
-    font-family: "Noyh";
-    font-style: normal;
-    font-weight: bold;
-    src: url("../fonts/313AC7_0_0.eot");
-    src: url("../fonts/313AC7_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/313AC7_0_0.woff2") format("woff2"), url("../fonts/313AC7_0_0.woff") format("woff"), url("../fonts/313AC7_0_0.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "Noyh";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../fonts/313AC8_1F_0.eot");
-    src: url("../fonts/313AC8_1F_0.eot?#iefix") format("embedded-opentype"), url("../fonts/313AC8_1F_0.woff2") format("woff2"), url("../fonts/313AC8_1F_0.woff") format("woff"), url("../fonts/313AC8_1F_0.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "Noyh";
-    font-style: normal;
-    font-weight: 300;
-    src: url("../fonts/313AC7_1_0.eot");
-    src: url("../fonts/313AC7_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/313AC7_1_0.woff2") format("woff2"), url("../fonts/313AC7_1_0.woff") format("woff"), url("../fonts/313AC7_1_0.ttf") format("truetype");
+@each $font-file, $font-weight in $fonts-files {
+    @include font-face(Spartan, "../fonts/spartan/#{$font-file}", $font-weight, normal, woff2 woff);
 }

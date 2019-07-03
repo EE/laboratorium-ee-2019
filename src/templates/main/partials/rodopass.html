@@ -1,15 +1,23 @@
+{% load webpack_static from webpack_loader %}
+
+{% load i18n %}
+
+{# block RODO #}
 {% if rodo_pass %}
-    <section class="section">
+    <section class="section ee-rodo-block" style="background-image: url({% webpack_static 'images/rodo-1.png' %});">
         <div class="container">
-            <h2 class="subtitle">
-                <b>{{ rodo_pass.title }}</b>
-            </h2>
-            <div class="content">
-                <p>
-                    {{ rodo_pass.description }}
-                </p>
+            <div class="columns">
+                <div class="column is-half is-offset-6 ee-rodo-block__content-container">
+                    <h2 class="ee-team-block__title">P.S.</h2>
+                    <h3 class="ee-team-block__headline">{{ rodo_pass.title }}</h3>
+                    <p class="ee-team-block__body">
+                        {{ rodo_pass.description }}
+                    </p>
+                    <div class="ee-team-block__buttons-container">
+                        <a href="{{ rodo_pass.url }}" class="button is-light is-outlined is-radiusless ee-button">{% trans 'Find out more' %}</a>
+                    </div>
+                </div>
             </div>
-            <a href="{{ rodo_pass.url }}" class="button is-outlined is-light is-uppercase is-radiusless">{{ rodo_pass.button_text }}</a>
         </div>
     </section>
 {% endif %}

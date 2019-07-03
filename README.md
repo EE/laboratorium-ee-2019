@@ -8,6 +8,7 @@
 - [pipenv](https://pipenv.readthedocs.io/en/latest/)
 - [Node.js](https://docs.npmjs.com/getting-started/installing-node)
 - [SASS](http://sass-lang.com/install)
+- [PostgreSQL](https://www.postgresql.org/) (if you want to use another DB you'll need to remove `psycopg2` from python dependencies)
 
 ### Installation instructions
 
@@ -32,12 +33,14 @@
 5. Run database migrations if you want an empty database or use saved database state with basic models:
 
        python manage.py migrate
-      or
+
+   or
 
        cat dump.sql | ./manage.py dbshell
        python manage.py migrate  # just to be sure
 
-      You can log in as superuser using the following data:
+   You can log in as superuser using the following data:
+
        username: admin
        password: cWEO3CTqIVU
 

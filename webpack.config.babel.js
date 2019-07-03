@@ -10,7 +10,6 @@ import CopyWebpackPlugin from "copy-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import UglifyJsPlugin from "uglifyjs-webpack-plugin";
-import { VueLoaderPlugin } from "vue-loader";
 
 const devMode = process.env.NODE_ENV !== "production";  // eslint-disable-line no-undef
 const hotReload = process.env.HOT_RELOAD === "1";  // eslint-disable-line no-undef
@@ -18,11 +17,6 @@ const inputDir = "./src/static/src";
 const outputDir = "./src/static/dist/bundles";
 
 /* RULES */
-const vueRule = {
-    test: /\.vue$/,
-    use: "vue-loader",
-    exclude: /node_modules/
-};
 
 const styleRule = {
     test: /\.(sa|sc|c)ss$/,
@@ -49,7 +43,6 @@ const assetRule = {
 /* PLUGINS */
 const plugins = [
     new BundleTracker({ filename: "./.webpack-stats.json" }),
-    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
         filename: devMode ? "[name].css" : "[name].[hash].css",
         chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
@@ -79,9 +72,10 @@ export default {
     devServer: {
         hot: true,
         quiet: false,
-        headers: { "Access-Control-Allow-Origin": "*" }
+        headers: { "Access-Control-Allow-Origin": "*" },
+        port: 8080,
     },
-    module: { rules: [vueRule, jsRule, styleRule, assetRule] },
+    module: { rules: [jsRule, styleRule, assetRule] },
     plugins,
     optimization: {
         minimizer: [
@@ -102,11 +96,4 @@ export default {
             },
         },
     },
-    resolve: {
-        alias: {
-            // You can remove this and get back about 10kb in projects
-            // that use Vue templates in .vue files exclusively
-            "vue$": "vue/dist/vue.esm.js",
-        }
-    }
 };

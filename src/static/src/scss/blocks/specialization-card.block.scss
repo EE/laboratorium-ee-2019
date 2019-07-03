@@ -1,0 +1,51 @@
+@import "../utilities/index.mixins";
+
+.ee-specialization-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-start;
+    background-size: cover;
+    height: 48rem;
+    padding: 4rem 3rem;
+    @include transition();
+
+    &:hover {
+        transform: scale(1.05);
+        @include shadow($size: xl, $tint: #f7cd87, $alpha: 0.2);
+
+        .ee-specialization-card__headline, .ee-specialization-card__buttons {
+            opacity: 1;
+        }
+    }
+}
+
+.ee-specialization-card__content {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 70%;
+}
+
+.ee-specialization-card__title {
+    flex-basis: 100%;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.ee-specialization-card__headline {
+    flex-basis: 100%;
+    font-size: 1rem;
+    color: rgba(white, 0.7);
+    line-height: 1.8;
+    opacity: 0;
+    @include transition();
+}
+
+.ee-specialization-card__buttons {
+    display: flex;
+    align-items: flex-end;
+    flex-basis: 100%;
+    margin-top: auto;
+    opacity: 0;
+}

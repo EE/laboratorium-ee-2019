@@ -1,0 +1,10 @@
+@mixin shadow($size: medium, $tint: #000, $alpha: 0.6) {
+  $shadow-size: map-get((
+    small: 0 2px 4px,
+    medium: 0 4px 16px,
+    large: 0 8px 32px,
+    xl: 0 16px 64px
+  ), $size);
+
+  box-shadow: $shadow-size rgba($tint, $alpha);
+}

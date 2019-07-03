@@ -67,6 +67,7 @@ INSTALLED_APPS = [
 
     'src.apps.main',
     'src.apps.projects',
+    'svg'
 ]
 
 MIDDLEWARE = [
@@ -172,6 +173,7 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+SVG_DIRS = [os.path.join(SRC_DIR, 'static', 'src', 'images')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediadir')
 MEDIA_URL = '/media/'

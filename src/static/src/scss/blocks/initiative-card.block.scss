@@ -1,0 +1,51 @@
+@import "../utilities/index.mixins";
+
+.ee-initiatives-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-start;
+    background-size: cover;
+    height: 48rem;
+    padding: 4rem 3rem;
+    @include transition();
+
+    &:hover {
+        transform: scale(1.05);
+        @include shadow($size: xl, $tint: #f7cd87, $alpha: 0.2);
+
+        .ee-initiatives-card__headline, .ee-initiatives-card__buttons {
+            opacity: 1;
+        }
+    }
+}
+
+.ee-initiatives-card__content {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 70%;
+}
+
+.ee-initiatives-card__title {
+    flex-basis: 100%;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.ee-initiatives-card__headline {
+    flex-basis: 100%;
+    font-size: 1rem;
+    color: rgba(white, 0.7);
+    line-height: 1.8;
+    opacity: 0;
+    @include transition();
+}
+
+.ee-initiatives-card__buttons {
+    display: flex;
+    align-items: flex-end;
+    flex-basis: 100%;
+    margin-top: auto;
+    opacity: 0;
+}
