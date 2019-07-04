@@ -3,7 +3,7 @@
 {% load wagtailimages_tags %}
 
 {% image specialization_page.background_image max-2560x2048 as background_image %}
-<div class="ee-specialization-card" style="background-image: url('{{ background_image.url }}');">
+<div onclick="javascript:window.location.href='{% pageurl specialization_page %}'; return false;" class="ee-specialization-card" style="background-image: url('{{ background_image.url }}');">
     <div class="ee-specialization-card__content">
         <h2 class="ee-specialization-card__title">{{ specialization_page.title }}</h2>
         <div class="ee-specialization-card__headline">

@@ -7,7 +7,7 @@ from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
 from django.utils.html import escape
 
-from .models import InfoPage, JobOfferPage
+from .models import InfoPage
 
 
 class ConsentsMixin:
@@ -63,11 +63,10 @@ class ContactForm(ConsentsMixin, forms.Form):
             ('other', _('Other')),
         ]
     )
-    recruitment_position = forms.ModelChoiceField(
+    recruitment_position = forms.CharField(
         required=False,
-        queryset=None,  # setting this in the constructor
         label='',
-        empty_label='wybierz stanowisko',
+        widget=forms.TextInput(attrs={'placeholder': _('podaj stanowisko')}),
     )
     organization_name = forms.CharField(
         required=False,
@@ -89,9 +88,6 @@ class ContactForm(ConsentsMixin, forms.Form):
     def __init__(self, request, *args, **kwargs):
         self.request = request
         super().__init__(*args, **kwargs)
-        self.fields['recruitment_position'].queryset = JobOfferPage.objects.descendant_of(
-            self.request.site.root_page,
-        ).live()
 
     def clean(self):
         subject = self.cleaned_data['subject']

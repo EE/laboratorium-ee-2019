@@ -1,6 +1,8 @@
 .ee-section {
     display: flex;
     flex-wrap: wrap;
+
+    background-size: cover;
 }
 
 .ee-section__title-container {
@@ -21,5 +23,11 @@
 .ee-section__triptych {
     flex-basis: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: scroll;
+
+    @include touch {
+        flex-basis: 100vw;
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

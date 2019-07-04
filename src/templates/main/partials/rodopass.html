@@ -4,17 +4,17 @@
 
 {# block RODO #}
 {% if rodo_pass %}
-    <section class="section ee-rodo-block" style="background-image: url({% webpack_static 'images/rodo-1.png' %});">
+    <section class="section ee-rodo-block ee-has-parallax" style="background-image: url({% webpack_static 'images/rodo-1.png' %});">
         <div class="container">
             <div class="columns">
                 <div class="column is-half is-offset-6 ee-rodo-block__content-container">
-                    <h2 class="ee-team-block__title">P.S.</h2>
-                    <h3 class="ee-team-block__headline">{{ rodo_pass.title }}</h3>
-                    <p class="ee-team-block__body">
+                    <h2 class="ee-rodo-block__title">P.S.</h2>
+                    <h3 class="ee-rodo-block__headline">{{ rodo_pass.title }}</h3>
+                    <p class="ee-rodo-block__body">
                         {{ rodo_pass.description }}
                     </p>
-                    <div class="ee-team-block__buttons-container">
-                        <a href="{{ rodo_pass.url }}" class="button is-light is-outlined is-radiusless ee-button">{% trans 'Find out more' %}</a>
+                    <div class="ee-rodo-block__buttons-container">
+                        <a href="{{ rodo_pass.url }}" class="button is-light is-outlined is-radiusless ee-button">{{ rodo_pass.button_text }}</a>
                     </div>
                 </div>
             </div>

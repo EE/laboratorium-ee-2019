@@ -30,6 +30,10 @@
     width: 100vw;
     bottom: 5rem;
     z-index: 9090;
+
+    @include touch {
+        bottom: 2rem;
+    }
 }
 
 .ee-hero-carousel__controls-container {
@@ -37,7 +41,7 @@
     justify-content: flex-end;
 
     @include touch {
-        display: none;
+        justify-content: center;
     }
 ;
 }
@@ -145,6 +149,10 @@
     padding: 4rem 0;
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include touch {
+        padding: 4rem 1rem;
+    }
 }
 
 .ee-rd-block__title {
@@ -186,8 +194,12 @@
     margin: 10rem 0;
     padding: 4rem 0;
     background-size: cover;
-    background-position: center bottom;
+    background-position: center;
     @include transition($time: 360ms);
+
+    @include touch {
+        padding: 4rem 1rem;
+    }
 }
 
 .ee-topics-block__title {
@@ -256,6 +268,17 @@
     display: grid;
     grid-template-columns: repeat(3, 2fr 1fr) 2fr;
     grid-column-gap: 1rem;
+
+    @include touch {
+        width: 300vw;
+    }
+}
+
+.ee-solutions-block__has-scroll {
+    @include touch {
+        padding: 0 4rem;
+        overflow-x: scroll;
+    }
 }
 
 .ee-solutions-block__item {
@@ -266,6 +289,12 @@
     border: 2px solid white;
     padding: 1rem;
     @include transition($delay: 240ms);
+
+    @include touch {
+        &:last-child {
+            margin-right: 4rem;
+        }
+    }
 
     &:hover {
         cursor: pointer;
@@ -331,10 +360,18 @@
     margin: 10rem 0;
     padding: 4rem 0;
     background-size: cover;
+
+    @include touch {
+        padding: 4rem 1rem;
+    }
 }
 
 .ee-join-us-block__content-container {
     padding: 0 4rem;
+
+    @include touch {
+        padding: 0 1rem;
+    }
 }
 
 .ee-join-us-block__content-title {
@@ -456,11 +493,11 @@
 }
 
 .ee-rodo-block__content-container {
-    min-height: 30rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
     height: 100%;
-    align-items: center;
+    min-height: 30rem;
 
     & > * {
         flex-basis: 100%;

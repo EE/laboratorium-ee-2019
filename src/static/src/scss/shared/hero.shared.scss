@@ -1,0 +1,34 @@
+.ee-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+
+    background-size: cover;
+    background-position: center center;
+
+    padding: 8rem 0 3rem;
+}
+
+.ee-hero__spacer {
+    flex-basis: 100%;
+}
+
+.ee-hero__date {
+    color: rgba(white, 0.7);
+}
+
+.ee-subpage-hero {
+    height: 70vh;
+
+    background-size: cover;
+    background-position: center center;
+}
+
+.ee-hero-body {
+    flex: 1 0;
+
+    @include touch {
+        padding: 0 1rem;
+    }
+}

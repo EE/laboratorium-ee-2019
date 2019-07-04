@@ -1,0 +1,131 @@
+// =================================
+// Title
+// =================================
+
+.ee-title {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+
+    &:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
+}
+
+.ee-title--super {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: rgba(white, 0.7);
+
+    &:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
+}
+
+.ee-title--small {
+    font-size: 1rem;
+
+    &:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
+}
+
+.ee-title--large {
+    font-size: 2.25rem;
+
+    &:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
+}
+
+.ee-title--bold {
+    font-size: 1.8rem;
+    font-weight: 800;
+
+    &:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
+}
+
+
+// =================================
+// Headline
+// =================================
+
+.ee-headline {
+    font-size: 1.2rem;
+    color: rgba(white, 0.7);
+
+    &:not(:last-child) {
+        margin-bottom: 0.75em;
+    }
+}
+
+.ee-headline--light {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    &:not(:last-child) {
+        margin-bottom: 0.75em;
+    }
+}
+
+.ee-headline--large {
+    font-size: 1.8rem;
+    font-weight: 600;
+
+    &:not(:last-child) {
+        margin-bottom: 0.75em;
+    }
+}
+
+
+// =================================
+// Global Paragraph
+// =================================
+
+.rich-text p {
+    line-height: 1.8;
+
+    &:not(:last-of-type) {
+        margin-bottom: 1em;
+    }
+}
+
+.rich-text ul {
+    line-height: 1.8;
+    list-style: unset;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+
+.rich-text ol {
+    line-height: 1.8;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.rich-text {
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 700;
+        margin-bottom: 1em;
+    }
+}
+
+.ee-body-text {
+    line-height: 1.8;
+}
+
+// =================================
+// Cite
+// =================================
+
+.ee-cite {
+    line-height: 1.8;
+    font-size: 1.2rem;
+
+    &::before, &::after {
+        content: '"';
+    }
+}

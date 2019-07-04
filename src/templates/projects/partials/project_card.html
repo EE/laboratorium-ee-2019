@@ -1,25 +1,8 @@
 {% load i18n %}
 {% load wagtailimages_tags %}
 {% load wagtailcore_tags %}
+{% load webpack_static from webpack_loader %}
 
-<div class="card is-equal-height has-background-image has-background-transparent">
-    {% image project.background_image max-2560x2048 class="background-image" %}
-    <header class="card-header">
-        <p class="card-header-title"></p>
-        <div class="card-header-icon">
-            <span class="icon is-large">
-                {% image project.icon max-400x400 %}
-            </span>
-        </div>
-    </header>
-    <div class="card-image"></div>
-    <div class="card-content">
-        <h4 class="title is-5">{{ project.title }}</h3>
-        <p class="subtitle is-6">{{ project.subtitle }}</p>
-    </div>
-    <footer class="card-footer">
-        <div class="card-footer-item is-left">
-            <a href="{% pageurl project %}" class="button is-outlined is-light is-uppercase is-radiusless">{% trans 'Find out more' %}</a>
-        </div>
-    </footer>
+<div class="ee-masonry__tile" style="background-image: url('{{ background_image.url }}')">
+    <span class="ee-masonry__tile-title">{{ project.title }}</span>
 </div>

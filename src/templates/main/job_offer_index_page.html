@@ -2,55 +2,90 @@
 
 {% load i18n %}
 {% load wagtailcore_tags %}
+{% load webpack_static from webpack_loader %}
 
 {% block title %}
-    {{ page.title }} - {{ block.super }}
+{{ page.title }} - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-    <section class="hero">
-        <div class="hero-body">
-            <div class="container">
-                <p class="title">
-                    {{ page.title }}
+<section class="ee-hero ee-subpage-hero" style="background-image: url({% webpack_static 'images/career-1.jpg' %})">
+    <div class="ee-hero__spacer"></div>
+    <div class="ee-hero-body">
+        <div class="container">
+            <h1 class="ee-title--large">
+                {{ page.title }}
+            </h1>
+        </div>
+    </div>
+</section>
+
+<section class="section ee-section">
+    <div class="ee-section-title">Aktualne oferty</div>
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="ee-tiles">
+                    {% for offer in page.offers.all %}
+                        {% include 'main/partials/job_offer_card.html' with offer=offer %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section ee-section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8">
+                <h2 class="ee-title--large">Współpraca</h2>
+                <p class="ee-body-text">
+                    {{ page.cooperation | richtext }}
                 </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section is-medium">
-        <div class="container">
-            <p class="subtitle is-section-title">{% trans "Współpraca" %}</p>
-            <div class="content">
-                {{ page.cooperation }}
-            </div>
-        </div>
-    </section>
-
-    {% if page.offers.all %}
-        <section class="section is-medium">
-            <div class="container">
-                <p class="subtitle is-section-title">{% trans "Aktualne oferty" %}</p>
-                <div class="columns is-multiline">
-                    {% for offer in page.offers.all %}
-                        <div class="column is-one-third">
-                            {% include 'main/partials/job_offer_card.html' with offer=offer %}
+<section class="section ee-section" style="background-image: url({% webpack_static 'images/career-2.jpg' %})">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="ee-tiles">
+                    <div class="ee-tile-fancy">
+                        <div class="ee-tile-fancy__image">
+                            <img src="{% webpack_static 'images/how-we-work-1.svg' %}" alt="">
                         </div>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-    {% endif %}
-
-    <section class="section is-medium">
-        <div class="container">
-            <p class="subtitle is-section-title">{% trans "Rekrutacja" %}</p>
-            <div class="content">
-                {% for block in page.recruitment %}
-                    {{ block }}
-                {% endfor %}
+                        <div class="ee-spacer"></div>
+                        <h3 class="ee-title--small">
+                            W zaleźności od stanowiska, przeprowadzamy krótką rozmowę telefoniczną, albo wysyłamy kilka pytań technicznych mailem.
+                        </h3>
+                    </div>
+                    <div class="ee-tile-fancy__spacer"></div>
+                    <div class="ee-tile-fancy">
+                        <div class="ee-tile-fancy__image">
+                            <img src="{% webpack_static 'images/how-we-work-2.svg' %}" alt="">
+                        </div>
+                        <div class="ee-spacer"></div>
+                        <h3 class="ee-title--small">
+                            Na drugi etap zapraszamy do naszego biura, gdzie możemy usiąść i porozmawiać. W trakcie rozmowy możesz otrzymać zadanie, sprawdzające Twoje umiejętności.
+                        </h3>
+                    </div>
+                    <div class="ee-tile-fancy__spacer"></div>
+                    <div class="ee-tile-fancy">
+                        <div class="ee-tile-fancy__image">
+                            <img src="{% webpack_static 'images/how-we-work-3.svg' %}" alt="">
+                        </div>
+                        <div class="ee-spacer"></div>
+                        <h3 class="ee-title--small">
+                            Do 7 dni od zamknięcia procesu rekrutacyjnego dostaniesz informację o jego wynikach niezależnie od jego powodzenia.
+                        </h3>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 {% endblock content %}

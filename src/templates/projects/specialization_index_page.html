@@ -3,13 +3,15 @@
 {% load i18n %}
 {% load wagtailimages_tags %}
 {% load wagtailcore_tags %}
+{% load webpack_static from webpack_loader %}
+
 
 {% block content %}
-
-    <section class="hero">
-        <div class="hero-body">
+    <section class="ee-hero ee-subpage-hero" style="background-image: url({% webpack_static 'images/about-us.jpg' %})">
+        <div class="ee-hero__spacer"></div>
+        <div class="ee-hero-body">
             <div class="container">
-                <h1 class="title">
+                <h1 class="ee-title--large">
                     {{ page.title }}
                 </h1>
             </div>
@@ -17,20 +19,14 @@
     </section>
 
     {% for specialization in page.specializations.all %}
-        <section class="section">
-            <div class="container">
-                <p class="subtitle is-section-title">
-                    <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
-                </p>
-                <div class="columns is-multiline">
-                    {% for project in specialization.projects.all %}
-                        <div class="column is-one-quarter">
-                            {% include 'projects/partials/project_card.html' with project=project %}
-                        </div>
-                    {% empty %}
-                        <div class="column">{% trans 'Brak projektów' %}</div>
-                    {% endfor %}
-                </div>
+        <section class="section ee-section">
+            <div class="ee-section-title">{{ specialization.title }}</div>
+            <div class="ee-masonry">
+                {% for project in specialization.projects.all %}
+                    {% include 'projects/partials/project_card.html' with project=project %}
+                {% empty %}
+                    <div class="column">{% trans 'Brak projektów' %}</div>
+                {% endfor %}
             </div>
         </section>
     {% endfor %}

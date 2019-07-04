@@ -6,53 +6,46 @@
 {% load wagtailcore_tags %}
 
 {% block title %}
-{{ page.title }} - {{ block.super }}
+    {{ page.title }} - {{ block.super }}
 {% endblock title %}
-
-{% block navbar %}
-    {# navbar is displayed in hero-head #}
-{% endblock %}
 
 {% block content %}
 
     {% if top_article %}
         {% image top_article.photo max-2560x2048 as hero_background %}
-        <section class="hero" style="background: url('{{ hero_background.url }}') center center; background-size: cover;">
-            <div class="hero-head">
-                {% navbar %}
-            </div>
-            <div class="hero-body">
+        <section class="ee-hero ee-subpage-hero" style="background-image: url('{{ hero_background.url }}')">
+            <div class="ee-hero-body">
                 <div class="container">
-                    <div class="columns">
-                        <div class="column is-half">
-                            <span class="tag is-black is-uppercase">
-                                Wyróżnione
-                            </span>
-                            <h1 class="title is-2">
-                                {{ top_article.title }}
-                            </h1>
-                            <a href="{% pageurl top_article %}" class="button is-outlined is-light is-uppercase is-radiusless">
-                                {% trans 'Find out more' %}
-                            </a>
-                        </div>
-                    </div>
+                    <h2 class="ee-title--super">Wyróżnione</h2>
+                </div>
+            </div>
+            <div class="ee-hero-body">
+                <div class="container">
+                    <h1 class="ee-title--large">
+                        {{ top_article.title }}
+                    </h1>
+                    <p class="ee-headline">
+                        {{ top_article.headline }}
+                    </p>
+                    <a href="{% pageurl top_article %}" class="button is-outlined is-light is-uppercase is-radiusless ee-button">
+                        {% trans 'Find out more' %}
+                    </a>
                 </div>
             </div>
         </section>
     {% endif %}
 
-<section class="section">
-    <div class="container">
-        <div class="columns is-multiline">
+    <section class="ee-section">
+        <div class="ee-section-title">
+            Dzieje się
+        </div>
+        <div class="ee-section-tiles">
             {% for article in rest_of_articles %}
-                <div class="column is-half-tablet is-one-third-widescreen">
-                    {% include 'main/partials/article_card.html' with article=article %}
-                </div>
+                {% include 'main/partials/article_card.html' with article=article %}
             {% empty %}
                 <p>{% trans 'No more articles' %}</p>
             {% endfor %}
         </div>
-    </div>
-</section>
+    </section>
 
 {% endblock content %}

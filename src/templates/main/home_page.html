@@ -14,91 +14,91 @@
 
 {% block content %}
 
-<section class="ee-hero-carousel">
-    <div class="ee-hero-carousel__fixed-header">
-        <div class="container">
-            Poznaj nas <strong>przez nasze historie</strong>
+    <section class="ee-hero-carousel">
+        <div class="ee-hero-carousel__fixed-header">
+            <div class="container">
+                Poznaj nas <strong>przez nasze historie</strong>
+            </div>
         </div>
-    </div>
-    <div class="ee-hero-carousel__controls">
-        <div class="container ee-hero-carousel__controls-container">
+        <div class="ee-hero-carousel__controls">
+            <div class="container ee-hero-carousel__controls-container">
 
+            </div>
         </div>
-    </div>
-    <div class="ee-hero-carousel__container">
-        {% for article in page.latest_articles %}
-        {% image article.photo max-2560x2048 as background_image %}
-        <div class="ee-hero-carousel__content" style="background-image: url('{{ background_image.url }}')">
-            <div class="container ee-hero-carousel__content-container">
-                {% if article.specialization %}
-                <a class="ee-hero-carousel__content-tags" href="{% pageurl article.specialization %}">
-                    #{{ article.specialization.title}}
-                </a>
-                {% endif %}
-                <div class="ee-hero-carousel__content-title">
-                    {{ article.title }}
-                </div>
-                <div class="ee-hero-carousel__content-subtitle">
-                    {{ article.headline }}
-                </div>
-                <div class="ee-hero-carousel__content-buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">{% trans 'Check us out' %}</a>
-                    <a href="{% pageurl article %}" class="button is-outlined is-light is-radiusless ee-button">
-                        {% trans 'Find out more' %}
+        <div class="ee-hero-carousel__container">
+            {% for article in page.latest_articles %}
+            {% image article.photo max-2560x2048 as background_image %}
+            <div class="ee-hero-carousel__content ee-has-parallax" style="background-image: url('{{ background_image.url }}')">
+                <div class="container ee-hero-carousel__content-container">
+                    {% if article.specialization %}
+                    <a class="ee-hero-carousel__content-tags" href="{% pageurl article.specialization %}">
+                        #{{ article.specialization.title}}
                     </a>
+                    {% endif %}
+                    <div class="ee-hero-carousel__content-title">
+                        {{ article.title }}
+                    </div>
+                    <div class="ee-hero-carousel__content-subtitle">
+                        {{ article.headline }}
+                    </div>
+                    <div class="ee-hero-carousel__content-buttons">
+                    <a class="button is-light is-radiusless ee-button ee-contact-us-button">{% trans 'Check us out' %}</a>
+                        <a href="{% pageurl article %}" class="button is-outlined is-light is-radiusless ee-button">
+                            {% trans 'Find out more' %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    {# block Specializations #}
+    <section class="ee-section">
+        <div class="ee-section__title-container">
+            <h2 class="ee-section__title">{{ page.specializations_headline }}</h2>
+        </div>
+        <div class="ee-section__triptych">
+            {% for specialization_page in page.specializations.all %}
+                {% include 'projects/partials/specialization_card.html' with specialization_page=specialization_page %}
+            {% endfor %}
+        </div>
+    </section>
+
+    {# blok Your private R&D #}
+    <div class="section ee-rd-block ee-has-parallax" style="background-image: url({% webpack_static 'images/twoje-prywatne-centrum-badawcze.jpg' %})" alt="Close">
+        <div class="container has-text-right-desktop">
+            <div class="columns">
+                <div class="column is-half is-offset-6">
+                    <h2 class="ee-rd-block__title">Twoje prywatne centrum badawczo-rozwojowe</h2>
+                    <h3 class="ee-rd-block__subtitle">Skupiamy się na dokładnej analizie stawianych przed nami wyzwań. Tworzymy rozwiązania szyte na miarę,
+                        innowacyjne, które stale udoskonalamy i rozbodowujemy.</h3>
                 </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
-</section>
-
-{# block Specializations #}
-<section class="ee-section">
-    <div class="ee-section__title-container">
-        <h2 class="ee-section__title">{{ page.specializations_headline }}</h2>
-    </div>
-    <div class="ee-section__triptych">
-        {% for specialization_page in page.specializations.all %}
-            {% include 'projects/partials/specialization_card.html' with specialization_page=specialization_page %}
-        {% endfor %}
-    </div>
-</section>
-
-{# blok Your private R&D #}
-<div class="section ee-rd-block" style="background-image: url({% webpack_static 'images/twoje-prywatne-centrum-badawcze.jpg' %})" alt="Close">
-    <div class="container has-text-right">
-        <div class="columns">
-            <div class="column is-half is-offset-6">
-                <h2 class="ee-rd-block__title">Twoje prywatne centrum badawczo-rozwojowe</h2>
-                <h3 class="ee-rd-block__subtitle">Skupiamy się na dokładnej analizie stawianych przed nami wyzwań. Tworzymy rozwiązania szyte na miarę,
-                    innowacyjne, które stale udoskonalamy i rozbodowujemy.</h3>
+        <div class="container">
+            <div class="columns ee-rd-block__items">
+                <div class="column">
+                    <h4 class="ee-rd-block__item-title">2019</h4>
+                    <p class="ee-rd-block__item-subtitle">
+                        To właśnie w tym roku otrzymaliśmy tytuł prywatnego centrum badawczo-rozwojowego.
+                    </p>
+                </div>
+                <div class="column">
+                    <h4 class="ee-rd-block__item-title">20%</h4>
+                    <p class="ee-rd-block__item-subtitle">
+                        Tyle podatku możesz odliczyć pracując z nami
+                    </p>
+                </div>
+                <div class="column">
+                    <h4 class="ee-rd-block__item-title">R&D</h4>
+                    <p class="ee-rd-block__item-subtitle">
+                        Prężnie działamy w obszarze Research & Development
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="columns ee-rd-block__items">
-            <div class="column">
-                <h4 class="ee-rd-block__item-title">2019</h4>
-                <p class="ee-rd-block__item-subtitle">
-                    To właśnie w tym roku otrzymaliśmy tytuł prywatnego centrum badawczo-rozwojowego.
-                </p>
-            </div>
-            <div class="column">
-                <h4 class="ee-rd-block__item-title">20%</h4>
-                <p class="ee-rd-block__item-subtitle">
-                    Tyle podatku możesz odliczyć pracując z nami
-                </p>
-            </div>
-            <div class="column">
-                <h4 class="ee-rd-block__item-title">R&D</h4>
-                <p class="ee-rd-block__item-subtitle">
-                    Prężnie działamy w obszarze Research & Development
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
 
     {# block Topics #}
     {% if page.topics %}
@@ -131,53 +131,53 @@
         </section>
     {% endif %}
 
-{# block Solutions #}
-<section class="ee-solutions-block">
-    <div class="ee-solutions-block__title-container">
-        <h2 class="ee-solutions-block__title">
-            {% trans 'Jak powstają nasze rozwiązania?' %}
-        </h2>
-    </div>
-    <div class="container">
-        <div class="ee-solutions-block__items-container">
-            <div class="ee-solutions-block__item">
-                <div class="ee-solutions-block__item-icon">
-                    {% svg 'ico-lupka' %}
+    {# block Solutions #}
+    <section class="ee-solutions-block">
+        <div class="ee-solutions-block__title-container">
+            <h2 class="ee-solutions-block__title">
+                {% trans 'Jak powstają nasze rozwiązania?' %}
+            </h2>
+        </div>
+        <div class="container ee-solutions-block__has-scroll">
+            <div class="ee-solutions-block__items-container">
+                <div class="ee-solutions-block__item">
+                    <div class="ee-solutions-block__item-icon">
+                        {% svg 'ico-lupka' %}
+                    </div>
+                    <h3 class="ee-solutions-block__item-title">
+                        {% trans 'Needs analysis' %}
+                    </h3>
                 </div>
-                <h3 class="ee-solutions-block__item-title">
-                    {% trans 'Needs analysis' %}
-                </h3>
-            </div>
-            <div class="ee-solutions-block__item-spacer"></div>
-            <div class="ee-solutions-block__item">
-                <div class="ee-solutions-block__item-icon">
-                    {% svg 'ico-post-it' %}
+                <div class="ee-solutions-block__item-spacer"></div>
+                <div class="ee-solutions-block__item">
+                    <div class="ee-solutions-block__item-icon">
+                        {% svg 'ico-post-it' %}
+                    </div>
+                    <h3 class="ee-solutions-block__item-title">
+                        {% trans 'Warsztaty partycypacyjne i Google Design Sprint' %}
+                    </h3>
                 </div>
-                <h3 class="ee-solutions-block__item-title">
-                    {% trans 'Warsztaty partycypacyjne i Google Design Sprint' %}
-                </h3>
-            </div>
-            <div class="ee-solutions-block__item-spacer"></div>
-            <div class="ee-solutions-block__item">
-                <div class="ee-solutions-block__item-icon">
-                    {% svg 'ico-proto' %}
+                <div class="ee-solutions-block__item-spacer"></div>
+                <div class="ee-solutions-block__item">
+                    <div class="ee-solutions-block__item-icon">
+                        {% svg 'ico-proto' %}
+                    </div>
+                    <h3 class="ee-solutions-block__item-title">
+                        {% trans 'Prototyp i Minimum Viable Product' %}
+                    </h3>
                 </div>
-                <h3 class="ee-solutions-block__item-title">
-                    {% trans 'Prototyp i Minimum Viable Product' %}
-                </h3>
-            </div>
-            <div class="ee-solutions-block__item-spacer"></div>
-            <div class="ee-solutions-block__item">
-                <div class="ee-solutions-block__item-icon">
-                    {% svg 'ico-agile' %}
+                <div class="ee-solutions-block__item-spacer"></div>
+                <div class="ee-solutions-block__item">
+                    <div class="ee-solutions-block__item-icon">
+                        {% svg 'ico-agile' %}
+                    </div>
+                    <h3 class="ee-solutions-block__item-title">
+                        {% trans 'Wdrażanie Zwinne' %}
+                    </h3>
                 </div>
-                <h3 class="ee-solutions-block__item-title">
-                    {% trans 'Wdrażanie Zwinne' %}
-                </h3>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     {# block Join the Team #}
     {% image page.join_us_background max-2560x2048 as join_us_background %}
@@ -195,7 +195,7 @@
                                 {% trans 'Sprawdź aktualne oferty' %}
                             </a>
                         {% endfor %}
-                        <a href="#contact" class="button is-outlined is-light is-radiusless ee-button">
+                        <a class="button is-outlined is-light is-radiusless ee-button ee-contact-us-button">
                             {% trans 'Contact us' %}
                         </a>
                     </div>
@@ -225,16 +225,18 @@
     </section>
 
     {# block Initiatives #}
-    <section class="ee-section">
-        <div class="ee-section__title-container">
-            <h2 class="ee-section__title">{% trans 'Our initiatives' %}</h2>
-        </div>
-        <div class="ee-section__triptych">
-            {% for inititive in page.our_initiatives.all %}
-                {% include 'projects/partials/project_card_initiative.html' with project=inititive %}
-            {% endfor %}
-        </div>
-    </section>
+    {% if page.our_initiatives %}
+        <section class="ee-section">
+            <div class="ee-section__title-container">
+                <h2 class="ee-section__title">{% trans 'Our initiatives' %}</h2>
+            </div>
+            <div class="ee-section__triptych">
+                {% for inititive in page.our_initiatives %}
+                    {% include 'projects/partials/project_card_initiative.html' with project=inititive %}
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
 
     {# block Cooperation #}
     <section class="ee-section">
@@ -271,5 +273,30 @@
             </section>
         {% endif %}
     {% endwith %}
+
+    {# block News #}
+    <section class="ee-section">
+        <div class="ee-section-title">
+            {% trans 'Aktualności' %}
+        </div>
+        <div class="ee-section-tiles">
+            {% for article in rest_of_articles %}
+                {% include 'main/partials/article_card.html' with article=article %}
+            {% empty %}
+                <p>{% trans 'No more articles' %}</p>
+            {% endfor %}
+        </div>
+        {% if rest_of_articles %}
+        <div class="container">
+            <div class="columns">
+                <div class="column has-text-centered">
+                    <a href="#" class="button is-light is-outlined is-radiusless ee-button">
+                        {% trans 'Wyświetl wszystkie' %}
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </section>
 
 {% endblock content %}

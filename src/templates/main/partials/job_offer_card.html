@@ -1,23 +1,18 @@
 {% load i18n %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load webpack_static from webpack_loader %}
 
-<div class="card is-equal-height">
-    <div class="card-image is-small">
-        <figure class="image">
-            {% image offer.icon original %}
-        </figure>
+<div class="ee-tile">
+    <div class="ee-tile__image">
+        <img src="{% webpack_static 'images/how-we-work-1.svg' %}" alt="">
     </div>
-    <div class="card-content">
-        <h4 class="title is-4">
+    <div class="ee-spacer">
+        <h3 class="ee-title--large">
             {{ offer.title }}
-        </h4>
-        <p class="subtitle is-6">
-            {{ offer.salary }}
-        </p>
-        <a href="{% pageurl offer %}" class="button is-outlined is-light is-uppercase is-radiusless">
-            {% trans 'Find out more' %}
-        </a>
+        </h3>
+    </div>
+    <div class="ee-spacer">
+        <a href="{% pageurl offer %}" class="button is-light is-outlined is-radiusless ee-button">{% trans 'Więcej' %}</a>
     </div>
 </div>
-

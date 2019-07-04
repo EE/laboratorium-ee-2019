@@ -1,0 +1,36 @@
+.ee-section {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4rem 0;
+
+    @include touch {
+        padding: 4rem 1rem;
+    }
+}
+
+.ee-section-title {
+    flex: 1 0 100%;
+    justify-content: center;
+
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: rgba(white, 0.7);
+    letter-spacing: 4px;
+    margin-bottom: 3em;
+}
+
+.ee-section-tiles {
+    display: grid;
+    flex-grow: 1;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 4rem;
+
+    @include touch {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.ee-section-tile {
+    background-color: red;
+}

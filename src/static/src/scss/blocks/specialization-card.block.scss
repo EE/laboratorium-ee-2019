@@ -1,21 +1,49 @@
 @import "../utilities/index.mixins";
 
+$initScale: 1.05;
+$rescale: 1 / $initScale;
+
 .ee-specialization-card {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: flex-start;
     background-size: cover;
-    height: 48rem;
+    height: 36rem;
     padding: 4rem 3rem;
     @include transition();
 
+    @include touch {
+        padding: 2rem;
+        width: 85vw;
+    }
+
+    &:first-child {
+        transform-origin: right;
+        padding-left: 5rem;
+
+        @include touch {
+            padding-left: 2rem;
+        }
+    }
+
+    &:last-child {
+        transform-origin: left;
+        padding-right: 5rem;
+
+        @include touch {
+            padding-left: 2rem;
+        }
+    }
+
     &:hover {
-        transform: scale(1.05);
+        cursor: pointer;
+        transform: scale($initScale);
         @include shadow($size: xl, $tint: #f7cd87, $alpha: 0.2);
 
         .ee-specialization-card__headline, .ee-specialization-card__buttons {
             opacity: 1;
+            transform: scale($rescale);
         }
     }
 }
@@ -24,7 +52,11 @@
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    height: 70%;
+    height: 85%;
+
+    @include touch {
+        height: 100%;
+    }
 }
 
 .ee-specialization-card__title {
@@ -40,6 +72,10 @@
     line-height: 1.8;
     opacity: 0;
     @include transition();
+
+    @include touch {
+        opacity: 1;
+    }
 }
 
 .ee-specialization-card__buttons {
@@ -48,4 +84,9 @@
     flex-basis: 100%;
     margin-top: auto;
     opacity: 0;
+    @include transition();
+
+    @include touch {
+        opacity: 1;
+    }
 }
