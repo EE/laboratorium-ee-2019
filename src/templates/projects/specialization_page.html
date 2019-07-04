@@ -7,16 +7,12 @@
 {% load webpack_static from webpack_loader %}
 
 {% block title %}
-{{ page.title }} - {{ block.super }}
+    {{ page.title }} - {{ block.super }}
 {% endblock title %}
 
 {% block facebook_pixel_events %}
     {{ block.super }}
     fbq('track', 'ViewContent');
-{% endblock %}
-
-{% block navbar %}
-    {% navbar %}
 {% endblock %}
 
 {% block content %}
