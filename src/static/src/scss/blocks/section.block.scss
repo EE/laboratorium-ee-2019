@@ -23,9 +23,11 @@
 .ee-section__triptych {
     flex-basis: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: scroll;
 
     @include touch {
-        grid-template-columns: 1fr;
+        flex-basis: 100vw;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
