@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load svg %}
 {% load main_tags %}
 {% load render_bundle from webpack_loader %}
 {% load static %}
@@ -89,26 +90,25 @@
 
     {% if request.site.contact_form %}
         {% block contact_form %}
-            <section class="section is-medium" id="contact">
-                <div class="container">
-                    <div class="columns">
-                        <div class="column">
-                            <p class="subtitle is-uppercase has-text-weight-bold">
-                                {% trans 'Jeżeli' %}
-                            </p>
-                            <div class="content">
-                                {{ request.site.contact_form.condition_body|richtext }}
-                            </div>
+            <aside class="ee-sticky-contact-form">
+                <div class="ee-sticky-contact-form__trigger" data-toggle="contactForm"></div>
+                <div class="ee-sticky-contact-form__headline-items">
+                    <div class="ee-sticky-contact-form__headline-item">
+                        <div class="ee-sticky-contact-form__headline-item__icon">
+                            {% svg 'contact-form-icon-1' %}
                         </div>
-                        <div class="column">
-                            <p class="subtitle is-uppercase has-text-weight-bold">
-                                {% trans 'Napisz do nas' %}
-                            </p>
-                            {% contact_form %}
+                        <div class="ee-sticky-contact-form__headline-item__title">Potrzebujesz wsparcia w realizacji projektu?</div>
+                    </div>
+                    <div class="ee-sticky-contact-form__headline-item">
+                        <div class="ee-sticky-contact-form__headline-item__icon">
+                            {% svg 'contact-form-icon-2' %}
                         </div>
+                        <div class="ee-sticky-contact-form__headline-item__title">Chcesz z nami zmieniać świat przez technologię?</div>
                     </div>
                 </div>
-            </section>
+
+                {% contact_form %}
+            </aside>
         {% endblock contact_form %}
     {% endif %}
 
