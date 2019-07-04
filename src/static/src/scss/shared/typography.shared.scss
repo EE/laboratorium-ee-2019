@@ -116,3 +116,16 @@
 .ee-body-text {
     line-height: 1.8;
 }
+
+// =================================
+// Cite
+// =================================
+
+.ee-cite {
+    line-height: 1.8;
+    font-size: 1.2rem;
+
+    &::before, &::after {
+        content: '"';
+    }
+}

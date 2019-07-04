@@ -1,86 +1,162 @@
 {% extends 'base.html' %}
 
+{% load svg %}
 {% load i18n %}
 {% load wagtailimages_tags %}
 {% load wagtailcore_tags %}
 {% load main_tags %}
+{% load webpack_static from webpack_loader %}
 
 {% block navbar %}
     {# navbar is displayed in hero-head #}
+    {% navbar %}
 {% endblock %}
 
 {% block content %}
 
     {% image page.background_image max-2560x2048 as background_image %}
-    <section class="hero" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
-        <div class="hero-head">
-            {% navbar %}
-        </div>
-        <div class="hero-body">
+    <section class="ee-hero ee-subpage-hero" style="background-image: url('{{ background_image.url }}')">
+        <div class="ee-hero__spacer"></div>
+        <div class="ee-hero-body">
             <div class="container">
-                <div class="columns is-vcentered">
-                    <div class="column is-half">
-                        <h1 class="title is-1">
-                            {{ page.title }}
-                        </h1>
-                        <p class="subtitle">
-                            {{ page.subtitle }}
-                        </p>
-                    </div>
-                    <div class="column is-half">
-                        <figure class="image container">
-                            {% image page.icon max-1280x1024 style="max-height: 4rem; width: auto; margin: auto;" %}
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-foot">
-            <div class="container">
-                <nav class="level">
-                    {% for metric in page.metrics.all %}
-                        <div class="level-item has-text-centered">
-                            <div>
-                                <p class="heading">{{ metric.property_name }}</p>
-                                <p class="title">{{ metric.value }}</p>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </nav>
+                <h1 class="ee-title--large">
+                    {{ page.title }}
+                </h1>
+                <h2 class="ee-title">
+                    {{ page.subtitle }}
+                </h2>
+                <a href="#" class="button is-light is-outlined is-radiusless ee-button">Odwiedź stronę</a>
             </div>
         </div>
     </section>
 
-<section class="section is-medium">
-    <div class="container">
-        <h2 class="subtitle is-section-title">{% trans 'Challenges' %}</h2>
-        <div class="content">
-            {{ page.challenge|richtext }}
+    <section class="section ee-section">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="ee-tiles">
+                        {% for metric in page.metrics.all %}
+                        <div class="ee-tile">
+                            <h2 class="ee-title--bold">
+                                {{ metric.value }}
+                            </h2>
+                            <h3 class="ee-title--small">
+                                {{ metric.property_name }}
+                            </h3>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-{# Proces #}
-<section class="section is-medium">
-    <div class="container">
-        <h2 class="subtitle is-section-title">{% trans 'Process' %}</h2>
-        <div class="content">
-            {% for tile in page.process %}
-                {{ tile }}
-            {% endfor %}
+    <section class="section ee-section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="ee-title--large">{% trans 'Challenges' %}</div>
+                    <p class="ee-body-text">
+                        {{ page.challenge | richtext }}
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-{# Cytat #}
-<section class="section is-medium">
-    <div class="container">
-        <div class="content">
-            {{ page.quote|richtext }}
+    <section class="ee-section ee-specialization-page__case-study" style="background-image: url({% webpack_static 'images/case-studies.jpg' %})">
+        <div class="container">
+            <div class="columns">
+                <div class="column has-text-centered">
+                    Proces
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+        <div class="ee-spacer--large"></div>
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="ee-tiles">
+                        <div class="ee-tile-fancy">
+                            <div class="ee-tile-fancy__image">
+                                <img src="{% webpack_static 'images/how-we-work-1.svg' %}" alt="">
+                            </div>
+                            <div class="ee-spacer"></div>
+                            <h3 class="ee-title--small is-uppercase has-text-centered">
+                                Reaserch
+                            </h3>
+                        </div>
+                        <div class="ee-tile-fancy__spacer"></div>
+                        <div class="ee-tile-fancy">
+                            <div class="ee-tile-fancy__image">
+                                <img src="{% webpack_static 'images/how-we-work-2.svg' %}" alt="">
+                            </div>
+                            <div class="ee-spacer"></div>
+                            <h3 class="ee-title--small is-uppercase has-text-centered">
+                                Generowanie pomysłów
+                            </h3>
+                        </div>
+                        <div class="ee-tile-fancy__spacer"></div>
+                        <div class="ee-tile-fancy">
+                            <div class="ee-tile-fancy__image">
+                                <img src="{% webpack_static 'images/how-we-work-3.svg' %}" alt="">
+                            </div>
+                            <div class="ee-spacer"></div>
+                            <h3 class="ee-title--small is-uppercase has-text-centered">
+                                Prototypowanie i testowanie
+                            </h3>
+                        </div>
+                        <div class="ee-tile-fancy__spacer"></div>
+                        <div class="ee-tile-fancy">
+                            <div class="ee-tile-fancy__image">
+                                <img src="{% webpack_static 'images/how-we-work-3.svg' %}" alt="">
+                            </div>
+                            <div class="ee-spacer"></div>
+                            <h3 class="ee-title--small is-uppercase has-text-centered">
+                                Implementowanie
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section ee-section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    {% svg 'quote' %}
+                    <div class="ee-cite">
+                        {{ page.quote | richtext }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section ee-section">
+        <div class="ee-section__title-container">
+            <h2 class="ee-section__title">Podobne projekty</h2>
+        </div>
+        <div class="ee-masonry">
+            <div class="ee-masonry__tile" style="background-image: url({% webpack_static 'images/project-1.jpg' %})">
+                <span class="ee-masonry__tile-title">RODO PASS</span>
+            </div>
+            <div class="ee-masonry__tile ee-masonry__tile--featured-x" style="background-image: url({% webpack_static 'images/project-2.jpg' %})">
+                <span class="ee-masonry__tile-title">PayU</span>
+            </div>
+            <div class="ee-masonry__tile ee-masonry__tile--featured-x" style="background-image: url({% webpack_static 'images/project-3.jpg' %})">
+                <span class="ee-masonry__tile-title--dark">SONAR</span>
+            </div>
+            <div class="ee-masonry__tile" style="background-image: url({% webpack_static 'images/project-4.jpg' %})">
+                <span class="ee-masonry__tile-title">POLANA</span>
+            </div>
+            <div class="ee-masonry__tile ee-masonry__tile--featured-y" style="background-image: url({% webpack_static 'images/project-5.jpg' %})">
+                <span class="ee-masonry__tile-title">HACKATHON</span>
+            </div>
+        </div>
+    </section>
 
 {# Formularz Kontaktowy #}
 <section class="section is-medium" id="contact">
