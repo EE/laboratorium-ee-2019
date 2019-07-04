@@ -1,0 +1,28 @@
+.ee-section {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4rem 0;
+}
+
+.ee-section-title {
+    flex: 1 0 100%;
+    justify-content: center;
+
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: rgba(white, 0.7);
+    letter-spacing: 4px;
+    margin-bottom: 3em;
+}
+
+.ee-section-tiles {
+    display: grid;
+    flex-grow: 1;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 4rem;
+}
+
+.ee-section-tile {
+    background-color: red;
+}
