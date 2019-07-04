@@ -19,20 +19,14 @@
     </section>
 
     {% for specialization in page.specializations.all %}
-        <section class="section">
-            <div class="container">
-                <p class="subtitle is-section-title">
-                    <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
-                </p>
-                <div class="columns is-multiline">
-                    {% for project in specialization.projects.all %}
-                        <div class="column is-one-quarter">
-                            {% include 'projects/partials/project_card.html' with project=project %}
-                        </div>
-                    {% empty %}
-                        <div class="column">{% trans 'Brak projektów' %}</div>
-                    {% endfor %}
-                </div>
+        <section class="section ee-section">
+            <div class="ee-section-title">{{ specialization.title }}</div>
+            <div class="ee-masonry">
+                {% for project in specialization.projects.all %}
+                    {% include 'projects/partials/project_card.html' with project=project %}
+                {% empty %}
+                    <div class="column">{% trans 'Brak projektów' %}</div>
+                {% endfor %}
             </div>
         </section>
     {% endfor %}

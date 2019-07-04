@@ -27,4 +27,8 @@
 
 .ee-hero-body {
     flex: 1 0;
+
+    @include touch {
+        padding: 0 1rem;
+    }
 }
