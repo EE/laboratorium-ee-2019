@@ -2,6 +2,10 @@
     background-color: black;
     padding: 4rem 0;
     color: rgba(white, 0.7);
+
+    @include touch {
+        padding: 4rem 2rem;
+    }
 }
 
 .ee-footer__logo {
@@ -24,4 +28,8 @@
 
 .ee-footer__last-column {
     text-align: right;
+
+    @include touch {
+        text-align: left;
+    }
 }

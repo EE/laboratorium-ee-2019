@@ -198,7 +198,7 @@
             <div class="ee-masonry__tile" style="background-image: url({% webpack_static 'images/project-1.jpg' %})">
                 <span class="ee-masonry__tile-title">RODO PASS</span>
             </div>
-            <div class="ee-masonry__tile ee-masonry__tile--featured-x" style="background-image: url({% webpack_static 'images/project-2.jpg' %})">
+            <div class="ee-masonry__tile ee-masonry__tile--featured-x ee-masonry__tile--featured-mobile" style="background-image: url({% webpack_static 'images/project-2.jpg' %})">
                 <span class="ee-masonry__tile-title">PayU</span>
             </div>
             <div class="ee-masonry__tile ee-masonry__tile--featured-x" style="background-image: url({% webpack_static 'images/project-3.jpg' %})">
@@ -212,20 +212,5 @@
             </div>
         </div>
     </section>
-
-    {% if page.projects.all %}
-        <section class="section is-medium">
-            <div class="container">
-                <h2 class="subtitle is-section-title">{% trans 'Projects' %}</h2>
-                <div class="columns is-multiline">
-                    {% for project in page.projects.all %}
-                        <div class="column is-one-third">
-                            {% include 'projects/partials/project_card.html' with project=project %}
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-    {% endif %}
 
 {% endblock content %}
