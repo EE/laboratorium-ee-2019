@@ -28,7 +28,6 @@ import * as Hammer from "hammerjs";
             carousel.get("pan").set({ enabled: false });
             carousel.on("swipeleft", (e) => {
                 if (idx < arr.length - 1) {
-                    console.log("SWIPE_LEFT", idx, arr.length, e);
                     carouselSlidesContainer.style.transform = `translateX(-${(idx + 1) * 100}vw)`;
                     [ ...carouselControlsButtons.values() ].forEach((el) => {
                         el.classList.remove("active");
@@ -38,7 +37,6 @@ import * as Hammer from "hammerjs";
             });
             carousel.on("swiperight", (e) => {
                 if (idx > 0) {
-                    console.log("SWIPE_RIGHT", idx, arr.length, e);
                     carouselSlidesContainer.style.transform = `translateX(-${(idx - 1) * 100}vw)`;
                     [ ...carouselControlsButtons.values() ].forEach((el) => {
                         el.classList.remove("active");
