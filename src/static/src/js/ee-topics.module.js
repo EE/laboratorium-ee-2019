@@ -2,23 +2,30 @@
     const topicsBlock = document.querySelector(".ee-topics-block");
     const topicsButtons = document.querySelectorAll(".ee-topics-block__buttons .ee-button");
 
+    const setActiveButton = button => {
+        const targetToggleId = button.dataset.target;
+
+        // set section's background image
+        topicsBlock.style.backgroundImage = `url(${button.dataset.sectionBackgroundUrl})`;
+
+        // show related side-image (and hide others)
+        [ ...document.querySelectorAll(".ee-topics-block__image").values() ].forEach(el => {
+            el.classList.remove("active");
+        });
+        const sideImage = document.querySelector(`#${targetToggleId}`);
+        if (sideImage) sideImage.classList.add("active");
+    };
+
     if (topicsButtons.length) {
         [ ...topicsButtons.values() ].forEach(el => {
-            el.addEventListener("mouseenter", (e) => {
-                const targetToggleId = e.target.dataset.target;
-                const bgId = e.target.dataset.target.slice(-1);
-                const bgSrc = topicsBlock.style.backgroundImage;
-                topicsBlock.style.backgroundImage = bgSrc.replace(/(\d){1}(\.png)/g, `${bgId}$2`);
-                [ ...document.querySelectorAll(".ee-topics-block__image").values() ].forEach(el => {
-                    el.classList.remove("active");
-                });
-                document.querySelector(`#${targetToggleId}`).classList.add("active");
-            });
+            el.addEventListener("mouseenter", (e) => setActiveButton(e.target));
         });
 
         document.addEventListener("scroll", () => {
             parallaxFx(document.querySelector(".ee-topics-block__image-container"));
         });
+
+        setActiveButton(topicsButtons[0]);
     }
 
     function parallaxFx(el) {
