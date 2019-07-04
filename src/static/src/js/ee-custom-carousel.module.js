@@ -1,3 +1,5 @@
+import * as Hammer from "hammerjs";
+
 (function () {
     const carouselSlidesContainer = document.querySelector(".ee-hero-carousel__container");
     if (carouselSlidesContainer) {
@@ -18,6 +20,32 @@
             controlButton.setAttribute("id", `ee-carousel-control-${idx}`);
             carouselControls.querySelector(".container").appendChild(controlButton);
             carouselControlsButtons = carouselControls.querySelectorAll(".ee-hero-carousel__control-button");
+        });
+
+        [ ...carouselSlides.values() ].forEach((el, idx, arr) => {
+            const carousel = new Hammer(el);
+            carousel.get("swipe").set({ direction: Hammer.DIRECTION_HORIZONTAL });
+            carousel.get("pan").set({ enabled: false });
+            carousel.on("swipeleft", (e) => {
+                if (idx < arr.length - 1) {
+                    console.log("SWIPE_LEFT", idx, arr.length, e);
+                    carouselSlidesContainer.style.transform = `translateX(-${(idx + 1) * 100}vw)`;
+                    [ ...carouselControlsButtons.values() ].forEach((el) => {
+                        el.classList.remove("active");
+                    });
+                    [...carouselControlsButtons.values()][idx + 1].classList.add("active");
+                }
+            });
+            carousel.on("swiperight", (e) => {
+                if (idx > 0) {
+                    console.log("SWIPE_RIGHT", idx, arr.length, e);
+                    carouselSlidesContainer.style.transform = `translateX(-${(idx - 1) * 100}vw)`;
+                    [ ...carouselControlsButtons.values() ].forEach((el) => {
+                        el.classList.remove("active");
+                    });
+                    [...carouselControlsButtons.values()][idx - 1].classList.add("active");
+                }
+            });
         });
 
         [ ...carouselControlsButtons.values() ].forEach((el) => {
