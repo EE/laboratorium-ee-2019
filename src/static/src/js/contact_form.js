@@ -1,4 +1,4 @@
-const formField = name => document.querySelector(`#contact *[name=${name}]`);
+const formField = name => document.querySelector(`.ee-contact-form *[name=${name}]`);
 
 const hide = name => {
     formField(name).closest(".field").style.display = "none";
