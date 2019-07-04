@@ -3,21 +3,6 @@
 {% load wagtailcore_tags %}
 {% load webpack_static from webpack_loader %}
 
-<div class="ee-tile">
-    {% image project.background_image max-2560x2048 as background_image %}
-    <div class="ee-tile__background-image" style="background-image: url('{{ background_image.url }}')"></div>
-    <div class="ee-tile__image">
-        {% image project.icon max-400x400 %}
-    </div>
-    <div class="ee-spacer">
-        <h3 class="ee-title--large">
-            {{ project.title }}
-        </h3>
-        <h4 class="ee-title">
-            {{ project.subtitle }}
-        </h4>
-    </div>
-    <div class="ee-spacer">
-        <a href="{% pageurl project %}" class="button is-light is-outlined is-radiusless ee-button">{% trans 'Więcej' %}</a>
-    </div>
+<div class="ee-masonry__tile" style="background-image: url('{{ background_image.url }}')">
+    <span class="ee-masonry__tile-title">{{ project.title }}</span>
 </div>

@@ -24,4 +24,8 @@
     flex-basis: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+
+    @include touch {
+        grid-template-columns: 1fr;
+    }
 }
