@@ -20,7 +20,7 @@ def recruitment_contact_form(context):
         request=context.get('request'),
         initial={
             'subject': 'recruitment',
-            'recruitment_position': context['page'].id,
+            'recruitment_position': context['page'].title,
         },
     )}
 
