@@ -1,33 +1,46 @@
 {% extends 'base.html' %}
 
+{% load svg %}
 {% load i18n %}
 {% load main_tags %}
 {% load wagtailcore_tags %}
+{% load webpack_static from webpack_loader %}
 
 {% block title %}
     {{ page.title }} - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-    <section class="hero">
-        <div class="hero-body">
+    <section class="ee-hero ee-subpage-hero" style="background-image: url({% webpack_static 'images/job-1.jpg' %})">
+        <div class="ee-hero__spacer"></div>
+        <div class="ee-hero-body">
             <div class="container">
-                <p class="title">
+                <h1 class="ee-title--large">
                     {{ page.title }}
-                </p>
-                <p class="subtitle">
-                    {{ page.salary }} ({{ page.employment_form }})
-                </p>
+                </h1>
+                <h2 class="ee-title--bold">
+                    6000-11000 PLN + VAT (B2B Warszawa)
+                </h2>
             </div>
         </div>
     </section>
 
-    <section class="section">
+    <section class="section ee-section">
         <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-half">
+            <div class="columns">
+                <div class="column is-1 is-offset-2">
+                    <div class="ee-news-page__share-buttons">
+                        <a class="ee-share-button">
+                            {% svg 'facebook' %}
+                        </a>
+                        <a class="ee-share-button">
+                            {% svg 'twitter' %}
+                        </a>
+                    </div>
+                </div>
+                <div class="column is-8">
                     <div class="content">
-                        {{ page.body|richtext }}
+                        {{ page.body | richtext }}
                     </div>
                 </div>
             </div>
