@@ -42,7 +42,7 @@
                     {{ article.headline }}
                 </div>
                 <div class="ee-hero-carousel__content-buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">{% trans 'Check us out' %}</a>
+                    <a href="#contact" class="button is-light is-radiusless ee-button">{% trans 'Check us out' %}</a>
                     <a href="{% pageurl article %}" class="button is-outlined is-light is-radiusless ee-button">
                         {% trans 'Find out more' %}
                     </a>
@@ -225,16 +225,18 @@
     </section>
 
     {# block Initiatives #}
-    <section class="ee-section">
-        <div class="ee-section__title-container">
-            <h2 class="ee-section__title">{% trans 'Our initiatives' %}</h2>
-        </div>
-        <div class="ee-section__triptych">
-            {% for inititive in page.our_initiatives.all %}
-                {% include 'projects/partials/project_card_initiative.html' with project=inititive %}
-            {% endfor %}
-        </div>
-    </section>
+    {% if page.our_initiatives %}
+        <section class="ee-section">
+            <div class="ee-section__title-container">
+                <h2 class="ee-section__title">{% trans 'Our initiatives' %}</h2>
+            </div>
+            <div class="ee-section__triptych">
+                {% for inititive in page.our_initiatives %}
+                    {% include 'projects/partials/project_card_initiative.html' with project=inititive %}
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
 
     {# block Cooperation #}
     <section class="ee-section">
