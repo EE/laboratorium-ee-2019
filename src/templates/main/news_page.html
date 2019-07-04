@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load svg %}
 {% load i18n %}
 {% load main_tags %}
 {% load wagtailimages_tags %}
@@ -10,54 +11,53 @@
 {% endblock title %}
 
 {% block facebook_pixel_events %}
-    {{ block.super }}
-    fbq('track', 'ViewContent');
+{{ block.super }}
+fbq('track', 'ViewContent');
 {% endblock %}
 
 {% block navbar %}
-    {# navbar is displayed in hero-head #}
+{% navbar %}
 {% endblock %}
 
 {% block content %}
 
 {% image page.photo max-2560x2048 as hero_background %}
-<section class="hero" style="background: url('{{ hero_background.url }}') center center; background-size: cover;">
-    <div class="hero-head">
-        {% navbar %}
-    </div>
-    <div class="hero-body">
+<section class="ee-hero ee-subpage-hero" style="background-image: url('{{ hero_background.url }}')">
+    <div class="ee-hero__spacer"></div>
+    <div class="ee-hero-body">
         <div class="container">
-            <div class="columns">
-                <div class="column is-half">
-                    <time>
-                        {{ page.publication_date }}
-                    </time>
-                    <h1 class="title is-2">
-                        {{ page.title }}
-                    </h1>
-                </div>
-            </div>
+            <time class="ee-hero__date">
+                {{ page.publication_date | date:"d.m.Y" }}
+            </time>
+            <h1 class="ee-title--large">
+                {{ page.title }}
+            </h1>
         </div>
-    </div>
-    <div class="hero-foot">
     </div>
 </section>
 
-<section class="section">
+<section class="ee-section">
     <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-half">
-                <div class="content">
-                    <h3>{{ page.headline }}</h2>
-                    {{ page.body|richtext }}
+        <div class="columns">
+            <div class="column is-1 is-offset-2">
+                <div class="ee-news-page__share-buttons">
+                    <a class="ee-share-button">
+                        {% svg 'facebook' %}
+                    </a>
+                    <a class="ee-share-button">
+                        {% svg 'twitter' %}
+                    </a>
                 </div>
+            </div>
+            <div class="column is-6">
+                <h2 class="ee-headline--light">{{ page.headline }}</h2>
+                {{ page.body | richtext }}
+
                 {% if page.cta_question %}
-                    <p>
+                    <div>
                         {{ page.cta_question }}
-                        <a href="#contact" class="button is-light is-radiusless ee-button is-inline">
-                            {% trans 'Napisz do nas' %}
-                        </a>
-                    </p>
+                        <button class="button is-light is-outlined is-radiusless ee-button" data-toggle="contactForm">{% trans 'Napisz do nas' %}</button>
+                    </div>
                 {% endif %}
             </div>
         </div>

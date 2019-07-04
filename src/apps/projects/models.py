@@ -89,11 +89,19 @@ class TopicPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    phone_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     content = RichTextField()
 
     content_panels = Page.content_panels + [
         FieldPanel('marked'),
         ImageChooserPanel('background_image'),
+        ImageChooserPanel('phone_image'),
         FieldPanel('content'),
     ]
 

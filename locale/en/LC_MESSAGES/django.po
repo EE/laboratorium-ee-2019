@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-28 13:39+0200\n"
+"POT-Creation-Date: 2019-07-03 12:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,173 +41,148 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: src/apps/main/forms.py:69
-msgid "stanowisko"
-msgstr ""
-
-#: src/apps/main/forms.py:74
+#: src/apps/main/forms.py:75
 msgid "nazwa firmy / organizacji"
 msgstr ""
 
-#: src/apps/main/forms.py:79
+#: src/apps/main/forms.py:80
 msgid "how can we help?"
 msgstr ""
 
-#: src/apps/main/forms.py:84 src/apps/main/forms.py:158
+#: src/apps/main/forms.py:85
 msgid "załącz CV"
 msgstr ""
 
-#: src/apps/main/forms.py:98
+#: src/apps/main/forms.py:106
 msgid "This field is required."
 msgstr ""
 
-#: src/apps/main/forms.py:105
+#: src/apps/main/forms.py:113
 msgid "Kontakt w sprawie oferty, organizacja {}"
 msgstr ""
 
-#: src/apps/main/forms.py:114
+#: src/apps/main/forms.py:122
 msgid "Kontakt w sprawie rekrutacji na stanowisko {}"
 msgstr ""
 
-#: src/apps/main/forms.py:129
+#: src/apps/main/forms.py:137
 msgid "Kontakt w innej sprawie"
 msgstr ""
 
-#: src/apps/main/forms.py:148
-msgid "adres email lub numer telefonu"
-msgstr ""
-
-#: src/apps/main/forms.py:156
-msgid "opcjonalna notatka o sobie"
-msgstr ""
-
-#: src/apps/main/models.py:61
+#: src/apps/main/models.py:60
 msgid "Join us section"
 msgstr ""
 
-#: src/apps/main/models.py:176
+#: src/apps/main/models.py:175
 msgid ""
 "If True, this article would be visible on HomePage and on top of "
 "NewsIndexPage. Only one article can be marked, so old one will be unmarked "
 "automatically."
 msgstr ""
 
-#: src/apps/main/models.py:251
+#: src/apps/main/models.py:255
 msgid ""
 "whether this document is linked in consent checkbox under the contact form"
-msgstr ""
-
-#: src/apps/main/templatetags/main_tags.py:20
-msgid "Aplikacja na stanowisko {}"
 msgstr ""
 
 #: src/apps/projects/models.py:83
 msgid "If True, this topic would be visible on HomePage."
 msgstr ""
 
-#: src/apps/projects/models.py:102
+#: src/apps/projects/models.py:110
 msgid "Brief name of the project"
 msgstr ""
 
-#: src/apps/projects/models.py:183
+#: src/apps/projects/models.py:191
 msgid "Description shown on TeamIndex page."
 msgstr ""
 
-#: src/apps/projects/models.py:187
+#: src/apps/projects/models.py:195
 msgid "More comprehensive description visible on Home Page"
 msgstr ""
 
-#: src/settings/base.py:150
+#: src/settings/base.py:151
 msgid "Polish"
 msgstr ""
 
-#: src/templates/base.html:96 src/templates/projects/project_page.html:91
+#: src/templates/base.html:97 src/templates/projects/project_page.html:91
 msgid "Jeżeli"
 msgstr ""
 
-#: src/templates/base.html:100 src/templates/projects/project_page.html:95
-msgid "Need some help with your <b>project?</b>"
-msgstr ""
-
-#: src/templates/base.html:103 src/templates/projects/project_page.html:98
-msgid "Looking for interesting <b>investments?</b>"
-msgstr ""
-
-#: src/templates/base.html:106 src/templates/main/job_offer_page.html:48
-#: src/templates/projects/project_page.html:101
-msgid "Want to change the world with us through <b>technology?</b>"
-msgstr ""
-
-#: src/templates/base.html:112 src/templates/main/partials/navbar.html:41
+#: src/templates/base.html:105 src/templates/main/news_page.html:58
+#: src/templates/main/partials/navbar.html:43
 #: src/templates/main/recruitment_contact.html:8
-#: src/templates/main/send_mail.html:8
+#: src/templates/main/send_mail.html:13
 #: src/templates/projects/project_page.html:107
 msgid "Napisz do nas"
 msgstr ""
 
-#: src/templates/main/home_page.html:39
+#: src/templates/main/home_page.html:45
+msgid "Check us out"
+msgstr ""
+
+#: src/templates/main/home_page.html:47
 #: src/templates/main/news_index_page.html:35
 #: src/templates/main/partials/article_card.html:21
 #: src/templates/main/partials/job_offer_card.html:19
+#: src/templates/main/partials/rodopass.html:17
 #: src/templates/projects/partials/project_card.html:22
-#: src/templates/projects/partials/specialization_card.html:16
+#: src/templates/projects/partials/project_card_initiative.html:14
+#: src/templates/projects/partials/specialization_card.html:14
 msgid "Find out more"
 msgstr ""
 
-#: src/templates/main/home_page.html:67
-msgid "Działamy w obszarach"
+#: src/templates/main/home_page.html:109
+msgid "Działamy w tematach"
 msgstr ""
 
-#: src/templates/main/home_page.html:83
-msgid "How we create our solutions?"
+#: src/templates/main/home_page.html:138
+msgid "Jak powstają nasze rozwiązania?"
 msgstr ""
 
-#: src/templates/main/home_page.html:94
+#: src/templates/main/home_page.html:148
 msgid "Needs analysis"
 msgstr ""
 
-#: src/templates/main/home_page.html:105
-msgid "Warsztaty wydobywcze / partycypacyjne"
+#: src/templates/main/home_page.html:157
+msgid "Warsztaty partycypacyjne i Google Design Sprint"
 msgstr ""
 
-#: src/templates/main/home_page.html:116
-msgid "Prototyp i testy użyteczności"
+#: src/templates/main/home_page.html:166
+msgid "Prototyp i Minimum Viable Product"
 msgstr ""
 
-#: src/templates/main/home_page.html:129
-msgid "Wdrożenie i rozwój iteracyjny rozwiązania"
+#: src/templates/main/home_page.html:175
+msgid "Wdrażanie Zwinne"
 msgstr ""
 
-#: src/templates/main/home_page.html:151
+#: src/templates/main/home_page.html:195
 msgid "Sprawdź aktualne oferty"
 msgstr ""
 
-#: src/templates/main/home_page.html:155
-msgid "Skontaktuj się z nami"
+#: src/templates/main/home_page.html:199
+msgid "Contact us"
 msgstr ""
 
-#: src/templates/main/home_page.html:162
-msgid "Stawiamy na rozwiązania"
+#: src/templates/main/home_page.html:230
+msgid "Our initiatives"
 msgstr ""
 
-#: src/templates/main/home_page.html:165
-msgid "Pobudzamy kreatywność"
+#: src/templates/main/home_page.html:242
+msgid "We have worked with"
 msgstr ""
 
-#: src/templates/main/home_page.html:168
-msgid "Nie boimy się myśleć samodzielnie"
+#: src/templates/main/home_page.html:259
+#: src/templates/projects/team_index_page.html:46
+msgid "Team"
 msgstr ""
 
-#: src/templates/main/home_page.html:178
-msgid "Initiatives we have started"
+#: src/templates/main/home_page.html:265
+msgid "Poznaj nas"
 msgstr ""
 
-#: src/templates/main/home_page.html:193
-msgid "We worked with"
-msgstr ""
-
-#: src/templates/main/home_page.html:211
-msgid "It would not work without them"
+#: src/templates/main/home_page.html:266
+msgid "Join us"
 msgstr ""
 
 #: src/templates/main/job_offer_index_page.html:23
@@ -226,6 +201,11 @@ msgstr ""
 msgid "Jesteś <b>zainteresowana ofertą?</b>"
 msgstr ""
 
+#: src/templates/main/job_offer_page.html:48
+#: src/templates/projects/project_page.html:101
+msgid "Want to change the world with us through <b>technology?</b>"
+msgstr ""
+
 #: src/templates/main/job_offer_page.html:54
 msgid "Aplikuj!"
 msgstr ""
@@ -235,27 +215,26 @@ msgid "No more articles"
 msgstr ""
 
 #: src/templates/main/partials/contact_form.html:8
-#: src/templates/main/partials/recruitment_contact_form.html:8
 msgid "send"
 msgstr ""
 
-#: src/templates/main/partials/footer.html:16
+#: src/templates/main/partials/footer.html:17
 msgid "Contact"
 msgstr ""
 
-#: src/templates/main/partials/footer.html:20
+#: src/templates/main/partials/footer.html:21
 msgid "Address"
 msgstr ""
 
-#: src/templates/main/partials/footer.html:36
+#: src/templates/main/partials/footer.html:27
 msgid "How we work?"
 msgstr ""
 
-#: src/templates/main/partials/footer.html:43
+#: src/templates/main/partials/footer.html:33
 msgid "Specializations"
 msgstr ""
 
-#: src/templates/main/partials/footer.html:52
+#: src/templates/main/partials/footer.html:39
 msgid "Partners"
 msgstr ""
 
@@ -265,6 +244,14 @@ msgstr ""
 
 #: src/templates/projects/project_page.html:67
 msgid "Process"
+msgstr ""
+
+#: src/templates/projects/project_page.html:95
+msgid "Need some help with your <b>project?</b>"
+msgstr ""
+
+#: src/templates/projects/project_page.html:98
+msgid "Looking for interesting <b>investments?</b>"
 msgstr ""
 
 #: src/templates/projects/project_page.html:119
@@ -297,8 +284,4 @@ msgstr ""
 
 #: src/templates/projects/team_index_page.html:35
 msgid "Our values"
-msgstr ""
-
-#: src/templates/projects/team_index_page.html:46
-msgid "Team"
 msgstr ""

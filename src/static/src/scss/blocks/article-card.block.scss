@@ -1,0 +1,42 @@
+.ee-article-card {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 14rem;
+    @include transition();
+
+    &:hover {
+        transform: scale(1.05);
+
+        .ee-article-card__image {
+            @include shadow($size: xl, $tint: white, $alpha: 0.2);
+        }
+
+        .ee-article-card__headline {
+            opacity: 1;
+        }
+    }
+}
+
+.ee-article-card__image {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 100%;
+    width: 100%;
+    height: 12rem;
+    padding: 2rem;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ee-article-card__headline {
+    opacity: 0;
+    padding: 1rem 2rem;
+    color: rgba(white, 0.7);
+    @include transition();
+}
+
+.ee-article-card__button {
+    padding: 0 2rem;
+}

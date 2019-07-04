@@ -12,11 +12,6 @@
     fbq('track', 'ViewContent');
 {% endblock %}
 
-{% block navbar %}
-    {# navbar is displayed in hero-head #}
-    {% navbar %}
-{% endblock %}
-
 {% block content %}
 
 <section class="ee-hero-carousel">
@@ -47,7 +42,7 @@
                     {{ article.headline }}
                 </div>
                 <div class="ee-hero-carousel__content-buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">{% trans 'Check us out' %}</a>
+                    <a href="#contact" class="button is-light is-radiusless ee-button">{% trans 'Check us out' %}</a>
                     <a href="{% pageurl article %}" class="button is-outlined is-light is-radiusless ee-button">
                         {% trans 'Find out more' %}
                     </a>
@@ -105,28 +100,36 @@
     </div>
 </div>
 
-{# block Topics #}
-<section class="section ee-topics-block" style="background-image: url({% webpack_static 'images/topics-1.png' %})">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-one-third ee-topics-block__content">
-                <h3 class="ee-topics-block__title">Działamy w tematach</h3>
-                <div class="ee-topics-block__buttons">
-                    <a class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-1">Ochrona środowiska</a>
-                    <a class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-2">Seniorzy</a>
-                    <a class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-3">Media</a>
-                    <a class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-4">Prawo</a>
+    {# block Topics #}
+    {% if page.topics %}
+        <section class="section ee-topics-block">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-one-third ee-topics-block__content">
+                        <h3 class="ee-topics-block__title">{% trans 'Działamy w tematach' %}</h3>
+                        <div class="ee-topics-block__buttons">
+                            {% for topic in page.topics %}
+                                {% image topic.background_image max-2560x2048 as topic_background_image %}
+                                <a href="{% pageurl topic %}"
+                                   class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-{{ topic.id }}"
+                                   data-section-background-url="{% if topic.background_image %}{{ topic_background_image.url }}{% endif %}">
+                                    {{ topic.title }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="column ee-topics-block__image-container">
+                        {% for topic in page.topics %}
+                            {% if topic.phone_image %}
+                                {% image topic.phone_image max-2560x2048 as topic_phone_image %}
+                                <img src="{{ topic_phone_image.url }}" alt="" id="ee-topics-{{ topic.id }}" class="ee-topics-block__image">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-            <div class="column ee-topics-block__image-container">
-                <img src="{% webpack_static 'images/topics-target-1.png' %}" alt="" id="ee-topics-1" class="ee-topics-block__image active">
-                <img src="{% webpack_static 'images/topics-target-2.png' %}" alt="" id="ee-topics-2" class="ee-topics-block__image">
-                <img src="{% webpack_static 'images/topics-target-3.png' %}" alt="" id="ee-topics-3" class="ee-topics-block__image">
-                <img src="{% webpack_static 'images/topics-target-4.png' %}" alt="" id="ee-topics-4" class="ee-topics-block__image">
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
+    {% endif %}
 
 {# block Solutions #}
 <section class="ee-solutions-block">
@@ -142,7 +145,7 @@
                     {% svg 'ico-lupka' %}
                 </div>
                 <h3 class="ee-solutions-block__item-title">
-                    Analiza potrzeb
+                    {% trans 'Needs analysis' %}
                 </h3>
             </div>
             <div class="ee-solutions-block__item-spacer"></div>
@@ -151,7 +154,7 @@
                     {% svg 'ico-post-it' %}
                 </div>
                 <h3 class="ee-solutions-block__item-title">
-                    Warsztaty partycypacyjne i Google Design Sprint
+                    {% trans 'Warsztaty partycypacyjne i Google Design Sprint' %}
                 </h3>
             </div>
             <div class="ee-solutions-block__item-spacer"></div>
@@ -160,7 +163,7 @@
                     {% svg 'ico-proto' %}
                 </div>
                 <h3 class="ee-solutions-block__item-title">
-                    Prototyp i Minimum Viable Product
+                    {% trans 'Prototyp i Minimum Viable Product' %}
                 </h3>
             </div>
             <div class="ee-solutions-block__item-spacer"></div>
@@ -169,142 +172,106 @@
                     {% svg 'ico-agile' %}
                 </div>
                 <h3 class="ee-solutions-block__item-title">
-                    Wdrażanie Zwinne
+                    {% trans 'Wdrażanie Zwinne' %}
                 </h3>
             </div>
         </div>
     </div>
 </section>
 
-{# block Join the Team #}
-<section class="ee-join-us-block" style="background: url({% webpack_static 'images/join-the-team.png' %})">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-half ee-join-us-block__content-container">
-                <div class="ee-join-us-block__content">
-                <h2 class="ee-join-us-block__content-title">{{ page.join_us_headline }}</h2>
-                <p class="ee-join-us-block__content-body">{{ page.join_us_body }}</p>
-                </div>
-                <div class="ee-join-us-block__buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">
-                        Sprawdź aktualne oferty
-                    </a>
-                    <a href="" class="button is-outlined is-light is-radiusless ee-button">
-                        Skontaktuj się z nami
-                    </a>
-                </div>
-            </div>
-            <div class="column ee-join-us-block__items-container">
-                <div class="ee-join-us-block__item">
-                    <div class="ee-join-us-block__item-icon">
-                        {% svg 'join-us-icon-1' %}
+    {# block Join the Team #}
+    {% image page.join_us_background max-2560x2048 as join_us_background %}
+    <section class="ee-join-us-block" style="background: url({{ join_us_background.url }})">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half ee-join-us-block__content-container">
+                    <div class="ee-join-us-block__content">
+                    <h2 class="ee-join-us-block__content-title">{{ page.join_us_headline }}</h2>
+                    <p class="ee-join-us-block__content-body">{{ page.join_us_body }}</p>
                     </div>
-                    <div class="ee-join-us-block__item-title">Stawiamy na rozwiązania</div>
-                </div>
-                <div class="ee-join-us-block__item">
-                    <div class="ee-join-us-block__item-icon">
-                        {% svg 'join-us-icon-2' %}
+                    <div class="ee-join-us-block__buttons">
+                        {% for job_offer_index in page.job_offer_indexes %}
+                            <a href="{% pageurl job_offer_index %}" class="button is-light is-radiusless ee-button">
+                                {% trans 'Sprawdź aktualne oferty' %}
+                            </a>
+                        {% endfor %}
+                        <a href="#contact" class="button is-outlined is-light is-radiusless ee-button">
+                            {% trans 'Contact us' %}
+                        </a>
                     </div>
-                    <div class="ee-join-us-block__item-title">Pobudzamy kreatywność</div>
                 </div>
-                <div class="ee-join-us-block__item">
-                    <div class="ee-join-us-block__item-icon">
-                        {% svg 'join-us-icon-3' %}
+                <div class="column ee-join-us-block__items-container">
+                    <div class="ee-join-us-block__item">
+                        <div class="ee-join-us-block__item-icon">
+                            {% svg 'join-us-icon-1' %}
+                        </div>
+                        <div class="ee-join-us-block__item-title">Stawiamy na rozwiązania</div>
                     </div>
-                    <div class="ee-join-us-block__item-title">Nie boimy się myśleć samodzielnie</div>
+                    <div class="ee-join-us-block__item">
+                        <div class="ee-join-us-block__item-icon">
+                            {% svg 'join-us-icon-2' %}
+                        </div>
+                        <div class="ee-join-us-block__item-title">Pobudzamy kreatywność</div>
+                    </div>
+                    <div class="ee-join-us-block__item">
+                        <div class="ee-join-us-block__item-icon">
+                            {% svg 'join-us-icon-3' %}
+                        </div>
+                        <div class="ee-join-us-block__item-title">Nie boimy się myśleć samodzielnie</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-{# block Initiatives #}
-<section class="ee-section">
-    <div class="ee-section__title-container">
-        <h2 class="ee-section__title">Nasze inicjatywy</h2>
-    </div>
-    <div class="ee-section__triptych">
-        <div class="ee-initiatives-card" style="background-image: url({% webpack_static 'images/initiative-1.png' %});">
-            <div class="ee-initiatives-card__content">
-                <h2 class="ee-initiatives-card__title">RODO PASS</h2>
-                <div class="ee-initiatives-card__headline">
-                    To trzymodułowa aplikacja wspierająca pamięć u seniorów. Trening, kalendarz i przechowalnia
-                    wspomnień sprawiają, że proces degeneracji pamięci zatrzymuje się.
-                </div>
-                <div class="ee-initiatives-card__buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">
-                        {% trans 'Find out more' %}
-                    </a>
-                </div>
+    {# block Initiatives #}
+    {% if page.our_initiatives %}
+        <section class="ee-section">
+            <div class="ee-section__title-container">
+                <h2 class="ee-section__title">{% trans 'Our initiatives' %}</h2>
             </div>
-        </div>
-        <div class="ee-initiatives-card" style="background-image: url({% webpack_static 'images/initiative-2.png' %});">
-            <div class="ee-initiatives-card__content">
-                <h2 class="ee-initiatives-card__title">MEMO</h2>
-                <div class="ee-initiatives-card__headline">
-                    To trzymodułowa aplikacja wspierająca pamięć u seniorów. Trening, kalendarz i przechowalnia
-                    wspomnień sprawiają, że proces degeneracji pamięci zatrzymuje się.
-                </div>
-                <div class="ee-initiatives-card__buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">
-                        {% trans 'Find out more' %}
-                    </a>
-                </div>
+            <div class="ee-section__triptych">
+                {% for inititive in page.our_initiatives %}
+                    {% include 'projects/partials/project_card_initiative.html' with project=inititive %}
+                {% endfor %}
             </div>
-        </div>
-        <div class="ee-initiatives-card" style="background-image: url({% webpack_static 'images/initiative-3.png' %});">
-            <div class="ee-initiatives-card__content">
-                <h2 class="ee-initiatives-card__title">DARE magazine</h2>
-                <div class="ee-initiatives-card__headline">
-                    To trzymodułowa aplikacja wspierająca pamięć u seniorów. Trening, kalendarz i przechowalnia
-                    wspomnień sprawiają, że proces degeneracji pamięci zatrzymuje się.
-                </div>
-                <div class="ee-initiatives-card__buttons">
-                    <a href="" class="button is-light is-radiusless ee-button">
-                        {% trans 'Find out more' %}
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
+    {% endif %}
 
-{# block Cooperation #}
-<section class="ee-section">
-    <div class="ee-section__title-container">
-        <h2 class="ee-section__title">Współpracowaliśmy z</h2>
-    </div>
-    <div class="container ee-coop-block__logo-container">
-        <img src="{% webpack_static 'images/agora_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/biblioteka-narodowa_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/inea_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/instytut-lacznosci_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/J&J_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/miasto-jest-nasze_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/ministerstwo_logo.png' %}" alt="">
-        <img src="{% webpack_static 'images/nask_logo.png' %}" alt="">
-    </div>
-</section>
-
-{# block Team #}
-<section class="section ee-team-block" style="background-image: url({% webpack_static 'images/team-1.png' %});">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-one-third">
-                <h2 class="ee-team-block__title">Zespół</h2>
-                <h3 class="ee-team-block__headline">Ludwik Trammer</h3>
-                <p class="ee-team-block__body">
-                    Były nauczyciel, obecnie student uczelni Georgia Tech. Programista i maniak komputerowy, uwielbiający podcasty,
-                    wegańskie jedzenie i kozy. Lubi uczyć i rozwijać się w IT, a w szczególności Machine Learningu, AI i sieciach
-                    neuronowych.
-                </p>
-                <div class="ee-team-block__buttons-container">
-                    <a href="" class="button is-light is-radiusless ee-button">Poznaj nas</a>
-                    <a href="" class="button is-light is-outlined is-radiusless ee-button">Dołącz do nas</a>
-                </div>
-            </div>
+    {# block Cooperation #}
+    <section class="ee-section">
+        <div class="ee-section__title-container">
+            <h2 class="ee-section__title">{% trans 'We have worked with' %}</h2>
         </div>
-    </div>
-</section>
+        <div class="container ee-coop-block__logo-container">
+            {% for logo in page.cooperators_logos.all %}
+                {% image logo.image original %}
+            {% endfor %}
+        </div>
+    </section>
+
+    {# block Team #}
+    {% with page.random_team_member as member %}
+        {% if member %}
+            {% image member.photo max-2560x2048 as team_background %}
+            <section class="section ee-team-block" style="background-image: url({{ team_background.url }});">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column is-one-third">
+                            <h2 class="ee-team-block__title">{% trans 'Team' %}</h2>
+                            <h3 class="ee-team-block__headline">{{ member.name }}</h3>
+                            <p class="ee-team-block__body">
+                                {{ member.long_description }}
+                            </p>
+                            <div class="ee-team-block__buttons-container">
+                                <a href="" class="button is-light is-radiusless ee-button">{% trans 'Poznaj nas' %}</a>
+                                <a href="" class="button is-light is-outlined is-radiusless ee-button">{% trans 'Join us' %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+    {% endwith %}
 
 {% endblock content %}

@@ -456,11 +456,11 @@
 }
 
 .ee-rodo-block__content-container {
-    min-height: 30rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
     height: 100%;
-    align-items: center;
+    min-height: 30rem;
 
     & > * {
         flex-basis: 100%;
