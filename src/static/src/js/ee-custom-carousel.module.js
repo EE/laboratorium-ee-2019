@@ -26,7 +26,7 @@ import * as Hammer from "hammerjs";
             const carousel = new Hammer(el);
             carousel.get("swipe").set({ direction: Hammer.DIRECTION_HORIZONTAL });
             carousel.get("pan").set({ enabled: false });
-            carousel.on("swipeleft", (e) => {
+            carousel.on("swipeleft", () => {
                 if (idx < arr.length - 1) {
                     carouselSlidesContainer.style.transform = `translateX(-${(idx + 1) * 100}vw)`;
                     [ ...carouselControlsButtons.values() ].forEach((el) => {
@@ -35,7 +35,7 @@ import * as Hammer from "hammerjs";
                     [...carouselControlsButtons.values()][idx + 1].classList.add("active");
                 }
             });
-            carousel.on("swiperight", (e) => {
+            carousel.on("swiperight", () => {
                 if (idx > 0) {
                     carouselSlidesContainer.style.transform = `translateX(-${(idx - 1) * 100}vw)`;
                     [ ...carouselControlsButtons.values() ].forEach((el) => {
