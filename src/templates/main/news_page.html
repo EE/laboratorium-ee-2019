@@ -45,15 +45,13 @@
                     </a>
                 </div>
             </div>
-            <div class="column is-6">
+            <div class="column is-6 is-12-touch">
                 <h2 class="ee-headline--light">{{ page.headline }}</h2>
                 {{ page.body | richtext }}
 
                 {% if page.cta_question %}
-                    <div>
-                        {{ page.cta_question }}
-                        <button class="button is-light is-outlined is-radiusless ee-button" data-toggle="contactForm">{% trans 'Napisz do nas' %}</button>
-                    </div>
+                    {{ page.cta_question }}
+                    <button class="button is-light is-outlined is-radiusless ee-button" data-toggle="contactForm">{% trans 'Napisz do nas' %}</button>
                 {% endif %}
             </div>
         </div>

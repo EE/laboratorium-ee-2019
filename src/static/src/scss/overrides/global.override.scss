@@ -1,0 +1,5 @@
+body {
+    @include touch {
+        overflow-x: hidden;
+    }
+}

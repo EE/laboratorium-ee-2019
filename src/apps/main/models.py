@@ -73,9 +73,13 @@ class HomePage(Page):
         return SpecializationPage.objects.live().descendant_of(self)
 
     @property
+    def articles(self):
+        return NewsPage.objects.live().descendant_of(self).order_by('-marked', '-publication_date')
+
+    @property
     def latest_articles(self):
         """Returns 3 latest articles"""
-        return NewsPage.objects.live().descendant_of(self).order_by('-marked', '-publication_date')[:3]
+        return self.articles[:3]
 
     @property
     def our_initiatives(self):
@@ -209,7 +213,10 @@ class JobOfferIndexPage(Page):
     cooperation = models.CharField(max_length=500)
     recruitment = StreamField([
         ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
-        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
+        ('tiles_list', blocks.ListBlock(
+            Tile(template='main/blocks/tile_fancy.html'),
+            template='projects/blocks/tiles_list_with_arrows.html',
+        )),
     ])
 
     @property

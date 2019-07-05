@@ -38,6 +38,10 @@
     &:hover {
       @include shadow();
     }
+
+    @include touch {
+      background: transparent;
+    }
   }
 
   @include touch {
@@ -51,7 +55,7 @@
     top: 0;
     left: 0;
     background-color: white;
-    padding-block: 10rem;
+    padding: 15rem 0;
 
     .ee-navbar-item {
       flex-basis: 100vw;

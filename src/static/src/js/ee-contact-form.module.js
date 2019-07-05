@@ -1,9 +1,10 @@
 (function () {
-    const contactFormToggle = document.querySelector("[data-toggle='contactForm']");
+    const getFormSticky = () => document.querySelector(".ee-sticky-contact-form");
 
-    if (contactFormToggle) {
-        contactFormToggle.addEventListener("click", () => {
-            document.querySelector(".ee-sticky-contact-form").classList.toggle("active");
+    // buttons for opening the sidebar
+    [...document.querySelectorAll("[data-toggle='contactForm']").values()].forEach(el => {
+        el.addEventListener("click", () => {
+            getFormSticky().classList.toggle("active");
         });
-    }
+    });
 })();

@@ -12,16 +12,26 @@
 }
 
 .ee-section__title {
-    padding-block: 6rem 4rem;
+    padding: 2rem 0 4rem;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 4px;
     font-weight: 700;
     color: rgba(white, 0.7);
+
+    @include touch {
+        padding: 0 0 4rem;
+    }
 }
 
 .ee-section__triptych {
     flex-basis: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+
+    @include touch {
+        overflow-x: scroll;
+        flex-basis: 100vw;
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

@@ -6,9 +6,19 @@
     align-items: flex-end;
     justify-content: flex-start;
     background-size: cover;
-    height: 48rem;
+    height: 36rem;
     padding: 4rem 3rem;
     @include transition();
+
+    &:first-child {
+        transform-origin: right;
+        padding-left: 5rem;
+    }
+
+    &:last-child {
+        transform-origin: left;
+        padding-right: 5rem;
+    }
 
     &:hover {
         transform: scale(1.05);
@@ -24,7 +34,7 @@
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    height: 70%;
+    height: 85%;
 }
 
 .ee-initiatives-card__title {
@@ -43,9 +53,17 @@
 }
 
 .ee-initiatives-card__buttons {
-    display: flex;
+    display: grid;
+    grid-template-rows: 2;
     align-items: flex-end;
-    flex-basis: 100%;
     margin-top: auto;
     opacity: 0;
+
+    & > *:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    @include touch {
+        flex-basis: 100%;
+    }
 }

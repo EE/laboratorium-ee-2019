@@ -82,55 +82,33 @@
     </div>
 </section>
 
-<section class="section ee-section">
-    <div class="ee-section-title">{% trans 'Team' %}</div>
-    <div class="container">
-        <div class="columns">
-            <div class="column">
-                <div class="ee-section-tiles">
-                    <div class="ee-tile ee-article-card">
-                        <div class="ee-article-card__image" style="background-image: url('{% webpack_static 'images/team-1.jpg' %}')">
-                            <div class="ee-title">
-                                Imię Nazwisko
-                            </div>
-                            <div class="ee-article-card__date">
-                                Specjalizacja UX
-                            </div>
-                        </div>
-                        <div class="ee-article-card__headline">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae tortor condimentum tellus maximus porttitor.
-                        </div>
-                    </div>
-                    <div class="ee-tile ee-article-card">
-                        <div class="ee-article-card__image" style="background-image: url('{% webpack_static 'images/team-1.jpg' %}')">
-                            <div class="ee-title">
-                                Imię Nazwisko
-                            </div>
-                            <div class="ee-article-card__date">
-                                Specjalizacja UX
-                            </div>
-                        </div>
-                        <div class="ee-article-card__headline">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae tortor condimentum tellus maximus porttitor.
-                        </div>
-                    </div>
-                    <div class="ee-tile ee-article-card">
-                        <div class="ee-article-card__image" style="background-image: url('{% webpack_static 'images/team-1.jpg' %}')">
-                            <div class="ee-title">
-                                Imię Nazwisko
-                            </div>
-                            <div class="ee-article-card__date">
-                                Specjalizacja UX
-                            </div>
-                        </div>
-                        <div class="ee-article-card__headline">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae tortor condimentum tellus maximus porttitor.
+    {% if page.team_members %}
+        <section class="section ee-section">
+            <div class="ee-section-title">{% trans 'Team' %}</div>
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <div class="ee-section-tiles">
+                            {% for member in page.team_members %}
+                                <div class="ee-tile ee-article-card">
+                                    <div class="ee-article-card__image" style="background-image: url('{% webpack_static 'images/team-1.jpg' %}')">
+                                        <div class="ee-title">
+                                            {{ member.title }}
+                                        </div>
+                                        <div class="ee-article-card__date">
+                                            Specjalizacja UX
+                                        </div>
+                                    </div>
+                                    <div class="ee-article-card__headline">
+                                        {{ member.long_description }}
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+    {% endif %}
 
 {% endblock content %}

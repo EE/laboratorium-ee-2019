@@ -15,4 +15,8 @@
 
 .ee-specialization-page__tools-tiles {
     grid-template-columns: repeat(2, 1fr);
+
+    @include touch {
+        grid-template-columns: 1fr;
+    }
 }

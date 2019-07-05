@@ -28,6 +28,10 @@
 
     background-size: cover;
     background-repeat: no-repeat;
+
+    @include touch {
+        flex-basis: 20rem;
+    }
 }
 
 .ee-article-card__headline {
@@ -39,4 +43,19 @@
 
 .ee-article-card__button {
     padding: 0 2rem;
+
+    @include touch {
+        padding: 0;
+        width: 100%;
+        & > * {
+            width: 100%;
+        }
+    }
+}
+
+.ee-article-card__date {
+
+    @include touch {
+        font-weight: 700;
+    }
 }

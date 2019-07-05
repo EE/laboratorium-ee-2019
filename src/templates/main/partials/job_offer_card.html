@@ -1,11 +1,10 @@
 {% load i18n %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
-{% load webpack_static from webpack_loader %}
 
 <div class="ee-tile">
     <div class="ee-tile__image">
-        <img src="{% webpack_static 'images/how-we-work-1.svg' %}" alt="">
+        {% image offer.icon original %}
     </div>
     <div class="ee-spacer">
         <h3 class="ee-title--large">
