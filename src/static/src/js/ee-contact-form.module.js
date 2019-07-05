@@ -17,7 +17,7 @@
         const file = el.querySelector("input[type='file']");
         const textarea = el.querySelector("textarea");
         if (input) {
-            input.addEventListener("change", e => {
+            input.addEventListener("change", () => {
                 if (input.value) {
                     el.querySelector("label").classList.add("active");
                 } else {
@@ -29,7 +29,7 @@
             el.querySelector("label").classList.add("active");
         }
         if (textarea) {
-            textarea.addEventListener("change", e => {
+            textarea.addEventListener("change", () => {
                 if (textarea.value) {
                     el.querySelector("label").classList.add("active");
                 } else {
