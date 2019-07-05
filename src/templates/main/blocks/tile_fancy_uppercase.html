@@ -1,0 +1,11 @@
+{% load wagtailimages_tags %}
+
+<div class="ee-tile-fancy">
+    <div class="ee-tile-fancy__image">
+        {% image value.image original %}
+    </div>
+    <div class="ee-spacer"></div>
+    <h3 class="ee-title--small is-uppercase has-text-centered">
+        {{ value.heading }}
+    </h3>
+</div>

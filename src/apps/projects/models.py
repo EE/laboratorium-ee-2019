@@ -117,6 +117,9 @@ class ProjectPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    project_url = models.URLField(
+        blank=True,
+    )
     background_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -128,7 +131,10 @@ class ProjectPage(Page):
 
     challenge = RichTextField(null=True)
     process = StreamField([
-        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
+        ('tiles_list', blocks.ListBlock(
+            Tile(template='main/blocks/tile_fancy_uppercase.html'),
+            template='projects/blocks/tiles_list_with_arrows.html',
+        )),
     ], null=True)
     quote = RichTextField(null=True)
 
@@ -140,6 +146,7 @@ class ProjectPage(Page):
         FieldPanel('self_initiated'),
         FieldPanel('subtitle'),
         ImageChooserPanel('icon'),
+        FieldPanel('project_url'),
         ImageChooserPanel('background_image'),
         InlinePanel('metrics', heading="Metrics"),
         FieldPanel('challenge'),
