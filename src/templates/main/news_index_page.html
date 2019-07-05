@@ -16,7 +16,7 @@
         <section class="ee-hero ee-subpage-hero" style="background-image: url('{{ hero_background.url }}')">
             <div class="ee-hero-body">
                 <div class="container">
-                    <h2 class="ee-title--super">Wyróżnione</h2>
+                    <h2 class="ee-title--super">{% trans 'Wyróżnione' %}</h2>
                 </div>
             </div>
             <div class="ee-hero-body">
@@ -37,7 +37,7 @@
 
     <section class="ee-section">
         <div class="ee-section-title">
-            Dzieje się
+            {% trans 'Dzieje się' %}
         </div>
         <div class="ee-section-tiles">
             {% for article in rest_of_articles %}
