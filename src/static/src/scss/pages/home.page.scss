@@ -33,6 +33,7 @@
 
 .ee-hero-carousel__desktop-header {
     display: flex;
+    padding: 2rem 0 0;
     @include touch {
         display: none !important;
     }
@@ -550,7 +551,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right;
-    margin: 8rem 0 0;
+    margin: 0;
 }
 
 .ee-rodo-block__content-container {

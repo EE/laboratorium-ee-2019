@@ -1,0 +1,103 @@
+.ee-form-control {
+    position: relative;
+
+    //&:not(:last-child) {
+        margin-bottom: 3rem;
+    //}
+
+    label {
+        position: absolute;
+        opacity: 1;
+        right: 0;
+        top: 0;
+        pointer-events: none;
+        @include transition();
+
+        &.active {
+            transform: translateY(-110%);
+            font-size: 0.875rem;
+        }
+    }
+
+    input[type="checkbox"] + label {
+        padding-left: 2rem;
+        pointer-events: auto;
+    }
+
+    input[type="text"] {
+        border-radius: 0;
+        border-bottom: 3px solid rgba(white, 0.7);
+        padding: 1rem;
+        text-align: right;
+        font-weight: 600;
+    }
+
+    input[type="text"] + label {
+        color: rgba(white, 0.7);
+    }
+
+    input[type="text"]:active + label, input[type="text"]:focus + label {
+        transform: translateY(-110%);
+        color: white;
+        font-size: 0.875rem;
+    }
+
+    input[type="text"]:hover, input[type="text"]:active, input[type="text"]:focus {
+        border: none;
+        border-bottom: 3px solid rgba(white, 0.7);
+    }
+
+
+    textarea {
+        border-radius: 0;
+        border-bottom: 3px solid rgba(white, 0.7);
+        padding: 0 1rem 0.5rem;
+        text-align: right;
+        font-weight: 600;
+    }
+
+    textarea + label {
+        color: rgba(white, 0.7);
+    }
+
+    textarea:active + label, textarea:focus + label {
+        transform: translateY(-110%);
+        color: white;
+        font-size: 0.875rem;
+    }
+
+    textarea:hover, textarea:active, textarea:focus {
+        border: none;
+        border-bottom: 3px solid rgba(white, 0.7);
+    }
+
+
+    .select {
+        display: block;
+        height: unset;
+
+        &:hover::after {
+            display: none !important;
+        }
+
+        select {
+            width: 100%;
+            border-radius: 0;
+            border-bottom: 3px solid rgba(white, 0.7);
+            direction: rtl;
+            padding-right: 1rem;
+            font-weight: 600;
+        }
+    }
+
+    .select select:hover, .select select:active, .select select:focus {
+        border: none;
+        border-bottom: 3px solid rgba(white, 0.7);
+    }
+
+
+    input[type="file"] {
+        width: 100%;
+        direction: rtl;
+    }
+}
