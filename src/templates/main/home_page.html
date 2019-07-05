@@ -114,7 +114,7 @@
                         <div class="ee-topics-block__buttons">
                             {% for topic in page.topics %}
                                 {% image topic.background_image max-2560x2048 as topic_background_image %}
-                                <a href="{% pageurl topic %}"
+                                <a {% if topic.projects.first %}href="{% pageurl topic.projects.first %}"{% endif %}
                                    class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-{{ topic.id }}"
                                    data-section-background-url="{% if topic.background_image %}{{ topic_background_image.url }}{% endif %}">
                                     {{ topic.title }}

@@ -6,44 +6,48 @@
     <div class="ee-contact-form">
         <div class="ee-form-control">
             <input id="id_reply_to" name="reply_to" type="text" class="input">
-            <label for="id_reply_to">email/telefon</label>
+            <label for="id_reply_to">{% trans 'email or phone number' %}</label>
         </div>
         <div class="ee-form-control">
             <div class="select">
                 <select name="subject" id="id_subject">
-                    <option value="">wybierz temat</option>
-                    <option value="offer">Offer</option>
-                    <option value="recruitment">Recruitment</option>
-                    <option value="other">Other</option>
+                    <option value="">{% trans 'wybierz temat' %}</option>
+                    <option value="offer">{% trans 'Offer' %}</option>
+                    <option value="recruitment">{% trans 'Recruitment' %}</option>
+                    <option value="other">{% trans 'Other' %}</option>
                 </select>
             </div>
         </div>
         <div class="ee-form-control">
             <input id="id_recruitment_position" name="recruitment_position" type="text" class="input">
-            <label for="id_recruitment_position">podaj stanowisko</label>
+            <label for="id_recruitment_position">{% trans 'podaj stanowisko' %}</label>
         </div>
         <div class="ee-form-control">
             <input id="id_organization_name" name="organization_name" type="text" class="input">
-            <label for="id_organization_name">nazwa firmy/organizacji</label>
+            <label for="id_organization_name">{% trans 'nazwa firmy/organizacji' %}</label>
         </div>
         <div class="ee-form-control">
             <textarea name="message" id="id_message" class="textarea" rows="1"></textarea>
-            <label for="id_message">how can we help you?</label>
+            <label for="id_message">{% trans 'how can we help you?' %}</label>
         </div>
         <div class="ee-form-control">
             <input id="id_attachment" name="attachment" type="file">
-            <label for="id_attachment">załącz cv</label>
+            <label for="id_attachment">{% trans 'załącz cv' %}</label>
         </div>
         <div class="ee-form-control">
             <input type="checkbox" id="id_terms_accepted" name="terms_accepted" class="checkbox">
             <label for="id_terms_accepted">
-                Zapoznałem się z dokumentami <a href="/polityka-prywatnosci/" target="_blank">Polityka prywatności</a>, <a href="/regulamin/" target="_blank">Regulamin</a> i akceptuję ich postanowienia.
+                {{ form.terms_accepted.label }}
             </label>
+        </div>
+        <div class="ee-form-control">
+            {{ form.captcha }}
         </div>
     </div>
     <div class="control">
         <button type="submit" class="button is-outlined is-light is-uppercase is-radiusless ee-button"
-                style="margin-top: 2rem">{% trans 'send' %}
+                style="margin-top: 2rem">
+                {% trans 'Send' %}
         </button>
     </div>
 </form>
