@@ -9,7 +9,7 @@ from taggit.models import TaggedItemBase
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core.models import Page, Orderable
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
@@ -138,6 +138,11 @@ class ProjectPage(Page):
     ], null=True)
     quote = RichTextField(null=True)
 
+    # masonry display
+    masonry_featured_x = models.BooleanField()
+    masonry_featured_y = models.BooleanField()
+    masonry_title_dark = models.BooleanField()
+
     search_fields = Page.search_fields + [
         index.SearchField('subtitle'),
     ]
@@ -152,6 +157,11 @@ class ProjectPage(Page):
         FieldPanel('challenge'),
         StreamFieldPanel('process'),
         FieldPanel('quote'),
+        MultiFieldPanel([
+            FieldPanel('masonry_featured_x'),
+            FieldPanel('masonry_featured_y'),
+            FieldPanel('masonry_title_dark'),
+        ], heading="masonry display options"),
     ]
 
     parent_page_types = ['SpecializationPage']

@@ -93,43 +93,17 @@
         </div>
     </section>
 
-    <section class="section ee-section">
-        <div class="ee-section__title-container">
-            <h2 class="ee-section__title">{% trans "Similiar projects" %}</h2>
-        </div>
-        <div class="ee-masonry">
-            <div class="ee-masonry__tile" style="background-image: url({% webpack_static 'images/project-1.jpg' %})">
-                <span class="ee-masonry__tile-title">RODO PASS</span>
+    {% if page.similar_projects %}
+        <section class="section ee-section">
+            <div class="ee-section__title-container">
+                <h2 class="ee-section__title">{% trans "Similiar projects" %}</h2>
             </div>
-            <div class="ee-masonry__tile ee-masonry__tile--featured-x" style="background-image: url({% webpack_static 'images/project-2.jpg' %})">
-                <span class="ee-masonry__tile-title">PayU</span>
-            </div>
-            <div class="ee-masonry__tile ee-masonry__tile--featured-x" style="background-image: url({% webpack_static 'images/project-3.jpg' %})">
-                <span class="ee-masonry__tile-title--dark">SONAR</span>
-            </div>
-            <div class="ee-masonry__tile" style="background-image: url({% webpack_static 'images/project-4.jpg' %})">
-                <span class="ee-masonry__tile-title">POLANA</span>
-            </div>
-            <div class="ee-masonry__tile ee-masonry__tile--featured-y" style="background-image: url({% webpack_static 'images/project-5.jpg' %})">
-                <span class="ee-masonry__tile-title">HACKATHON</span>
-            </div>
-        </div>
-    </section>
-
-{# Podobne projekty #}
-{% if page.similar_projects.all %}
-    <section class="section is-medium">
-        <div class="container">
-            <h2 class="subtitle is-section-title">{% trans "Similiar projects" %}</h2>
-            <div class="columns is-multiline">
-                {% for project in page.similar_projects.all %}
-                    <div class="column is-one-third">
-                        {% include 'projects/partials/project_card.html' with project=project %}
-                    </div>
+            <div class="ee-masonry">
+                {% for project in page.similar_projects %}
+                    {% include 'projects/partials/project_card.html' with project=project %}
                 {% endfor %}
             </div>
-        </div>
-    </section>
-{% endif %}
+        </section>
+    {% endif %}
 
 {% endblock content %}
