@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 15:32+0200\n"
+"POT-Creation-Date: 2019-07-05 18:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,27 +23,27 @@ msgstr ""
 msgid "Zapoznałem się z dokumentami {} i akceptuję ich postanowienia."
 msgstr ""
 
-#: src/apps/main/forms.py:54
+#: src/apps/main/forms.py:54 src/templates/main/partials/contact_form.html:9
 msgid "email or phone number"
 msgstr "adres email lub numer telefonu"
 
-#: src/apps/main/forms.py:60
+#: src/apps/main/forms.py:60 src/templates/main/partials/contact_form.html:14
 msgid "wybierz temat"
 msgstr ""
 
-#: src/apps/main/forms.py:61
+#: src/apps/main/forms.py:61 src/templates/main/partials/contact_form.html:15
 msgid "Offer"
 msgstr "Oferta"
 
-#: src/apps/main/forms.py:62
+#: src/apps/main/forms.py:62 src/templates/main/partials/contact_form.html:16
 msgid "Recruitment"
 msgstr "Rekrutacja"
 
-#: src/apps/main/forms.py:63
+#: src/apps/main/forms.py:63 src/templates/main/partials/contact_form.html:17
 msgid "Other"
 msgstr "Inne"
 
-#: src/apps/main/forms.py:69
+#: src/apps/main/forms.py:69 src/templates/main/partials/contact_form.html:23
 msgid "podaj stanowisko"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 
 #: src/apps/main/forms.py:102
 msgid "This field is required."
-msgstr ""
+msgstr "To pole jest wymagane"
 
 #: src/apps/main/forms.py:109
 msgid "Kontakt w sprawie oferty, organizacja {}"
@@ -162,7 +162,7 @@ msgid "Wdrażanie Zwinne"
 msgstr ""
 
 #: src/templates/main/home_page.html:199
-msgid "Sprawdź aktualne oferty"
+msgid "Pracuj z nami"
 msgstr ""
 
 #: src/templates/main/home_page.html:203
@@ -199,7 +199,7 @@ msgstr ""
 msgid "No more articles"
 msgstr "Nie ma więcej artykułów"
 
-#: src/templates/main/home_page.html:298
+#: src/templates/main/home_page.html:299
 msgid "Wyświetl wszystkie"
 msgstr ""
 
@@ -231,15 +231,25 @@ msgstr ""
 msgid "Dzieje się"
 msgstr ""
 
-#: src/templates/main/news_page.html:54
-#: src/templates/main/partials/navbar.html:43
-#: src/templates/main/send_mail.html:13
+#: src/templates/main/news_page.html:54 src/templates/main/send_mail.html:13
 msgid "Napisz do nas"
 msgstr ""
 
-#: src/templates/main/partials/contact_form.html:10
-msgid "send"
-msgstr "wyślij"
+#: src/templates/main/partials/contact_form.html:27
+msgid "nazwa firmy/organizacji"
+msgstr ""
+
+#: src/templates/main/partials/contact_form.html:31
+msgid "how can we help you?"
+msgstr "jak możemy pomóc?"
+
+#: src/templates/main/partials/contact_form.html:35
+msgid "załącz cv"
+msgstr ""
+
+#: src/templates/main/partials/contact_form.html:50
+msgid "Send"
+msgstr "Wyślij"
 
 #: src/templates/main/partials/footer.html:17
 msgid "Contact"
@@ -263,6 +273,12 @@ msgstr "Partnerzy"
 
 #: src/templates/main/partials/job_offer_card.html:15
 msgid "Więcej"
+msgstr ""
+
+#: src/templates/main/partials/navbar.html:43
+#: src/templates/projects/specialization_page.html:38
+#: src/templates/projects/specialization_page.html:65
+msgid "Wypróbuj nas"
 msgstr ""
 
 #: src/templates/projects/partials/project_card_initiative.html:17
@@ -293,11 +309,6 @@ msgstr ""
 msgid "Jak pracujemy"
 msgstr ""
 
-#: src/templates/projects/specialization_page.html:38
-#: src/templates/projects/specialization_page.html:65
-msgid "Wypróbuj nas"
-msgstr ""
-
 #: src/templates/projects/specialization_page.html:49
 msgid "Case study"
 msgstr "Studium przypadku"
@@ -313,6 +324,9 @@ msgstr "Projekty"
 #: src/templates/projects/team_index_page.html:36
 msgid "Our values"
 msgstr "Nasze wartości"
+
+#~ msgid "send"
+#~ msgstr "wyślij"
 
 #~ msgid "Need some help with your <b>project?</b>"
 #~ msgstr "Potrzebujesz pomocy ze swoim <b>projektem?</b>"
