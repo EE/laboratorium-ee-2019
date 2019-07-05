@@ -73,9 +73,13 @@ class HomePage(Page):
         return SpecializationPage.objects.live().descendant_of(self)
 
     @property
+    def articles(self):
+        return NewsPage.objects.live().descendant_of(self).order_by('-marked', '-publication_date')
+
+    @property
     def latest_articles(self):
         """Returns 3 latest articles"""
-        return NewsPage.objects.live().descendant_of(self).order_by('-marked', '-publication_date')[:3]
+        return self.articles[:3]
 
     @property
     def our_initiatives(self):

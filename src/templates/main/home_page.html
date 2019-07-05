@@ -70,9 +70,8 @@
         <div class="container has-text-right-desktop">
             <div class="columns">
                 <div class="column is-half is-offset-6">
-                    <h2 class="ee-rd-block__title">Twoje prywatne centrum badawczo-rozwojowe</h2>
-                    <h3 class="ee-rd-block__subtitle">Skupiamy się na dokładnej analizie stawianych przed nami wyzwań. Tworzymy rozwiązania szyte na miarę,
-                        innowacyjne, które stale udoskonalamy i rozbodowujemy.</h3>
+                    <h2 class="ee-rd-block__title">{{ page.r_and_d_center_headline }}</h2>
+                    <h3 class="ee-rd-block__subtitle">{{ page.r_and_d_center_body }}</h3>
                 </div>
             </div>
         </div>
@@ -81,19 +80,19 @@
                 <div class="column">
                     <h4 class="ee-rd-block__item-title">2019</h4>
                     <p class="ee-rd-block__item-subtitle">
-                        To właśnie w tym roku otrzymaliśmy tytuł prywatnego centrum badawczo-rozwojowego.
+                        {% trans 'To właśnie w tym roku otrzymaliśmy tytuł prywatnego centrum badawczo-rozwojowego.' %}
                     </p>
                 </div>
                 <div class="column">
                     <h4 class="ee-rd-block__item-title">20%</h4>
                     <p class="ee-rd-block__item-subtitle">
-                        Tyle podatku możesz odliczyć pracując z nami
+                        {% trans 'Tyle podatku możesz odliczyć pracując z nami' %}
                     </p>
                 </div>
                 <div class="column">
                     <h4 class="ee-rd-block__item-title">R&D</h4>
                     <p class="ee-rd-block__item-subtitle">
-                        Prężnie działamy w obszarze Research & Development
+                        {% trans 'Prężnie działamy w obszarze Research & Development' %}
                     </p>
                 </div>
             </div>
@@ -280,22 +279,22 @@
             {% trans 'Aktualności' %}
         </div>
         <div class="ee-section-tiles">
-            {% for article in rest_of_articles %}
+            {% for article in page.articles %}
                 {% include 'main/partials/article_card.html' with article=article %}
             {% empty %}
                 <p>{% trans 'No more articles' %}</p>
             {% endfor %}
         </div>
-        {% if rest_of_articles %}
-        <div class="container">
-            <div class="columns">
-                <div class="column has-text-centered">
-                    <a href="#" class="button is-light is-outlined is-radiusless ee-button">
-                        {% trans 'Wyświetl wszystkie' %}
-                    </a>
+        {% if page.articles %}
+            <div class="container">
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <a href="#" class="button is-light is-outlined is-radiusless ee-button">
+                            {% trans 'Wyświetl wszystkie' %}
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
         {% endif %}
     </section>
 
