@@ -4,7 +4,7 @@ from django.db import models
 from django.utils.translation import gettext as _
 
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from modelcluster.fields import ParentalKey
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from taggit.models import TaggedItemBase
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField, RichTextField
@@ -40,13 +40,16 @@ class SpecializationPage(Page):
     ])
     case_study = StreamField([
         ('heading', blocks.CharBlock(template='projects/blocks/heading.html')),
-        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
+        ('tiles_list', blocks.ListBlock(
+            Tile(template='main/blocks/tile_fancy_uppercase.html'),
+            template='projects/blocks/tiles_list_with_arrows.html',
+        )),
     ], null=True)
 
     tools = StreamField([
         (
             'tiles_with_description_list',
-            blocks.ListBlock(TileWithDescription(), template='projects/blocks/tiles_list.html'),
+            blocks.ListBlock(TileWithDescription(), template='projects/blocks/tiles_list_tight.html'),
         ),
     ], null=True)
 
@@ -97,12 +100,14 @@ class TopicPage(Page):
         related_name='+'
     )
     content = RichTextField()
+    projects = ParentalManyToManyField('ProjectPage', blank=True, related_name='topics')
 
     content_panels = Page.content_panels + [
         FieldPanel('marked'),
         ImageChooserPanel('background_image'),
         ImageChooserPanel('phone_image'),
         FieldPanel('content'),
+        FieldPanel('projects'),
     ]
 
 
@@ -127,7 +132,6 @@ class ProjectPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    topics = models.ManyToManyField(TopicPage, blank=True, related_name='projects')
 
     challenge = RichTextField(null=True)
     process = StreamField([
