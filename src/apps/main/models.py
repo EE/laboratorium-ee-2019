@@ -213,7 +213,10 @@ class JobOfferIndexPage(Page):
     cooperation = models.CharField(max_length=500)
     recruitment = StreamField([
         ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
-        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
+        ('tiles_list', blocks.ListBlock(
+            Tile(template='main/blocks/tile_fancy.html'),
+            template='projects/blocks/tiles_list_with_arrows.html',
+        )),
     ])
 
     @property
