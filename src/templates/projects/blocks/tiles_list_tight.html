@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+
+<div class="columns">
+    <div class="column is-10 is-offset-1">
+        <div class="ee-section-tiles ee-specialization-page__tools-tiles">
+            {% for item in value %}
+                {% include_block item %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="ee-spacer--large"></div>
