@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load svg %}
 {% load i18n %}
 {% load main_tags %}
 {% load wagtailcore_tags %}
@@ -100,49 +101,41 @@
         </div>
         <div class="ee-spacer--large"></div>
         <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <div class="ee-tiles">
-                        <div class="ee-tile-fancy">
-                            <div class="ee-tile-fancy__image">
-                                <img src="{% webpack_static 'images/how-we-work-1.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Koncepcje produktów cyfrowych
-                            </h3>
-                        </div>
-                        <div class="ee-tile-fancy__spacer"></div>
-                        <div class="ee-tile-fancy">
-                            <div class="ee-tile-fancy__image">
-                                <img src="{% webpack_static 'images/how-we-work-2.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Interaktywne prototypy
-                            </h3>
-                        </div>
-                        <div class="ee-tile-fancy__spacer"></div>
-                        <div class="ee-tile-fancy">
-                            <div class="ee-tile-fancy__image">
-                                <img src="{% webpack_static 'images/how-we-work-3.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Usługi online i offline
-                            </h3>
-                        </div>
-                        <div class="ee-tile-fancy__spacer"></div>
-                        <div class="ee-tile-fancy">
-                            <div class="ee-tile-fancy__image">
-                                <img src="{% webpack_static 'images/how-we-work-3.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Usługi online i offline
-                            </h3>
-                        </div>
+            <div class="ee-solutions-block__items-container">
+                <div class="ee-solutions-block__item">
+                    <div class="ee-solutions-block__item-icon">
+                        {% svg 'how-we-work-1' %}
                     </div>
+                    <h3 class="ee-solutions-block__item-title">
+                        {% trans 'Koncepcje produktów cyfrowych' %}
+                    </h3>
+                </div>
+                <div class="ee-solutions-block__item-spacer"></div>
+                <div class="ee-solutions-block__item">
+                    <div class="ee-solutions-block__item-icon">
+                        {% svg 'how-we-work-2' %}
+                    </div>
+                    <h3 class="ee-solutions-block__item-title">
+                        {% trans 'Interaktywne prototypy' %}
+                    </h3>
+                </div>
+                <div class="ee-solutions-block__item-spacer"></div>
+                <div class="ee-solutions-block__item">
+                    <div class="ee-solutions-block__item-icon">
+                        {% svg 'how-we-work-3' %}
+                    </div>
+                    <h3 class="ee-solutions-block__item-title">
+                        {% trans 'Usługi online i offline' %}
+                    </h3>
+                </div>
+                <div class="ee-solutions-block__item-spacer"></div>
+                <div class="ee-solutions-block__item">
+                    <div class="ee-solutions-block__item-icon">
+                        {% svg 'how-we-work-3' %}
+                    </div>
+                    <h3 class="ee-solutions-block__item-title">
+                        {% trans 'Usługi online i offline' %}
+                    </h3>
                 </div>
             </div>
         </div>
@@ -157,7 +150,7 @@
                 <div class="column is-10 is-offset-1">
                     <div class="ee-section-tiles ee-specialization-page__tools-tiles">
                         <div class="ee-tile">
-                            <div class="ee-tile__background-image" style="background-image: url({% webpack_static 'images/tools-1.jpg' %})">
+                            <div class="ee-tile__background-image ee-specialization-page__tools-tile__background-image" style="background-image: url({% webpack_static 'images/tools-1.jpg' %})">
                                 <div class="ee-title is-relative">
                                     User Experience Design
                                 </div>
@@ -167,7 +160,7 @@
                             </div>
                         </div>
                         <div class="ee-tile">
-                            <div class="ee-tile__background-image" style="background-image: url({% webpack_static 'images/tools-2.jpg' %})">
+                            <div class="ee-tile__background-image ee-specialization-page__tools-tile__background-image" style="background-image: url({% webpack_static 'images/tools-2.jpg' %})">
                                 <div class="ee-title is-relative">
                                     Badania i obserwacje
                                 </div>
