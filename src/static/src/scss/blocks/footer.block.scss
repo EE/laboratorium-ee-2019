@@ -9,6 +9,7 @@
 }
 
 .ee-footer__logo {
+    margin-top: 2rem;
     height: 4rem;
 }
 
@@ -18,11 +19,16 @@
     margin: 0 0 1rem;
 
     &:not(:first-child) {
-        margin: 2rem 0 1rem;
+        margin: 1em 0 0.5em;
+    }
+
+    @include touch {
+        font-size: 1.2rem;
     }
 }
 
 .ee-footer__body {
+    font-size: 0.875rem;
     line-height: 1.8;
 }
 
@@ -31,5 +37,24 @@
 
     @include touch {
         text-align: left;
+    }
+}
+
+.ee-footer__social-media-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 3rem);
+    grid-column-gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 4rem;
+
+    & > .ee-share-button {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    @include touch {
+        grid-template-columns: repeat(2, 2rem);
+        justify-content: flex-start;
+        margin-top: 1rem;
     }
 }
