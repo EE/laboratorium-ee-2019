@@ -42,7 +42,7 @@
                         {{ article.headline }}
                     </div>
                     <div class="ee-hero-carousel__content-buttons">
-                    <a class="button is-light is-radiusless ee-button ee-contact-us-button">{% trans 'Check us out' %}</a>
+                    <a class="button is-light is-radiusless ee-button" data-toggle="contactForm">{% trans 'Check us out' %}</a>
                         <a href="{% pageurl article %}" class="button is-outlined is-light is-radiusless ee-button">
                             {% trans 'Find out more' %}
                         </a>
@@ -194,7 +194,7 @@
                                 {% trans 'Sprawdź aktualne oferty' %}
                             </a>
                         {% endfor %}
-                        <a class="button is-outlined is-light is-radiusless ee-button ee-contact-us-button">
+                        <a class="button is-outlined is-light is-radiusless ee-button" data-toggle="contactForm">
                             {% trans 'Contact us' %}
                         </a>
                     </div>
