@@ -1,6 +1,9 @@
 .ee-news-page {}
 
 .ee-news-page__share-buttons {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 6rem;
     display: grid;
     grid-template-rows: repeat(1, auto);
     grid-row-gap: 1rem;

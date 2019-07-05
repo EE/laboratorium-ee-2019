@@ -22,12 +22,17 @@
     <div class="ee-hero__spacer"></div>
     <div class="ee-hero-body">
         <div class="container">
-            <time class="ee-hero__date">
-                {{ page.publication_date | date:"d.m.Y" }}
-            </time>
-            <h1 class="ee-title--large">
-                {{ page.title }}
-            </h1>
+            <div class="columns">
+                <div class="column is-8 is-offset-2 is-12-touch is-offset-0-touch">
+                    <time class="ee-hero__date">
+                        {{ page.publication_date | date:"d.m.Y" }}
+                    </time>
+                    <div class="ee-spacer"></div>
+                    <h1 class="ee-title--large">
+                        {{ page.title }}
+                    </h1>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -41,20 +46,27 @@
                         {% svg 'facebook' %}
                     </a>
                     <a class="ee-share-button">
-                        {% svg 'twitter' %}
+                        {% svg 'linkedin' %}
                     </a>
                 </div>
             </div>
             <div class="column is-6 is-12-touch">
                 <h2 class="ee-headline--light">{{ page.headline }}</h2>
                 {{ page.body | richtext }}
-
-                {% if page.cta_question %}
-                    {{ page.cta_question }}
-                    <button class="button is-light is-outlined is-radiusless ee-button" data-toggle="contactForm">{% trans 'Napisz do nas' %}</button>
-                {% endif %}
             </div>
         </div>
+        {% if page.cta_question %}
+            <div class="ee-spacer"></div>
+            <div class="columns">
+                <div class="column is-6 is-12-touch is-offset-3">
+                    {{ page.cta_question }}
+                    <div class="ee-spacer"></div>
+                    <div class="has-text-centered">
+                        <button class="button is-light is-outlined is-radiusless ee-button" data-toggle="contactForm">{% trans 'Napisz do nas' %}</button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 </section>
 {% endblock content %}

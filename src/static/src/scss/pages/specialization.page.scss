@@ -20,3 +20,12 @@
         grid-template-columns: 1fr;
     }
 }
+
+.ee-specialization-page__tools-tile__background-image {
+    justify-content: flex-end;
+    padding: 2rem 4rem;
+
+    .ee-title {
+        font-size: 2rem;
+    }
+}
