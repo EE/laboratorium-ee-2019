@@ -1,12 +1,53 @@
 {% load bulma_tags %}
 {% load i18n %}
 
-<form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}">
+<form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}" class="ee-contact-form-container">
     {% csrf_token %}
     <div class="ee-contact-form">
-        {{ form | bulma }}
+        <div class="ee-form-control">
+            <input id="id_reply_to" name="reply_to" type="text" class="input">
+            <label for="id_reply_to">{% trans 'email or phone number' %}</label>
+        </div>
+        <div class="ee-form-control">
+            <div class="select">
+                <select name="subject" id="id_subject">
+                    <option value="">{% trans 'wybierz temat' %}</option>
+                    <option value="offer">{% trans 'Offer' %}</option>
+                    <option value="recruitment">{% trans 'Recruitment' %}</option>
+                    <option value="other">{% trans 'Other' %}</option>
+                </select>
+            </div>
+        </div>
+        <div class="ee-form-control">
+            <input id="id_recruitment_position" name="recruitment_position" type="text" class="input">
+            <label for="id_recruitment_position">{% trans 'podaj stanowisko' %}</label>
+        </div>
+        <div class="ee-form-control">
+            <input id="id_organization_name" name="organization_name" type="text" class="input">
+            <label for="id_organization_name">{% trans 'nazwa firmy/organizacji' %}</label>
+        </div>
+        <div class="ee-form-control">
+            <textarea name="message" id="id_message" class="textarea" rows="1"></textarea>
+            <label for="id_message">{% trans 'how can we help you?' %}</label>
+        </div>
+        <div class="ee-form-control">
+            <input id="id_attachment" name="attachment" type="file">
+            <label for="id_attachment">{% trans 'załącz cv' %}</label>
+        </div>
+        <div class="ee-form-control">
+            <input type="checkbox" id="id_terms_accepted" name="terms_accepted" class="checkbox">
+            <label for="id_terms_accepted">
+                {{ form.terms_accepted.label }}
+            </label>
+        </div>
+        <div class="ee-form-control">
+            {{ form.captcha }}
+        </div>
     </div>
     <div class="control">
-        <button type="submit" class="button is-outlined is-light is-uppercase is-radiusless ee-button" style="margin-top: 2rem">{% trans 'send' %}</button>
+        <button type="submit" class="button is-outlined is-light is-uppercase is-radiusless ee-button"
+                style="margin-top: 2rem">
+                {% trans 'Send' %}
+        </button>
     </div>
 </form>

@@ -19,7 +19,7 @@
                     {{ page.title }}
                 </h1>
                 <h2 class="ee-title--bold">
-                    6000-11000 PLN + VAT (B2B Warszawa)
+                    {{ page.salary }} ({{ page.employment_form }})
                 </h2>
             </div>
         </div>
@@ -34,7 +34,7 @@
                             {% svg 'facebook' %}
                         </a>
                         <a class="ee-share-button">
-                            {% svg 'twitter' %}
+                            {% svg 'linkedin' %}
                         </a>
                     </div>
                 </div>
@@ -46,10 +46,8 @@
             </div>
         </div>
     </section>
-{% endblock content %}
 
-{% block contact_form %}
-    <section class="section is-medium" id="contact">
+    <section class="section is-medium">
         <div class="container">
             <div class="columns">
                 <div class="column">

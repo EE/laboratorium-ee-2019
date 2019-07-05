@@ -1,11 +1,11 @@
 .ee-sticky-contact-form {
     position: fixed;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     top: 0;
     right: 0;
-    width: 50vw;
+    width: 30vw;
     height: 100vh;
     background-color: rgba(black, 0.9);
     z-index: 20010;
@@ -33,14 +33,17 @@
 }
 
 .ee-sticky-contact-form__close-button {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
+    display: none;
+    @include touch {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
 }
 
 .ee-sticky-contact-form__headline-items {
     display: flex;
-    flex-basis: 100%;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start;
 }
@@ -71,51 +74,64 @@
     font-size: 1.2rem;
     font-weight: 500;
     flex-basis: 60%;
+
+    @include touch {
+        font-size: 1rem;
+    }
 }
 
 // =================================
 // Contact Form
 // =================================
 
-.ee-contact-form {
-
-    & > *:not(:last-child) {
-        margin-bottom: 1.5rem;
-    }
-
-    .input {
-        border-radius: 0;
-        border-bottom: 3px solid rgba(white, 0.7);
-        padding: 1rem;
-
-        &::placeholder {
-            text-align: right;
-        }
-    }
-
-    .textarea {
-        border-radius: 0;
-        border: none;
-        border-bottom: 3px solid rgba(white, 0.7);
-        padding: 1rem;
-
-        &::placeholder {
-            text-align: right;
-        }
-    }
-
-    .select {
-        width: 100%;
-        border: none;
-        border-bottom: 3px solid rgba(white, 0.7);
-
-        .control {
-            width: 100%;
-            border: none;
-        }
-    }
-
-    .file-cta {
-        border-radius: 0;
-    }
+.ee-contact-form-container {
+    width: 100%;
 }
+
+//.ee-contact-form {
+//    width: 100%;
+//
+//    & > *:not(:last-child) {
+//        margin-bottom: 1.5rem;
+//    }
+//
+//    .input {
+//        border-radius: 0;
+//        border-bottom: 3px solid rgba(white, 0.7);
+//        padding: 1rem;
+//
+//        &::placeholder {
+//            text-align: right;
+//        }
+//    }
+//
+//    .textarea {
+//        border-radius: 0;
+//        border: none;
+//        border-bottom: 3px solid rgba(white, 0.7);
+//        padding: 1rem;
+//
+//        &::placeholder {
+//            text-align: right;
+//        }
+//    }
+//
+//    .select {
+//        width: 100%;
+//        border: none;
+//        border-bottom: 3px solid rgba(white, 0.7);
+//
+//        .control {
+//            width: 100%;
+//            border: none;
+//        }
+//    }
+//
+//    .file-cta {
+//        border-radius: 0;
+//    }
+//
+//    label.checkbox {
+//        font-size: 0.875rem;
+//    }
+//}

@@ -3,6 +3,8 @@
 <div class="ee-tiles">
     {% for item in value %}
         {% include_block item %}
+        {% if not forloop.last %}
+            <div class="ee-tile-fancy__spacer"></div>
+        {% endif %}
     {% endfor %}
 </div>
-<div class="ee-spacer--large"></div>

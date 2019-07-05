@@ -1,10 +1,10 @@
 const formField = name => document.querySelector(`.ee-contact-form *[name=${name}]`);
 
 const hide = name => {
-    formField(name).closest(".field").style.display = "none";
+    formField(name).closest(".ee-form-control").style.display = "none";
 };
 const show = name => {
-    formField(name).closest(".field").style.display = "block";
+    formField(name).closest(".ee-form-control").style.display = "block";
 };
 const noop = () => undefined;
 

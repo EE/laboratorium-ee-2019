@@ -26,5 +26,12 @@
 
   & svg {
     width: 1rem;
+    @include transition();
+  }
+
+  &:hover {
+    svg {
+      width: 1.5rem;
+    }
   }
 }

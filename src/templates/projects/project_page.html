@@ -25,7 +25,9 @@
                 <h2 class="ee-title">
                     {{ page.subtitle }}
                 </h2>
-                <a href="#" class="button is-light is-outlined is-radiusless ee-button">Odwiedź stronę</a>
+                {% if page.project_url %}
+                    <a href="{{ page.project_url }}" class="button is-light is-outlined is-radiusless ee-button">{% trans 'Odwiedź stronę' %}</a>
+                {% endif %}
             </div>
         </div>
     </section>
@@ -68,57 +70,13 @@
         <div class="container">
             <div class="columns">
                 <div class="column has-text-centered">
-                    Proces
+                    {% trans 'Process' %}
                 </div>
             </div>
         </div>
         <div class="ee-spacer--large"></div>
         <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <div class="ee-tiles">
-                        <div class="ee-tile-fancy">
-                            <div class="ee-tile-fancy__image">
-                                <img src="{% webpack_static 'images/how-we-work-1.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Reaserch
-                            </h3>
-                        </div>
-                        <div class="ee-tile-fancy__spacer"></div>
-                        <div class="ee-tile-fancy">
-                            <div class="ee-tile-fancy__image">
-                                <img src="{% webpack_static 'images/how-we-work-2.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Generowanie pomysłów
-                            </h3>
-                        </div>
-                        <div class="ee-tile-fancy__spacer"></div>
-                        <div class="ee-tile-fancy">
-                            <div class="ee-tile-fancy__image">
-                                <img src="{% webpack_static 'images/how-we-work-3.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Prototypowanie i testowanie
-                            </h3>
-                        </div>
-                        <div class="ee-tile-fancy__spacer"></div>
-                        <div class="ee-tile-fancy">
-                            <div class="ee-tile-fancy__image">
-                                <img src="{% webpack_static 'images/how-we-work-3.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Implementowanie
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{ page.process }}
         </div>
     </section>
 
@@ -135,77 +93,17 @@
         </div>
     </section>
 
-    <section class="section ee-section">
-        <div class="ee-section__title-container">
-            <h2 class="ee-section__title">Podobne projekty</h2>
-        </div>
-        <div class="ee-masonry">
-            <div class="ee-masonry__tile" style="background-image: url({% webpack_static 'images/project-1.jpg' %})">
-                <span class="ee-masonry__tile-title">RODO PASS</span>
+    {% if page.similar_projects %}
+        <section class="section ee-section">
+            <div class="ee-section__title-container">
+                <h2 class="ee-section__title">{% trans "Similiar projects" %}</h2>
             </div>
-            <div class="ee-masonry__tile ee-masonry__tile--featured-x" style="background-image: url({% webpack_static 'images/project-2.jpg' %})">
-                <span class="ee-masonry__tile-title">PayU</span>
-            </div>
-            <div class="ee-masonry__tile ee-masonry__tile--featured-x" style="background-image: url({% webpack_static 'images/project-3.jpg' %})">
-                <span class="ee-masonry__tile-title--dark">SONAR</span>
-            </div>
-            <div class="ee-masonry__tile" style="background-image: url({% webpack_static 'images/project-4.jpg' %})">
-                <span class="ee-masonry__tile-title">POLANA</span>
-            </div>
-            <div class="ee-masonry__tile ee-masonry__tile--featured-y" style="background-image: url({% webpack_static 'images/project-5.jpg' %})">
-                <span class="ee-masonry__tile-title">HACKATHON</span>
-            </div>
-        </div>
-    </section>
-
-{# Formularz Kontaktowy #}
-<section class="section is-medium" id="contact">
-    <div class="container">
-        <div class="columns">
-            <div class="column">
-                <p class="subtitle is-uppercase has-text-weight-bold">
-                    {% trans 'Jeżeli' %}
-                </p>
-                <div class="content">
-                    <p class="is-size-3">
-                            {% trans 'Need some help with your <b>project?</b>' %}
-                    </p>
-                    <p class="is-size-3">
-                            {% trans 'Looking for interesting <b>investments?</b>' %}
-                    </p>
-                    <p class="is-size-3">
-                            {% trans 'Want to change the world with us through <b>technology?</b>' %}
-                    </p>
-                </div>
-            </div>
-            <div class="column">
-                <p class="subtitle is-uppercase has-text-weight-bold">
-                    {% trans 'Napisz do nas' %}
-                </p>
-                {% contact_form %}
-            </div>
-        </div>
-    </div>
-</section>
-
-{# Podobne projekty #}
-{% if page.similar_projects.all %}
-    <section class="section is-medium">
-        <div class="container">
-            <h2 class="subtitle is-section-title">{% trans "Similiar projects" %}</h2>
-            <div class="columns is-multiline">
-                {% for project in page.similar_projects.all %}
-                    <div class="column is-one-third">
-                        {% include 'projects/partials/project_card.html' with project=project %}
-                    </div>
+            <div class="ee-masonry">
+                {% for project in page.similar_projects %}
+                    {% include 'projects/partials/project_card.html' with project=project %}
                 {% endfor %}
             </div>
-        </div>
-    </section>
-{% endif %}
+        </section>
+    {% endif %}
 
 {% endblock content %}
-
-{% block contact_form %}
-    {# formualrz kontaktowy tu wyjątkowo jest wyżej, więc ten block zostawiam pusty #}
-{% endblock %}

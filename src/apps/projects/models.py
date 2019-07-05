@@ -4,12 +4,12 @@ from django.db import models
 from django.utils.translation import gettext as _
 
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from modelcluster.fields import ParentalKey
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from taggit.models import TaggedItemBase
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core.models import Page, Orderable
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
@@ -40,13 +40,16 @@ class SpecializationPage(Page):
     ])
     case_study = StreamField([
         ('heading', blocks.CharBlock(template='projects/blocks/heading.html')),
-        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
+        ('tiles_list', blocks.ListBlock(
+            Tile(template='main/blocks/tile_fancy_uppercase.html'),
+            template='projects/blocks/tiles_list_with_arrows.html',
+        )),
     ], null=True)
 
     tools = StreamField([
         (
             'tiles_with_description_list',
-            blocks.ListBlock(TileWithDescription(), template='projects/blocks/tiles_list.html'),
+            blocks.ListBlock(TileWithDescription(), template='projects/blocks/tiles_list_tight.html'),
         ),
     ], null=True)
 
@@ -97,12 +100,14 @@ class TopicPage(Page):
         related_name='+'
     )
     content = RichTextField()
+    projects = ParentalManyToManyField('ProjectPage', blank=True, related_name='topics')
 
     content_panels = Page.content_panels + [
         FieldPanel('marked'),
         ImageChooserPanel('background_image'),
         ImageChooserPanel('phone_image'),
         FieldPanel('content'),
+        FieldPanel('projects'),
     ]
 
 
@@ -117,6 +122,9 @@ class ProjectPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    project_url = models.URLField(
+        blank=True,
+    )
     background_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -124,13 +132,21 @@ class ProjectPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    topics = models.ManyToManyField(TopicPage, blank=True, related_name='projects')
 
     challenge = RichTextField(null=True)
     process = StreamField([
-        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
+        ('tiles_list', blocks.ListBlock(
+            Tile(template='main/blocks/tile_fancy_uppercase.html'),
+            template='projects/blocks/tiles_list_with_arrows.html',
+        )),
     ], null=True)
     quote = RichTextField(null=True)
+
+    # masonry display
+    masonry_featured_x = models.BooleanField()
+    masonry_featured_y = models.BooleanField()
+    masonry_featured_mobile = models.BooleanField()
+    masonry_title_dark = models.BooleanField()
 
     search_fields = Page.search_fields + [
         index.SearchField('subtitle'),
@@ -140,11 +156,18 @@ class ProjectPage(Page):
         FieldPanel('self_initiated'),
         FieldPanel('subtitle'),
         ImageChooserPanel('icon'),
+        FieldPanel('project_url'),
         ImageChooserPanel('background_image'),
         InlinePanel('metrics', heading="Metrics"),
         FieldPanel('challenge'),
         StreamFieldPanel('process'),
         FieldPanel('quote'),
+        MultiFieldPanel([
+            FieldPanel('masonry_featured_x'),
+            FieldPanel('masonry_featured_y'),
+            FieldPanel('masonry_featured_mobile'),
+            FieldPanel('masonry_title_dark'),
+        ], heading="masonry display options"),
     ]
 
     parent_page_types = ['SpecializationPage']

@@ -1,6 +1,5 @@
 .ee-article-card {
     display: flex;
-    flex-wrap: wrap;
     min-height: 14rem;
     @include transition();
 
@@ -43,6 +42,14 @@
 
 .ee-article-card__button {
     padding: 0 2rem;
+
+    @include touch {
+        padding: 0;
+        width: 100%;
+        & > * {
+            width: 100%;
+        }
+    }
 }
 
 .ee-article-card__date {
