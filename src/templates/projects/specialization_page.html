@@ -34,50 +34,12 @@
             <div class="columns">
                 <div class="column is-8">
                     <h2 class="ee-headline--large">{% trans 'Jak pracujemy' %}</h2>
-                    <p class="ee-body-text">
-                        Projektujemy produkty cyfrowe oraz usługi w oparciu o najlepszą wiedzę ekspercką i lata doświadczenia. Przykładamy ogromną wagę do poznawania potrzeb i celów naszych klientów. Zestawiamy je z wymaganiami docelowych użytkowników lub odbiorców usługi, aby tworzyć arngażujące doświadczenia. Budujemy prototypy produktów i badamy je z odbiorcami, aby vveryfikować poczynione założenia.
-                    </p>
                 </div>
                 <div class="column is-4 has-text-right">
                     <a class="button is-light is-radiusless ee-button" data-toggle="contactForm">{% trans 'Wypróbuj nas' %}</a>
                 </div>
             </div>
-        </div>
-        <div class="ee-spacer--large"></div>
-        <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <div class="ee-tiles">
-                        <div class="ee-tile">
-                            <div class="ee-tile__image">
-                                <img src="{% webpack_static 'images/how-we-work-1.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Koncepcje produktów cyfrowych
-                            </h3>
-                        </div>
-                        <div class="ee-tile">
-                            <div class="ee-tile__image">
-                                <img src="{% webpack_static 'images/how-we-work-2.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Interaktywne prototypy
-                            </h3>
-                        </div>
-                        <div class="ee-tile">
-                            <div class="ee-tile__image">
-                                <img src="{% webpack_static 'images/how-we-work-3.svg' %}" alt="">
-                            </div>
-                            <div class="ee-spacer"></div>
-                            <h3 class="ee-title--small is-uppercase has-text-centered">
-                                Usługi online i offline
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{ page.how_we_work }}
         </div>
     </section>
 
@@ -85,96 +47,20 @@
         <div class="container">
             <div class="columns">
                 <div class="column has-text-centered">
-                    Case study
+                    {% trans 'Case study' %}
                 </div>
             </div>
-        </div>
-        <div class="ee-spacer"></div>
-        <div class="container">
-            <div class="columns">
-                <div class="column is-half is-offset-3">
-                    <h3 class="ee-title--bold has-text-centered">
-                        Aplikacja wspierająca program termomodernizacji budynków
-                    </h3>
-                </div>
-            </div>
-        </div>
-        <div class="ee-spacer--large"></div>
-        <div class="container">
-            <div class="ee-solutions-block__items-container">
-                <div class="ee-solutions-block__item">
-                    <div class="ee-solutions-block__item-icon">
-                        {% svg 'how-we-work-1' %}
-                    </div>
-                    <h3 class="ee-solutions-block__item-title">
-                        {% trans 'Koncepcje produktów cyfrowych' %}
-                    </h3>
-                </div>
-                <div class="ee-solutions-block__item-spacer"></div>
-                <div class="ee-solutions-block__item">
-                    <div class="ee-solutions-block__item-icon">
-                        {% svg 'how-we-work-2' %}
-                    </div>
-                    <h3 class="ee-solutions-block__item-title">
-                        {% trans 'Interaktywne prototypy' %}
-                    </h3>
-                </div>
-                <div class="ee-solutions-block__item-spacer"></div>
-                <div class="ee-solutions-block__item">
-                    <div class="ee-solutions-block__item-icon">
-                        {% svg 'how-we-work-3' %}
-                    </div>
-                    <h3 class="ee-solutions-block__item-title">
-                        {% trans 'Usługi online i offline' %}
-                    </h3>
-                </div>
-                <div class="ee-solutions-block__item-spacer"></div>
-                <div class="ee-solutions-block__item">
-                    <div class="ee-solutions-block__item-icon">
-                        {% svg 'how-we-work-3' %}
-                    </div>
-                    <h3 class="ee-solutions-block__item-title">
-                        {% trans 'Usługi online i offline' %}
-                    </h3>
-                </div>
-            </div>
+            <div class="ee-spacer"></div>
+            {{ page.case_study }}
         </div>
     </section>
 
     <section class="section">
         <div class="ee-section__title-container">
-            <h2 class="ee-section__title">Narzędzia</h2>
+            <h2 class="ee-section__title">{% trans 'Tools' %}</h2>
         </div>
         <div class="container">
-            <div class="columns">
-                <div class="column is-10 is-offset-1">
-                    <div class="ee-section-tiles ee-specialization-page__tools-tiles">
-                        <div class="ee-tile">
-                            <div class="ee-tile__background-image ee-specialization-page__tools-tile__background-image" style="background-image: url({% webpack_static 'images/tools-1.jpg' %})">
-                                <div class="ee-title is-relative">
-                                    User Experience Design
-                                </div>
-                            </div>
-                            <div class="ee-tile__headline">
-                                Projektujemy w oparciu o szeroką wiedzę i doświadczenie z zakresu UX
-                            </div>
-                        </div>
-                        <div class="ee-tile">
-                            <div class="ee-tile__background-image ee-specialization-page__tools-tile__background-image" style="background-image: url({% webpack_static 'images/tools-2.jpg' %})">
-                                <div class="ee-title is-relative">
-                                    Badania i obserwacje
-                                </div>
-                            </div>
-                            <div class="ee-tile__headline">
-                                Budujemy prototypy naszych produktów i badamy je z użytkownikami lub prowadzimy zdalne obserwacje.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ee-spacer--large"></div>
-        <div class="container">
+            {{ page.tools }}
             <div class="columns">
                 <div class="column has-text-centered">
                     <a class="button is-light is-radiusless ee-button" data-toggle="contactForm">{% trans 'Wypróbuj nas' %}</a>

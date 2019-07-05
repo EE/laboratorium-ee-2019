@@ -1,14 +1,13 @@
 {% load wagtailimages_tags %}
 
-<div class="container is-fluid">
-    <figure class="image is-96x96 has-margin-auto">
-        {% image value.image original %}
-    </figure>
-</div>
-{% include 'main/partials/horizontal_line.html' %}
-<div class="container is-fluid">
-    <p class="subtitle is-5">{{ value.heading }}</p>
-    <p>
+<div class="ee-tile">
+    {% image value.image original as tile_background_image %}
+    <div class="ee-tile__background-image" style="background-image: url({{ tile_background_image.url }})">
+        <div class="ee-title is-relative">
+            {{ value.heading }}
+        </div>
+    </div>
+    <div class="ee-tile__headline">
         {{ value.description }}
-    </p>
+    </div>
 </div>
