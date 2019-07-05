@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:27+0200\n"
+"POT-Creation-Date: 2019-07-05 15:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,19 +91,19 @@ msgid ""
 "whether this document is linked in consent checkbox under the contact form"
 msgstr ""
 
-#: src/apps/projects/models.py:83
+#: src/apps/projects/models.py:86
 msgid "If True, this topic would be visible on HomePage."
 msgstr ""
 
-#: src/apps/projects/models.py:110
+#: src/apps/projects/models.py:115
 msgid "Brief name of the project"
 msgstr "Krótka nazwa projektu"
 
-#: src/apps/projects/models.py:198
+#: src/apps/projects/models.py:214
 msgid "Description shown on TeamIndex page."
 msgstr "Opis pokazywany na stronie TeamIndex."
 
-#: src/apps/projects/models.py:202
+#: src/apps/projects/models.py:218
 msgid "More comprehensive description visible on Home Page"
 msgstr "Bardziej wyczerpujący opis widoczny na Home Page"
 
@@ -111,11 +111,25 @@ msgstr "Bardziej wyczerpujący opis widoczny na Home Page"
 msgid "Polish"
 msgstr "Polski"
 
-#: src/templates/main/home_page.html:45
+#: src/templates/main/home_page.html:32
+msgid ""
+"To właśnie w tym roku otrzymaliśmy tytuł prywatnego centrum badawczo-"
+"rozwojowego."
+msgstr ""
+
+#: src/templates/main/home_page.html:38
+msgid "Tyle podatku możesz odliczyć pracując z nami"
+msgstr ""
+
+#: src/templates/main/home_page.html:44
+msgid "Prężnie działamy w obszarze Research & Development"
+msgstr ""
+
+#: src/templates/main/home_page.html:96
 msgid "Check us out"
 msgstr "Sprawdź nas"
 
-#: src/templates/main/home_page.html:47
+#: src/templates/main/home_page.html:98
 #: src/templates/main/news_index_page.html:31
 #: src/templates/main/partials/article_card.html:20
 #: src/templates/projects/partials/project_card_initiative.html:14
@@ -123,83 +137,69 @@ msgstr "Sprawdź nas"
 msgid "Find out more"
 msgstr "Dowiedz się więcej"
 
-#: src/templates/main/home_page.html:83
-msgid ""
-"To właśnie w tym roku otrzymaliśmy tytuł prywatnego centrum badawczo-"
-"rozwojowego."
-msgstr ""
-
-#: src/templates/main/home_page.html:89
-msgid "Tyle podatku możesz odliczyć pracując z nami"
-msgstr ""
-
-#: src/templates/main/home_page.html:95
-msgid "Prężnie działamy w obszarze Research & Development"
-msgstr ""
-
-#: src/templates/main/home_page.html:108
+#: src/templates/main/home_page.html:113
 msgid "Działamy w tematach"
 msgstr ""
 
-#: src/templates/main/home_page.html:137
+#: src/templates/main/home_page.html:142
 msgid "Jak powstają nasze rozwiązania?"
 msgstr ""
 
-#: src/templates/main/home_page.html:147
+#: src/templates/main/home_page.html:152
 msgid "Needs analysis"
 msgstr "Analiza potrzeb"
 
-#: src/templates/main/home_page.html:156
+#: src/templates/main/home_page.html:161
 msgid "Warsztaty partycypacyjne i Google Design Sprint"
 msgstr ""
 
-#: src/templates/main/home_page.html:165
+#: src/templates/main/home_page.html:170
 msgid "Prototyp i Minimum Viable Product"
 msgstr ""
 
-#: src/templates/main/home_page.html:174
+#: src/templates/main/home_page.html:179
 msgid "Wdrażanie Zwinne"
 msgstr ""
 
-#: src/templates/main/home_page.html:194
+#: src/templates/main/home_page.html:199
 msgid "Sprawdź aktualne oferty"
 msgstr ""
 
-#: src/templates/main/home_page.html:198
+#: src/templates/main/home_page.html:203
 msgid "Contact us"
 msgstr "Skontaktuj się z nami"
 
-#: src/templates/main/home_page.html:230
+#: src/templates/main/home_page.html:235
 msgid "Our initiatives"
 msgstr "Nasze inicjatywy"
 
-#: src/templates/main/home_page.html:243
+#: src/templates/main/home_page.html:248
 msgid "We have worked with"
 msgstr "Współpracowaliśmy z"
 
-#: src/templates/main/home_page.html:260
+#: src/templates/main/home_page.html:265
 #: src/templates/projects/team_index_page.html:87
 msgid "Team"
 msgstr "Zespół"
 
-#: src/templates/main/home_page.html:266
+#: src/templates/main/home_page.html:271
 msgid "Poznaj nas"
 msgstr ""
 
-#: src/templates/main/home_page.html:267
+#: src/templates/main/home_page.html:272
 msgid "Join us"
 msgstr "Dołącz do nas"
 
-#: src/templates/main/home_page.html:279
+#: src/templates/main/home_page.html:284
 msgid "Aktualności"
 msgstr ""
 
-#: src/templates/main/home_page.html:285
+#: src/templates/main/home_page.html:290
 #: src/templates/main/news_index_page.html:46
 msgid "No more articles"
 msgstr "Nie ma więcej artykułów"
 
-#: src/templates/main/home_page.html:293
+#: src/templates/main/home_page.html:298
 msgid "Wyświetl wszystkie"
 msgstr ""
 
@@ -249,15 +249,15 @@ msgstr "Kontakt"
 msgid "Address"
 msgstr "Adres"
 
-#: src/templates/main/partials/footer.html:27
+#: src/templates/main/partials/footer.html:28
 msgid "How we work?"
 msgstr "Jak pracujemy"
 
-#: src/templates/main/partials/footer.html:33
+#: src/templates/main/partials/footer.html:34
 msgid "Specializations"
 msgstr "Specjalizacje"
 
-#: src/templates/main/partials/footer.html:39
+#: src/templates/main/partials/footer.html:40
 msgid "Partners"
 msgstr "Partnerzy"
 
@@ -281,8 +281,7 @@ msgstr "Wyzwania"
 msgid "Process"
 msgstr "Proces"
 
-#: src/templates/projects/project_page.html:98
-#: src/templates/projects/project_page.html:123
+#: src/templates/projects/project_page.html:99
 msgid "Similiar projects"
 msgstr "Podobne projekty"
 
@@ -294,10 +293,22 @@ msgstr ""
 msgid "Jak pracujemy"
 msgstr ""
 
-#: src/templates/projects/specialization_page.html:41
-#: src/templates/projects/specialization_page.html:187
+#: src/templates/projects/specialization_page.html:38
+#: src/templates/projects/specialization_page.html:65
 msgid "Wypróbuj nas"
 msgstr ""
+
+#: src/templates/projects/specialization_page.html:49
+msgid "Case study"
+msgstr "Studium przypadku"
+
+#: src/templates/projects/specialization_page.html:59
+msgid "Tools"
+msgstr "Narzędzia"
+
+#: src/templates/projects/specialization_page.html:74
+msgid "Projects"
+msgstr "Projekty"
 
 #: src/templates/projects/team_index_page.html:36
 msgid "Our values"
@@ -308,12 +319,6 @@ msgstr "Nasze wartości"
 
 #~ msgid "Looking for interesting <b>investments?</b>"
 #~ msgstr "Szukasz interesujących <b>inwestycji?</b>"
-
-#~ msgid "Case study"
-#~ msgstr "Studium przypadku"
-
-#~ msgid "Projects"
-#~ msgstr "Projekty"
 
 #~ msgid "Who we are?"
 #~ msgstr "Kim jesteśmy?"
