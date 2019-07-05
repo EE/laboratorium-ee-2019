@@ -15,7 +15,7 @@
 {% block content %}
 
     {# blok Your private R&D #}
-    <div class="section ee-rd-block ee-has-parallax" style="background-image: url({% webpack_static 'images/twoje-prywatne-centrum-badawcze.jpg' %})" alt="Close">
+    <div class="section ee-rd-block ee-has-parallax" style="background-image: url({% webpack_static 'images/rnd-1.png' %})" alt="Close">
         <div class="container has-text-right-desktop">
             <div class="columns">
                 <div class="column is-half is-offset-6">
@@ -196,7 +196,7 @@
                     <div class="ee-join-us-block__buttons">
                         {% for job_offer_index in page.job_offer_indexes %}
                             <a href="{% pageurl job_offer_index %}" class="button is-light is-radiusless ee-button">
-                                {% trans 'Sprawdź aktualne oferty' %}
+                                {% trans 'Pracuj z nami' %}
                             </a>
                         {% endfor %}
                         <a class="button is-outlined is-light is-radiusless ee-button" data-toggle="contactForm">
@@ -291,6 +291,7 @@
             {% endfor %}
         </div>
         {% if page.articles %}
+            <div class="ee-spacer--large"></div>
             <div class="container">
                 <div class="columns">
                     <div class="column has-text-centered">
