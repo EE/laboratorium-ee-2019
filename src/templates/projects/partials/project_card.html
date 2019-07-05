@@ -3,7 +3,10 @@
 {% load wagtailcore_tags %}
 
 {% image project.background_image max-2560x2048 as project_background_image %}
-<a class="ee-masonry__tile {% if project.masonry_featured_x %}ee-masonry__tile--featured-x{% endif %} {% if project.masonry_featured_y %}ee-masonry__tile--featured-y{% endif %}"
+<a class="ee-masonry__tile
+         {% if project.masonry_featured_x %}ee-masonry__tile--featured-x{% endif %}
+         {% if project.masonry_featured_y %}ee-masonry__tile--featured-y{% endif %}
+         {% if project.masonry_featured_mobile %}ee-masonry__tile--featured-mobile{% endif %}"
     style="background-image: url('{{ project_background_image.url }}')"
     href="{% pageurl project %}">
     <span class="ee-masonry__tile-title {% if project.masonry_title_dark %}ee-masonry__tile-title--dark{% endif %}">

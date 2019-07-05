@@ -141,6 +141,7 @@ class ProjectPage(Page):
     # masonry display
     masonry_featured_x = models.BooleanField()
     masonry_featured_y = models.BooleanField()
+    masonry_featured_mobile = models.BooleanField()
     masonry_title_dark = models.BooleanField()
 
     search_fields = Page.search_fields + [
@@ -160,6 +161,7 @@ class ProjectPage(Page):
         MultiFieldPanel([
             FieldPanel('masonry_featured_x'),
             FieldPanel('masonry_featured_y'),
+            FieldPanel('masonry_featured_mobile'),
             FieldPanel('masonry_title_dark'),
         ], heading="masonry display options"),
     ]
