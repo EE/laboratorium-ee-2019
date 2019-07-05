@@ -3,11 +3,16 @@
 
 .ee-hero-carousel {
     display: flex;
-    height: 100vh;
+    height: 60vh;
     position: relative;
+
+    @include touch {
+        height: 100vh;
+    }
 }
 
 .ee-hero-carousel__fixed-header {
+    display: none;
     position: absolute;
     width: 100vw;
     top: 25vh;
@@ -19,9 +24,17 @@
     }
 
     @include touch {
+        display: block;
         font-size: 1.5rem;
         padding-inline: 1rem;
         top: 25vh;
+    }
+}
+
+.ee-hero-carousel__desktop-header {
+    display: flex;
+    @include touch {
+        display: none !important;
     }
 }
 
@@ -131,6 +144,7 @@
     @include touch {
         & > * {
             display: flex;
+            width: 100%;
             justify-content: center;
         }
 
@@ -145,13 +159,20 @@
 // =================================
 
 .ee-rd-block {
-    margin: 10rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin: 0;
     padding: 4rem 0;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 
     @include touch {
-        padding: 4rem 1rem;
+        display: block;
+        height: unset;
+        min-height: 100vh;
+        padding: 7rem 1rem 4rem;
     }
 }
 
@@ -162,12 +183,21 @@
     @include fullhd {
         font-size: 3rem;
     }
+
+    @include touch {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
 }
 
 .ee-rd-block__subtitle {
     font-size: 3vh;
     color: rgba(white, 0.7);
     line-height: 1.8;
+
+    @include touch {
+        display: none;
+    }
 }
 
 .ee-rd-block__items {
@@ -195,6 +225,7 @@
     padding: 4rem 0;
     background-size: cover;
     background-position: center;
+    min-height: 50vh;
     @include transition($time: 360ms);
 
     @include touch {
@@ -225,12 +256,16 @@
 .ee-topics-block__image-container {
     display: flex;
     justify-content: center;
+
+    @include touch {
+        display: none;
+    }
 }
 
 .ee-topics-block__image {
     position: absolute;
     top: -6rem;
-    height: 170%;
+    height: 60vh;
     opacity: 0;
     filter: drop-shadow(0 0 1rem rgba(black, 0.9));
     @include transition();
@@ -276,8 +311,9 @@
 
 .ee-solutions-block__has-scroll {
     @include touch {
-        padding: 0 4rem;
+        padding: 2rem 4rem 0;
         overflow-x: scroll;
+        transform: translateX(-2rem);
     }
 }
 
@@ -289,12 +325,6 @@
     border: 2px solid white;
     padding: 1rem;
     @include transition($delay: 240ms);
-
-    @include touch {
-        &:last-child {
-            margin-right: 4rem;
-        }
-    }
 
     &:hover {
         cursor: pointer;
@@ -357,12 +387,16 @@
 
 .ee-join-us-block {
     display: flex;
-    margin: 10rem 0;
+    align-items: center;
+    margin: 10rem 0 0;
     padding: 4rem 0;
     background-size: cover;
+    min-height: 50vh;
 
     @include touch {
         padding: 4rem 1rem;
+        margin: 10rem 0 0;
+        background-position: center;
     }
 }
 
@@ -389,6 +423,10 @@
     & > * {
         justify-content: center;
         width: 20rem;
+
+        @include touch {
+            width: 100%;
+        }
 
         &:first-child {
             margin-bottom: 1rem;
@@ -431,6 +469,20 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+    align-items: center;
+
+    @include touch {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    & > * {
+        padding: 5rem;
+
+        @include touch {
+            padding: 2rem;
+        }
+    }
 }
 
 
@@ -443,7 +495,12 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right;
-    margin-top: 8rem;
+
+    @include touch {
+        background-size: contain;
+        background-position: top right;
+        padding-top: 8rem;
+    }
 }
 
 .ee-team-block__title {
@@ -477,6 +534,10 @@
 
         &:not(:last-child) {
             margin-bottom: 1rem;
+        }
+
+        @include touch {
+            width: 100%;
         }
     }
 }
@@ -522,4 +583,13 @@
     line-height: 1.8;
     color: rgba(white, 0.7);
     margin-bottom: 2rem;
+}
+
+.ee-rodo-block__buttons-container {
+    @include touch {
+        width: 100%;
+        & > * {
+            width: 100%;
+        }
+    }
 }

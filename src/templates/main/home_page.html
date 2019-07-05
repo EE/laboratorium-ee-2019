@@ -14,57 +14,6 @@
 
 {% block content %}
 
-    <section class="ee-hero-carousel">
-        <div class="ee-hero-carousel__fixed-header">
-            <div class="container">
-                Poznaj nas <strong>przez nasze historie</strong>
-            </div>
-        </div>
-        <div class="ee-hero-carousel__controls">
-            <div class="container ee-hero-carousel__controls-container">
-
-            </div>
-        </div>
-        <div class="ee-hero-carousel__container">
-            {% for article in page.latest_articles %}
-            {% image article.photo max-2560x2048 as background_image %}
-            <div class="ee-hero-carousel__content ee-has-parallax" style="background-image: url('{{ background_image.url }}')">
-                <div class="container ee-hero-carousel__content-container">
-                    {% if article.specialization %}
-                    <a class="ee-hero-carousel__content-tags" href="{% pageurl article.specialization %}">
-                        #{{ article.specialization.title}}
-                    </a>
-                    {% endif %}
-                    <div class="ee-hero-carousel__content-title">
-                        {{ article.title }}
-                    </div>
-                    <div class="ee-hero-carousel__content-subtitle">
-                        {{ article.headline }}
-                    </div>
-                    <div class="ee-hero-carousel__content-buttons">
-                    <a class="button is-light is-radiusless ee-button" data-toggle="contactForm">{% trans 'Check us out' %}</a>
-                        <a href="{% pageurl article %}" class="button is-outlined is-light is-radiusless ee-button">
-                            {% trans 'Find out more' %}
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-
-    {# block Specializations #}
-    <section class="ee-section">
-        <div class="ee-section__title-container">
-            <h2 class="ee-section__title">{{ page.specializations_headline }}</h2>
-        </div>
-        <div class="ee-section__triptych">
-            {% for specialization_page in page.specializations.all %}
-                {% include 'projects/partials/specialization_card.html' with specialization_page=specialization_page %}
-            {% endfor %}
-        </div>
-    </section>
-
     {# blok Your private R&D #}
     <div class="section ee-rd-block ee-has-parallax" style="background-image: url({% webpack_static 'images/twoje-prywatne-centrum-badawcze.jpg' %})" alt="Close">
         <div class="container has-text-right-desktop">
@@ -98,6 +47,62 @@
             </div>
         </div>
     </div>
+
+    {# block Specializations #}
+    <section class="ee-section">
+        <div class="ee-section__title-container">
+            <h2 class="ee-section__title">{{ page.specializations_headline }}</h2>
+        </div>
+        <div class="ee-section__triptych">
+            {% for specialization_page in page.specializations.all %}
+                {% include 'projects/partials/specialization_card.html' with specialization_page=specialization_page %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="ee-section ee-hero-carousel__desktop-header">
+        <div class="ee-section-title">
+            Poznaj nas <strong>przez nasze historie</strong>
+        </div>
+    </section>
+    <section class="ee-hero-carousel">
+        <div class="ee-hero-carousel__fixed-header">
+            <div class="container">
+                Poznaj nas <strong>przez nasze historie</strong>
+            </div>
+        </div>
+        <div class="ee-hero-carousel__controls">
+            <div class="container ee-hero-carousel__controls-container">
+
+            </div>
+        </div>
+        <div class="ee-hero-carousel__container">
+            {% for article in page.latest_articles %}
+            {% image article.photo max-2560x2048 as background_image %}
+            <div class="ee-hero-carousel__content ee-has-parallax" style="background-image: url('{{ background_image.url }}')">
+                <div class="container ee-hero-carousel__content-container">
+                    {% if article.specialization %}
+                    <a class="ee-hero-carousel__content-tags" href="{% pageurl article.specialization %}">
+                        #{{ article.specialization.title}}
+                    </a>
+                    {% endif %}
+                    <div class="ee-hero-carousel__content-title">
+                        {{ article.title }}
+                    </div>
+                    <div class="ee-hero-carousel__content-subtitle">
+                        {{ article.headline }}
+                    </div>
+                    <div class="ee-hero-carousel__content-buttons">
+                        <a class="button is-light is-radiusless ee-button" data-toggle="contactForm">{% trans 'Check us out' %}</a>
+                        <a href="{% pageurl article %}" class="button is-outlined is-light is-radiusless ee-button">
+                            {% trans 'Find out more' %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 
     {# block Topics #}
     {% if page.topics %}
@@ -180,7 +185,7 @@
 
     {# block Join the Team #}
     {% image page.join_us_background max-2560x2048 as join_us_background %}
-    <section class="ee-join-us-block" style="background: url({{ join_us_background.url }})">
+    <section class="ee-join-us-block" style="background-image: url({{ join_us_background.url }})">
         <div class="container">
             <div class="columns">
                 <div class="column is-half ee-join-us-block__content-container">
