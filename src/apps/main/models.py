@@ -18,7 +18,7 @@ from wagtail.core.models import Page, Orderable, Site
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from src.apps.main.blocks import Tile
+from src.apps.main.blocks import Tile, HorizontalListWithArrows
 from src.apps.projects.models import SpecializationPage, TopicPage
 
 
@@ -213,9 +213,8 @@ class JobOfferIndexPage(Page):
     cooperation = models.CharField(max_length=500)
     recruitment = StreamField([
         ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
-        ('tiles_list', blocks.ListBlock(
+        ('tiles_list', HorizontalListWithArrows(
             Tile(template='main/blocks/tile_fancy.html'),
-            template='projects/blocks/tiles_list_with_arrows.html',
         )),
     ])
 

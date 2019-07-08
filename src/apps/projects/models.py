@@ -13,7 +13,11 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPane
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
-from src.apps.main.blocks import Tile, TileWithDescription, HorizontalList, EERichTextBlock
+from src.apps.main.blocks import (
+    Tile, TileWithDescription,
+    HorizontalList, HorizontalListWithArrows,
+    EERichTextBlock,
+)
 
 
 class SpecializationIndexPage(Page):
@@ -40,9 +44,8 @@ class SpecializationPage(Page):
     ])
     case_study = StreamField([
         ('heading', blocks.CharBlock(template='projects/blocks/heading.html')),
-        ('tiles_list', blocks.ListBlock(
+        ('tiles_list', HorizontalListWithArrows(
             Tile(template='main/blocks/tile_fancy_uppercase.html'),
-            template='projects/blocks/tiles_list_with_arrows.html',
         )),
     ], null=True)
 
@@ -135,9 +138,8 @@ class ProjectPage(Page):
 
     challenge = RichTextField(null=True)
     process = StreamField([
-        ('tiles_list', blocks.ListBlock(
+        ('tiles_list', HorizontalListWithArrows(
             Tile(template='main/blocks/tile_fancy_uppercase.html'),
-            template='projects/blocks/tiles_list_with_arrows.html',
         )),
     ], null=True)
     quote = RichTextField(null=True)
