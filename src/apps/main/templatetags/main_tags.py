@@ -1,3 +1,4 @@
+from django.utils.http import urlencode
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -50,3 +51,12 @@ def footer(context):
     except ObjectDoesNotExist:
         return {}
     return {'footer': footer}
+
+
+@register.inclusion_tag('main/partials/share_buttons.html', takes_context=True)
+def share_buttons(context):
+    current_url = context['request'].build_absolute_uri()
+    return {
+        'facebook_url': 'https://www.facebook.com/sharer/sharer.php?' + urlencode({'u': current_url}),
+        'linkedin_url': 'https://www.linkedin.com/shareArticle?' + urlencode({'url': current_url, 'mini': True}),
+    }
