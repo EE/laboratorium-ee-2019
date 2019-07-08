@@ -3,10 +3,13 @@
 
 <form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}" class="ee-contact-form-container">
     {% csrf_token %}
+    <div class="ee-contact-form-header">
+        Required <span class="is-danger">*</span>
+    </div>
     <div class="ee-contact-form">
         <div class="ee-form-control">
             <input id="id_reply_to" name="reply_to" type="text" class="input">
-            <label for="id_reply_to">{% trans 'email or phone number' %}</label>
+            <label for="id_reply_to" class="required">{% trans 'email or phone number' %}</label>
         </div>
         <div class="ee-form-control">
             <div class="select">
@@ -28,7 +31,7 @@
         </div>
         <div class="ee-form-control">
             <textarea name="message" id="id_message" class="textarea" rows="1"></textarea>
-            <label for="id_message">{% trans 'how can we help you?' %}</label>
+            <label for="id_message" class="required">{% trans 'how can we help you?' %}</label>
         </div>
         <div class="ee-form-control">
             <input id="id_attachment" name="attachment" type="file">
@@ -36,7 +39,7 @@
         </div>
         <div class="ee-form-control">
             <input type="checkbox" id="id_terms_accepted" name="terms_accepted" class="checkbox">
-            <label for="id_terms_accepted">
+            <label for="id_terms_accepted" class="required">
                 {{ form.terms_accepted.label }}
             </label>
         </div>
@@ -44,10 +47,8 @@
             {{ form.captcha }}
         </div>
     </div>
-    <div class="control">
-        <button type="submit" class="button is-outlined is-light is-uppercase is-radiusless ee-button"
-                style="margin-top: 2rem">
-                {% trans 'Send' %}
-        </button>
-    </div>
+    <button type="submit" class="button is-outlined is-light is-uppercase is-radiusless ee-button ee-contact-form-button"
+            style="margin-top: 2rem">
+        {% trans 'Send' %}
+    </button>
 </form>

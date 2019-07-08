@@ -3,7 +3,7 @@
 {% load wagtailcore_tags %}
 
 {% image project.background_image max-2560x2048 as background_image %}
-<div class="ee-initiatives-card" style="background-image: url({{ background_image.url }});">
+<div class="ee-initiatives-card is-slide" style="background-image: url({{ background_image.url }});">
     <div class="ee-initiatives-card__content">
         <h2 class="ee-initiatives-card__title">{{ project.title }}</h2>
         <div class="ee-initiatives-card__headline">

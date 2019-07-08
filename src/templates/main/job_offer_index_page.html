@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
+{% load main_tags %}
 {% load wagtailcore_tags %}
 {% load webpack_static from webpack_loader %}
 
@@ -51,6 +52,29 @@
     <section class="section ee-section" style="background-image: url({% webpack_static 'images/career-2.jpg' %})">
         <div class="container">
             {{ page.recruitment }}
+        </div>
+    </section>
+
+    <section class="section is-medium">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="content">
+                        <p class="is-size-3">
+                            {% trans 'Jesteś <b>zainteresowana ofertą?</b>' %}
+                        </p>
+                        <p class="is-size-3">
+                            {% trans 'Want to change the world with us through <b>technology?</b>' %}
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <p class="subtitle is-uppercase has-text-weight-bold">
+                        {% trans 'Aplikuj!' %}
+                    </p>
+                    {% recruitment_contact_form %}
+                </div>
+            </div>
         </div>
     </section>
 

@@ -22,7 +22,7 @@
                 <h1 class="ee-title--large">
                     {{ page.title }}
                 </h1>
-                <h2 class="ee-title">
+                <h2 class="ee-project-page__headline">
                     {{ page.subtitle }}
                 </h2>
                 {% if page.project_url %}
@@ -66,6 +66,52 @@
         </div>
     </section>
 
+<section class="section ee-section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="ee-tiles">
+                    <div class="ee-tile">
+                        <h2 class="ee-title--small-bold">
+                            Klient
+                        </h2>
+                        <h3 class="ee-title--small has-text-centered">
+                            współpraca z wyborcza.pl
+                        </h3>
+                    </div>
+                    <div class="ee-tile">
+                        <h2 class="ee-title--small-bold">
+                            Czas trwania
+                        </h2>
+                        <h3 class="ee-title--small has-text-centered">
+                            2016-2018
+                        </h3>
+                    </div>
+                    <div class="ee-tile">
+                        <h2 class="ee-title--small-bold">
+                            Partnerzy
+                        </h2>
+                        <h3 class="ee-title--small has-text-centered">
+                            Agora SA | wyborcza.pl
+                        </h3>
+                    </div>
+                    <div class="ee-tile">
+                        <h2 class="ee-title--small-bold  has-text-centered">
+                            Kompetencje
+                        </h2>
+                        <h3 class="ee-title--small has-text-centered">
+                            UX Design <br>
+                            Data Driven Design <br>
+                            Machine Learning <br>
+                            R&D
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <section class="ee-section ee-specialization-page__case-study" style="background-image: url({% webpack_static 'images/case-studies.jpg' %})">
         <div class="container">
             <div class="columns">
@@ -85,9 +131,11 @@
             <div class="columns is-centered">
                 <div class="column is-half">
                     {% svg 'quote' %}
-                    <div class="ee-cite">
+                    <blockquote class="ee-cite">
                         {{ page.quote | richtext }}
-                    </div>
+
+                        <footer>Vadim Makarenko | <strong>Agora SA</strong></footer>
+                    </blockquote>
                 </div>
             </div>
         </div>
