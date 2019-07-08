@@ -24,6 +24,11 @@ class HorizontalList(blocks.ListBlock):
         template = 'projects/blocks/tiles_list.html'
 
 
+class HorizontalListWithArrows(blocks.ListBlock):
+    class Meta:
+        template = 'projects/blocks/tiles_list_with_arrows.html'
+
+
 class EERichTextBlock(blocks.RichTextBlock):
     class Meta:
         template = 'main/blocks/rich_text.html'
