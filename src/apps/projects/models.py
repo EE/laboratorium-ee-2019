@@ -13,7 +13,7 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPane
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
-from src.apps.main.blocks import Tile, TileWithDescription
+from src.apps.main.blocks import Tile, TileWithDescription, HorizontalList, EERichTextBlock
 
 
 class SpecializationIndexPage(Page):
@@ -36,7 +36,7 @@ class SpecializationPage(Page):
     )
     how_we_work = StreamField([
         ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
-        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
+        ('tiles_list', HorizontalList(Tile())),
     ])
     case_study = StreamField([
         ('heading', blocks.CharBlock(template='projects/blocks/heading.html')),
@@ -186,8 +186,8 @@ class ProjectPage(Page):
 class TeamIndexPage(Page):
     who_we_are = RichTextField()
     our_values = StreamField([
-        ('description', blocks.RichTextBlock()),
-        ('tiles_list', blocks.ListBlock(Tile())),
+        ('description', EERichTextBlock()),
+        ('tiles_list', HorizontalList(Tile())),
     ])
 
     content_panels = Page.content_panels + [
