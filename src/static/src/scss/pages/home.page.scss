@@ -33,6 +33,8 @@
 
 .ee-hero-carousel__desktop-header {
     display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 2rem 0 0;
     @include touch {
         display: none !important;
@@ -94,6 +96,10 @@
 
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include touch {
+        padding: 1rem;
+    }
 }
 
 .ee-hero-carousel__content-container {
@@ -226,7 +232,7 @@
     padding: 4rem 0;
     background-size: cover;
     background-position: center;
-    min-height: 50vh;
+    min-height: 70vh;
     @include transition($time: 360ms);
 
     @include touch {
@@ -246,11 +252,30 @@
     & > * {
         display: flex;
         justify-content: center;
-        width: 15rem;
     }
 
     & > *:not(:last-child) {
         margin-bottom: 1rem;
+    }
+}
+
+.ee-topics-block__buttons-wrapper {
+    *:first-child {
+        width: 15rem;
+    }
+
+    *:last-child {
+        opacity: 0;
+    }
+
+    .ee-button + .ee-button {
+        margin-left: 1rem;
+    }
+
+    &:hover {
+        *:last-child {
+            opacity: 1;
+        }
     }
 }
 
@@ -336,10 +361,10 @@
 }
 
 .ee-solutions-block__item-spacer {
-    margin-top: 100%;
     height: 2px;
     background-color: white;
     position: relative;
+    top: calc(50% - 2px);
     @include transition();
 
     &::before {
@@ -392,7 +417,7 @@
     margin: 10rem 0 0;
     padding: 4rem 0;
     background-size: cover;
-    min-height: 50vh;
+    min-height: 70vh;
 
     @include touch {
         padding: 4rem 1rem;

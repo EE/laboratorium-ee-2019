@@ -5,8 +5,8 @@
     justify-content: space-evenly;
     top: 0;
     right: 0;
-    width: 30vw;
-    height: 100vh;
+    width: 40vw;
+    min-height: 100vh;
     background-color: rgba(black, 0.9);
     z-index: 20010;
     padding: 3rem 7rem;
@@ -15,11 +15,19 @@
 
     @include touch {
         width: 100vw;
-        padding: 2rem;
+        padding: 0;
     }
 
     &.active {
         transform: translateX(0);
+    }
+}
+
+.ee-sticky-contact-form__container {
+    @include touch {
+        padding: 2rem;
+        overflow-y: scroll;
+        height: calc(100vh - 1px);
     }
 }
 
@@ -76,7 +84,7 @@
     flex-basis: 60%;
 
     @include touch {
-        font-size: 1rem;
+        font-size: 0.875rem;
     }
 }
 
@@ -87,51 +95,3 @@
 .ee-contact-form-container {
     width: 100%;
 }
-
-//.ee-contact-form {
-//    width: 100%;
-//
-//    & > *:not(:last-child) {
-//        margin-bottom: 1.5rem;
-//    }
-//
-//    .input {
-//        border-radius: 0;
-//        border-bottom: 3px solid rgba(white, 0.7);
-//        padding: 1rem;
-//
-//        &::placeholder {
-//            text-align: right;
-//        }
-//    }
-//
-//    .textarea {
-//        border-radius: 0;
-//        border: none;
-//        border-bottom: 3px solid rgba(white, 0.7);
-//        padding: 1rem;
-//
-//        &::placeholder {
-//            text-align: right;
-//        }
-//    }
-//
-//    .select {
-//        width: 100%;
-//        border: none;
-//        border-bottom: 3px solid rgba(white, 0.7);
-//
-//        .control {
-//            width: 100%;
-//            border: none;
-//        }
-//    }
-//
-//    .file-cta {
-//        border-radius: 0;
-//    }
-//
-//    label.checkbox {
-//        font-size: 0.875rem;
-//    }
-//}

@@ -49,26 +49,27 @@
     </div>
 
     {# block Specializations #}
-    <section class="ee-section">
+    <section class="ee-section has-slider">
         <div class="ee-section__title-container">
             <h2 class="ee-section__title">{{ page.specializations_headline }}</h2>
         </div>
-        <div class="ee-section__triptych">
+        <div class="ee-section__triptych is-slides-container">
             {% for specialization_page in page.specializations.all %}
                 {% include 'projects/partials/specialization_card.html' with specialization_page=specialization_page %}
             {% endfor %}
         </div>
+        <div class="ee-section__slides-controls"></div>
     </section>
 
     <section class="ee-section ee-hero-carousel__desktop-header">
-        <div class="ee-section-title">
-            Poznaj nas <strong>przez nasze historie</strong>
+        <div class="ee-section__title">
+            Poznaj nas przez nasze historie
         </div>
     </section>
     <section class="ee-hero-carousel">
         <div class="ee-hero-carousel__fixed-header">
-            <div class="container">
-                Poznaj nas <strong>przez nasze historie</strong>
+            <div class="ee-section__title-container">
+                <span class="ee-section__title">Poznaj nas przez nasze historie</span>
             </div>
         </div>
         <div class="ee-hero-carousel__controls">
@@ -114,11 +115,14 @@
                         <div class="ee-topics-block__buttons">
                             {% for topic in page.topics %}
                                 {% image topic.background_image max-2560x2048 as topic_background_image %}
-                                <a {% if topic.projects.first %}href="{% pageurl topic.projects.first %}"{% endif %}
-                                   class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-{{ topic.id }}"
-                                   data-section-background-url="{% if topic.background_image %}{{ topic_background_image.url }}{% endif %}">
-                                    {{ topic.title }}
-                                </a>
+                                <div class="ee-topics-block__buttons-wrapper">
+                                    <a {% if topic.projects.first %}href="{% pageurl topic.projects.first %}"{% endif %}
+                                       class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-{{ topic.id }}"
+                                       data-section-background-url="{% if topic.background_image %}{{ topic_background_image.url }}{% endif %}">
+                                        {{ topic.title }}
+                                    </a>
+                                    <a href="#" class="button is-light is-outlined is-radiusless ee-button">Sprawdź projekt</a>
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -227,15 +231,16 @@
 
     {# block Initiatives #}
     {% if page.our_initiatives %}
-        <section class="ee-section">
+        <section class="ee-section has-slider">
             <div class="ee-section__title-container">
                 <h2 class="ee-section__title">{% trans 'Our initiatives' %}</h2>
             </div>
-            <div class="ee-section__triptych">
+            <div class="ee-section__triptych is-slides-container">
                 {% for inititive in page.our_initiatives %}
                     {% include 'projects/partials/project_card_initiative.html' with project=inititive %}
                 {% endfor %}
             </div>
+            <div class="ee-section__slides-controls"></div>
         </section>
     {% endif %}
 
