@@ -17,3 +17,13 @@ class TileWithDescription(blocks.StructBlock):
 
     class Meta:
         template = 'main/blocks/tile_with_description.html'
+
+
+class HorizontalList(blocks.ListBlock):
+    class Meta:
+        template = 'projects/blocks/tiles_list.html'
+
+
+class EERichTextBlock(blocks.RichTextBlock):
+    class Meta:
+        template = 'main/blocks/rich_text.html'
