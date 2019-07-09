@@ -14,7 +14,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from src.apps.main.blocks import (
-    Tile, TileWithDescription,
+    Tile, TileWithDescription, TileSimple,
     HorizontalList, HorizontalListWithArrows,
     EERichTextBlock,
 )
@@ -136,7 +136,10 @@ class ProjectPage(Page):
         related_name='+'
     )
 
-    challenge = RichTextField(null=True)
+    challenge = StreamField([
+        ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
+        ('tiles_list', HorizontalList(TileSimple())),
+    ])
     process = StreamField([
         ('tiles_list', HorizontalListWithArrows(
             Tile(template='main/blocks/tile_fancy_uppercase.html'),
@@ -164,7 +167,7 @@ class ProjectPage(Page):
         FieldPanel('project_url'),
         ImageChooserPanel('background_image'),
         InlinePanel('metrics', heading="Metrics"),
-        FieldPanel('challenge'),
+        StreamFieldPanel('challenge'),
         StreamFieldPanel('process'),
         MultiFieldPanel([
             FieldPanel('quote'),
