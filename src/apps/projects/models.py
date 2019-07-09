@@ -142,7 +142,10 @@ class ProjectPage(Page):
             Tile(template='main/blocks/tile_fancy_uppercase.html'),
         )),
     ], null=True)
-    quote = RichTextField(null=True)
+
+    # quote section
+    quote = RichTextField(features=['bold', 'italic'])
+    quote_author = RichTextField(features=['bold'])
 
     # masonry display
     masonry_featured_x = models.BooleanField()
@@ -163,7 +166,10 @@ class ProjectPage(Page):
         InlinePanel('metrics', heading="Metrics"),
         FieldPanel('challenge'),
         StreamFieldPanel('process'),
-        FieldPanel('quote'),
+        MultiFieldPanel([
+            FieldPanel('quote'),
+            FieldPanel('quote_author'),
+        ], heading=_("quote section")),
         MultiFieldPanel([
             FieldPanel('masonry_featured_x'),
             FieldPanel('masonry_featured_y'),

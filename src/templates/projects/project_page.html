@@ -133,8 +133,7 @@
                     {% svg 'quote' %}
                     <blockquote class="ee-cite">
                         {{ page.quote | richtext }}
-
-                        <footer>Vadim Makarenko | <strong>Agora SA</strong></footer>
+                        <footer>{{ page.quote_author|richtext }}</footer>
                     </blockquote>
                 </div>
             </div>
