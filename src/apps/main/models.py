@@ -19,7 +19,20 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from src.apps.main.blocks import Tile, HorizontalListWithArrows
+import src.apps.main.blocks as custom_blocks
 from src.apps.projects.models import SpecializationPage, TopicPage
+
+
+class HomePage(Page):
+    content = StreamField([
+        ('rnd', custom_blocks.RNDBlock()),
+        ('triptych', custom_blocks.TriptychBlock()),
+        ('hero_carousel', custom_blocks.HeroCarouselBlock()),
+    ], blank=True)
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('content'),
+    ]
 
 
 class OldHomePage(Page):
@@ -61,25 +74,9 @@ class OldHomePage(Page):
         InlinePanel('cooperators_logos', heading="We work with")
     ]
 
-    parent_page_types = ['wagtailcore.page']  # allow root page only
-    subpage_types = [
-        'NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage', 'projects.TeamIndexPage',
-        'InfoPage',
-        'projects.TopicPage',
-    ]
-
-    @property
-    def specializations(self):
-        return SpecializationPage.objects.live().descendant_of(self)
-
     @property
     def articles(self):
         return NewsPage.objects.live().descendant_of(self).order_by('-marked', '-publication_date')
-
-    @property
-    def latest_articles(self):
-        """Returns 3 latest articles"""
-        return self.articles[:3]
 
     @property
     def our_initiatives(self):
@@ -116,6 +113,44 @@ class OldHomePage(Page):
     @property
     def job_offer_indexes(self):
         return JobOfferIndexPage.objects.live().descendant_of(self)
+
+    @property
+    def rnd_block(self):
+        return custom_blocks.RNDBlock().bind({
+            'headline': self.r_and_d_center_headline,
+            'body': self.r_and_d_center_body,
+        })
+
+    @property
+    def specializations_block(self):
+        return custom_blocks.TriptychBlock().bind({
+            'headline': self.specializations_headline,
+            'tiles': [
+                {
+                    'background_image': specialization.background_image,
+                    'content': specialization.short_description,
+                    'page': specialization,
+                }
+                for specialization
+                in SpecializationPage.objects.live().descendant_of(self)
+            ],
+        })
+
+    @property
+    def our_stories_block(self):
+        return custom_blocks.HeroCarouselBlock().bind({
+            'headline': self.specializations_headline,
+            'tiles': [
+                {
+                    'background_image': news.photo,
+                    'headline': news.headline,
+                    'page': news,
+                    'secondary_page': news.specialization,
+                }
+                for news
+                in self.articles[:3]
+            ],
+        })
 
 
 class CooperatorLogo(Orderable):
