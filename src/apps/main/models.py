@@ -22,7 +22,7 @@ from src.apps.main.blocks import Tile, HorizontalListWithArrows
 from src.apps.projects.models import SpecializationPage, TopicPage
 
 
-class HomePage(Page):
+class OldHomePage(Page):
     header = models.CharField(max_length=255)
     specializations_headline = models.CharField(max_length=128)
 
@@ -119,7 +119,7 @@ class HomePage(Page):
 
 
 class CooperatorLogo(Orderable):
-    page = ParentalKey('main.HomePage', on_delete=models.CASCADE, related_name='cooperators_logos')
+    page = ParentalKey(OldHomePage, on_delete=models.CASCADE, related_name='cooperators_logos')
     image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete=models.CASCADE,
@@ -152,7 +152,7 @@ class NewsIndexPage(Page):
         queryset = self.news.order_by('-marked', '-publication_date')
         return queryset.first(), queryset[1:]
 
-    parent_page_types = ['HomePage']
+    parent_page_types = ['OldHomePage']
     subpage_types = ['NewsPage']
 
 
@@ -227,7 +227,7 @@ class JobOfferIndexPage(Page):
         StreamFieldPanel('recruitment'),
     ]
 
-    parent_page_types = ['HomePage']
+    parent_page_types = ['OldHomePage']
     subpage_types = ['JobOfferPage']
 
 
@@ -287,7 +287,7 @@ class ContactForm(models.Model):
 
 @register_snippet
 class RodoPassAdvert(models.Model):
-    page = ParentalKey('HomePage', related_name='rodo_pass', unique=True)
+    page = ParentalKey(OldHomePage, related_name='rodo_pass', unique=True)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=256)
     url = models.URLField()
@@ -307,7 +307,7 @@ class RodoPassAdvert(models.Model):
 
 @register_snippet
 class Footer(models.Model):
-    page = ParentalKey('HomePage', related_name='footer', unique=True)
+    page = ParentalKey(OldHomePage, related_name='footer', unique=True)
     contact = RichTextField()
     address = RichTextField()
     how_we_work = RichTextField()
