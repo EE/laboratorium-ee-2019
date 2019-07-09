@@ -24,6 +24,7 @@ from src.apps.projects.models import SpecializationPage, TopicPage
 
 
 class HomePage(Page):
+    """ Page freeformed from predefined, beautiful blocks. Intended for use in landings and HPs. """
     content = StreamField([
         ('rnd', custom_blocks.RNDBlock()),
         ('triptych', custom_blocks.TriptychBlock()),
@@ -36,6 +37,7 @@ class HomePage(Page):
 
 
 class OldHomePage(Page):
+    """ This is legacy HP model. It will be deleted once `HomePage` model (above) is complete and operational. """
     header = models.CharField(max_length=255)
     specializations_headline = models.CharField(max_length=128)
 
