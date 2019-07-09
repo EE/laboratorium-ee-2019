@@ -19,6 +19,14 @@ class TileWithDescription(blocks.StructBlock):
         template = 'main/blocks/tile_with_description.html'
 
 
+class TileSimple(blocks.StructBlock):
+    heading = blocks.CharBlock()
+    description = blocks.RichTextBlock(features=[])  # allow just newline
+
+    class Meta:
+        template = 'main/blocks/tile_simple.html'
+
+
 class HorizontalList(blocks.ListBlock):
     class Meta:
         template = 'projects/blocks/tiles_list.html'
