@@ -3,6 +3,13 @@ from modeltranslation.translator import register, TranslationOptions
 from . import models
 
 
+@register(models.HomePage)
+class HomePageTranslationOptions(TranslationOptions):
+    fields = (
+        'content',
+    )
+
+
 @register(models.OldHomePage)
 class OldHomePageTranslationOptions(TranslationOptions):
     fields = (

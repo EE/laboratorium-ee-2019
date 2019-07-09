@@ -40,3 +40,40 @@ class HorizontalListWithArrows(blocks.ListBlock):
 class EERichTextBlock(blocks.RichTextBlock):
     class Meta:
         template = 'main/blocks/rich_text.html'
+
+
+class RNDBlock(blocks.StructBlock):
+    headline = blocks.CharBlock()
+    body = blocks.CharBlock()
+
+    class Meta:
+        template = 'main/blocks/rnd.html'
+
+
+class TriptychBlock(blocks.StructBlock):
+    headline = blocks.CharBlock()
+    tiles = blocks.ListBlock(
+        blocks.StructBlock([
+            ('background_image', ImageChooserBlock()),
+            ('content', blocks.RichTextBlock(features=['bold', 'italic'], required=False)),
+            ('page', blocks.PageChooserBlock()),
+        ]),
+    )
+
+    class Meta:
+        template = 'main/blocks/triptych.html'
+
+
+class HeroCarouselBlock(blocks.StructBlock):
+    headline = blocks.CharBlock()
+    tiles = blocks.ListBlock(
+        blocks.StructBlock([
+            ('background_image', ImageChooserBlock()),
+            ('headline', blocks.RichTextBlock(features=['bold', 'italic'], required=False)),
+            ('page', blocks.URLBlock()),
+            ('secondary_page', blocks.PageChooserBlock(required=False)),
+        ]),
+    )
+
+    class Meta:
+        template = 'main/blocks/hero_carousel.html'
