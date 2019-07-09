@@ -28,59 +28,14 @@
     </div>
 </section>
 
-<section class="section ee-section">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-8">
-                <h2 class="ee-title--large">
-                    {% trans 'Our values' %}
-                </h2>
-                <p class="ee-body-text">
-                    Jesteśmy Prywatnym Centrum Badawczo-Rozwojowym. Myślimy kodem, tworzymy sercem. Naszą misją jest zmiana świata na lepsze za pomocą technologii.
-                    Tworzymy usługi i produkty, które odpowiadają na ważne tematy, takie jak: walka ze smogiem, wsparcie seniorów, rewolucja cyfrowa.
-                    Podstawą w naszej pracy jest zaufanie i podejmowanie rozsądnego ryzyka. Celem wszystkich naszych działań jest wywołanie pozytywnego wpływu na społeczeństwo oraz efektywne i oszczędne wydawanie środków na IT.
-                </p>
-            </div>
+    <section class="section ee-section">
+        <div class="container">
+            <h2 class="ee-title--large">
+                {% trans 'Our values' %}
+            </h2>
+            {{ page.our_values }}
         </div>
-    </div>
-</section>
-<section class="section ee-section">
-    <div class="container">
-        <div class="columns">
-            <div class="column">
-                <div class="ee-tiles">
-                    <div class="ee-tile">
-                        <div class="ee-tile__image has-text-centered">
-                            <img src="{% webpack_static 'images/how-we-work-1.svg' %}" alt="">
-                        </div>
-                        <div class="ee-spacer"></div>
-                        <h3 class="ee-title--small is-uppercase has-text-centered">
-                            Koncepcje produktów cyfrowych
-                        </h3>
-                    </div>
-                    <div class="ee-tile">
-                        <div class="ee-tile__image has-text-centered">
-                            <img src="{% webpack_static 'images/how-we-work-2.svg' %}" alt="">
-                        </div>
-                        <div class="ee-spacer"></div>
-                        <h3 class="ee-title--small is-uppercase has-text-centered">
-                            Interaktywne prototypy
-                        </h3>
-                    </div>
-                    <div class="ee-tile">
-                        <div class="ee-tile__image has-text-centered">
-                            <img src="{% webpack_static 'images/how-we-work-3.svg' %}" alt="">
-                        </div>
-                        <div class="ee-spacer"></div>
-                        <h3 class="ee-title--small is-uppercase has-text-centered">
-                            Usługi online i offline
-                        </h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     {% if page.team_members %}
         <section class="section ee-section">
@@ -91,7 +46,8 @@
                         <div class="ee-section-tiles">
                             {% for member in page.team_members %}
                                 <div class="ee-tile ee-article-card">
-                                    <div class="ee-article-card__image" style="background-image: url('{% webpack_static 'images/team-1.jpg' %}')">
+                                    {% image member.photo max-2560x2048 as member_image %}
+                                    <div class="ee-article-card__image" style="background-image: url('{{ member_image.url }}')">
                                         <div class="ee-title">
                                             {{ member.title }}
                                         </div>

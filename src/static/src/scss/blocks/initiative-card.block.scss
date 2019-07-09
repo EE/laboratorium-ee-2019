@@ -27,6 +27,17 @@
         .ee-initiatives-card__headline, .ee-initiatives-card__buttons {
             opacity: 1;
         }
+
+        @include touch {
+            transform: scale(1);
+        }
+    }
+
+    @include touch {
+        padding: 1rem !important;
+        .ee-initiatives-card__headline, .ee-initiatives-card__buttons {
+            opacity: 1;
+        }
     }
 }
 

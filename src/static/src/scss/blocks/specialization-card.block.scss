@@ -14,8 +14,8 @@ $rescale: 1 / $initScale;
     @include transition();
 
     @include touch {
-        padding: 2rem;
-        width: 85vw;
+        padding: 2rem 2rem 4rem;
+        width: 100vw;
     }
 
     &:first-child {
@@ -44,6 +44,14 @@ $rescale: 1 / $initScale;
         .ee-specialization-card__headline, .ee-specialization-card__buttons {
             opacity: 1;
             transform: scale($rescale);
+
+            @include touch {
+                transform: scale(1);
+            }
+        }
+
+        @include touch {
+            transform: scale(1);
         }
     }
 }

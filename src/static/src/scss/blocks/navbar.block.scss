@@ -76,5 +76,7 @@
 
   @include touch {
     display: block;
+    background-color: transparent;
+    border: none;
   }
 }
