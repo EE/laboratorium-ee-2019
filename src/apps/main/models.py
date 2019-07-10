@@ -143,7 +143,7 @@ class OldHomePage(Page):
     @property
     def our_stories_block(self):
         return custom_blocks.HeroCarouselBlock().bind({
-            'headline': self.specializations_headline,
+            'headline': _('Poznaj nas przez nasze historie'),
             'tiles': [
                 {
                     'background_image': news.photo,
