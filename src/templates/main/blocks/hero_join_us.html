@@ -1,10 +1,10 @@
 {% load i18n %}
 {% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
+{% load main_tags %}
 {% load svg %}
 
-{% image value.background_image max-2560x2048 as background_image %}
-<section class="ee-join-us-block" style="background-image: url({{ background_image.url }})">
+<section class="ee-join-us-block ee-has-background-image">
+    {% image_with_srcset value.background_image class="ee-background-image" %}
     <div class="container">
         <div class="columns">
             <div class="column is-half ee-join-us-block__content-container">
