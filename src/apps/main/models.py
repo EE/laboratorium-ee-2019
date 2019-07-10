@@ -20,7 +20,7 @@ from wagtail.snippets.models import register_snippet
 
 from src.apps.main.blocks import Tile, HorizontalListWithArrows
 import src.apps.main.blocks as custom_blocks
-from src.apps.projects.models import SpecializationPage, TopicPage
+from src.apps.projects.models import SpecializationPage, TopicPage, TeamIndexPage
 
 
 class HomePage(Page):
@@ -29,6 +29,12 @@ class HomePage(Page):
         ('rnd', custom_blocks.RNDBlock()),
         ('triptych', custom_blocks.TriptychBlock()),
         ('hero_carousel', custom_blocks.HeroCarouselBlock()),
+        ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
+        ('hero_static_left', custom_blocks.HeroStaticLeftBlock()),
+        ('hero_switch', custom_blocks.HeroSwitchBlock()),
+        ('hero_join_us', custom_blocks.HeroJoinUsBlock()),
+        ('animated_process', custom_blocks.AnimatedProcessBlock()),
+        ('logo_wall', custom_blocks.LogoWallBlock()),
     ], blank=True)
 
     content_panels = Page.content_panels + [
@@ -113,10 +119,6 @@ class OldHomePage(Page):
                 return team_member.specific
 
     @property
-    def job_offer_indexes(self):
-        return JobOfferIndexPage.objects.live().descendant_of(self)
-
-    @property
     def rnd_block(self):
         return custom_blocks.RNDBlock().bind({
             'headline': self.r_and_d_center_headline,
@@ -152,6 +154,73 @@ class OldHomePage(Page):
                 for news
                 in self.articles[:3]
             ],
+        })
+
+    @property
+    def topics_block(self):
+        return custom_blocks.HeroSwitchBlock().bind({
+            'headline': _('Działamy w tematach'),
+            'topics': [
+                {
+                    'background_image': topic.background_image,
+                    'title': topic.title,
+                    'page': topic.projects.first(),
+                    'side_image': topic.phone_image,
+                }
+                for topic
+                in TopicPage.objects.live().descendant_of(self).filter(marked=True)
+            ],
+        })
+
+    @property
+    def animated_process_block(self):
+        return custom_blocks.AnimatedProcessBlock().bind(None)
+
+    def join_us_block(self):
+        return custom_blocks.HeroJoinUsBlock().bind({
+            'background_image': self.join_us_background,
+            'headline': self.join_us_headline,
+            'body': self.join_us_body,
+            'page': JobOfferIndexPage.objects.live().descendant_of(self).first(),
+        })
+
+    @property
+    def our_initiatives_block(self):
+        return custom_blocks.TriptychBlock().bind({
+            'headline': _('Nasze inicjatywy'),
+            'tiles': [
+                {
+                    'background_image': project.background_image,
+                    'content': project.subtitle,
+                    'page': project,
+                    'external_url': project.project_url,
+                }
+                for project
+                in self.our_initiatives
+            ],
+        })
+
+    @property
+    def cooperation_block(self):
+        return custom_blocks.LogoWallBlock().bind({
+            'title': _("We have worked with"),
+            'logos': [
+                logo.image
+                for logo in self.cooperators_logos.all()
+            ],
+        })
+
+    @property
+    def member_block(self):
+        member = self.random_team_member
+        if not member:
+            return None
+        return custom_blocks.HeroStaticLeftBlock().bind({
+            'background_image': member.photo,
+            'title': _("Team"),
+            'headline': member.name,
+            'body': member.long_description,
+            'page': TeamIndexPage.objects.live().descendant_of(self).first(),
         })
 
 
@@ -340,6 +409,15 @@ class RodoPassAdvert(models.Model):
 
     def __str__(self):
         return f'{self.page} Rodo Pass'
+
+    @property
+    def block(self):
+        return custom_blocks.HeroStaticRightBlock().bind({
+            'title': _('P.S.'),
+            'headline': self.title,
+            'body': self.description,
+            'external_url': self.url,
+        })
 
 
 @register_snippet

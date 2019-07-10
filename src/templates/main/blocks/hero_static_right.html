@@ -1,0 +1,37 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+{% load i18n %}
+
+{% image value.background_image max-2560x2048 as background_image %}
+<section class="section ee-rodo-block ee-has-parallax" style="background-image: url({{ background_image.url }});">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-half is-offset-6 ee-rodo-block__content-container">
+                {% if value.title %}
+                    <h2 class="ee-rodo-block__title">{{ value.title }}</h2>
+                {% endif %}
+                <h3 class="ee-rodo-block__headline">{{ value.headline }}</h3>
+                <p class="ee-rodo-block__body">
+                    {{ value.body }}
+                </p>
+                <div class="ee-rodo-block__buttons-container">
+                    {% if value.page %}
+                        <a href="{% pageurl value.page %}" class="button is-light is-radiusless ee-button">
+                            {{ value.page.title }}
+                        </a>
+                    {% endif %}
+                    {% if value.page_secondary %}
+                        <a href="{% pageurl value.page_secondary %}" class="button is-light is-outlined is-radiusless ee-button">
+                            {{ value.page_secondary }}
+                        </a>
+                    {% endif %}
+                    {% if value.external_url %}
+                        <a href="{{ value.external_url }}" class="button is-light is-outlined is-radiusless ee-button">
+                            {% trans 'Sprawdź' %}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

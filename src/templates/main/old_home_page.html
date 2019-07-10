@@ -25,176 +25,27 @@
 
     {# block Topics #}
     {% if page.topics %}
-        <section class="section ee-topics-block">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-one-third ee-topics-block__content">
-                        <h3 class="ee-topics-block__title">{% trans 'Działamy w tematach' %}</h3>
-                        <div class="ee-topics-block__buttons">
-                            {% for topic in page.topics %}
-                                {% image topic.background_image max-2560x2048 as topic_background_image %}
-                                <div class="ee-topics-block__buttons-wrapper">
-                                    <a {% if topic.projects.first %}href="{% pageurl topic.projects.first %}"{% endif %}
-                                       class="button is-light is-outlined is-radiusless ee-button" data-target="ee-topics-{{ topic.id }}"
-                                       data-section-background-url="{% if topic.background_image %}{{ topic_background_image.url }}{% endif %}">
-                                        {{ topic.title }}
-                                    </a>
-                                    <a href="#" class="button is-light is-outlined is-radiusless ee-button">Sprawdź projekt</a>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="column ee-topics-block__image-container">
-                        {% for topic in page.topics %}
-                            {% if topic.phone_image %}
-                                {% image topic.phone_image max-2560x2048 as topic_phone_image %}
-                                <img src="{{ topic_phone_image.url }}" alt="" id="ee-topics-{{ topic.id }}" class="ee-topics-block__image">
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </section>
+        {{ page.topics_block }}
     {% endif %}
 
     {# block Solutions #}
-    <section class="ee-solutions-block">
-        <div class="ee-solutions-block__title-container">
-            <h2 class="ee-solutions-block__title">
-                {% trans 'Jak powstają nasze rozwiązania?' %}
-            </h2>
-        </div>
-        <div class="container ee-solutions-block__has-scroll">
-            <div class="ee-solutions-block__items-container">
-                <div class="ee-solutions-block__item">
-                    <div class="ee-solutions-block__item-icon">
-                        {% svg 'ico-lupka' %}
-                    </div>
-                    <h3 class="ee-solutions-block__item-title">
-                        {% trans 'Needs analysis' %}
-                    </h3>
-                </div>
-                <div class="ee-solutions-block__item-spacer"></div>
-                <div class="ee-solutions-block__item">
-                    <div class="ee-solutions-block__item-icon">
-                        {% svg 'ico-post-it' %}
-                    </div>
-                    <h3 class="ee-solutions-block__item-title">
-                        {% trans 'Warsztaty partycypacyjne i Google Design Sprint' %}
-                    </h3>
-                </div>
-                <div class="ee-solutions-block__item-spacer"></div>
-                <div class="ee-solutions-block__item">
-                    <div class="ee-solutions-block__item-icon">
-                        {% svg 'ico-proto' %}
-                    </div>
-                    <h3 class="ee-solutions-block__item-title">
-                        {% trans 'Prototyp i Minimum Viable Product' %}
-                    </h3>
-                </div>
-                <div class="ee-solutions-block__item-spacer"></div>
-                <div class="ee-solutions-block__item">
-                    <div class="ee-solutions-block__item-icon">
-                        {% svg 'ico-agile' %}
-                    </div>
-                    <h3 class="ee-solutions-block__item-title">
-                        {% trans 'Wdrażanie Zwinne' %}
-                    </h3>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{ page.animated_process_block }}
 
     {# block Join the Team #}
-    {% image page.join_us_background max-2560x2048 as join_us_background %}
-    <section class="ee-join-us-block" style="background-image: url({{ join_us_background.url }})">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-half ee-join-us-block__content-container">
-                    <div class="ee-join-us-block__content">
-                    <h2 class="ee-join-us-block__content-title">{{ page.join_us_headline }}</h2>
-                    <p class="ee-join-us-block__content-body">{{ page.join_us_body }}</p>
-                    </div>
-                    <div class="ee-join-us-block__buttons">
-                        {% for job_offer_index in page.job_offer_indexes %}
-                            <a href="{% pageurl job_offer_index %}" class="button is-light is-radiusless ee-button">
-                                {% trans 'Pracuj z nami' %}
-                            </a>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="column ee-join-us-block__items-container">
-                    <div class="ee-join-us-block__item">
-                        <div class="ee-join-us-block__item-icon">
-                            {% svg 'join-us-icon-1' %}
-                        </div>
-                        <div class="ee-join-us-block__item-title">Stawiamy na rozwiązania</div>
-                    </div>
-                    <div class="ee-join-us-block__item">
-                        <div class="ee-join-us-block__item-icon">
-                            {% svg 'join-us-icon-2' %}
-                        </div>
-                        <div class="ee-join-us-block__item-title">Pobudzamy kreatywność</div>
-                    </div>
-                    <div class="ee-join-us-block__item">
-                        <div class="ee-join-us-block__item-icon">
-                            {% svg 'join-us-icon-3' %}
-                        </div>
-                        <div class="ee-join-us-block__item-title">Nie boimy się myśleć samodzielnie</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{ page.join_us_block }}
 
     {# block Initiatives #}
     {% if page.our_initiatives %}
-        <section class="ee-section has-slider">
-            <div class="ee-section__title-container">
-                <h2 class="ee-section__title">{% trans 'Our initiatives' %}</h2>
-            </div>
-            <div class="ee-section__triptych is-slides-container">
-                {% for inititive in page.our_initiatives %}
-                    {% include 'projects/partials/project_card_initiative.html' with project=inititive %}
-                {% endfor %}
-            </div>
-            <div class="ee-section__slides-controls"></div>
-        </section>
+        {{ page.our_initiatives_block }}
     {% endif %}
 
     {# block Cooperation #}
-    <section class="ee-section">
-        <div class="ee-section__title-container">
-            <h2 class="ee-section__title">{% trans 'We have worked with' %}</h2>
-        </div>
-        <div class="container ee-coop-block__logo-container">
-            {% for logo in page.cooperators_logos.all %}
-                {% image logo.image original %}
-            {% endfor %}
-        </div>
-    </section>
+    {{ page.cooperation_block }}
 
     {# block Team #}
-    {% with page.random_team_member as member %}
-        {% if member %}
-            {% image member.photo max-2560x2048 as team_background %}
-            <section class="section ee-team-block" style="background-image: url({{ team_background.url }});">
-                <div class="container">
-                    <div class="columns">
-                        <div class="column is-one-third">
-                            <h2 class="ee-team-block__title">{% trans 'Team' %}</h2>
-                            <h3 class="ee-team-block__headline">{{ member.name }}</h3>
-                            <p class="ee-team-block__body">
-                                {{ member.long_description }}
-                            </p>
-                            <div class="ee-team-block__buttons-container">
-                                <a href="" class="button is-light is-radiusless ee-button">{% trans 'Poznaj nas' %}</a>
-                                <a href="" class="button is-light is-outlined is-radiusless ee-button">{% trans 'Join us' %}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    {% with page.member_block as member_block %}
+        {% if member_block %}
+            {{ member_block }}
         {% endif %}
     {% endwith %}
 

@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
+{% load main_tags %}
+
 {% block facebook_pixel_events %}
     {{ block.super }}
     fbq('track', 'ViewContent');
 {% endblock %}
 
 {% block content %}
-    {{ page.content }}
+    {% bare_blocks page.content %}
 {% endblock %}
