@@ -1,4 +1,4 @@
-{% load wagtailimages_tags %}
+{% load main_tags %}
 
 <section class="ee-section">
     <div class="ee-section__title-container">
@@ -6,7 +6,7 @@
     </div>
     <div class="container ee-coop-block__logo-container">
         {% for logo in value.logos %}
-            {% image logo original %}
+            {% image_with_srcset logo %}
         {% endfor %}
     </div>
 </section>

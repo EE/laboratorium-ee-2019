@@ -1,9 +1,9 @@
-{% load wagtailimages_tags %}
+{% load main_tags %}
 {% load wagtailcore_tags %}
 {% load i18n %}
 
-{% image value.background_image max-2560x2048 as background_image %}
-<section class="section ee-rodo-block ee-has-parallax" style="background-image: url({{ background_image.url }});">
+<section class="section ee-rodo-block ee-has-parallax ee-has-background-image">
+    {% image_with_srcset value.background_image class="ee-background-image" %}
     <div class="container">
         <div class="columns">
             <div class="column is-half is-offset-6 ee-rodo-block__content-container">

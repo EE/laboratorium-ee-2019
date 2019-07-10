@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
+{% load main_tags %}
 
 <section class="ee-section ee-hero-carousel__desktop-header">
     <div class="ee-section__title">
@@ -21,8 +21,8 @@
     </div>
     <div class="ee-hero-carousel__container">
         {% for tile in value.tiles %}
-            {% image tile.background_image max-2560x2048 as background_image %}
-            <div class="ee-hero-carousel__content ee-has-parallax" style="background-image: url('{{ background_image.url }}')">
+            <div class="ee-hero-carousel__content ee-has-parallax ee-has-background-image">
+                {% image_with_srcset tile.background_image class='ee-background-image' %}
                 <div class="container ee-hero-carousel__content-container">
                     {% if tile.secondary_page %}
                         <a class="ee-hero-carousel__content-tags" href="{% pageurl tile.secondary_page %}">
