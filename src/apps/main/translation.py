@@ -6,6 +6,13 @@ from . import models
 @register(models.HomePage)
 class HomePageTranslationOptions(TranslationOptions):
     fields = (
+        'content',
+    )
+
+
+@register(models.OldHomePage)
+class OldHomePageTranslationOptions(TranslationOptions):
+    fields = (
         'header', 'specializations_headline',
         'r_and_d_center_headline', 'r_and_d_center_body',
         'join_us_headline', 'join_us_body',

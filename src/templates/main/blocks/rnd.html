@@ -1,0 +1,35 @@
+{% load i18n %}
+{% load webpack_static from webpack_loader %}
+
+<section class="section ee-rd-block ee-has-parallax" style="background-image: url({% webpack_static 'images/rnd-1.png' %})" alt="Close">
+    <div class="container has-text-right-desktop">
+        <div class="columns">
+            <div class="column is-half is-offset-6">
+                <h2 class="ee-rd-block__title">{{ value.headline }}</h2>
+                <h3 class="ee-rd-block__subtitle">{{ value.body }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns ee-rd-block__items">
+            <div class="column">
+                <h4 class="ee-rd-block__item-title">2019</h4>
+                <p class="ee-rd-block__item-subtitle">
+                    {% trans 'To właśnie w tym roku otrzymaliśmy tytuł prywatnego centrum badawczo-rozwojowego.' %}
+                </p>
+            </div>
+            <div class="column">
+                <h4 class="ee-rd-block__item-title">20%</h4>
+                <p class="ee-rd-block__item-subtitle">
+                    {% trans 'Tyle podatku możesz odliczyć pracując z nami' %}
+                </p>
+            </div>
+            <div class="column">
+                <h4 class="ee-rd-block__item-title">R&D</h4>
+                <p class="ee-rd-block__item-subtitle">
+                    {% trans 'Prężnie działamy w obszarze Research & Development' %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,12 @@
+{% load wagtailimages_tags %}
+
+<section class="ee-section">
+    <div class="ee-section__title-container">
+        <h2 class="ee-section__title">{{ value.title }}</h2>
+    </div>
+    <div class="container ee-coop-block__logo-container">
+        {% for logo in value.logos %}
+            {% image logo original %}
+        {% endfor %}
+    </div>
+</section>

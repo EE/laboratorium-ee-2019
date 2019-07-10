@@ -1,6 +1,7 @@
-from django.utils.http import urlencode
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.http import urlencode
+from django.utils.safestring import mark_safe
 
 from src.apps.main.forms import ContactForm
 
@@ -34,13 +35,13 @@ def navbar(context):
 
 
 # RODOPass snippet
-@register.inclusion_tag('main/partials/rodopass.html', takes_context=True)
+@register.simple_tag(takes_context=True)
 def rodo_pass(context):
     try:
         rodo_pass = context['request'].site.root_page.specific.rodo_pass.get()
     except ObjectDoesNotExist:
-        return {}
-    return {'rodo_pass': rodo_pass}
+        return ''
+    return mark_safe(rodo_pass.block.render())
 
 
 # Footer
@@ -60,3 +61,11 @@ def share_buttons(context):
         'facebook_url': 'https://www.facebook.com/sharer/sharer.php?' + urlencode({'u': current_url}),
         'linkedin_url': 'https://www.linkedin.com/shareArticle?' + urlencode({'url': current_url, 'mini': True}),
     }
+
+
+@register.simple_tag
+def bare_blocks(blocks):
+    return mark_safe(''.join([
+        block.render()
+        for block in blocks
+    ]))

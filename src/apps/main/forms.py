@@ -118,7 +118,7 @@ class ContactForm(ConsentsMixin, forms.Form):
             _('Kontakt w sprawie rekrutacji na stanowisko {}').format(self.cleaned_data['recruitment_position']),
             self.cleaned_data['message'],
             settings.DEFAULT_FROM_EMAIL,
-            [settings.CONTACT_EMAIL],
+            [settings.RECRUITMENT_EMAIL],
             reply_to=[self.cleaned_data['reply_to']],
         )
 

@@ -69,7 +69,6 @@ import * as Hammer from "hammerjs";
             const slides = [ ...slidesContainer.querySelectorAll(".is-slide").values() ];
             const slidesControls = secondaryCarousel.querySelector(".ee-section__slides-controls");
 
-
             slides.forEach((el, idx, arr) => {
                 const carousel = new Hammer(el);
                 const defaultActive = idx === 0 ? "active" : null;
