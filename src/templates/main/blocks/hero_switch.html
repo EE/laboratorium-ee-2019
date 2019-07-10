@@ -1,0 +1,36 @@
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<section class="section ee-topics-block">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-one-third ee-topics-block__content">
+                <h3 class="ee-topics-block__title">{{ value.headline }}</h3>
+                <div class="ee-topics-block__buttons">
+                    {% for topic in value.topics %}
+                        <div class="ee-topics-block__buttons-wrapper">
+                            <a
+                                {% if topic.page %}href="{% pageurl topic.page %}"{% endif %}
+                                class="button is-light is-outlined is-radiusless ee-button"
+                                data-target="ee-topics-{{ forloop.counter }}"
+                                {% image topic.background_image max-2560x2048 as topic_background_image %}
+                                data-section-background-url="{% if topic.background_image %}{{ topic_background_image.url }}{% endif %}"
+                            >
+                                {{ topic.title }}
+                            </a>
+                            <a href="#" class="button is-light is-outlined is-radiusless ee-button">Sprawdź projekt</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="column ee-topics-block__image-container">
+                {% for topic in value.topics %}
+                    {% if topic.side_image %}
+                        {% image topic.side_image max-2560x2048 as topic_side_image %}
+                        <img src="{{ topic_side_image.url }}" alt="" id="ee-topics-{{ forloop.counter }}" class="ee-topics-block__image">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

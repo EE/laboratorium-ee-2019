@@ -57,6 +57,7 @@ class TriptychBlock(blocks.StructBlock):
             ('background_image', ImageChooserBlock()),
             ('content', blocks.RichTextBlock(features=['bold', 'italic'], required=False)),
             ('page', blocks.PageChooserBlock()),
+            ('external_url', blocks.URLBlock(required=False)),
         ]),
     )
 
@@ -70,10 +71,66 @@ class HeroCarouselBlock(blocks.StructBlock):
         blocks.StructBlock([
             ('background_image', ImageChooserBlock()),
             ('headline', blocks.RichTextBlock(features=['bold', 'italic'], required=False)),
-            ('page', blocks.URLBlock()),
+            ('page', blocks.PageChooserBlock()),
             ('secondary_page', blocks.PageChooserBlock(required=False)),
         ]),
     )
 
     class Meta:
         template = 'main/blocks/hero_carousel.html'
+
+
+class HeroJoinUsBlock(blocks.StructBlock):
+    background_image = ImageChooserBlock()
+    headline = blocks.CharBlock()
+    body = blocks.TextBlock()
+    page = blocks.PageChooserBlock()
+
+    class Meta:
+        template = 'main/blocks/hero_join_us.html'
+
+
+class HeroSwitchBlock(blocks.StructBlock):
+    headline = blocks.CharBlock()
+    tiles = blocks.ListBlock(
+        blocks.StructBlock([
+            ('background_image', ImageChooserBlock()),
+            ('title', blocks.CharBlock()),
+            ('page', blocks.PageChooserBlock()),
+            ('side_image', ImageChooserBlock(required=False)),
+        ]),
+    )
+
+    class Meta:
+        template = 'main/blocks/hero_switch.html'
+
+
+class HeroStaticLeftBlock(blocks.StructBlock):
+    background_image = ImageChooserBlock()
+    title = blocks.CharBlock(required=False)
+    headline = blocks.CharBlock()
+    body = blocks.TextBlock()
+    page = blocks.PageChooserBlock(required=False)
+    page_secodary = blocks.PageChooserBlock(required=False)
+    external_url = blocks.URLBlock(required=False)
+
+    class Meta:
+        template = 'main/blocks/hero_static_left.html'
+
+
+class HeroStaticRightBlock(HeroStaticLeftBlock):
+    class Meta:
+        template = 'main/blocks/hero_static_right.html'
+
+
+class AnimatedProcessBlock(blocks.StaticBlock):
+    class Meta:
+        template = 'main/blocks/animated_process.html'
+
+
+class LogoWallBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    logos = blocks.ListBlock(ImageChooserBlock())
+
+    class Meta:
+        template = 'main/blocks/logo_wall.html'

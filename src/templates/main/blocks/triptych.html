@@ -24,6 +24,11 @@
                         <a href="{% pageurl tile.page %}" class="button is-light is-radiusless ee-button">
                             {% trans 'Find out more' %}
                         </a>
+                        {% if tile.external_url %}
+                            <a href="{{ tile.external_url }}" class="button is-light is-outlined is-radiusless ee-button">
+                                {% trans 'Sprawdź' %}
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
