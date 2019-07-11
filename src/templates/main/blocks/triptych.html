@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
+{% load main_tags %}
 
 <section class="ee-section has-slider">
     <div class="ee-section__title-container">
@@ -9,12 +9,12 @@
     <div class="ee-section__triptych is-slides-container">
         {% for tile in value.tiles %}
 
-            {% image tile.background_image max-2560x2048 as background_image %}
             <div
                 onclick="javascript:window.location.href='{% pageurl tile.page %}'; return false;"
-                class="ee-specialization-card is-slide"
-                style="background-image: url('{{ background_image.url }}');"
+                class="ee-specialization-card is-slide ee-has-background-image"
             >
+                {% image_with_srcset tile.background_image class='ee-background-image' %}
+
                 <div class="ee-specialization-card__content">
                     <h2 class="ee-specialization-card__title">{{ tile.page.title }}</h2>
                     <div class="ee-specialization-card__headline">

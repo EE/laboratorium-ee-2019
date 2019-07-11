@@ -69,3 +69,11 @@ def bare_blocks(blocks):
         block.render()
         for block in blocks
     ]))
+
+
+@register.inclusion_tag('main/partials/image_with_srcset.html')
+def image_with_srcset(image, **kwargs):
+    return {
+        'image': image,
+        'class': kwargs.get('class'),
+    }

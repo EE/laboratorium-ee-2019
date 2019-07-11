@@ -1,8 +1,8 @@
-{% load wagtailimages_tags %}
+{% load main_tags %}
 
 <div class="ee-tile-fancy">
     <div class="ee-tile-fancy__image">
-        {% image value.image original %}
+        {% image_with_srcset value.image %}
     </div>
     <div class="ee-spacer"></div>
     <h3 class="ee-title--small">

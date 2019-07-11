@@ -1,32 +1,32 @@
-(function () {
-    const topicsBlock = document.querySelector(".ee-topics-block");
-    const topicsButtons = document.querySelectorAll(".ee-topics-block__buttons .ee-button");
+[...document.querySelectorAll(".ee-topics-block")].forEach(topicsBlock => {
 
     const setActiveButton = button => {
-        const targetToggleId = button.dataset.target;
-
-        // set section's background image
-        topicsBlock.style.backgroundImage = `url(${button.dataset.sectionBackgroundUrl})`;
+        // show only related section background element
+        [ ...topicsBlock.querySelectorAll(".ee-background-image").values() ].forEach(el => {
+            el.classList.add("is-invisible");
+        });
+        const backgroundImageSrc = button.dataset.backgroundImageSrc;
+        const backgroundImage = topicsBlock.querySelector(`.ee-background-image[src='${backgroundImageSrc}']`);
+        if (backgroundImage) backgroundImage.classList.remove("is-invisible");
 
         // show related side-image (and hide others)
-        [ ...document.querySelectorAll(".ee-topics-block__image").values() ].forEach(el => {
+        [ ...topicsBlock.querySelectorAll(".ee-topics-block__image").values() ].forEach(el => {
             el.classList.remove("active");
         });
-        const sideImage = document.querySelector(`#${targetToggleId}`);
+        const sideImageSrc = button.dataset.sideImageSrc;
+        const sideImage = topicsBlock.querySelector(`.ee-topics-block__image[src='${sideImageSrc}']`);
         if (sideImage) sideImage.classList.add("active");
     };
 
-    if (topicsButtons.length) {
-        [ ...topicsButtons.values() ].forEach(el => {
-            el.addEventListener("mouseenter", (e) => setActiveButton(e.target));
-        });
+    const topicsButtons = topicsBlock.querySelectorAll(".ee-topics-block__buttons .ee-button");
+    [ ...topicsButtons.values() ].forEach(el => {
+        el.addEventListener("mouseenter", (e) => setActiveButton(e.target));
+    });
 
-        document.addEventListener("scroll", () => {
-            parallaxFx(document.querySelector(".ee-topics-block__image-container"));
-        });
-
-        setActiveButton(topicsButtons[0]);
-    }
+    // parallax fx
+    document.addEventListener("scroll", () => {
+        parallaxFx(topicsBlock.querySelector(".ee-topics-block__image-container"));
+    });
 
     function parallaxFx(el) {
         const scrollY = el.getBoundingClientRect().top;
@@ -36,4 +36,8 @@
             el.style.transform = `translateY(${scrollY / 5 - 50}px)`;
         }
     }
+
+    // initial show
+    setActiveButton(topicsButtons[0]);
+
 })();
