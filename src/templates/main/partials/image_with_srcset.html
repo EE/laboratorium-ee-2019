@@ -5,6 +5,7 @@
 {% image image width-512 as img512 %}
 {% image image width-1024 as img1024 %}
 {% image image width-2048 as img2048 %}
+{% image image original as img%}
 <img
     class="{{ class }}"
     srcset="{{ img128.url }} 128w,
@@ -12,5 +13,5 @@
             {{ img512.url }} 512w,
             {{ img1024.url }} 1024w,
             {{ img2048.url }} 2048w"
-    src="{{ img2048.url }}"
+    src="{{ img.url }}"
 >
