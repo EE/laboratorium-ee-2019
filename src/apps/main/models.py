@@ -26,18 +26,47 @@ from src.apps.projects.models import SpecializationPage, TopicPage, TeamIndexPag
 class HomePage(Page):
     """ Page freeformed from predefined, beautiful blocks. Intended for use in landings and HPs. """
     content = StreamField([
+        ('animated_process', custom_blocks.AnimatedProcessBlock()),
+        ('hero_carousel', custom_blocks.HeroCarouselBlock()),
+        ('hero_join_us', custom_blocks.HeroJoinUsBlock()),
+        ('hero_process', custom_blocks.HeroProcessBlock()),
+        ('hero_static_left', custom_blocks.HeroStaticLeftBlock()),
+        ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
+        ('hero_switch', custom_blocks.HeroSwitchBlock()),
+        ('logo_wall', custom_blocks.LogoWallBlock()),
         ('rnd', custom_blocks.RNDBlock()),
         ('triptych', custom_blocks.TriptychBlock()),
-        ('hero_carousel', custom_blocks.HeroCarouselBlock()),
-        ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
-        ('hero_static_left', custom_blocks.HeroStaticLeftBlock()),
-        ('hero_switch', custom_blocks.HeroSwitchBlock()),
-        ('hero_join_us', custom_blocks.HeroJoinUsBlock()),
-        ('animated_process', custom_blocks.AnimatedProcessBlock()),
-        ('logo_wall', custom_blocks.LogoWallBlock()),
     ], blank=True)
 
     content_panels = Page.content_panels + [
+        StreamFieldPanel('content'),
+    ]
+
+
+class SubPage(Page):
+    """ Page consisting of image-backgrounded header and a freeform content.
+    Inteneded as a standard, universal subpage. """
+    header_background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    header_subtitle = models.TextField(blank=True)
+    header_external_link = models.URLField(blank=True)
+
+    content = StreamField([
+        ('hero_process', custom_blocks.HeroProcessBlock()),
+        ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
+        ('paragraph', custom_blocks.ParagraphBlock()),
+    ], blank=True)
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            ImageChooserPanel('header_background_image'),
+            FieldPanel('header_subtitle'),
+            FieldPanel('header_external_link'),
+        ], heading="Header"),
         StreamFieldPanel('content'),
     ]
 

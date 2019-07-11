@@ -10,6 +10,14 @@ class HomePageTranslationOptions(TranslationOptions):
     )
 
 
+@register(models.SubPage)
+class SubPageTranslationOptions(TranslationOptions):
+    fields = (
+        'header_subtitle',
+        'content',
+    )
+
+
 @register(models.OldHomePage)
 class OldHomePageTranslationOptions(TranslationOptions):
     fields = (

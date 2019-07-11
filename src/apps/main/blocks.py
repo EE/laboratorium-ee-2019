@@ -1,3 +1,4 @@
+from django.conf import settings
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -42,6 +43,9 @@ class EERichTextBlock(blocks.RichTextBlock):
         template = 'main/blocks/rich_text.html'
 
 
+# ### top-level blocks (wrapped in <section> tag) ###
+
+
 class RNDBlock(blocks.StructBlock):
     headline = blocks.CharBlock()
     body = blocks.CharBlock()
@@ -55,7 +59,7 @@ class TriptychBlock(blocks.StructBlock):
     tiles = blocks.ListBlock(
         blocks.StructBlock([
             ('background_image', ImageChooserBlock()),
-            ('content', blocks.RichTextBlock(features=['bold', 'italic'], required=False)),
+            ('content', blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES, required=False)),
             ('page', blocks.PageChooserBlock()),
             ('external_url', blocks.URLBlock(required=False)),
         ]),
@@ -123,6 +127,20 @@ class HeroStaticRightBlock(HeroStaticLeftBlock):
         template = 'main/blocks/hero_static_right.html'
 
 
+class HeroProcessBlock(blocks.StructBlock):
+    background_image = ImageChooserBlock()
+    title = blocks.CharBlock(required=False)
+    headline = blocks.CharBlock(required=False)
+    body = blocks.RichTextBlock(required=False, features=settings.RICHTEXT_INLINE_FEATURES)
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('icon', ImageChooserBlock()),
+        ('text', blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)),
+    ]))
+
+    class Meta:
+        template = 'main/blocks/hero_process.html'
+
+
 class AnimatedProcessBlock(blocks.StaticBlock):
     class Meta:
         template = 'main/blocks/animated_process.html'
@@ -134,3 +152,11 @@ class LogoWallBlock(blocks.StructBlock):
 
     class Meta:
         template = 'main/blocks/logo_wall.html'
+
+
+class ParagraphBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    body = blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)
+
+    class Meta:
+        template = 'main/blocks/paragraph.html'
