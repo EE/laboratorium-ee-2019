@@ -86,7 +86,7 @@
 }
 
 .ee-tile-fancy__spacer {
-    margin-top: 50%;
+    top: 50%;
     height: 2px;
     background-color: white;
     position: relative;
@@ -117,10 +117,6 @@
     }
 
     @include touch {
-        margin-top: 20%;
-        height: 0;
-        &::before, &::after {
-            display: none;
-        }
+        display: none;
     }
 }
