@@ -46,6 +46,11 @@ class EERichTextBlock(blocks.RichTextBlock):
 # ### top-level blocks (wrapped in <section> tag) ###
 
 
+class ContactUsButtonBlock(blocks.StaticBlock):
+    class Meta:
+        template = 'main/blocks/contact_us_button.html'
+
+
 class RNDBlock(blocks.StructBlock):
     headline = blocks.CharBlock()
     body = blocks.CharBlock()
@@ -154,9 +159,36 @@ class LogoWallBlock(blocks.StructBlock):
         template = 'main/blocks/logo_wall.html'
 
 
+class MasonryBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('image', ImageChooserBlock()),
+        ('page', blocks.PageChooserBlock()),
+        ('featured_x', blocks.BooleanBlock(required=False)),
+        ('featured_y', blocks.BooleanBlock(required=False)),
+        ('featured_mobile', blocks.BooleanBlock(required=False)),
+        ('title_dark', blocks.BooleanBlock(required=False)),
+    ]))
+
+    class Meta:
+        template = 'main/blocks/masonry.html'
+
+
 class ParagraphBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     body = blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)
 
     class Meta:
         template = 'main/blocks/paragraph.html'
+
+
+class TileGridBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('image', ImageChooserBlock()),
+        ('title', blocks.CharBlock()),
+        ('body', blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)),
+    ]))
+
+    class Meta:
+        template = 'main/blocks/tile_grid.html'

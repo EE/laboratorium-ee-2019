@@ -56,9 +56,12 @@ class SubPage(Page):
     header_external_link = models.URLField(blank=True)
 
     content = StreamField([
+        ('contact_us_button', custom_blocks.ContactUsButtonBlock()),
         ('hero_process', custom_blocks.HeroProcessBlock()),
         ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
+        ('masonry', custom_blocks.MasonryBlock()),
         ('paragraph', custom_blocks.ParagraphBlock()),
+        ('tile_grid', custom_blocks.TileGridBlock()),
     ], blank=True)
 
     content_panels = Page.content_panels + [

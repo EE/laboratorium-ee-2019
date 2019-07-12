@@ -1,0 +1,22 @@
+{% load wagtailcore_tags %}
+{% load main_tags %}
+
+<section class="section ee-section">
+    <div class="ee-section__title-container">
+        <h2 class="ee-section__title">{{ value.title }}</h2>
+    </div>
+    <div class="ee-masonry">
+        {% for tile in value.tiles %}
+            <a class="ee-masonry__tile ee-has-background-image
+                     {% if tile.featured_x %}ee-masonry__tile--featured-x{% endif %}
+                     {% if tile.featured_y %}ee-masonry__tile--featured-y{% endif %}
+                     {% if tile.featured_mobile %}ee-masonry__tile--featured-mobile{% endif %}"
+                href="{% pageurl tile.page %}">
+                {% image_with_srcset tile.image class='ee-background-image' %}
+                <span class="ee-masonry__tile-title {% if tile.title_dark %}ee-masonry__tile-title--dark{% endif %}">
+                    {{ tile.page.title }}
+                </span>
+            </a>
+        {% endfor %}
+    </div>
+</section>
