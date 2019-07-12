@@ -1,7 +1,10 @@
 {% load i18n %}
 {% load webpack_static from webpack_loader %}
 
-<section class="section ee-rd-block ee-has-parallax" style="background-image: url({% webpack_static 'images/rnd-1.jpg' %})" alt="Close">
+<section class="section ee-rd-block ee-has-parallax ee-has-background-image">
+    <img class="ee-background-image" srcset="{% webpack_static 'images/rnd-1-800.jpg' %} 800w,
+                                             {% webpack_static 'images/rnd-1-1280.jpg' %} 1280w,
+                                             {% webpack_static 'images/rnd-1-1920.jpg' %} 1920w">
     <div class="container has-text-right-desktop">
         <div class="columns">
             <div class="column is-half is-offset-6">
