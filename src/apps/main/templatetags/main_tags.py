@@ -1,3 +1,5 @@
+import logging
+
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlencode
@@ -5,6 +7,8 @@ from django.utils.safestring import mark_safe
 
 from src.apps.main.forms import ContactForm
 
+
+logger = logging.getLogger(__name__)
 register = template.Library()
 
 
@@ -73,7 +77,21 @@ def bare_blocks(blocks):
 
 @register.inclusion_tag('main/partials/image_with_srcset.html')
 def image_with_srcset(image, **kwargs):
+    """ Render <img> tag with srcset property. """
+    if not image:
+        logger.warn('image_with_srcset got falsey image')
+        return {}
+    width = 512  # initial width, for smallest rendition
+    renditions = []
+    while width < image.width:
+        renditions.append({
+            'width': width,
+            'url': image.get_rendition(f'width-{width}').url,
+        })
+        # increase width by sqrt(2) to double pixel count for each rendition
+        width = round(width * 2**0.5)
     return {
         'image': image,
         'class': kwargs.get('class'),
+        'renditions': renditions,
     }

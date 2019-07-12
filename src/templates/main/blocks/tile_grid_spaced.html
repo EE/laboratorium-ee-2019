@@ -1,0 +1,30 @@
+{% load main_tags %}
+{% load wagtailcore_tags %}
+
+<section class="section ee-section">
+    <div class="ee-section-title">{{ value.title }}</div>
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="ee-section-tiles">
+                    {% for tile in value.tiles %}
+                        <div class="ee-tile ee-article-card">
+                            <div class="ee-article-card__image ee-has-background-image">
+                                {% image_with_srcset tile.image class='ee-background-image' %}
+                                <div class="ee-title">
+                                    {{ tile.title }}
+                                </div>
+                                <div class="ee-article-card__date">
+                                    {{ tile.subtitle }}
+                                </div>
+                            </div>
+                            <div class="ee-article-card__headline">
+                                {{ tile.body|richtext }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

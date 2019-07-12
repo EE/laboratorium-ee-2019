@@ -40,4 +40,4 @@
     // initial show
     setActiveButton(topicsButtons[0]);
 
-})();
+});
