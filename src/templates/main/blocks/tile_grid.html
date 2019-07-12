@@ -1,0 +1,34 @@
+{% load main_tags %}
+{% load wagtailcore_tags %}
+{% load i18n %}
+
+<section class="section">
+    <div class="ee-section__title-container">
+        <h2 class="ee-section__title">{{ value.title }}</h2>
+    </div>
+    <div class="container">
+        <div class="block-tiles_with_description_list">
+            <div class="columns">
+                <div class="column is-10 is-offset-1">
+                    <div class="ee-section-tiles ee-specialization-page__tools-tiles">
+                        {% for tile in value.tiles %}
+                            <div class="ee-tile">
+                                <div class="ee-tile__background-image ee-has-background-image">
+                                    {% image_with_srcset tile.image class='ee-background-image' %}
+                                    <div class="ee-title is-relative">
+                                        {{ tile.title }}
+                                    </div>
+                                </div>
+                                <div class="ee-tile__headline">
+                                    <div class="content">
+                                        {{ tile.body|richtext }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
