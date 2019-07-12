@@ -1,17 +1,9 @@
 {% load wagtailimages_tags %}
 
-{% image image width-128 as img128 %}
-{% image image width-256 as img256 %}
-{% image image width-512 as img512 %}
-{% image image width-1024 as img1024 %}
-{% image image width-2048 as img2048 %}
 {% image image original as img %}
 <img
-    class="{{ class }}"
-    srcset="{{ img128.url }} 128w,
-            {{ img256.url }} 256w,
-            {{ img512.url }} 512w,
-            {{ img1024.url }} 1024w,
-            {{ img2048.url }} 2048w"
+    {% if class %}class="{{ class }}"{% endif %}
+    srcset="{% for rendition in renditions %}{{ rendition.url }} {{ rendition.width }}w{% if not forloop.last %}, {% endif %}{% endfor %}"
     src="{{ img.url }}"
+    alt="{{ img.alt }}"
 >
