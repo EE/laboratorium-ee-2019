@@ -182,13 +182,34 @@ class ParagraphBlock(blocks.StructBlock):
         template = 'main/blocks/paragraph.html'
 
 
+class QuoteBlock(blocks.StructBlock):
+    body = blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)
+    author = blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES, required=False)
+
+    class Meta:
+        template = 'main/blocks/quote.html'
+
+
 class TileGridBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     tiles = blocks.ListBlock(blocks.StructBlock([
         ('image', ImageChooserBlock()),
-        ('title', blocks.CharBlock()),
+        ('title', blocks.CharBlock(required=False)),
         ('body', blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)),
     ]))
 
     class Meta:
         template = 'main/blocks/tile_grid.html'
+
+
+class TileGridSpacedBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('image', ImageChooserBlock()),
+        ('title', blocks.CharBlock(required=False)),
+        ('subtitle', blocks.CharBlock(required=False)),
+        ('body', blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)),
+    ]))
+
+    class Meta:
+        template = 'main/blocks/tile_grid_spaced.html'
