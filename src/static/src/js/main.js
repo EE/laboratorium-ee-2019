@@ -7,3 +7,4 @@ import "./ee-navbar.module";
 import "./ee-parallax.module";
 import "./ee-solutions.module";
 import "./ee-topics.module";
+import "./lazy_image";

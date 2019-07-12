@@ -81,17 +81,25 @@ def image_with_srcset(image, **kwargs):
     if not image:
         logger.warn('image_with_srcset got falsey image')
         return {}
-    width = 512  # initial width, for smallest rendition
+
+    width = 256  # initial width, for smallest rendition
+    ratio = 2  # increase width this many times for each rendition
+
     renditions = []
-    while width < image.width:
+    while True:
+        if width >= image.width:
+            width = image.width
         renditions.append({
             'width': width,
             'url': image.get_rendition(f'width-{width}').url,
         })
-        # increase width by sqrt(2) to double pixel count for each rendition
-        width = round(width * 2**0.5)
+        if width >= image.width:
+            break
+
+        # increase width for next rendition
+        width = round(width * ratio)
+
     return {
-        'image': image,
         'class': kwargs.get('class'),
         'renditions': renditions,
     }
