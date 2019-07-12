@@ -61,7 +61,9 @@ class SubPage(Page):
         ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
         ('masonry', custom_blocks.MasonryBlock()),
         ('paragraph', custom_blocks.ParagraphBlock()),
+        ('quote', custom_blocks.QuoteBlock()),
         ('tile_grid', custom_blocks.TileGridBlock()),
+        ('tile_grid_spaced', custom_blocks.TileGridSpacedBlock()),
     ], blank=True)
 
     content_panels = Page.content_panels + [
