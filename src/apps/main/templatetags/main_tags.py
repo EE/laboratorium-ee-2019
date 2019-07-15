@@ -100,6 +100,7 @@ def image_with_srcset(image, **kwargs):
         width = round(width * ratio)
 
     return {
+        'image': image,
         'class': kwargs.get('class'),
         'renditions': renditions,
     }

@@ -16,14 +16,8 @@
                             <a
                                 {% if topic.page %}href="{% pageurl topic.page %}"{% endif %}
                                 class="button is-light is-outlined is-radiusless ee-button"
-                                {% if topic.background_image %}
-                                    {% image topic.background_image original as topic_background_image %}
-                                    data-background-image-src="{{ topic_background_image.url }}"
-                                {% endif %}
-                                {% if topic.side_image %}
-                                    {% image topic.side_image original as topic_side_image %}
-                                    data-side-image-src="{{ topic_side_image.url }}"
-                                {% endif %}
+                                data-background-image-id="{{ topic.background_image.id }}"
+                                data-side-image-id="{{ topic.side_image.id }}"
                             >
                                 {{ topic.title }}
                             </a>
