@@ -1,4 +1,4 @@
-// lazy image loader taken from
+// lazy image loader based on
 // https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/#inline_images
 document.addEventListener("DOMContentLoaded", () => {
     if ("IntersectionObserver" in window) {
@@ -16,7 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
         [...document.querySelectorAll("img.lazy").values()].forEach(lazyImage => {
             lazyImageObserver.observe(lazyImage);
         });
+
     } else {
-        // Possibly fall back to a more compatible method here
+        // Fall back to a more compatible method here (IntersectionObserver is sometimes not supported).
+        // Just load all images.
+        [...document.querySelectorAll("img.lazy").values()].forEach(lazyImage => {
+            lazyImage.srcset = lazyImage.dataset.srcset;
+        });
+
     }
 });
