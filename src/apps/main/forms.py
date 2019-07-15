@@ -15,9 +15,7 @@ class ConsentsMixin:
         super().__init__(*args, **kwargs)
 
         # generate consent checkbox based on info pages
-        consents = InfoPage.objects.live().filter(consent_required=True).descendant_of(
-            self.request.site.root_page,
-        )
+        consents = InfoPage.objects.live().filter(consent_required=True)
         if consents:
             consents_html = ', '.join([
                 '<a href="{doc_url}" target=\"_blank\">{doc_title}</a>'.format(
