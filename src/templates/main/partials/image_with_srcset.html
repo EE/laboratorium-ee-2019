@@ -1,9 +1,7 @@
-{% load wagtailimages_tags %}
-
-{% image image original as img %}
 <img
-    {% if class %}class="{{ class }}"{% endif %}
-    srcset="{% for rendition in renditions %}{{ rendition.url }} {{ rendition.width }}w{% if not forloop.last %}, {% endif %}{% endfor %}"
-    src="{{ img.url }}"
-    alt="{{ img.alt }}"
+    class="lazy {% if class %}{{ class }}{% endif %}"
+    data-srcset="{% for rendition in renditions %}{{ rendition.url }} {{ rendition.width }}w{% if not forloop.last %}, {% endif %}{% endfor %}"
+    src="{{ renditions.0.url }}"
+    alt="{{ renditions.0.alt }}"
+    data-image-id="{{ image.id }}"
 >

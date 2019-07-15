@@ -5,16 +5,16 @@
         [ ...topicsBlock.querySelectorAll(".ee-background-image").values() ].forEach(el => {
             el.classList.add("is-invisible");
         });
-        const backgroundImageSrc = button.dataset.backgroundImageSrc;
-        const backgroundImage = topicsBlock.querySelector(`.ee-background-image[src='${backgroundImageSrc}']`);
+        const backgroundImageId = button.dataset.backgroundImageId;
+        const backgroundImage = topicsBlock.querySelector(`.ee-background-image[data-image-id='${backgroundImageId}']`);
         if (backgroundImage) backgroundImage.classList.remove("is-invisible");
 
         // show related side-image (and hide others)
         [ ...topicsBlock.querySelectorAll(".ee-topics-block__image").values() ].forEach(el => {
             el.classList.remove("active");
         });
-        const sideImageSrc = button.dataset.sideImageSrc;
-        const sideImage = topicsBlock.querySelector(`.ee-topics-block__image[src='${sideImageSrc}']`);
+        const sideImageId = button.dataset.sideImageId;
+        const sideImage = topicsBlock.querySelector(`.ee-topics-block__image[data-image-id='${sideImageId}']`);
         if (sideImage) sideImage.classList.add("active");
     };
 

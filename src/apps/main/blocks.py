@@ -46,6 +46,14 @@ class EERichTextBlock(blocks.RichTextBlock):
 # ### top-level blocks (wrapped in <section> tag) ###
 
 
+class ContactFormBlock(blocks.StructBlock):
+    body = blocks.RichTextBlock()
+    form_heading = blocks.CharBlock(required=False)
+
+    class Meta:
+        template = 'main/blocks/contact_form.html'
+
+
 class ContactUsButtonBlock(blocks.StaticBlock):
     class Meta:
         template = 'main/blocks/contact_us_button.html'
@@ -175,7 +183,7 @@ class MasonryBlock(blocks.StructBlock):
 
 
 class ParagraphBlock(blocks.StructBlock):
-    title = blocks.CharBlock()
+    title = blocks.CharBlock(required=False)
     body = blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)
 
     class Meta:

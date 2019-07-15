@@ -1,0 +1,19 @@
+{% load main_tags %}
+
+<section class="section is-medium">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="content">
+                    {{ value.body }}
+                </div>
+            </div>
+            <div class="column">
+                <p class="subtitle is-uppercase has-text-weight-bold">
+                    {{ value.form_heading }}
+                </p>
+                {% contact_form %}
+            </div>
+        </div>
+    </div>
+</section>
