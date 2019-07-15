@@ -195,7 +195,7 @@ class OldHomePage(Page):
     def topics_block(self):
         return custom_blocks.HeroSwitchBlock().bind({
             'headline': _('Działamy w tematach'),
-            'topics': [
+            'tiles': [
                 {
                     'background_image': topic.background_image,
                     'title': topic.title,
