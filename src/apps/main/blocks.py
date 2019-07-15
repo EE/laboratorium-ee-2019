@@ -183,7 +183,7 @@ class MasonryBlock(blocks.StructBlock):
 
 
 class ParagraphBlock(blocks.StructBlock):
-    title = blocks.CharBlock()
+    title = blocks.CharBlock(required=False)
     body = blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)
 
     class Meta:
