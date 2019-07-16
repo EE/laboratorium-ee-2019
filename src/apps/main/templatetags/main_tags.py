@@ -6,6 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
 
+from src.apps.main.models import Footer
 from src.apps.main.forms import ContactForm
 
 
@@ -40,24 +41,15 @@ def navbar(context):
     }
 
 
-# RODOPass snippet
-@register.simple_tag(takes_context=True)
-def rodo_pass(context):
-    try:
-        rodo_pass = context['request'].site.root_page.specific.rodo_pass.get()
-    except ObjectDoesNotExist:
-        return ''
-    return mark_safe(rodo_pass.block.render())
-
-
 # Footer
 @register.inclusion_tag('main/partials/footer.html', takes_context=True)
 def footer(context):
     try:
-        footer = context['request'].site.root_page.specific.footer.get()
+        footer = Footer.objects.get(site=context['request'].site)
     except ObjectDoesNotExist:
-        return {}
-    return {'footer': footer}
+        footer = None
+    finally:
+        return {'footer': footer}
 
 
 @register.inclusion_tag('main/partials/share_buttons.html', takes_context=True)
