@@ -33,6 +33,24 @@
                     <div class="ee-spacer"></div>
                     <a href="{{ page.header_external_link }}" class="button is-light is-outlined is-radiusless ee-button">{% trans 'Odwiedź stronę' %}</a>
                 {% endif %}
+                {% if page.metrics.all %}
+                    <div class="ee-spacer"></div>
+                    <div class="ee-tiles">
+                        {% for metric in page.metrics.all %}
+                            <div class="ee-tile">
+                                <div class="ee-tile__image">
+                                    {% image_with_srcset metric.icon %}
+                                </div>
+                                <h2 class="ee-title--bold">
+                                    {{ metric.value }}
+                                </h2>
+                                <h3 class="ee-title--small">
+                                    {{ metric.property_name }}
+                                </h3>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </section>

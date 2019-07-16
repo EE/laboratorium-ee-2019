@@ -22,7 +22,7 @@
 }
 
 .ee-tile__image {
-    width: 100%;
+    height: 6rem;  // take space even if there is no image inside
     object-fit: cover;
 
     img {
@@ -33,7 +33,6 @@
     @include touch {
         width: auto;
     }
-
 }
 
 .ee-tile__background-image {

@@ -72,8 +72,28 @@ class SubPage(Page):
             ImageChooserPanel('header_background_image'),
             FieldPanel('header_subtitle'),
             FieldPanel('header_external_link'),
+            InlinePanel('metrics', heading="Metrics"),
         ], heading="Header"),
         StreamFieldPanel('content'),
+    ]
+
+
+class SubPageMetric(Orderable, models.Model):
+    page = ParentalKey(SubPage, related_name='metrics', on_delete=models.CASCADE)
+    icon = models.ForeignKey(
+        'wagtailimages.Image',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    value = models.CharField(max_length=31)
+    property_name = models.CharField(max_length=63)
+
+    panels = [
+        ImageChooserPanel('icon'),
+        FieldPanel('value'),
+        FieldPanel('property_name'),
     ]
 
 

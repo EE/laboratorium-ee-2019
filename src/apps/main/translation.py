@@ -18,6 +18,14 @@ class SubPageTranslationOptions(TranslationOptions):
     )
 
 
+@register(models.SubPageMetric)
+class SubPageMetricTranslationOptions(TranslationOptions):
+    fields = (
+        'value',
+        'property_name',
+    )
+
+
 @register(models.OldHomePage)
 class OldHomePageTranslationOptions(TranslationOptions):
     fields = (
