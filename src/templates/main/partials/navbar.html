@@ -10,14 +10,16 @@
                     <img src="{% webpack_static 'images/logoEE.svg' %}">
                 </a>
             </div>
-            <div class="column is-marginless is-paddingless">
-                <article class="message is-small" style="background: transparent;">
-                    <div class="message-body is-invisible-touch">
-                        To jest wersja <span class="tag is-warning ee-tag">4.0</span> strony.
-                        Ulepszamy ją iteracyjnie.
-                    </div>
-                </article>
-            </div>
+            {% if RELEASE_STRING %}
+                <div class="column is-marginless is-paddingless">
+                    <article class="message is-small" style="background: transparent;">
+                        <div class="message-body is-invisible-touch">
+                            To jest wersja <span class="tag is-warning ee-tag">{{ RELEASE_STRING }}</span> strony.
+                            Ulepszamy ją iteracyjnie.
+                        </div>
+                    </article>
+                </div>
+            {% endif %}
         </div>
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="ee-mobile-navbar">
             <span aria-hidden="true"></span>
