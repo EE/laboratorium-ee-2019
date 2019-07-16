@@ -3,53 +3,57 @@
 {% load wagtailcore_tags %}
 {% load webpack_static from webpack_loader %}
 
-<footer class="ee-footer">
-    <div class="container">
-        <div class="columns">
-            <div class="column">
+{% if footer %}
 
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="columns">
-            <div class="column is-one-third">
-                <h2 class="ee-footer__headline">{% trans 'Contact' %}</h2>
-                <div class="ee-footer__body">
-                    {{ footer.contact|richtext }}
-                </div>
-                <h2 class="ee-footer__headline">{% trans 'Address' %}</h2>
-                <div class="ee-footer__body">
-                    {{ footer.address|richtext }}
-                </div>
-                <img src="{% webpack_static 'images/logoEE.svg' %}" class="ee-footer__logo">
-            </div>
-            <div class="column is-one-third">
-                <h1 class="ee-footer__headline">{% trans 'How we work?' %}</h1>
-                <div class="ee-footer__body">
-                    {{ footer.how_we_work|richtext }}
-                </div>
-            </div>
-            <div class="column is-one-third ee-footer__last-column">
-                <h1 class="ee-footer__headline">{% trans 'Specializations' %}</h1>
-                {% for specialization in footer.specializations.all %}
-                <div class="ee-footer__body">
-                    <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
-                </div>
-                {% endfor %}
-                <h1 class="ee-footer__headline">{% trans 'Partners' %}</h1>
-                <div class="ee-footer__body">
-                    {{ footer.partners|richtext }}
-                </div>
-                <div class="ee-footer__social-media-icons">
-                    <a class="ee-share-button" href="https://www.facebook.com/LaboratoriumEE/" target="_blank">
-                        {% svg 'facebook' %}
-                    </a>
-                    <a class="ee-share-button" href="https://www.linkedin.com/company/laboratorium-ee/" target="_blank">
-                        {% svg 'linkedin' %}
-                    </a>
+    <footer class="ee-footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <h2 class="ee-footer__headline">{% trans 'Contact' %}</h2>
+                    <div class="ee-footer__body">
+                        {{ footer.contact|richtext }}
+                    </div>
+                    <h2 class="ee-footer__headline">{% trans 'Address' %}</h2>
+                    <div class="ee-footer__body">
+                        {{ footer.address|richtext }}
+                    </div>
+                    <img src="{% webpack_static 'images/logoEE.svg' %}" class="ee-footer__logo">
+                </div>
+                <div class="column is-one-third">
+                    <h1 class="ee-footer__headline">{% trans 'How we work?' %}</h1>
+                    <div class="ee-footer__body">
+                        {{ footer.how_we_work|richtext }}
+                    </div>
+                </div>
+                <div class="column is-one-third ee-footer__last-column">
+                    <h1 class="ee-footer__headline">{% trans 'Specializations' %}</h1>
+                    {% for specialization in footer.specializations.all %}
+                    <div class="ee-footer__body">
+                        <a href="{% pageurl specialization %}">{{ specialization.title }}</a>
+                    </div>
+                    {% endfor %}
+                    <h1 class="ee-footer__headline">{% trans 'Partners' %}</h1>
+                    <div class="ee-footer__body">
+                        {{ footer.partners|richtext }}
+                    </div>
+                    <div class="ee-footer__social-media-icons">
+                        <a class="ee-share-button" href="https://www.facebook.com/LaboratoriumEE/" target="_blank">
+                            {% svg 'facebook' %}
+                        </a>
+                        <a class="ee-share-button" href="https://www.linkedin.com/company/laboratorium-ee/" target="_blank">
+                            {% svg 'linkedin' %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% endif %}

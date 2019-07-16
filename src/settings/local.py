@@ -22,3 +22,6 @@ INTERNAL_IPS = ['127.0.0.1', ]
 
 # allow to use disclosed recaptha test keys
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+
+RELEASE_STRING = 'dev'

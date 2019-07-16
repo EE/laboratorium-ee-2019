@@ -88,7 +88,11 @@ class ContactForm(ConsentsMixin, forms.Form):
         super().__init__(*args, **kwargs)
 
     def clean(self):
-        subject = self.cleaned_data['subject']
+        cleaned_data = super().clean()
+
+        subject = cleaned_data.get('subject')
+        if not subject:
+            return cleaned_data
         extra_required_fields = {
             'offer': ['organization_name'],
             'recruitment': ['recruitment_position'],
@@ -96,11 +100,11 @@ class ContactForm(ConsentsMixin, forms.Form):
         }[subject]
 
         for field in extra_required_fields:
-            if not self.cleaned_data.get(field):
+            if not cleaned_data.get(field):
                 msg = forms.ValidationError(_("This field is required."))
                 self.add_error(field, msg)
 
-        return self.cleaned_data
+        return cleaned_data
 
     def process_offer(self):
         EmailMessage(

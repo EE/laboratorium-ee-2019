@@ -1,0 +1,18 @@
+{# Base template for all wagtail pages. #}
+
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ page.seo_title }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ page.search_description }}
+{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <meta property="og:title" content="{{ page.seo_title }}" />
+    <meta property="og:description" content="{{ page.search_description }}" />
+    <meta property="og:site_name" content="{{ request.site.site_name }}" />
+{% endblock %}

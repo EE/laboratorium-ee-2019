@@ -18,6 +18,14 @@ class SubPageTranslationOptions(TranslationOptions):
     )
 
 
+@register(models.SubPageMetric)
+class SubPageMetricTranslationOptions(TranslationOptions):
+    fields = (
+        'value',
+        'property_name',
+    )
+
+
 @register(models.OldHomePage)
 class OldHomePageTranslationOptions(TranslationOptions):
     fields = (
@@ -61,11 +69,6 @@ class ContactFormTranslationOptions(TranslationOptions):
         'condition_body',
         'after_send_text',
     )
-
-
-@register(models.RodoPassAdvert)
-class RodoPassAdvertTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'button_text')
 
 
 @register(models.Footer)
