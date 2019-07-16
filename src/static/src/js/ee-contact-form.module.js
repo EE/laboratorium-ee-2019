@@ -8,7 +8,8 @@
         });
     });
 
-    document.querySelector(".ee-sticky-contact-form__close-button").addEventListener("click", () => {
+    const closeButton = document.querySelector(".ee-sticky-contact-form__close-button");
+    if (closeButton) closeButton.addEventListener("click", () => {
         getFormSticky().classList.remove("active");
     });
 
