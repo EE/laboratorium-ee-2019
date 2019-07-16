@@ -71,11 +71,6 @@ class ContactFormTranslationOptions(TranslationOptions):
     )
 
 
-@register(models.RodoPassAdvert)
-class RodoPassAdvertTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'button_text')
-
-
 @register(models.Footer)
 class FooterTranslationOptions(TranslationOptions):
     fields = ('contact', 'address', 'how_we_work', 'partners')

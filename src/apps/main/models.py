@@ -447,44 +447,20 @@ class ContactForm(models.Model):
 
 
 @register_snippet
-class RodoPassAdvert(models.Model):
-    page = ParentalKey(OldHomePage, related_name='rodo_pass', unique=True)
-    title = models.CharField(max_length=50)
-    description = models.CharField(max_length=256)
-    url = models.URLField()
-    button_text = models.CharField(max_length=50)
-
-    panels = [
-        FieldPanel('page'),
-        FieldPanel('title'),
-        FieldPanel('description'),
-        FieldPanel('url'),
-        FieldPanel('button_text'),
-    ]
-
-    def __str__(self):
-        return f'{self.page} Rodo Pass'
-
-    @property
-    def block(self):
-        return custom_blocks.HeroStaticRightBlock().bind({
-            'title': _('P.S.'),
-            'headline': self.title,
-            'body': self.description,
-            'external_url': self.url,
-        })
-
-
-@register_snippet
 class Footer(models.Model):
-    page = ParentalKey(OldHomePage, related_name='footer', unique=True)
+    site = models.OneToOneField(
+        Site,
+        null=True,  # this field is required. `null=True` is here to make migration easier
+        on_delete=models.SET_NULL,
+        related_name='footer',
+    )
     contact = RichTextField()
     address = RichTextField()
     how_we_work = RichTextField()
     partners = RichTextField()
 
     panels = [
-        FieldPanel('page'),
+        FieldPanel('site'),
         FieldPanel('contact'),
         FieldPanel('address'),
         FieldPanel('how_we_work'),
@@ -492,7 +468,7 @@ class Footer(models.Model):
     ]
 
     def __str__(self):
-        return f'{self.page} footer'
+        return f'{self.site} footer'
 
     @property
     def specializations(self):
