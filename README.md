@@ -42,7 +42,7 @@
    You can log in as superuser using the following data:
 
        username: admin
-       password: cWEO3CTqIVU
+       password: adminadmin
 
    (It's hard to create fixtures which work with wagtail table inheritance - thus we use database dump instead of fixtures.)
 
@@ -74,9 +74,16 @@ Remember to add the newly created server to the proper Pipeline.
 
 ## Development guidelines
 
-In order to cast current DB state use:
+### CMS content for local development
 
-    pg_dump -c -O -U USERNAME DB_NAME -h HOST -p PORT --disable-dollar-quoting -F p > dump.sql
+    # load test server db into local db
+    ./get_test_db.sh
+    # load test server mediadir
+    aws s3 sync s3://strona-ee-test ./mediadir
+
+In order to cast current local DB state to file use:
+
+    pg_dump --disable-dollar-quoting --clean --no-privileges --no-owner -U USERNAME DB_NAME -h HOST -p PORT > dump.sql
 
 ### Translation files
 
@@ -88,7 +95,7 @@ Compile translation files - they are not being commited, but will allow you to s
 
     python manage.py compilemessages
 
-### Updating test server
+### Updating test server content
 
 To copy DB state from production to test do
 
