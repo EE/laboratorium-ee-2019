@@ -57,7 +57,6 @@
 9. Start the backend dev server (in a different console):
 
        python manage.py runserver
-       python manage.py compilemessages  # to compile translation files
 
 
 ## Installation (Heroku)
@@ -76,5 +75,26 @@ Remember to add the newly created server to the proper Pipeline.
 ## Development guidelines
 
 In order to cast current DB state use:
-    
-        pg_dump -c -O -U USERNAME DB_NAME -h HOST -p PORT --disable-dollar-quoting -F p > dump.sql
+
+    pg_dump -c -O -U USERNAME DB_NAME -h HOST -p PORT --disable-dollar-quoting -F p > dump.sql
+
+### Translation files
+
+To regenerate translation files
+
+    python manage.py makemessages
+
+Compile translation files - they are not being commited, but will allow you to see changes on local dev server.
+
+    python manage.py compilemessages
+
+### Updating test server
+
+To copy DB state from production to test do
+
+    heroku pg:copy -a laboratorium-ee-test strona-ee-prod::DATABASE_URL DATABASE_URL
+    heroku run -a laboratorium-ee-test ./manage.py migrate  # make sure all migrations are applied
+
+To copy mediafiles do
+
+    aws s3 sync --acl public-read s3://strona-ee-prod s3://strona-ee-test
