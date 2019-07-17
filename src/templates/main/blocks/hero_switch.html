@@ -1,0 +1,35 @@
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load main_tags %}
+
+<section class="section ee-topics-block ee-has-background-image">
+    {% for tile in value.tiles %}
+        {% image_with_srcset tile.background_image class='ee-background-image is-invisible' %}
+    {% endfor %}
+    <div class="container">
+        <div class="columns">
+            <div class="column is-one-third ee-topics-block__content">
+                <h3 class="ee-topics-block__title">{{ value.headline }}</h3>
+                <div class="ee-topics-block__buttons">
+                    {% for tile in value.tiles %}
+                        <a
+                            {% if tile.page %}href="{% pageurl tile.page %}"{% endif %}
+                            class="button is-light is-outlined is-radiusless ee-button"
+                            data-background-image-id="{{ tile.background_image.id }}"
+                            data-side-image-id="{{ tile.side_image.id }}"
+                        >
+                            {{ tile.title }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="column ee-topics-block__image-container">
+                {% for tile in value.tiles %}
+                    {% if tile.side_image %}
+                        {% image_with_srcset tile.side_image class="ee-topics-block__image" %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

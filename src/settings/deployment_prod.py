@@ -46,6 +46,7 @@ EMAIL_PORT = 587
 
 DEFAULT_FROM_EMAIL = 'strona-ee@laboratorium.ee'
 CONTACT_EMAIL = 'kontakt@laboratorium.ee'
+RECRUITMENT_EMAIL = 'dolacz@laboratorium.ee'
 
 
 # frontend integrations
@@ -57,3 +58,6 @@ HOTJAR_ID = '665318'
 # recaptha
 RECAPTCHA_PUBLIC_KEY = '6LfhvqoUAAAAAAxqTIjosKUUcd5qYV9APjLegfMy'
 RECAPTCHA_PRIVATE_KEY = env.str('RECAPTCHA_PRIVATE_KEY')
+
+
+RELEASE_STRING = env('HEROKU_RELEASE_VERSION')

@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+
+<section class="section ee-section">
+    <div class="container">
+        {% if value.title %}
+            <div class="ee-title--large">{{ value.title }}</div>
+        {% endif %}
+        <div class="columns">
+            <div class="column is-8 content">
+                {{ value.body|richtext }}
+            </div>
+        </div>
+    </div>
+</section>

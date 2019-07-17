@@ -6,6 +6,29 @@ from . import models
 @register(models.HomePage)
 class HomePageTranslationOptions(TranslationOptions):
     fields = (
+        'content',
+    )
+
+
+@register(models.SubPage)
+class SubPageTranslationOptions(TranslationOptions):
+    fields = (
+        'header_subtitle',
+        'content',
+    )
+
+
+@register(models.SubPageMetric)
+class SubPageMetricTranslationOptions(TranslationOptions):
+    fields = (
+        'value',
+        'property_name',
+    )
+
+
+@register(models.OldHomePage)
+class OldHomePageTranslationOptions(TranslationOptions):
+    fields = (
         'header', 'specializations_headline',
         'r_and_d_center_headline', 'r_and_d_center_body',
         'join_us_headline', 'join_us_body',
@@ -46,11 +69,6 @@ class ContactFormTranslationOptions(TranslationOptions):
         'condition_body',
         'after_send_text',
     )
-
-
-@register(models.RodoPassAdvert)
-class RodoPassAdvertTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'button_text')
 
 
 @register(models.Footer)

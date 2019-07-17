@@ -3,7 +3,7 @@
 {% load wagtailimages_tags %}
 
 {% image article.photo fill-2400x800 as background_image %}
-<div class="ee-tile ee-article-card">
+<a class="ee-tile ee-article-card" href="{% pageurl article %}">
     <div class="ee-article-card__image" style="background-image: url('{{ background_image.url }}')">
         <div class="ee-article-card__date">
             {{ article.publication_date | date:"d.m.Y" }}
@@ -15,10 +15,5 @@
     <div class="ee-article-card__headline">
         {{ article.headline }}
     </div>
-    <div class="ee-article-card__button">
-        <a href="{% pageurl article %}" class="button is-light is-outlined is-radiusless ee-button">
-            {% trans 'Find out more' %}
-        </a>
-    </div>
-</div>
+</a>
 

@@ -18,11 +18,87 @@ from wagtail.core.models import Page, Orderable, Site
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from src.apps.main.blocks import Tile
-from src.apps.projects.models import SpecializationPage, TopicPage
+from src.apps.main.blocks import Tile, HorizontalListWithArrows
+import src.apps.main.blocks as custom_blocks
+from src.apps.projects.models import SpecializationPage, TopicPage, TeamIndexPage
 
 
 class HomePage(Page):
+    """ Page freeformed from predefined, beautiful blocks. Intended for use in landings and HPs. """
+    content = StreamField([
+        ('animated_process', custom_blocks.AnimatedProcessBlock()),
+        ('hero_carousel', custom_blocks.HeroCarouselBlock()),
+        ('hero_join_us', custom_blocks.HeroJoinUsBlock()),
+        ('hero_process', custom_blocks.HeroProcessBlock()),
+        ('hero_static_left', custom_blocks.HeroStaticLeftBlock()),
+        ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
+        ('hero_switch', custom_blocks.HeroSwitchBlock()),
+        ('logo_wall', custom_blocks.LogoWallBlock()),
+        ('rnd', custom_blocks.RNDBlock()),
+        ('triptych', custom_blocks.TriptychBlock()),
+    ], blank=True)
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('content'),
+    ]
+
+
+class SubPage(Page):
+    """ Page consisting of image-backgrounded header and a freeform content.
+    Inteneded as a standard, universal subpage. """
+    header_background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    header_subtitle = models.TextField(blank=True)
+    header_external_link = models.URLField(blank=True)
+
+    content = StreamField([
+        ('contact_form', custom_blocks.ContactFormBlock()),
+        ('contact_us_button', custom_blocks.ContactUsButtonBlock()),
+        ('hero_process', custom_blocks.HeroProcessBlock()),
+        ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
+        ('masonry', custom_blocks.MasonryBlock()),
+        ('paragraph', custom_blocks.ParagraphBlock()),
+        ('quote', custom_blocks.QuoteBlock()),
+        ('tile_grid', custom_blocks.TileGridBlock()),
+        ('tile_grid_spaced', custom_blocks.TileGridSpacedBlock()),
+    ], blank=True)
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            ImageChooserPanel('header_background_image'),
+            FieldPanel('header_subtitle'),
+            FieldPanel('header_external_link'),
+            InlinePanel('metrics', heading="Metrics"),
+        ], heading="Header"),
+        StreamFieldPanel('content'),
+    ]
+
+
+class SubPageMetric(Orderable, models.Model):
+    page = ParentalKey(SubPage, related_name='metrics', on_delete=models.CASCADE)
+    icon = models.ForeignKey(
+        'wagtailimages.Image',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    value = models.CharField(max_length=31)
+    property_name = models.CharField(max_length=63)
+
+    panels = [
+        ImageChooserPanel('icon'),
+        FieldPanel('value'),
+        FieldPanel('property_name'),
+    ]
+
+
+class OldHomePage(Page):
+    """ This is legacy HP model. It will be deleted once `HomePage` model (above) is complete and operational. """
     header = models.CharField(max_length=255)
     specializations_headline = models.CharField(max_length=128)
 
@@ -61,25 +137,9 @@ class HomePage(Page):
         InlinePanel('cooperators_logos', heading="We work with")
     ]
 
-    parent_page_types = ['wagtailcore.page']  # allow root page only
-    subpage_types = [
-        'NewsIndexPage', 'JobOfferIndexPage', 'projects.SpecializationIndexPage', 'projects.TeamIndexPage',
-        'InfoPage',
-        'projects.TopicPage',
-    ]
-
-    @property
-    def specializations(self):
-        return SpecializationPage.objects.live().descendant_of(self)
-
     @property
     def articles(self):
         return NewsPage.objects.live().descendant_of(self).order_by('-marked', '-publication_date')
-
-    @property
-    def latest_articles(self):
-        """Returns 3 latest articles"""
-        return self.articles[:3]
 
     @property
     def our_initiatives(self):
@@ -114,12 +174,113 @@ class HomePage(Page):
                 return team_member.specific
 
     @property
-    def job_offer_indexes(self):
-        return JobOfferIndexPage.objects.live().descendant_of(self)
+    def rnd_block(self):
+        return custom_blocks.RNDBlock().bind({
+            'headline': self.r_and_d_center_headline,
+            'body': self.r_and_d_center_body,
+        })
+
+    @property
+    def specializations_block(self):
+        return custom_blocks.TriptychBlock().bind({
+            'headline': self.specializations_headline,
+            'tiles': [
+                {
+                    'background_image': specialization.background_image,
+                    'content': specialization.short_description,
+                    'page': specialization,
+                }
+                for specialization
+                in SpecializationPage.objects.live().descendant_of(self)
+            ],
+        })
+
+    @property
+    def our_stories_block(self):
+        return custom_blocks.HeroCarouselBlock().bind({
+            'headline': _('Poznaj nas przez nasze historie'),
+            'tiles': [
+                {
+                    'background_image': news.photo,
+                    'headline': news.headline,
+                    'page': news,
+                    'secondary_page': news.specialization,
+                }
+                for news
+                in self.articles[:3]
+            ],
+        })
+
+    @property
+    def topics_block(self):
+        return custom_blocks.HeroSwitchBlock().bind({
+            'headline': _('Działamy w tematach'),
+            'tiles': [
+                {
+                    'background_image': topic.background_image,
+                    'title': topic.title,
+                    'page': topic.projects.first(),
+                    'side_image': topic.phone_image,
+                }
+                for topic
+                in TopicPage.objects.live().descendant_of(self).filter(marked=True)
+            ],
+        })
+
+    @property
+    def animated_process_block(self):
+        return custom_blocks.AnimatedProcessBlock().bind(None)
+
+    def join_us_block(self):
+        return custom_blocks.HeroJoinUsBlock().bind({
+            'background_image': self.join_us_background,
+            'headline': self.join_us_headline,
+            'body': self.join_us_body,
+            'page': JobOfferIndexPage.objects.live().descendant_of(self).first(),
+        })
+
+    @property
+    def our_initiatives_block(self):
+        return custom_blocks.TriptychBlock().bind({
+            'headline': _('Nasze inicjatywy'),
+            'tiles': [
+                {
+                    'background_image': project.background_image,
+                    'content': project.subtitle,
+                    'page': project,
+                    'external_url': project.project_url,
+                }
+                for project
+                in self.our_initiatives
+            ],
+        })
+
+    @property
+    def cooperation_block(self):
+        return custom_blocks.LogoWallBlock().bind({
+            'title': _("We have worked with"),
+            'logos': [
+                logo.image
+                for logo in self.cooperators_logos.all()
+            ],
+        })
+
+    @property
+    def member_block(self):
+        member = self.random_team_member
+        if not member:
+            return None
+        return custom_blocks.HeroStaticLeftBlock().bind({
+            'background_image': member.photo,
+            'title': _("Team"),
+            'headline': member.name,
+            'body': member.long_description,
+            'page': TeamIndexPage.objects.live().descendant_of(self).first(),
+        })
 
 
 class CooperatorLogo(Orderable):
-    page = ParentalKey('main.HomePage', on_delete=models.CASCADE, related_name='cooperators_logos')
+    page = ParentalKey(OldHomePage, on_delete=models.CASCADE, related_name='cooperators_logos')
     image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete=models.CASCADE,
@@ -152,7 +313,7 @@ class NewsIndexPage(Page):
         queryset = self.news.order_by('-marked', '-publication_date')
         return queryset.first(), queryset[1:]
 
-    parent_page_types = ['HomePage']
+    parent_page_types = ['OldHomePage']
     subpage_types = ['NewsPage']
 
 
@@ -213,9 +374,8 @@ class JobOfferIndexPage(Page):
     cooperation = models.CharField(max_length=500)
     recruitment = StreamField([
         ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
-        ('tiles_list', blocks.ListBlock(
+        ('tiles_list', HorizontalListWithArrows(
             Tile(template='main/blocks/tile_fancy.html'),
-            template='projects/blocks/tiles_list_with_arrows.html',
         )),
     ])
 
@@ -228,7 +388,7 @@ class JobOfferIndexPage(Page):
         StreamFieldPanel('recruitment'),
     ]
 
-    parent_page_types = ['HomePage']
+    parent_page_types = ['OldHomePage']
     subpage_types = ['JobOfferPage']
 
 
@@ -287,35 +447,20 @@ class ContactForm(models.Model):
 
 
 @register_snippet
-class RodoPassAdvert(models.Model):
-    page = ParentalKey('HomePage', related_name='rodo_pass', unique=True)
-    title = models.CharField(max_length=50)
-    description = models.CharField(max_length=256)
-    url = models.URLField()
-    button_text = models.CharField(max_length=50)
-
-    panels = [
-        FieldPanel('page'),
-        FieldPanel('title'),
-        FieldPanel('description'),
-        FieldPanel('url'),
-        FieldPanel('button_text'),
-    ]
-
-    def __str__(self):
-        return f'{self.page} Rodo Pass'
-
-
-@register_snippet
 class Footer(models.Model):
-    page = ParentalKey('HomePage', related_name='footer', unique=True)
+    site = models.OneToOneField(
+        Site,
+        null=True,  # this field is required. `null=True` is here to make migration easier
+        on_delete=models.SET_NULL,
+        related_name='footer',
+    )
     contact = RichTextField()
     address = RichTextField()
     how_we_work = RichTextField()
     partners = RichTextField()
 
     panels = [
-        FieldPanel('page'),
+        FieldPanel('site'),
         FieldPanel('contact'),
         FieldPanel('address'),
         FieldPanel('how_we_work'),
@@ -323,7 +468,7 @@ class Footer(models.Model):
     ]
 
     def __str__(self):
-        return f'{self.page} footer'
+        return f'{self.site} footer'
 
     @property
     def specializations(self):

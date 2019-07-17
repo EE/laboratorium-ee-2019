@@ -5,6 +5,11 @@
 
     @include touch {
         padding: 4rem 1rem;
+
+        &.has-slider {
+            padding: 0;
+            overflow: hidden;
+        }
     }
 }
 
@@ -33,4 +38,37 @@
 
 .ee-section-tile {
     background-color: red;
+}
+
+.ee-section__slides-controls {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include desktop {
+        display: none;
+    }
+}
+
+.ee-section__slide-control-button {
+    width: 2rem;
+    height: 4px;
+    background-color: rgba(white, 0.4);
+    cursor: pointer;
+    @include transition();
+
+    &:not(:last-child) {
+        margin-right: 1rem;
+    }
+
+    &:hover {
+        background-color: white;
+    }
+
+    &.active {
+        background-color: white;
+        width: 3rem;
+    }
 }

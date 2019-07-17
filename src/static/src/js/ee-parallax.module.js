@@ -10,7 +10,14 @@
         const viewportHeight = window.innerHeight;
 
         if (scrollY > (viewportHeight / 2 * -1) && scrollY < viewportHeight) {
-            el.style.backgroundPositionY = `${scrollY / 7 - 20}px`;
+            const y = scrollY / 7 - 20;
+
+            // support CSS background
+            el.style.backgroundPositionY = `${y}px`;
+
+            // support img tag background
+            const imageElement = el.querySelector(".ee-background-image");
+            if (imageElement) imageElement.style.top = `${y}px`;
         }
     }
 })();

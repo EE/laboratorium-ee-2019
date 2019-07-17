@@ -1,0 +1,45 @@
+{% load i18n %}
+{% load wagtailcore_tags %}
+{% load main_tags %}
+{% load svg %}
+
+<section class="ee-join-us-block ee-has-background-image">
+    {% image_with_srcset value.background_image class="ee-background-image" %}
+    <div class="container">
+        <div class="columns">
+            <div class="column is-half ee-join-us-block__content-container">
+                <div class="ee-join-us-block__content">
+                    <h2 class="ee-join-us-block__content-title">{{ value.headline }}</h2>
+                    <p class="ee-join-us-block__content-body">{{ value.body }}</p>
+                </div>
+                <div class="ee-join-us-block__buttons">
+                {% if value.page %}
+                    <a href="{% pageurl value.page %}" class="button is-light is-radiusless ee-button">
+                        {% trans 'Pracuj z nami' %}
+                    </a>
+                {% endif %}
+                </div>
+            </div>
+            <div class="column ee-join-us-block__items-container">
+                <div class="ee-join-us-block__item">
+                    <div class="ee-join-us-block__item-icon">
+                        {% svg 'join-us-icon-1' %}
+                    </div>
+                    <div class="ee-join-us-block__item-title">{% trans 'Stawiamy na rozwiązania' %}</div>
+                </div>
+                <div class="ee-join-us-block__item">
+                    <div class="ee-join-us-block__item-icon">
+                        {% svg 'join-us-icon-2' %}
+                    </div>
+                    <div class="ee-join-us-block__item-title">{% trans 'Pobudzamy kreatywność' %}</div>
+                </div>
+                <div class="ee-join-us-block__item">
+                    <div class="ee-join-us-block__item-icon">
+                        {% svg 'join-us-icon-3' %}
+                    </div>
+                    <div class="ee-join-us-block__item-title">{% trans 'Nie boimy się myśleć samodzielnie' %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

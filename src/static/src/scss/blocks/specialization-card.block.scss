@@ -14,8 +14,8 @@ $rescale: 1 / $initScale;
     @include transition();
 
     @include touch {
-        padding: 2rem;
-        width: 85vw;
+        padding: 2rem 2rem 4rem;
+        width: 100vw;
     }
 
     &:first-child {
@@ -44,6 +44,14 @@ $rescale: 1 / $initScale;
         .ee-specialization-card__headline, .ee-specialization-card__buttons {
             opacity: 1;
             transform: scale($rescale);
+
+            @include touch {
+                transform: scale(1);
+            }
+        }
+
+        @include touch {
+            transform: scale(1);
         }
     }
 }
@@ -79,14 +87,18 @@ $rescale: 1 / $initScale;
 }
 
 .ee-specialization-card__buttons {
-    display: flex;
+    display: grid;
+    grid-template-rows: 2;
     align-items: flex-end;
-    flex-basis: 100%;
     margin-top: auto;
     opacity: 0;
-    @include transition();
+
+    & > *:not(:last-child) {
+        margin-bottom: 1rem;
+    }
 
     @include touch {
         opacity: 1;
+        flex-basis: 100%;
     }
 }

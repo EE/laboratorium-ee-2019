@@ -1,0 +1,48 @@
+{% load main_tags %}
+{% load wagtailcore_tags %}
+
+<section class="section ee-specialization-page__case-study ee-has-parallax ee-has-background-image">
+    {% image_with_srcset value.background_image class="ee-background-image" %}
+    <div class="container">
+        {% if value.title %}
+            <div class="columns">
+                <div class="column has-text-centered">
+                    {{ value.title }}
+                </div>
+            </div>
+        {% endif %}
+        {% if value.headline %}
+            <div class="columns">
+                <div class="column is-half is-offset-3">
+                    <h3 class="ee-title--bold has-text-centered">
+                        {{ value.headline }}
+                    </h3>
+                </div>
+            </div>
+        {% endif %}
+        {% if value.body %}
+            <div class="columns">
+                <div class="column is-8">
+                    <p class="content">{{ value.body }}</p>
+                </div>
+            </div>
+        {% endif %}
+        <div class="ee-spacer--large"></div>
+        <div class="ee-tiles">
+            {% for tile in value.tiles %}
+                <div class="ee-tile-fancy">
+                    <div class="ee-tile-fancy__image">
+                        {% image_with_srcset tile.icon %}
+                    </div>
+                    <div class="ee-spacer"></div>
+                    <h3 class="ee-title--small">
+                        {{ tile.text }}
+                    </h3>
+                </div>
+                {% if not forloop.last %}
+                    <div class="ee-tile-fancy__spacer"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -15,9 +15,7 @@ class ConsentsMixin:
         super().__init__(*args, **kwargs)
 
         # generate consent checkbox based on info pages
-        consents = InfoPage.objects.live().filter(consent_required=True).descendant_of(
-            self.request.site.root_page,
-        )
+        consents = InfoPage.objects.live().filter(consent_required=True)
         if consents:
             consents_html = ', '.join([
                 '<a href="{doc_url}" target=\"_blank\">{doc_title}</a>'.format(
@@ -90,7 +88,11 @@ class ContactForm(ConsentsMixin, forms.Form):
         super().__init__(*args, **kwargs)
 
     def clean(self):
-        subject = self.cleaned_data['subject']
+        cleaned_data = super().clean()
+
+        subject = cleaned_data.get('subject')
+        if not subject:
+            return cleaned_data
         extra_required_fields = {
             'offer': ['organization_name'],
             'recruitment': ['recruitment_position'],
@@ -98,11 +100,11 @@ class ContactForm(ConsentsMixin, forms.Form):
         }[subject]
 
         for field in extra_required_fields:
-            if not self.cleaned_data.get(field):
+            if not cleaned_data.get(field):
                 msg = forms.ValidationError(_("This field is required."))
                 self.add_error(field, msg)
 
-        return self.cleaned_data
+        return cleaned_data
 
     def process_offer(self):
         EmailMessage(
@@ -118,7 +120,7 @@ class ContactForm(ConsentsMixin, forms.Form):
             _('Kontakt w sprawie rekrutacji na stanowisko {}').format(self.cleaned_data['recruitment_position']),
             self.cleaned_data['message'],
             settings.DEFAULT_FROM_EMAIL,
-            [settings.CONTACT_EMAIL],
+            [settings.RECRUITMENT_EMAIL],
             reply_to=[self.cleaned_data['reply_to']],
         )
 

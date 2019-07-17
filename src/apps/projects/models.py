@@ -13,7 +13,11 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPane
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
-from src.apps.main.blocks import Tile, TileWithDescription
+from src.apps.main.blocks import (
+    Tile, TileWithDescription, TileSimple,
+    HorizontalList, HorizontalListWithArrows,
+    EERichTextBlock,
+)
 
 
 class SpecializationIndexPage(Page):
@@ -21,7 +25,7 @@ class SpecializationIndexPage(Page):
     def specializations(self):
         return SpecializationPage.objects.live().descendant_of(self)
 
-    parent_page_types = ['main.HomePage']
+    parent_page_types = ['main.OldHomePage']
     subpage_types = ['SpecializationPage']
 
 
@@ -36,13 +40,12 @@ class SpecializationPage(Page):
     )
     how_we_work = StreamField([
         ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
-        ('tiles_list', blocks.ListBlock(Tile(), template='projects/blocks/tiles_list.html')),
+        ('tiles_list', HorizontalList(Tile())),
     ])
     case_study = StreamField([
         ('heading', blocks.CharBlock(template='projects/blocks/heading.html')),
-        ('tiles_list', blocks.ListBlock(
+        ('tiles_list', HorizontalListWithArrows(
             Tile(template='main/blocks/tile_fancy_uppercase.html'),
-            template='projects/blocks/tiles_list_with_arrows.html',
         )),
     ], null=True)
 
@@ -133,14 +136,19 @@ class ProjectPage(Page):
         related_name='+'
     )
 
-    challenge = RichTextField(null=True)
+    challenge = StreamField([
+        ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
+        ('tiles_list', HorizontalList(TileSimple())),
+    ])
     process = StreamField([
-        ('tiles_list', blocks.ListBlock(
+        ('tiles_list', HorizontalListWithArrows(
             Tile(template='main/blocks/tile_fancy_uppercase.html'),
-            template='projects/blocks/tiles_list_with_arrows.html',
         )),
     ], null=True)
-    quote = RichTextField(null=True)
+
+    # quote section
+    quote = RichTextField(features=['bold', 'italic'])
+    quote_author = RichTextField(features=['bold'])
 
     # masonry display
     masonry_featured_x = models.BooleanField()
@@ -159,9 +167,12 @@ class ProjectPage(Page):
         FieldPanel('project_url'),
         ImageChooserPanel('background_image'),
         InlinePanel('metrics', heading="Metrics"),
-        FieldPanel('challenge'),
+        StreamFieldPanel('challenge'),
         StreamFieldPanel('process'),
-        FieldPanel('quote'),
+        MultiFieldPanel([
+            FieldPanel('quote'),
+            FieldPanel('quote_author'),
+        ], heading=_("quote section")),
         MultiFieldPanel([
             FieldPanel('masonry_featured_x'),
             FieldPanel('masonry_featured_y'),
@@ -186,8 +197,8 @@ class ProjectPage(Page):
 class TeamIndexPage(Page):
     who_we_are = RichTextField()
     our_values = StreamField([
-        ('description', blocks.RichTextBlock()),
-        ('tiles_list', blocks.ListBlock(Tile())),
+        ('description', EERichTextBlock()),
+        ('tiles_list', HorizontalList(Tile())),
     ])
 
     content_panels = Page.content_panels + [
@@ -195,7 +206,7 @@ class TeamIndexPage(Page):
         StreamFieldPanel('our_values'),
     ]
 
-    parent_page_types = ['main.HomePage']
+    parent_page_types = ['main.OldHomePage']
     subpage_types = ['TeamMember']
 
     @property

@@ -1,0 +1,39 @@
+{% load i18n %}
+{% load wagtailcore_tags %}
+{% load main_tags %}
+
+<section class="ee-section has-slider">
+    <div class="ee-section__title-container">
+        <h2 class="ee-section__title">{{ value.headline }}</h2>
+    </div>
+    <div class="ee-section__triptych is-slides-container">
+        {% for tile in value.tiles %}
+
+            <div
+                onclick="javascript:window.location.href='{% pageurl tile.page %}'; return false;"
+                class="ee-specialization-card is-slide ee-has-background-image"
+            >
+                {% image_with_srcset tile.background_image class='ee-background-image' %}
+
+                <div class="ee-specialization-card__content">
+                    <h2 class="ee-specialization-card__title">{{ tile.page.title }}</h2>
+                    <div class="ee-specialization-card__headline">
+                        {{ tile.content|richtext }}
+                    </div>
+                    <div class="ee-specialization-card__buttons">
+                        <a href="{% pageurl tile.page %}" class="button is-light is-radiusless ee-button">
+                            {% trans 'Find out more' %}
+                        </a>
+                        {% if tile.external_url %}
+                            <a href="{{ tile.external_url }}" class="button is-light is-outlined is-radiusless ee-button">
+                                {% trans 'Sprawdź' %}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+    <div class="ee-section__slides-controls"></div>
+</section>

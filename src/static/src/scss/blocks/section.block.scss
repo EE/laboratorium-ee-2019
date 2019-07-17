@@ -1,6 +1,7 @@
 .ee-section {
     display: flex;
     flex-wrap: wrap;
+    position: relative;
 
     background-size: cover;
 }
@@ -18,6 +19,7 @@
     letter-spacing: 4px;
     font-weight: 700;
     color: rgba(white, 0.7);
+    text-align: center;
 
     @include touch {
         padding: 0 0 4rem;
@@ -28,10 +30,10 @@
     flex-basis: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    @include transition();
 
     @include touch {
-        overflow-x: scroll;
         flex-basis: 100vw;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 100vw);
     }
 }

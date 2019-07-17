@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load svg %}
+{% load i18n %}
+{% load main_tags %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load webpack_static from webpack_loader %}
+
+{% block facebook_pixel_events %}
+    {{ block.super }}
+    fbq('track', 'ViewContent');
+{% endblock %}
+
+{% block content %}
+
+    {# blok Your private R&D #}
+    {{ page.rnd_block }}
+
+    {# block Specializations #}
+    {{ page.specializations_block }}
+
+    {# block "our stories" #}
+    {{ page.our_stories_block }}
+
+    {# block Topics #}
+    {% if page.topics %}
+        {{ page.topics_block }}
+    {% endif %}
+
+    {# block Join the Team #}
+    {{ page.join_us_block }}
+
+    {# block Initiatives #}
+    {% if page.our_initiatives %}
+        {{ page.our_initiatives_block }}
+    {% endif %}
+
+    {# block Cooperation #}
+    {{ page.cooperation_block }}
+
+    {# block Team #}
+    {% with page.member_block as member_block %}
+        {% if member_block %}
+            {{ member_block }}
+        {% endif %}
+    {% endwith %}
+
+    {% comment %}
+    {# block News #}
+    <section class="ee-section">
+        <div class="ee-section-title">
+            {% trans 'Aktualności' %}
+        </div>
+        <div class="ee-section-tiles">
+            {% for article in page.articles %}
+                {% include 'main/partials/article_card.html' with article=article %}
+            {% empty %}
+                <p>{% trans 'No more articles' %}</p>
+            {% endfor %}
+        </div>
+        {% if page.articles %}
+            <div class="ee-spacer--large"></div>
+            <div class="container">
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <a href="#" class="button is-light is-outlined is-radiusless ee-button">
+                            {% trans 'Wyświetl wszystkie' %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+    {% endcomment %}
+
+{% endblock content %}
