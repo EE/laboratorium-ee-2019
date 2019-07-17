@@ -10,7 +10,7 @@
         const viewportHeight = window.innerHeight;
 
         if (scrollY > (viewportHeight / 2 * -1) && scrollY < viewportHeight) {
-            const y = scrollY / 7 - 20;
+            const y = scrollY / 11;
 
             // support CSS background
             el.style.backgroundPositionY = `${y}px`;
