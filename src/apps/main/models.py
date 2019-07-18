@@ -89,7 +89,10 @@ class SubPageMetric(Orderable, models.Model):
         related_name='+'
     )
     value = models.CharField(max_length=31)
-    property_name = models.CharField(max_length=63)
+    property_name = models.CharField(
+        max_length=63,
+        blank=True,
+    )
 
     panels = [
         ImageChooserPanel('icon'),
