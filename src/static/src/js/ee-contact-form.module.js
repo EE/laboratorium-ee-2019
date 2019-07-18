@@ -57,6 +57,7 @@
             hide("organization_name");
             hide("recruitment_position");
             hide("attachment");
+            hide("recruitment_terms_accepted");
 
             const subject = formField("subject").value;
             if (subject === "") return;  // no subject chosen yet
@@ -67,6 +68,7 @@
                 recruitment: () => {
                     show("recruitment_position");
                     show("attachment");
+                    show("recruitment_terms_accepted");
                 },
                 other: noop,
             })[subject]();

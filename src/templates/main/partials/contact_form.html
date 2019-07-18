@@ -37,12 +37,8 @@
             <input id="id_attachment" name="attachment" type="file">
             <label for="id_attachment">{% trans 'załącz cv' %}</label>
         </div>
-        <div class="ee-form-control">
-            <input type="checkbox" id="id_terms_accepted" name="terms_accepted" class="checkbox">
-            <label for="id_terms_accepted" class="required">
-                {{ form.terms_accepted.label }}
-            </label>
-        </div>
+        {% include 'main/partials/checkbox.html' with field=form.terms_accepted %}
+        {% include 'main/partials/checkbox.html' with field=form.recruitment_terms_accepted %}
         <div class="ee-form-control">
             {{ form.captcha }}
         </div>
