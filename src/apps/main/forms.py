@@ -81,6 +81,13 @@ class ContactForm(ConsentsMixin, forms.Form):
         required=False,
         label=_('załącz CV'),
     )
+    recruitment_terms_accepted = forms.BooleanField(
+        required=False,
+        label=_(
+            "Wyrażam zgodę na przetwarzanie danych osobowych przez Laboratorium EE sp. z o.o. sp. k. "
+            "przez okres 1 roku, dla potrzeb realizacji procesu rekrutacji i ewentualnych przyszłych rekrutacji."
+        ),
+    )
     captcha = ReCaptchaField(**recaptcha_kwargs)
 
     def __init__(self, request, *args, **kwargs):
@@ -95,7 +102,7 @@ class ContactForm(ConsentsMixin, forms.Form):
             return cleaned_data
         extra_required_fields = {
             'offer': ['organization_name'],
-            'recruitment': ['recruitment_position'],
+            'recruitment': ['recruitment_position', 'recruitment_terms_accepted'],
             'other': ['message'],
         }[subject]
 
