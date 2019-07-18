@@ -1,6 +1,7 @@
 import random
 
 from django.apps import apps
+from django.conf import settings
 from django.db import models
 from django.db.models import Max
 from django.utils.translation import gettext as _
@@ -88,7 +89,10 @@ class SubPageMetric(Orderable, models.Model):
         related_name='+'
     )
     value = models.CharField(max_length=31)
-    property_name = models.CharField(max_length=63)
+    property_name = models.CharField(
+        max_length=63,
+        blank=True,
+    )
 
     panels = [
         ImageChooserPanel('icon'),
@@ -436,12 +440,14 @@ class ContactForm(models.Model):
         on_delete=models.SET_NULL,
         related_name='contact_form',
     )
-    condition_body = RichTextField()
+    terms_accepted_label = RichTextField(features=settings.RICHTEXT_INLINE_FEATURES)
+    recruitment_terms_accepted_label = RichTextField(features=settings.RICHTEXT_INLINE_FEATURES)
     after_send_text = RichTextField()
 
     panels = [
         FieldPanel('site'),
-        FieldPanel('condition_body'),
+        FieldPanel('terms_accepted_label'),
+        FieldPanel('recruitment_terms_accepted_label'),
         FieldPanel('after_send_text'),
     ]
 

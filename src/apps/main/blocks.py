@@ -60,8 +60,13 @@ class ContactUsButtonBlock(blocks.StaticBlock):
 
 
 class RNDBlock(blocks.StructBlock):
+    background_image = ImageChooserBlock()
     headline = blocks.CharBlock()
     body = blocks.CharBlock()
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('value', blocks.CharBlock()),
+        ('description', blocks.CharBlock()),
+    ]))
 
     class Meta:
         template = 'main/blocks/rnd.html'
