@@ -1,37 +1,37 @@
 @import "../utilities/index.mixins";
 
 .ee-button {
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  padding: 0.25rem 2rem;
-  @include transition();
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    padding: 0.25rem 2rem;
+    @include transition();
 
-  &:hover {
-    @include shadow();
-    transform: translateY(-2px);
-  }
+    &:hover {
+        @include shadow();
+        transform: translateY(-2px);
+    }
 }
 
 .ee-share-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  background-color: white;
-  border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: white;
+    border-radius: 2rem;
 
-  & svg {
-    width: 1rem;
-    @include transition();
-  }
-
-  &:hover {
-    svg {
-      width: 1.5rem;
+    & svg {
+        width: 1rem;
+        @include transition();
     }
-  }
+
+    &:hover {
+        svg {
+            width: 1.5rem;
+        }
+    }
 }
