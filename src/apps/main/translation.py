@@ -66,7 +66,8 @@ class InfoPageTranslationOptions(TranslationOptions):
 @register(models.ContactForm)
 class ContactFormTranslationOptions(TranslationOptions):
     fields = (
-        'condition_body',
+        'terms_accepted_label',
+        'recruitment_terms_accepted_label',
         'after_send_text',
     )
 
