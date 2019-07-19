@@ -61,12 +61,13 @@ def share_buttons(context):
     }
 
 
-@register.simple_tag
-def bare_blocks(blocks):
-    return mark_safe(''.join([
-        block.render()
+@register.simple_tag(takes_context=True)
+def bare_blocks(context, blocks):
+    new_context = context.flatten().items()  # for some reason wagtail is expecting list of k-v pairs
+    return mark_safe(''.join(
+        block.render(new_context)
         for block in blocks
-    ]))
+    ))
 
 
 @register.inclusion_tag('main/partials/image_with_srcset.html')
