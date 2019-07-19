@@ -68,7 +68,6 @@ class ContactForm(forms.Form):
         self.request = request
         try:
             contact_form = ContactFormModel.objects.get(site=request.site)
-            print(contact_form.terms_accepted_label)
             self.fields['terms_accepted'].label = contact_form.terms_accepted_label
             self.fields['recruitment_terms_accepted'].label = contact_form.recruitment_terms_accepted_label
         except ContactFormModel.DoesNotExist:
