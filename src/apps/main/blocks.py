@@ -164,6 +164,18 @@ class AnimatedProcessBlock(blocks.StaticBlock):
         template = 'main/blocks/animated_process.html'
 
 
+class LevelBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('icon', ImageChooserBlock(required=False)),
+        ('value', blocks.CharBlock()),
+        ('property_name', blocks.CharBlock(required=False)),
+    ]))
+
+    class Meta:
+        template = 'main/blocks/level.html'
+
+
 class LogoWallBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     logos = blocks.ListBlock(ImageChooserBlock())
