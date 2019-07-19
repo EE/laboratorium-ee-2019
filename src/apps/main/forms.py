@@ -4,34 +4,8 @@ from django import forms
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.utils.translation import gettext as _
-from django.utils.safestring import mark_safe
-from django.utils.html import escape
 
-from .models import InfoPage
-
-
-class ConsentsMixin:
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        # generate consent checkbox based on info pages
-        consents = InfoPage.objects.live().filter(consent_required=True)
-        if consents:
-            consents_html = ', '.join([
-                '<a href="{doc_url}" target=\"_blank\">{doc_title}</a>'.format(
-                    doc_url=consent.url,
-                    doc_title=escape(consent.title),
-                )
-                for consent in consents
-            ])
-            self.fields['terms_accepted'] = forms.BooleanField(
-                required=True,
-                label=mark_safe(
-                    _(
-                        "Zapoznałem się z dokumentami {} i akceptuję ich postanowienia."
-                    ).format(consents_html),
-                ),
-            )
+from .models import ContactForm as ContactFormModel
 
 
 recaptcha_kwargs = dict(
@@ -45,7 +19,7 @@ recaptcha_kwargs = dict(
 )
 
 
-class ContactForm(ConsentsMixin, forms.Form):
+class ContactForm(forms.Form):
     reply_to = forms.CharField(
         required=True,
         label='',
@@ -81,11 +55,24 @@ class ContactForm(ConsentsMixin, forms.Form):
         required=False,
         label=_('załącz CV'),
     )
+    terms_accepted = forms.BooleanField(
+        required=True,
+    )
+    recruitment_terms_accepted = forms.BooleanField(
+        required=False,
+    )
     captcha = ReCaptchaField(**recaptcha_kwargs)
 
     def __init__(self, request, *args, **kwargs):
-        self.request = request
         super().__init__(*args, **kwargs)
+        self.request = request
+        try:
+            contact_form = ContactFormModel.objects.get(site=request.site)
+            print(contact_form.terms_accepted_label)
+            self.fields['terms_accepted'].label = contact_form.terms_accepted_label
+            self.fields['recruitment_terms_accepted'].label = contact_form.recruitment_terms_accepted_label
+        except ContactFormModel.DoesNotExist:
+            pass
 
     def clean(self):
         cleaned_data = super().clean()
@@ -95,7 +82,7 @@ class ContactForm(ConsentsMixin, forms.Form):
             return cleaned_data
         extra_required_fields = {
             'offer': ['organization_name'],
-            'recruitment': ['recruitment_position'],
+            'recruitment': ['recruitment_position', 'recruitment_terms_accepted'],
             'other': ['message'],
         }[subject]
 

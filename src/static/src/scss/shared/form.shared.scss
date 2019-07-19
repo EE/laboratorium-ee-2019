@@ -17,8 +17,16 @@
         }
 
         &.required::before {
-            content: '* ';
+            content: "* ";
             color: red;
+        }
+
+        // force inline display for richtext content
+        & .rich-text {
+            display: inline;
+            & p {
+                display: inline;
+            }
         }
     }
 
