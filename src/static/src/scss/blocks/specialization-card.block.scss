@@ -14,7 +14,7 @@ $rescale: 1 / $initScale;
     @include transition();
 
     @include touch {
-        padding: 2rem 2rem 4rem;
+        padding: 2rem 2rem 6rem;
         width: 100vw;
     }
 
