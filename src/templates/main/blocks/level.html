@@ -1,0 +1,26 @@
+{% load main_tags %}
+
+<section class="ee-section">
+    {% if value.title %}
+        <div class="ee-section__title-container">
+            <h2 class="ee-section__title">{{ value.title }}</h2>
+        </div>
+    {% endif %}
+    <div class="container">
+        <div class="ee-tiles">
+            {% for tile in value.tiles %}
+                <div class="ee-tile">
+                    <div class="ee-tile__image">
+                        {% image_with_srcset tile.icon %}
+                    </div>
+                    <h2 class="ee-title--bold">
+                        {{ tile.value }}
+                    </h2>
+                    <h3 class="ee-title--small">
+                        {{ tile.property_name }}
+                    </h3>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
