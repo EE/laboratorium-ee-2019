@@ -46,6 +46,17 @@ class EERichTextBlock(blocks.RichTextBlock):
 # ### top-level blocks (wrapped in <section> tag) ###
 
 
+class AnimatedProcessBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('icon', ImageChooserBlock()),
+        ('text', blocks.CharBlock()),
+    ]))
+
+    class Meta:
+        template = 'main/blocks/animated_process.html'
+
+
 class ContactFormBlock(blocks.StructBlock):
     body = blocks.RichTextBlock()
     form_heading = blocks.CharBlock(required=False)
@@ -159,9 +170,16 @@ class HeroProcessBlock(blocks.StructBlock):
         template = 'main/blocks/hero_process.html'
 
 
-class AnimatedProcessBlock(blocks.StaticBlock):
+class LevelBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('icon', ImageChooserBlock(required=False)),
+        ('value', blocks.CharBlock()),
+        ('property_name', blocks.CharBlock(required=False)),
+    ]))
+
     class Meta:
-        template = 'main/blocks/animated_process.html'
+        template = 'main/blocks/level.html'
 
 
 class LogoWallBlock(blocks.StructBlock):

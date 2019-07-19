@@ -82,7 +82,7 @@
     @include transition();
 
     &::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 8px;
         height: 8px;
@@ -93,7 +93,7 @@
     }
 
     &::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 0;
         height: 0;

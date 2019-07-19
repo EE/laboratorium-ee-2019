@@ -3,7 +3,7 @@
 
 .ee-hero-carousel {
     display: flex;
-    height: 60vh;
+    height: 80vh;
     position: relative;
 
     @include touch {
@@ -35,10 +35,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 0 0;
-    @include touch {
-        display: none !important;
-    }
+    padding: 6rem 0 0;
 }
 
 .ee-hero-carousel__controls {
@@ -59,7 +56,6 @@
     @include touch {
         justify-content: center;
     }
-;
 }
 
 .ee-hero-carousel__control-button {
@@ -103,7 +99,7 @@
 }
 
 .ee-hero-carousel__content-container {
-    padding: 5rem 0;
+    padding: 4rem 0 6rem;
 
     @include touch {
         padding-inline: 1rem;
@@ -293,7 +289,7 @@
     @include transition();
 
     &::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 8px;
         height: 8px;
@@ -304,7 +300,7 @@
     }
 
     &::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 0;
         height: 0;
