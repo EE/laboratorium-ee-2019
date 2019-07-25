@@ -25,7 +25,6 @@ class SpecializationIndexPage(Page):
     def specializations(self):
         return SpecializationPage.objects.live().descendant_of(self)
 
-    parent_page_types = ['main.OldHomePage']
     subpage_types = ['SpecializationPage']
 
 

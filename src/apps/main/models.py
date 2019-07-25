@@ -318,7 +318,6 @@ class NewsIndexPage(Page):
         queryset = self.news.order_by('-marked', '-publication_date')
         return queryset.first(), queryset[1:]
 
-    parent_page_types = ['OldHomePage']
     subpage_types = ['NewsPage']
 
 
@@ -393,7 +392,6 @@ class JobOfferIndexPage(Page):
         StreamFieldPanel('recruitment'),
     ]
 
-    parent_page_types = ['OldHomePage']
     subpage_types = ['JobOfferPage']
 
 
