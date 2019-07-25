@@ -192,6 +192,7 @@ FACEBOOK_PIXEL_ID = None
 
 # release string
 RELEASE_STRING = None
+RELEASE_COMMIT_HASH = None
 
 # settings-context-processor
 TEMPLATE_VISIBLE_SETTINGS = [
