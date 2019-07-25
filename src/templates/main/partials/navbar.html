@@ -14,8 +14,9 @@
                 <div class="column is-marginless is-paddingless">
                     <article class="message is-small" style="background: transparent;">
                         <div class="message-body is-invisible-touch">
-                            To jest wersja <span class="tag is-warning ee-tag">{{ RELEASE_STRING }}</span> strony.
-                            Ulepszamy ją iteracyjnie.
+                            To jest wersja <a href="https://github.com/EE/laboratorium-ee-2019/commit/{{ RELEASE_COMMIT_HASH|default:'' }}" class="tag is-warning ee-tag" target="_blank">
+                                {{ RELEASE_STRING }}
+                            </a> strony. Ulepszamy ją iteracyjnie.
                         </div>
                     </article>
                 </div>
