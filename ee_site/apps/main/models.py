@@ -19,9 +19,9 @@ from wagtail.core.models import Page, Orderable, Site
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from src.apps.main.blocks import Tile, HorizontalListWithArrows
-import src.apps.main.blocks as custom_blocks
-from src.apps.projects.models import SpecializationPage, TopicPage, TeamIndexPage
+from ee_site.apps.main.blocks import Tile, HorizontalListWithArrows
+import ee_site.apps.main.blocks as custom_blocks
+from ee_site.apps.projects.models import SpecializationPage, TopicPage, TeamIndexPage
 
 
 class HomePage(Page):

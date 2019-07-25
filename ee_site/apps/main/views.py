@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.views.generic import FormView, TemplateView
 
-from src.apps.main.forms import ContactForm
+from ee_site.apps.main.forms import ContactForm
 
 
 class SendMailView(FormView):

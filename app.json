@@ -22,7 +22,7 @@
     "DJANGO_SECRET_KEY": {
       "generator": "secret"
     },
-    "DJANGO_SETTINGS_MODULE": "src.settings.heroku"
+    "DJANGO_SETTINGS_MODULE": "ee_site.settings.heroku"
   },
   "formation": {
     "web": {

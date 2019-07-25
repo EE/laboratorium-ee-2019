@@ -6,8 +6,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
 
-from src.apps.main.models import Footer
-from src.apps.main.forms import ContactForm
+from ee_site.apps.main.models import Footer
+from ee_site.apps.main.forms import ContactForm
 
 
 logger = logging.getLogger(__name__)
