@@ -7,7 +7,7 @@ import sys
 BASE_DIR = os.path.dirname(__file__)
 ESLINT_PATH = os.path.join(BASE_DIR, 'node_modules', '.bin', 'eslint')
 ESLINT_CONFIG_PATH = os.path.join(BASE_DIR, '.eslintrc.yml')
-STATIC_SOURCE_DIR_JS = os.path.join(BASE_DIR, 'src', 'static', 'src', 'js')
+STATIC_SOURCE_DIR_JS = os.path.join(BASE_DIR, 'ee_site', 'static', 'src', 'js')
 
 SASS_LINT_PATH = os.path.join(BASE_DIR, 'node_modules', '.bin', 'sass-lint')
 SASS_LINT_CONFIG_PATH = os.path.join(BASE_DIR, '.sass-lint.yml')

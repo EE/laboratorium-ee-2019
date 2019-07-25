@@ -13,8 +13,8 @@ import UglifyJsPlugin from "uglifyjs-webpack-plugin";
 
 const devMode = process.env.NODE_ENV !== "production";  // eslint-disable-line no-undef
 const hotReload = process.env.HOT_RELOAD === "1";  // eslint-disable-line no-undef
-const inputDir = "./src/static/src";
-const outputDir = "./src/static/dist/bundles";
+const inputDir = "./ee_site/static/src";
+const outputDir = "./ee_site/static/dist/bundles";
 
 /* RULES */
 

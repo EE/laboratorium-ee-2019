@@ -7,7 +7,7 @@ if __name__ == "__main__":
     # at least Python 3.5.
     assert sys.version_info >= (3, 5, 0)
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "src.settings.local")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ee_site.settings.local")
 
     try:
         from django.core.management import execute_from_command_line
