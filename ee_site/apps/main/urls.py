@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from src.apps.main import views
+from ee_site.apps.main import views
 
 urlpatterns = [
     url(

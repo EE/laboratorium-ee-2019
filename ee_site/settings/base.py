@@ -17,7 +17,7 @@ import os
 
 
 BASE_DIR = str(environ.Path(__file__) - 3)
-SRC_DIR = os.path.join(BASE_DIR, 'src')
+SRC_DIR = os.path.join(BASE_DIR, 'ee_site')
 env = environ.Env()
 env.read_env()
 
@@ -65,8 +65,8 @@ INSTALLED_APPS = [
 
     'bulma',  # for automatic form rendering
 
-    'src.apps.main',
-    'src.apps.projects',
+    'ee_site.apps.main',
+    'ee_site.apps.projects',
     'svg'
 ]
 
@@ -84,7 +84,7 @@ MIDDLEWARE = [
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
-ROOT_URLCONF = 'src.urls'
+ROOT_URLCONF = 'ee_site.urls'
 
 TEMPLATES = [
     {
@@ -104,7 +104,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'src.wsgi.application'
+WSGI_APPLICATION = 'ee_site.wsgi.application'
 
 
 # Database

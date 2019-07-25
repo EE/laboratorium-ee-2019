@@ -13,7 +13,7 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPane
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
-from src.apps.main.blocks import (
+from ee_site.apps.main.blocks import (
     Tile, TileWithDescription, TileSimple,
     HorizontalList, HorizontalListWithArrows,
     EERichTextBlock,

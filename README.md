@@ -23,7 +23,7 @@
 
 3. Create and fill out the local settings file:
 
-       cp src/settings/env.local.example src/settings/.env
+       cp ee_site/settings/env.local.example ee_site/settings/.env
     (alternatively you can set those settings as environment variables)
 
 4. Configure your local database by filling out `DATABASE_URL` setting in `.env` file.
