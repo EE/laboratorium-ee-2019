@@ -144,7 +144,7 @@ class HeroStaticLeftBlock(blocks.StructBlock):
     headline = blocks.CharBlock()
     body = blocks.TextBlock()
     page = blocks.PageChooserBlock(required=False)
-    page_secodary = blocks.PageChooserBlock(required=False)
+    page_secondary = blocks.PageChooserBlock(required=False)
     external_url = blocks.URLBlock(required=False)
 
     class Meta:
