@@ -207,7 +207,9 @@ class MasonryBlock(blocks.StructBlock):
 
 class ParagraphBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
-    body = blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)
+    body = blocks.RichTextBlock(
+        features=settings.RICHTEXT_INLINE_FEATURES + settings.RICHTEXT_BLOCK_FEATURES,
+    )
 
     class Meta:
         template = 'main/blocks/paragraph.html'
