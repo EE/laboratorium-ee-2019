@@ -4,7 +4,7 @@
 <form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}" class="ee-contact-form-container">
     {% csrf_token %}
     <div class="ee-contact-form-header">
-        Required <span class="is-danger">*</span>
+        {% trans 'Required' %} <span class="is-danger">*</span>
     </div>
     <div class="ee-contact-form">
         <div class="ee-form-control">
