@@ -533,6 +533,12 @@
 }
 
 .ee-rodo-block__buttons-container {
+    & > * {
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+
     @include touch {
         width: 100%;
         & > * {
