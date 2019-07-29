@@ -244,3 +244,14 @@ class TileGridSpacedBlock(blocks.StructBlock):
 
     class Meta:
         template = 'main/blocks/tile_grid_spaced.html'
+
+
+class TileGridWithIconsBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('icon', ImageChooserBlock(required=False)),
+        ('page', blocks.PageChooserBlock()),
+    ]))
+
+    class Meta:
+        template = 'main/blocks/tile_grid_with_icons.html'
