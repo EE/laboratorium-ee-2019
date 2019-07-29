@@ -228,3 +228,8 @@ def register_extra_features(features):
 
 
 RICHTEXT_INLINE_FEATURES = ['bold', 'italic', 'link', 'document-link']
+RICHTEXT_BLOCK_FEATURES = [
+    'ol', 'ul',
+    'image', 'embed',
+    'blockquote', 'code',
+]
