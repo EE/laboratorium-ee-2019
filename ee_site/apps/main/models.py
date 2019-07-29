@@ -67,6 +67,7 @@ class SubPage(Page):
         ('quote', custom_blocks.QuoteBlock()),
         ('tile_grid', custom_blocks.TileGridBlock()),
         ('tile_grid_spaced', custom_blocks.TileGridSpacedBlock()),
+        ('tile_grid_with_icons', custom_blocks.TileGridWithIconsBlock()),
     ], blank=True)
 
     content_panels = Page.content_panels + [
