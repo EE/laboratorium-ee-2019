@@ -170,6 +170,11 @@ class HeroProcessBlock(blocks.StructBlock):
         template = 'main/blocks/hero_process.html'
 
 
+class ImageBigBlock(ImageChooserBlock):
+    class Meta:
+        template = 'main/blocks/image_big.html'
+
+
 class LevelBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
     tiles = blocks.ListBlock(blocks.StructBlock([

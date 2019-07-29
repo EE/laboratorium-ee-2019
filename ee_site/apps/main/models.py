@@ -61,6 +61,7 @@ class SubPage(Page):
         ('contact_us_button', custom_blocks.ContactUsButtonBlock()),
         ('hero_process', custom_blocks.HeroProcessBlock()),
         ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
+        ('image_big', custom_blocks.ImageBigBlock()),
         ('level', custom_blocks.LevelBlock()),
         ('masonry', custom_blocks.MasonryBlock()),
         ('paragraph', custom_blocks.ParagraphBlock()),
