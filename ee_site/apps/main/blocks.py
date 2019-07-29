@@ -40,7 +40,7 @@ class HorizontalListWithArrows(blocks.ListBlock):
 
 class EERichTextBlock(blocks.RichTextBlock):
     class Meta:
-        template = 'main/blocks/rich_text.html'
+        template = 'main/blocks/ee_rich_text.html'
 
 
 # ### top-level blocks (wrapped in <section> tag) ###
@@ -218,6 +218,11 @@ class ParagraphBlock(blocks.StructBlock):
 
     class Meta:
         template = 'main/blocks/paragraph.html'
+
+
+class RichTextBlock(blocks.RichTextBlock):
+    class Meta:
+        template = 'main/blocks/rich_text.html'
 
 
 class QuoteBlock(blocks.StructBlock):

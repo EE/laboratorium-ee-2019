@@ -65,6 +65,7 @@ class SubPage(Page):
         ('level', custom_blocks.LevelBlock()),
         ('masonry', custom_blocks.MasonryBlock()),
         ('paragraph', custom_blocks.ParagraphBlock()),
+        ('rich_text', custom_blocks.RichTextBlock()),
         ('quote', custom_blocks.QuoteBlock()),
         ('tile_grid', custom_blocks.TileGridBlock()),
         ('tile_grid_spaced', custom_blocks.TileGridSpacedBlock()),
