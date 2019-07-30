@@ -4,10 +4,14 @@ import subprocess
 from django.core import management
 from django.db import DEFAULT_DB_ALIAS, connections
 from django.test import TestCase
+from wagtail.core.models import Page
 
 
 class DumpPagesTestCase(TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+
         connection = connections[DEFAULT_DB_ALIAS]
         conn_params = connection.get_connection_params()
 
@@ -59,3 +63,9 @@ class DumpPagesTestCase(TestCase):
     def test_suite_should_run(self):
         # This test verifies that dump.sql was loaded
         pass
+
+    def test_page_wont_crash(self):
+        #                               skip root page
+        for page in Page.objects.live().exclude(id=1):
+            response = self.client.get(page.url)
+            self.assertEqual(response.status_code, 200)
