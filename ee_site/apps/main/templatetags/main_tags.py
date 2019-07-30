@@ -100,3 +100,16 @@ def image_with_srcset(image, **kwargs):
         'class': kwargs.get('class'),
         'renditions': renditions,
     }
+
+
+@register.inclusion_tag('main/partials/dynamic_fill_image.html')
+def dynamic_fill_image(image, **kwargs):
+    """ Render <img> tag with src attr dynamicaly computed on client side to perfectly fill given space. """
+    if not image:
+        logger.warn('dynamic_fill_image got falsey image')
+        return {}
+
+    return {
+        'image': image,
+        'class': kwargs.get('class'),
+    }

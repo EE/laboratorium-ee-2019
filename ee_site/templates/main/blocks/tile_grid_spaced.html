@@ -10,7 +10,7 @@
                     {% for tile in value.tiles %}
                         <div class="ee-tile ee-article-card">
                             <div class="ee-article-card__image ee-has-background-image">
-                                {% image_with_srcset tile.image class='ee-background-image' %}
+                                {% dynamic_fill_image tile.image class='ee-background-image' %}
                                 <div class="ee-title">
                                     {{ tile.title }}
                                 </div>

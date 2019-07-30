@@ -4,7 +4,7 @@
 
 <section class="section ee-topics-block ee-has-background-image">
     {% for tile in value.tiles %}
-        {% image_with_srcset tile.background_image class='ee-background-image is-invisible' %}
+        {% dynamic_fill_image tile.background_image class='ee-background-image is-invisible' %}
     {% endfor %}
     <div class="container">
         <div class="columns">

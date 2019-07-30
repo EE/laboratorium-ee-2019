@@ -2,7 +2,7 @@
 {% load wagtailcore_tags %}
 
 <section class="section ee-specialization-page__case-study ee-has-parallax ee-has-background-image">
-    {% image_with_srcset value.background_image class="ee-background-image" %}
+    {% dynamic_fill_image value.background_image class="ee-background-image" %}
     <div class="container">
         {% if value.title %}
             <div class="columns">
