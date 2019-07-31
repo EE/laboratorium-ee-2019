@@ -34,7 +34,7 @@ class SendMailSuccessView(TemplateView):
 class DynamicRenditionView(View):
     model = get_image_model()
     size_min = 128  # minimum dimension
-    size_grow_ratio = 2  # subsequent possible sizes are in geometric progression and this is the common ratio
+    size_grow_ratio = 2 ** 0.5  # subsequent possible sizes are in geometric progression and this is the common ratio
 
     def get_rendition_size(self, requested_size, image_size):
         size = self.size_min
