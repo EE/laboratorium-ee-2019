@@ -40,28 +40,7 @@
     {% if request.site.contact_form %}
         {% block contact_form %}
             <aside class="ee-sticky-contact-form">
-                <div class="ee-sticky-contact-form__trigger" data-toggle="contactForm" style="background: url('{% webpack_static 'images/mail-icon.svg' %}') no-repeat;"></div>
-                <div class="ee-sticky-contact-form__container">
-                    <div class="ee-sticky-contact-form__close-button">
-                        {% svg 'ico-x' %}
-                    </div>
-                    <div class="ee-sticky-contact-form__headline-items">
-                        <div class="ee-sticky-contact-form__headline-item">
-                            <div class="ee-sticky-contact-form__headline-item__icon">
-                                {% svg 'contact-form-icon-2' %}
-                            </div>
-                            <div class="ee-sticky-contact-form__headline-item__title">Potrzebujesz wsparcia w realizacji projektu?</div>
-                        </div>
-                        <div class="ee-sticky-contact-form__headline-item">
-                            <div class="ee-sticky-contact-form__headline-item__icon">
-                                {% svg 'contact-form-icon-1' %}
-                            </div>
-                            <div class="ee-sticky-contact-form__headline-item__title">Chcesz z nami zmieniać świat przez technologię?</div>
-                        </div>
-                    </div>
-
-                    {% contact_form %}
-                </div>
+                <a href="/contact-form" class="ee-sticky-contact-form__trigger" style="background: url('{% webpack_static 'images/mail-icon.svg' %}') no-repeat;"></a>
             </aside>
         {% endblock contact_form %}
     {% endif %}

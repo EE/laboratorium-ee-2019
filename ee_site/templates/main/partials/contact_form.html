@@ -1,50 +1,64 @@
 {% load bulma_tags %}
 {% load i18n %}
 
-<form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}" class="ee-contact-form-container">
+<form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}" id="form-anchor">
     {% csrf_token %}
-    <div class="ee-contact-form-header">
-        {% trans 'Required' %} <span class="is-danger">*</span>
-    </div>
-    <div class="ee-contact-form">
-        <div class="ee-form-control">
-            <input id="id_reply_to" name="reply_to" type="text" class="input">
-            <label for="id_reply_to" class="required">{% trans 'email or phone number' %}</label>
-        </div>
-        <div class="ee-form-control">
-            <div class="select">
-                <select name="subject" id="id_subject">
-                    <option value="">{% trans 'wybierz temat' %}</option>
-                    <option value="offer">{% trans 'Offer' %}</option>
-                    <option value="recruitment">{% trans 'Recruitment' %}</option>
-                    <option value="other">{% trans 'Other' %}</option>
-                </select>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <span class="ee-form-field-required ee-form-field-required--small">{% trans 'Wymagane *' %}</span>
+                </div>
             </div>
         </div>
-        <div class="ee-form-control">
-            <input id="id_recruitment_position" name="recruitment_position" type="text" class="input">
-            <label for="id_recruitment_position">{% trans 'podaj stanowisko' %}</label>
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="ee-contact-form__fields-container">
+                        <div class="ee-contact-form__fields">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+                                <input class="mdl-textfield__input" type="text" id="id_reply_to" name="reply_to">
+                                <label class="mdl-textfield__label" for="id_reply_to">{% trans 'adres email' %} <span class="ee-form-field-required">*</span></label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+                                <input class="mdl-textfield__input" type="text" id="id_organization_name" name="organization_name">
+                                <label class="mdl-textfield__label" for="id_organization_name">{% trans 'nazwa firmy / organizacji' %} <span class="ee-form-field-required">*</span></label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+                                <input class="mdl-textfield__input" type="text" id="id_recruitment_position" name="recruitment_position">
+                                <label class="mdl-textfield__label" for="id_recruitment_position">{% trans 'podaj stanowisko' %} <span class="ee-form-field-required">*</span></label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+                                <textarea class="mdl-textfield__input" type="text" rows="1" id="id_message" name="message"></textarea>
+                                <label class="mdl-textfield__label" id="id_message_standard" for="id_message">{% trans 'jak możemy pomoc?' %} <span class="ee-form-field-required">*</span></label>
+                                <label class="mdl-textfield__label" id="id_message_job_offer" for="id_message">{% trans 'napisz nam o sobie' %} <span class="ee-form-field-required">*</span></label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file ee-contact-form__textfield ee-formfield">
+                                <input class="mdl-textfield__input" placeholder="{% trans 'załącz plik' %}" type="text" id="id_attachment" name="attachment" readonly/>
+                                <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                                    <i class="material-icons">attach_file</i><input type="file" id="contact_update_file_button">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ee-contact-form__rules">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect ee-formfield" for="id_terms_accepted">
+                                <input type="checkbox" id="id_terms_accepted" name="terms_accepted" class="mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">Przeczytałam/przeczytałem i akceptuję Zasady ochrony danych osobowych <span class="ee-form-field-required">*</span></span>
+                            </label>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect ee-formfield" for="id_recruitment_terms_accepted">
+                                <input type="checkbox" id="id_recruitment_terms_accepted" name="recruitment_terms_accepted" class="mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">Przeczytałam/przeczytałem i akceptuję zasady rekrutacji <span class="ee-form-field-required">*</span></span>
+                            </label>
+                            <div class="ee-contact-form__captcha">
+                                {{ form.captcha }}
+                            </div>
+                        </div>
+                        <div class="ee-contact-form__submit-button">
+                            <button type="submit" class="button is-radiusless ee-button ee-contact-button">{% trans 'Send' %}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="ee-form-control">
-            <input id="id_organization_name" name="organization_name" type="text" class="input">
-            <label for="id_organization_name">{% trans 'nazwa firmy/organizacji' %}</label>
-        </div>
-        <div class="ee-form-control">
-            <textarea name="message" id="id_message" class="textarea" rows="1"></textarea>
-            <label for="id_message" class="required">{% trans 'how can we help you?' %}</label>
-        </div>
-        <div class="ee-form-control">
-            <input id="id_attachment" name="attachment" type="file">
-            <label for="id_attachment">{% trans 'załącz cv' %}</label>
-        </div>
-        {% include 'main/partials/checkbox.html' with field=form.terms_accepted %}
-        {% include 'main/partials/checkbox.html' with field=form.recruitment_terms_accepted %}
-        <div class="ee-form-control">
-            {{ form.captcha }}
-        </div>
-    </div>
-    <button type="submit" class="button is-outlined is-light is-uppercase is-radiusless ee-button ee-contact-form-button"
-            style="margin-top: 2rem">
-        {% trans 'Send' %}
-    </button>
+    </section>
 </form>
