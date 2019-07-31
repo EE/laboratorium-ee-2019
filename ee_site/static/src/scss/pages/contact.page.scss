@@ -79,17 +79,17 @@
 
 .ee-contact-form--single .ee-contact-form__fields-container {
     grid-template-columns: 1fr;
-    grid-template-areas: 'FIELDS' 'RULES' 'SUBMIT';
+    grid-template-areas: "FIELDS" "RULES" "SUBMIT";
 }
 
 .ee-contact-form--double .ee-contact-form__fields-container {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'FIELDS RULES' '. SUBMIT';
+    grid-template-areas: "FIELDS RULES" ". SUBMIT";
     grid-column-gap: 8rem;
 
     @include touch {
         grid-template-columns: 1fr;
-        grid-template-areas: 'FIELDS' 'RULES' 'SUBMIT';
+        grid-template-areas: "FIELDS" "RULES" "SUBMIT";
         grid-column-gap: 0;
     }
 }
