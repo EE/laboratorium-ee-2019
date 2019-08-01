@@ -1,6 +1,8 @@
 import "../scss/main.scss";
 
 import "./sentry";
+
+import "./dynamic_fill_image";
 import "./ee-contact-form.module";
 import "./ee-custom-carousel.module";
 import "./ee-navbar.module";

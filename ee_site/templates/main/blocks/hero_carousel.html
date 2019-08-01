@@ -17,7 +17,7 @@
     <div class="ee-hero-carousel__container">
         {% for tile in value.tiles %}
             <div class="ee-hero-carousel__content ee-has-parallax ee-has-background-image">
-                {% image_with_srcset tile.background_image class='ee-background-image' %}
+                {% dynamic_fill_image tile.background_image class='ee-background-image' %}
                 <div class="container ee-hero-carousel__content-container">
                     {% if tile.secondary_page %}
                         <a class="ee-hero-carousel__content-tags" href="{% pageurl tile.secondary_page %}">

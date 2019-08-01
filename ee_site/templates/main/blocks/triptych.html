@@ -13,7 +13,7 @@
                 onclick="javascript:window.location.href='{% pageurl tile.page %}'; return false;"
                 class="ee-specialization-card is-slide ee-has-background-image"
             >
-                {% image_with_srcset tile.background_image class='ee-background-image' %}
+                {% dynamic_fill_image tile.background_image class='ee-background-image' %}
 
                 <div class="ee-specialization-card__content">
                     <h2 class="ee-specialization-card__title">{{ tile.page.title }}</h2>
