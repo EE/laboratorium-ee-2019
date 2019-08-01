@@ -130,3 +130,13 @@
         color: red;
     }
 }
+
+.ee-formfield {
+    // inline display for richtext content
+    & .rich-text {
+        display: inline;
+        & p {
+            display: inline;
+        }
+    }
+}

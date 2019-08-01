@@ -7,7 +7,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column">
-                    <span class="ee-form-field-required ee-form-field-required--small">{% trans 'Wymagane *' %}</span>
+                    <span class="ee-form-field-required ee-form-field-required--small">{% trans 'Required' %} *</span>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
                                 <textarea class="mdl-textfield__input" type="text" rows="1" id="id_message" name="message"></textarea>
-                                <label class="mdl-textfield__label" id="id_message_standard" for="id_message">{% trans 'jak możemy pomoc?' %} <span class="ee-form-field-required">*</span></label>
+                                <label class="mdl-textfield__label" id="id_message_standard" for="id_message">{% trans 'jak możemy pomóc?' %} <span class="ee-form-field-required">*</span></label>
                                 <label class="mdl-textfield__label" id="id_message_job_offer" for="id_message">{% trans 'napisz nam o sobie' %} <span class="ee-form-field-required">*</span></label>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--file ee-contact-form__textfield ee-formfield">
@@ -41,14 +41,8 @@
                             </div>
                         </div>
                         <div class="ee-contact-form__rules">
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect ee-formfield" for="id_terms_accepted">
-                                <input type="checkbox" id="id_terms_accepted" name="terms_accepted" class="mdl-checkbox__input">
-                                <span class="mdl-checkbox__label">Przeczytałam/przeczytałem i akceptuję Zasady ochrony danych osobowych <span class="ee-form-field-required">*</span></span>
-                            </label>
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect ee-formfield" for="id_recruitment_terms_accepted">
-                                <input type="checkbox" id="id_recruitment_terms_accepted" name="recruitment_terms_accepted" class="mdl-checkbox__input">
-                                <span class="mdl-checkbox__label">Przeczytałam/przeczytałem i akceptuję zasady rekrutacji <span class="ee-form-field-required">*</span></span>
-                            </label>
+                            {% include 'main/partials/checkbox.html' with field=form.terms_accepted %}
+                            {% include 'main/partials/checkbox.html' with field=form.recruitment_terms_accepted %}
                             <div class="ee-contact-form__captcha">
                                 {{ form.captcha }}
                             </div>
