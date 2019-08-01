@@ -36,7 +36,7 @@
                     <h2 class="ee-headline--large">{% trans 'Jak pracujemy' %}</h2>
                 </div>
                 <div class="column is-4 has-text-right">
-                    <a class="button is-light is-radiusless ee-button" data-toggle="contactForm">{% trans 'Wypróbuj nas' %}</a>
+                    <a href="{% url 'send_mail' %}" class="button is-light is-radiusless ee-button ee-contact-button">{% trans 'Wypróbuj nas' %}</a>
                 </div>
             </div>
             {{ page.how_we_work }}
@@ -63,7 +63,7 @@
             {{ page.tools }}
             <div class="columns">
                 <div class="column has-text-centered">
-                    <a class="button is-light is-radiusless ee-button" data-toggle="contactForm">{% trans 'Wypróbuj nas' %}</a>
+                    <a href="{% url 'send_mail' %}" class="button is-light is-radiusless ee-button ee-contact-button">{% trans 'Wypróbuj nas' %}</a>
                 </div>
             </div>
         </div>

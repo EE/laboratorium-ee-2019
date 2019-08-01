@@ -3,13 +3,6 @@
 
     if(getFormSticky()) {
 
-        // buttons for opening the sidebar
-        [ ...document.querySelectorAll("[data-toggle='contactForm']").values() ].forEach(el => {
-            el.addEventListener("click", () => {
-                getFormSticky().classList.toggle("active");
-            });
-        });
-
         const closeButton = document.querySelector(".ee-sticky-contact-form__close-button");
         if (closeButton) closeButton.addEventListener("click", () => {
             getFormSticky().classList.remove("active");
