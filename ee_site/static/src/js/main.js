@@ -1,6 +1,15 @@
 import "../scss/main.scss";
 
-import "material-design-lite/material";
+/**
+ * MDL
+ *
+ * few components, as we dont need it all
+ **/
+import "material-design-lite/src/mdlComponentHandler";
+import "material-design-lite/src/button/button";
+import "material-design-lite/src/checkbox/checkbox";
+import "material-design-lite/src/textfield/textfield";
+
 import "./sentry";
 
 import "./dynamic_fill_image";
