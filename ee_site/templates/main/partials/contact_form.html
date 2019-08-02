@@ -3,56 +3,45 @@
 
 <form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}" id="form-anchor">
     {% csrf_token %}
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <span class="ee-form-field-required ee-form-field-required--small">{% trans 'Required' %} *</span>
+
+    <span class="ee-form-field-required ee-form-field-required--small">{% trans 'Required' %} *</span>
+
+    <div class="ee-contact-form__fields-container">
+        <div class="ee-contact-form__fields">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+                <input class="mdl-textfield__input" type="text" id="id_reply_to" name="reply_to">
+                <label class="mdl-textfield__label" for="id_reply_to">{% trans 'adres email' %} <span class="ee-form-field-required">*</span></label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+                <input class="mdl-textfield__input" type="text" id="id_organization_name" name="organization_name">
+                <label class="mdl-textfield__label" for="id_organization_name">{% trans 'nazwa firmy / organizacji' %} <span class="ee-form-field-required">*</span></label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+                <input class="mdl-textfield__input" type="text" id="id_recruitment_position" name="recruitment_position">
+                <label class="mdl-textfield__label" for="id_recruitment_position">{% trans 'podaj stanowisko' %} <span class="ee-form-field-required">*</span></label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+                <textarea class="mdl-textfield__input" type="text" rows="1" id="id_message" name="message"></textarea>
+                <label class="mdl-textfield__label" id="id_message_standard" for="id_message">{% trans 'jak możemy pomóc?' %} <span class="ee-form-field-required">*</span></label>
+                <label class="mdl-textfield__label" id="id_message_job_offer" for="id_message">{% trans 'napisz nam o sobie' %} <span class="ee-form-field-required">*</span></label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file ee-contact-form__textfield ee-formfield">
+                <input class="mdl-textfield__input" placeholder="{% trans 'załącz plik' %}" type="text" id="id_attachment" name="attachment" readonly/>
+                <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                    <i class="material-icons">attach_file</i><input type="file" id="contact_update_file_button">
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <div class="ee-contact-form__fields-container">
-                        <div class="ee-contact-form__fields">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
-                                <input class="mdl-textfield__input" type="text" id="id_reply_to" name="reply_to">
-                                <label class="mdl-textfield__label" for="id_reply_to">{% trans 'adres email' %} <span class="ee-form-field-required">*</span></label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
-                                <input class="mdl-textfield__input" type="text" id="id_organization_name" name="organization_name">
-                                <label class="mdl-textfield__label" for="id_organization_name">{% trans 'nazwa firmy / organizacji' %} <span class="ee-form-field-required">*</span></label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
-                                <input class="mdl-textfield__input" type="text" id="id_recruitment_position" name="recruitment_position">
-                                <label class="mdl-textfield__label" for="id_recruitment_position">{% trans 'podaj stanowisko' %} <span class="ee-form-field-required">*</span></label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
-                                <textarea class="mdl-textfield__input" type="text" rows="1" id="id_message" name="message"></textarea>
-                                <label class="mdl-textfield__label" id="id_message_standard" for="id_message">{% trans 'jak możemy pomóc?' %} <span class="ee-form-field-required">*</span></label>
-                                <label class="mdl-textfield__label" id="id_message_job_offer" for="id_message">{% trans 'napisz nam o sobie' %} <span class="ee-form-field-required">*</span></label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file ee-contact-form__textfield ee-formfield">
-                                <input class="mdl-textfield__input" placeholder="{% trans 'załącz plik' %}" type="text" id="id_attachment" name="attachment" readonly/>
-                                <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                                    <i class="material-icons">attach_file</i><input type="file" id="contact_update_file_button">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ee-contact-form__rules">
-                            {% include 'main/partials/checkbox.html' with field=form.terms_accepted %}
-                            {% include 'main/partials/checkbox.html' with field=form.recruitment_terms_accepted %}
-                            <div class="ee-contact-form__captcha">
-                                {{ form.captcha }}
-                            </div>
-                        </div>
-                        <div class="ee-contact-form__submit-button">
-                            <button type="submit" class="button is-radiusless ee-button ee-contact-button">{% trans 'Send' %}</button>
-                        </div>
-                    </div>
-                </div>
+        <div class="ee-contact-form__rules">
+            {% include 'main/partials/checkbox.html' with field=form.terms_accepted %}
+            {% include 'main/partials/checkbox.html' with field=form.recruitment_terms_accepted %}
+            <div class="ee-contact-form__captcha">
+                {{ form.captcha }}
             </div>
         </div>
-    </section>
+        <div class="ee-contact-form__submit-button">
+            <button type="submit" class="button is-radiusless ee-button ee-contact-button">{% trans 'Send' %}</button>
+        </div>
+    </div>
+
 </form>

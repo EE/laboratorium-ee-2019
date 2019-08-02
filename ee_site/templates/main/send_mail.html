@@ -10,42 +10,40 @@
 
 {% block contact_form %}
     <section class="section is-small ee-contact-form__subject-container">
-        <div class="container">
-            <div class="columns">
-                <div class="column has-text-centered">
-                    <h1 class="title">{% trans 'Co możemy razem zrobić?' %}</h1>
-                    <div class="ee-contact-form-type__container">
-                        <a class="ee-contact-form-type ee-contact-form-type__implement-project" id="implement-project">
-                            <span class="ee-contact-form-type__icon">
-                                {% svg 'contact-form-icon-1' %}
-                            </span>
-                            <span class="ee-contact-form-type__title">
-                                {% trans 'Wdrożymy projekt' %}
-                            </span>
-                        </a>
-                        <a class="ee-contact-form-type ee-contact-form-type__join-us" id="join-us">
-                            <span class="ee-contact-form-type__icon">
-                                {% svg 'contact-form-icon-2' %}
-                            </span>
-                            <span class="ee-contact-form-type__title">
-                                {% trans 'Dołącz do nas' %}
-                            </span>
-                        </a>
-                        <a class="ee-contact-form-type ee-contact-form-type__other" id="other">
-                            <span class="ee-contact-form-type__icon">
-                                {% svg 'contact-form-icon-3' %}
-                            </span>
-                            <span class="ee-contact-form-type__title">
-                                {% trans 'Inne' %}
-                            </span>
-                        </a>
-                    </div>
-                </div>
+        <div class="container has-text-centered">
+            <h1 class="title">{% trans 'Co możemy razem zrobić?' %}</h1>
+            <div class="ee-contact-form-type__container">
+                <a class="ee-contact-form-type ee-contact-form-type__implement-project" id="implement-project">
+                    <span class="ee-contact-form-type__icon">
+                        {% svg 'contact-form-icon-1' %}
+                    </span>
+                    <span class="ee-contact-form-type__title">
+                        {% trans 'Wdrożymy projekt' %}
+                    </span>
+                </a>
+                <a class="ee-contact-form-type ee-contact-form-type__join-us" id="join-us">
+                    <span class="ee-contact-form-type__icon">
+                        {% svg 'contact-form-icon-2' %}
+                    </span>
+                    <span class="ee-contact-form-type__title">
+                        {% trans 'Dołącz do nas' %}
+                    </span>
+                </a>
+                <a class="ee-contact-form-type ee-contact-form-type__other" id="other">
+                    <span class="ee-contact-form-type__icon">
+                        {% svg 'contact-form-icon-3' %}
+                    </span>
+                    <span class="ee-contact-form-type__title">
+                        {% trans 'Inne' %}
+                    </span>
+                </a>
             </div>
         </div>
     </section>
 
-    <div class="ee-contact-form ee-contact-form--double">
-        {% include 'main/partials/contact_form.html' %}
-    </div>
+    <section class="section">
+        <div class="container ee-contact-form ee-contact-form--double">
+            {% include 'main/partials/contact_form.html' %}
+        </div>
+    </section>
 {% endblock %}
