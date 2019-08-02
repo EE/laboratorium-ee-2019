@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+
+<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect ee-formfield" for="{{ field.id_for_label }}">
+    <input type="checkbox" class="mdl-checkbox__input"
+        id="{{ field.id_for_label }}" name="{{ field.html_name }}"
+        {% if field.value %}checked{% endif %}
+    >
+    <span class="mdl-checkbox__label">
+        {{ field.label|richtext }}
+        <span class="ee-form-field-required">*</span>
+    </span>
+    {% include 'main/partials/form/errors.html' with errors=field.errors %}
+</label>

@@ -1,50 +1,51 @@
-{% load bulma_tags %}
 {% load i18n %}
 
-<form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}" class="ee-contact-form-container">
+<form enctype="multipart/form-data" method="post" action="{% url 'send_mail' %}" class="ee-contact-form">
     {% csrf_token %}
-    <div class="ee-contact-form-header">
-        Required <span class="is-danger">*</span>
-    </div>
-    <div class="ee-contact-form">
-        <div class="ee-form-control">
-            <input id="id_reply_to" name="reply_to" type="text" class="input">
-            <label for="id_reply_to" class="required">{% trans 'email or phone number' %}</label>
+    {{ form.non_field_errors }}
+
+    <div class="container ee-contact-form__subject-container has-text-centered">
+        <h1 class="title">{% trans 'Co możemy razem zrobić?' %}</h1>
+        {% include 'main/partials/form/errors.html' with errors=form.subject.errors %}
+        <div class="ee-contact-form-type__container">
+            {% include 'main/partials/form/fancy_radio.html' with field=form.subject tile_value='offer' tile_svg_name='contact-form-icon-1' tile_label='Wdrożymy projekt' %}
+            {% include 'main/partials/form/fancy_radio.html' with field=form.subject tile_value='recruitment' tile_svg_name='contact-form-icon-2' tile_label='Dołącz do nas' %}
+            {% include 'main/partials/form/fancy_radio.html' with field=form.subject tile_value='other' tile_svg_name='contact-form-icon-3' tile_label='Inne' %}
         </div>
-        <div class="ee-form-control">
-            <div class="select">
-                <select name="subject" id="id_subject">
-                    <option value="">{% trans 'wybierz temat' %}</option>
-                    <option value="offer">{% trans 'Offer' %}</option>
-                    <option value="recruitment">{% trans 'Recruitment' %}</option>
-                    <option value="other">{% trans 'Other' %}</option>
-                </select>
+    </div>
+
+    <span class="ee-form-field-required ee-form-field-required--small ">{% trans 'Required' %} *</span>
+
+    <div class="ee-contact-form__fields-container">
+        <div class="ee-contact-form__fields">
+            {% include 'main/partials/form/text.html' with field=form.reply_to %}
+            {% include 'main/partials/form/text.html' with field=form.organization_name %}
+            {% include 'main/partials/form/text.html' with field=form.recruitment_position %}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+                <textarea class="mdl-textfield__input" type="text" rows="1" id="id_message" name="message"></textarea>
+                <label class="mdl-textfield__label message_standard" for="id_message">{% trans 'jak możemy pomóc?' %} <span class="ee-form-field-required">*</span></label>
+                <label class="mdl-textfield__label message_job_offer" for="id_message">{% trans 'napisz nam o sobie' %} <span class="ee-form-field-required">*</span></label>
+                {% include 'main/partials/form/errors.html' with errors=form.message.errors %}
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file ee-contact-form__textfield ee-formfield">
+                <input class="mdl-textfield__input" placeholder="{% trans 'załącz plik' %}" type="text" id="id_attachment" name="attachment" readonly/>
+                <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                    <i class="material-icons">attach_file</i><input type="file" id="contact_update_file_button">
+                </div>
+                {% include 'main/partials/form/errors.html' with errors=form.attachment.errors %}
             </div>
         </div>
-        <div class="ee-form-control">
-            <input id="id_recruitment_position" name="recruitment_position" type="text" class="input">
-            <label for="id_recruitment_position">{% trans 'podaj stanowisko' %}</label>
+        <div class="ee-contact-form__rules">
+            {% include 'main/partials/form/checkbox.html' with field=form.terms_accepted %}
+            {% include 'main/partials/form/checkbox.html' with field=form.recruitment_terms_accepted %}
+            <div class="ee-contact-form__captcha">
+                {{ form.captcha }}
+                {% include 'main/partials/form/errors.html' with errors=form.captcha.errors %}
+            </div>
         </div>
-        <div class="ee-form-control">
-            <input id="id_organization_name" name="organization_name" type="text" class="input">
-            <label for="id_organization_name">{% trans 'nazwa firmy/organizacji' %}</label>
-        </div>
-        <div class="ee-form-control">
-            <textarea name="message" id="id_message" class="textarea" rows="1"></textarea>
-            <label for="id_message" class="required">{% trans 'how can we help you?' %}</label>
-        </div>
-        <div class="ee-form-control">
-            <input id="id_attachment" name="attachment" type="file">
-            <label for="id_attachment">{% trans 'załącz cv' %}</label>
-        </div>
-        {% include 'main/partials/checkbox.html' with field=form.terms_accepted %}
-        {% include 'main/partials/checkbox.html' with field=form.recruitment_terms_accepted %}
-        <div class="ee-form-control">
-            {{ form.captcha }}
+        <div class="ee-contact-form__submit-button">
+            <button type="submit" class="button is-radiusless ee-button ee-contact-button">{% trans 'Send' %}</button>
         </div>
     </div>
-    <button type="submit" class="button is-outlined is-light is-uppercase is-radiusless ee-button ee-contact-form-button"
-            style="margin-top: 2rem">
-        {% trans 'Send' %}
-    </button>
+
 </form>

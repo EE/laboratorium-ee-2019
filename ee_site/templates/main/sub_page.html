@@ -17,7 +17,7 @@
 
 {% block content %}
     <section class="ee-hero ee-subpage-hero ee-has-background-image">
-        {% image_with_srcset page.header_background_image class='ee-background-image' %}
+        {% dynamic_fill_image page.header_background_image class='ee-background-image' %}
         <div class="ee-hero__spacer"></div>
         <div class="ee-hero-body">
             <div class="container">

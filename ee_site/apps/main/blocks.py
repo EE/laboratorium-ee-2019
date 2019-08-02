@@ -40,7 +40,7 @@ class HorizontalListWithArrows(blocks.ListBlock):
 
 class EERichTextBlock(blocks.RichTextBlock):
     class Meta:
-        template = 'main/blocks/rich_text.html'
+        template = 'main/blocks/ee_rich_text.html'
 
 
 # ### top-level blocks (wrapped in <section> tag) ###
@@ -144,7 +144,7 @@ class HeroStaticLeftBlock(blocks.StructBlock):
     headline = blocks.CharBlock()
     body = blocks.TextBlock()
     page = blocks.PageChooserBlock(required=False)
-    page_secodary = blocks.PageChooserBlock(required=False)
+    page_secondary = blocks.PageChooserBlock(required=False)
     external_url = blocks.URLBlock(required=False)
 
     class Meta:
@@ -168,6 +168,11 @@ class HeroProcessBlock(blocks.StructBlock):
 
     class Meta:
         template = 'main/blocks/hero_process.html'
+
+
+class ImageBigBlock(ImageChooserBlock):
+    class Meta:
+        template = 'main/blocks/image_big.html'
 
 
 class LevelBlock(blocks.StructBlock):
@@ -207,10 +212,17 @@ class MasonryBlock(blocks.StructBlock):
 
 class ParagraphBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
-    body = blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)
+    body = blocks.RichTextBlock(
+        features=settings.RICHTEXT_INLINE_FEATURES + settings.RICHTEXT_BLOCK_FEATURES,
+    )
 
     class Meta:
         template = 'main/blocks/paragraph.html'
+
+
+class RichTextBlock(blocks.RichTextBlock):
+    class Meta:
+        template = 'main/blocks/rich_text.html'
 
 
 class QuoteBlock(blocks.StructBlock):
@@ -244,3 +256,14 @@ class TileGridSpacedBlock(blocks.StructBlock):
 
     class Meta:
         template = 'main/blocks/tile_grid_spaced.html'
+
+
+class TileGridWithIconsBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    tiles = blocks.ListBlock(blocks.StructBlock([
+        ('icon', ImageChooserBlock(required=False)),
+        ('page', blocks.PageChooserBlock()),
+    ]))
+
+    class Meta:
+        template = 'main/blocks/tile_grid_with_icons.html'

@@ -22,8 +22,7 @@ recaptcha_kwargs = dict(
 class ContactForm(forms.Form):
     reply_to = forms.CharField(
         required=True,
-        label='',
-        widget=forms.TextInput(attrs={'placeholder': _('email or phone number')}),
+        label=_('email or phone number'),
     )
     subject = forms.ChoiceField(
         required=True,
@@ -37,13 +36,11 @@ class ContactForm(forms.Form):
     )
     recruitment_position = forms.CharField(
         required=False,
-        label='',
-        widget=forms.TextInput(attrs={'placeholder': _('podaj stanowisko')}),
+        label=_('podaj stanowisko'),
     )
     organization_name = forms.CharField(
         required=False,
-        label='',
-        widget=forms.TextInput(attrs={'placeholder': _('nazwa firmy / organizacji')}),
+        label=_('nazwa firmy / organizacji'),
     )
     message = forms.CharField(
         required=False,

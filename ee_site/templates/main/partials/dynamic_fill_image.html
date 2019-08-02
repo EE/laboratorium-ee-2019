@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+
+{% image image width-128 as rendition %}
+<img
+    class="dynamic {% if class %}{{ class }}{% endif %}"
+    src="{{ rendition.url }}"
+    alt="{{ rendition.alt }}"
+    data-image-id="{{ image.id }}"
+>

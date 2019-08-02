@@ -61,12 +61,15 @@ class SubPage(Page):
         ('contact_us_button', custom_blocks.ContactUsButtonBlock()),
         ('hero_process', custom_blocks.HeroProcessBlock()),
         ('hero_static_right', custom_blocks.HeroStaticRightBlock()),
+        ('image_big', custom_blocks.ImageBigBlock()),
         ('level', custom_blocks.LevelBlock()),
         ('masonry', custom_blocks.MasonryBlock()),
         ('paragraph', custom_blocks.ParagraphBlock()),
+        ('rich_text', custom_blocks.RichTextBlock()),
         ('quote', custom_blocks.QuoteBlock()),
         ('tile_grid', custom_blocks.TileGridBlock()),
         ('tile_grid_spaced', custom_blocks.TileGridSpacedBlock()),
+        ('tile_grid_with_icons', custom_blocks.TileGridWithIconsBlock()),
     ], blank=True)
 
     content_panels = Page.content_panels + [

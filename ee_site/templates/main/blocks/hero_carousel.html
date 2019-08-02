@@ -17,7 +17,7 @@
     <div class="ee-hero-carousel__container">
         {% for tile in value.tiles %}
             <div class="ee-hero-carousel__content ee-has-parallax ee-has-background-image">
-                {% image_with_srcset tile.background_image class='ee-background-image' %}
+                {% dynamic_fill_image tile.background_image class='ee-background-image' %}
                 <div class="container ee-hero-carousel__content-container">
                     {% if tile.secondary_page %}
                         <a class="ee-hero-carousel__content-tags" href="{% pageurl tile.secondary_page %}">
@@ -31,7 +31,7 @@
                         {{ tile.headline }}
                     </div>
                     <div class="ee-hero-carousel__content-buttons">
-                        <a class="button is-light is-radiusless ee-button" data-toggle="contactForm">{% trans 'Check us out' %}</a>
+                        <a href="{% url 'send_mail' %}" class="button is-light is-radiusless ee-button ee-contact-button">{% trans 'Check us out' %}</a>
                         <a href="{% pageurl tile.page %}" class="button is-outlined is-light is-radiusless ee-button">
                             {% trans 'Find out more' %}
                         </a>
