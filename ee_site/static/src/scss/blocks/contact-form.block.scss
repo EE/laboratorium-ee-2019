@@ -1,97 +1,102 @@
+// =========
+// aside sticky form
+// =========
+
 .ee-sticky-contact-form {
-    position: fixed;
+    @include transition;
+
+    @include touch {
+        padding: 0;
+        width: 100vw;
+    }
+
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    top: 0;
-    right: 0;
-    width: 40vw;
     min-height: 100vh;
-    background-color: rgba(black, 0.9);
-    z-index: 20010;
     padding: 3rem 7rem;
+    position: fixed;
+    right: 0;
+    top: 0;
     transform: translateX(100%);
-    @include transition();
-
-    @include touch {
-        width: 100vw;
-        padding: 0;
-    }
+    width: 40vw;
+    z-index: 20010;
 
     &.active {
         transform: translateX(0);
     }
 }
 
-.ee-sticky-contact-form__container {
-    @include touch {
-        padding: 2rem;
-        overflow-y: scroll;
-        height: calc(100vh - 1px);
-    }
-}
-
 .ee-sticky-contact-form__trigger {
     content: "";
-    position: absolute;
-    left: -3rem;
-    width: 3rem;
-    height: 3rem;
     cursor: pointer;
-}
-
-.ee-sticky-contact-form__close-button {
-    display: none;
-    @include touch {
-        display: flex;
-        width: 100%;
-        justify-content: flex-end;
-    }
-}
-
-.ee-sticky-contact-form__headline-items {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.ee-sticky-contact-form__headline-item {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.ee-sticky-contact-form__headline-item__icon {
-    width: 2rem;
-    height: 2rem;
-    margin-right: 2rem;
-
-    @include touch {
-        width: 2rem;
-    }
-
-    svg {
-        width: 100%;
-        height: 100%;
-    }
-}
-
-.ee-sticky-contact-form__headline-item__title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    flex-basis: 60%;
-
-    @include touch {
-        font-size: 0.875rem;
-    }
+    height: 3rem;
+    left: -3rem;
+    position: absolute;
+    width: 3rem;
 }
 
 // =================================
 // Contact Form
 // =================================
 
-.ee-contact-form-container {
+.ee-contact-form__textfield {
     width: 100%;
+}
+
+
+.ee-form-field-required {
+    color: $red;
+    font-size: 1.5rem;
+    vertical-align: text-top;
+}
+
+.ee-form-field-required--small {
+    font-size: 1rem;
+}
+
+
+.ee-contact-form__fields-container {
+    display: grid;
+}
+
+.ee-contact-form--single {
+    & .ee-contact-form__fields-container {
+        grid-template-areas: "FIELDS" "RULES" "SUBMIT";
+        grid-template-columns: 1fr;
+    }
+}
+
+.ee-contact-form--double {
+    & .ee-contact-form__fields-container {
+        @include touch {
+            grid-column-gap: 0;
+            grid-template-areas: "FIELDS" "RULES" "SUBMIT";
+            grid-template-columns: 1fr;
+        }
+
+        grid-column-gap: 8rem;
+        grid-template-areas: "FIELDS RULES" ". SUBMIT";
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.ee-contact-form__fields {
+    grid-area: FIELDS;
+}
+
+.ee-contact-form__rules {
+    display: flex;
+    flex-direction: column;
+    grid-area: RULES;
+    justify-content: space-around;
+}
+
+.ee-contact-form__captcha {
+    margin-top: 2rem;
+}
+
+.ee-contact-form__submit-button {
+    grid-area: SUBMIT;
+    margin-top: 2rem;
 }
