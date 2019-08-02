@@ -1,0 +1,10 @@
+{% load wagtailcore_tags %}
+
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
+    <input class="mdl-textfield__input" type="text"
+        id="{{ field.id_for_label }}" name="{{ field.html_name }}"
+        {% if field.value %}value="{{ field.value }}"{% endif %}
+    >
+    <label class="mdl-textfield__label" for="{{ field.id_for_label }}">{{ field.label }} <span class="ee-form-field-required">*</span></label>
+    {% include 'main/partials/form/errors.html' with errors=field.errors %}
+</div>

@@ -34,45 +34,70 @@
                 });
             }
         });
-
-        /* conditional showing form fields */
-        [ ...document.querySelectorAll(".ee-contact-form").values() ].forEach(form => {
-
-            const formField = name => form.querySelector(`*[name=${name}]`);
-
-            const hide = name => {
-                formField(name).closest(".ee-form-control").style.display = "none";
-            };
-            const show = name => {
-                formField(name).closest(".ee-form-control").style.display = "block";
-            };
-            const noop = () => undefined;
-
-            const updateForm = () => {
-                hide("organization_name");
-                hide("recruitment_position");
-                hide("attachment");
-                hide("recruitment_terms_accepted");
-
-                const subject = formField("subject").value;
-                if (subject === "") return;  // no subject chosen yet
-                ({
-                    offer: () => {
-                        show("organization_name");
-                    },
-                    recruitment: () => {
-                        show("recruitment_position");
-                        show("attachment");
-                        show("recruitment_terms_accepted");
-                    },
-                    other: noop,
-                })[ subject ]();
-            };
-
-            const subjectField = formField("subject");
-            subjectField.addEventListener("change", updateForm);
-            updateForm();
-        });
-
     }
+
+    [ ...document.querySelectorAll("form.ee-contact-form").values() ].forEach(form => {
+
+        const formField = name => form.elements[name];
+
+        const hide = name => {
+            formField(name).closest(".ee-formfield").style.display = "none";
+        };
+        const show = name => {
+            formField(name).closest(".ee-formfield").style.display = "block";
+        };
+        const noop = () => undefined;
+
+        // one field has label that depends on subject chosen - this is switching routine
+        const messageLabelStandard = form.querySelector(".message_standard");
+        const messageLabelJobOffer = form.querySelector(".message_job_offer");
+        function toggleJobOfferLabel(state) {
+            if (state) {
+                messageLabelStandard.style.display = "none";
+                messageLabelJobOffer.style.display = "block";
+            } else {
+                messageLabelStandard.style.display = "block";
+                messageLabelJobOffer.style.display = "none";
+            }
+        }
+
+        const updateForm = () => {
+            const subjectField = formField("subject");
+
+            // set form to default state
+            hide("organization_name");
+            hide("recruitment_position");
+            hide("attachment");
+            hide("recruitment_terms_accepted");
+            toggleJobOfferLabel(false);
+            [...form.querySelectorAll(".ee-contact-form-type")].forEach(tile => tile.classList.remove("active"));
+
+            // show fields based on subject field value
+            if (subjectField.value === "") return;  // no subject chosen yet
+            ({
+                offer: () => {
+                    show("organization_name");
+                    toggleJobOfferLabel(false);
+                },
+                recruitment: () => {
+                    show("recruitment_position");
+                    show("attachment");
+                    show("recruitment_terms_accepted");
+                    toggleJobOfferLabel(true);
+                },
+                other: noop,
+            })[ subjectField.value ]();
+
+            // mark selected subject tile as active
+            form.querySelector(`*[for="id_subject__${subjectField.value}"] .ee-contact-form-type`).classList.add("active");
+
+            // scroll to juicy form fields
+            form.querySelector(".ee-contact-form__fields-container").scrollIntoView({ behavior: "smooth", block: "center" });
+        };
+
+        // we are intrested only in subject change, but it's not possible to watch RadioNodeList
+        form.addEventListener("change", updateForm);
+        updateForm();
+    });
+
 })();

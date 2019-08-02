@@ -1,0 +1,18 @@
+{% load svg %}
+
+<label for="{{ field.id_for_label }}__{{ tile_value }}">
+    <input type="radio" hidden
+        id="{{ field.id_for_label }}__{{ tile_value }}"
+        name="{{ field.html_name }}"
+        value="{{ tile_value }}"
+        {% if tile_value == field.value %}checked{% endif %}
+    >
+    <a class="ee-contact-form-type">
+        <span class="ee-contact-form-type__icon">
+            {% svg tile_svg_name %}
+        </span>
+        <span class="ee-contact-form-type__title">
+            {{ tile_label }}
+        </span>
+    </a>
+</label>
