@@ -2,11 +2,11 @@
 
 .ee-button {
     display: inline-block;
-    text-transform: uppercase;
-    font-weight: 900;
     font-size: 0.75rem;
+    font-weight: 900;
     letter-spacing: 2px;
     padding: 0.25rem 2rem;
+    text-transform: uppercase;
     @include transition();
 
     &:hover {
@@ -16,13 +16,13 @@
 }
 
 .ee-share-button {
-    display: inline-flex;
     align-items: center;
+    background-color: #fff;
+    border-radius: 2rem;
+    display: inline-flex;
+    height: 2.25rem;
     justify-content: center;
     width: 2.25rem;
-    height: 2.25rem;
-    background-color: white;
-    border-radius: 2rem;
 
     & svg {
         width: 1rem;
@@ -38,5 +38,5 @@
 
 .ee-contact-button {
     background-color: #ff4081 !important;
-    color: white !important;
+    color: #fff !important;
 }

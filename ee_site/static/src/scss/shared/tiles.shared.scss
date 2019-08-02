@@ -1,19 +1,19 @@
 .ee-tiles {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
     grid-column-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
 
     @include touch {
-        grid-template-columns: 1fr;
         grid-row-gap: 2rem;
+        grid-template-columns: 1fr;
     }
 }
 
 .ee-tile {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     justify-content: flex-start;
 
     @include touch {
@@ -36,31 +36,31 @@
 }
 
 .ee-tile__background-image {
-    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
     height: 12rem;
+    justify-content: space-between;
 
-    background-size: cover;
-    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
 }
 
 .ee-tile__headline {
+    color: rgba(#fff, 0.7);
     padding: 1rem 2rem;
-    color: rgba(white, 0.7);
 }
 
 .ee-tile-fancy {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
     align-items: center;
+    border: 2px solid #fff;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     justify-content: center;
-    padding: 1rem;
 
-    border: 2px solid white;
+    padding: 1rem;
 }
 
 .ee-tile-fancy__image {
@@ -75,33 +75,33 @@
 }
 
 .ee-tile-fancy__spacer {
-    top: 50%;
+    background-color: #fff;
     height: 2px;
-    background-color: white;
     position: relative;
+    top: 50%;
     @include transition();
 
     &::before {
-        content: "";
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        top: -3px;
-        left: 0;
-        background-color: white;
+        background-color: #fff;
         border-radius: 4px;
+        content: "";
+        height: 8px;
+        left: 0;
+        position: absolute;
+        top: -3px;
+        width: 8px;
     }
 
     &::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        top: -4px;
-        right: -1px;
+        border-color: transparent transparent transparent #fff;
         border-style: solid;
         border-width: 5px 0 5px 8.7px;
-        border-color: transparent transparent transparent white;
+        content: "";
+        height: 0;
+        position: absolute;
+        right: -1px;
+        top: -4px;
+        width: 0;
 
     }
 

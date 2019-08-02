@@ -61,7 +61,7 @@
 .ee-hero-carousel__control-button {
     @include transition;
 
-    background-color: rgba(white, 0.4);
+    background-color: rgba(#fff, 0.4);
     cursor: pointer;
     height: 4px;
     width: 2rem;
@@ -71,11 +71,11 @@
     }
 
     &:hover {
-        background-color: white;
+        background-color: #fff;
     }
 
     &.active {
-        background-color: white;
+        background-color: #fff;
         width: 3rem;
     }
 }
@@ -134,7 +134,7 @@
         font-size: 0.875rem;
     }
 
-    color: rgba(white, 0.7);
+    color: rgba(#fff, 0.7);
     flex-basis: 100%;
     font-size: 1.25rem;
     margin-bottom: 3rem;
@@ -203,7 +203,7 @@
         display: none;
     }
 
-    color: rgba(white, 0.7);
+    color: rgba(#fff, 0.7);
     font-size: 3vh;
     line-height: 1.8;
 }
@@ -218,7 +218,7 @@
 }
 
 .ee-rd-block__item-subtitle {
-    color: rgba(white, 0.7);
+    color: rgba(#fff, 0.7);
     line-height: 1.8;
     margin-top: 1rem;
 }
@@ -269,15 +269,15 @@
     @include transition($delay: 240ms);
 
     align-items: flex-end;
-    border: 2px solid white;
+    border: 2px solid #fff;
     display: flex;
     flex-flow: wrap column;
     justify-content: flex-start;
     padding: 1rem;
 
     &:hover {
-        background-color: white;
-        color: black;
+        background-color: #fff;
+        color: #000;
         cursor: pointer;
         transform: translate(0, -1rem);
     }
@@ -286,13 +286,13 @@
 .ee-solutions-block__item-spacer {
     @include transition;
 
-    background-color: white;
+    background-color: #fff;
     height: 2px;
     position: relative;
     top: calc(50% - 2px);
 
     &::before {
-        background-color: white;
+        background-color: #fff;
         border-radius: 4px;
         content: "";
         height: 8px;
@@ -303,7 +303,7 @@
     }
 
     &::after {
-        border-color: transparent transparent transparent white;
+        border-color: transparent transparent transparent #fff;
         border-style: solid;
         border-width: 5px 0 5px 8.7px;
         content: "";
@@ -337,9 +337,9 @@
 
 .ee-join-us-block {
     @include touch {
-        padding: 4rem 1rem;
-        margin: 10rem 0 0;
         background-position: center;
+        margin: 10rem 0 0;
+        padding: 4rem 1rem;
     }
 
     align-items: center;
