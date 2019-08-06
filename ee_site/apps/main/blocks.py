@@ -66,7 +66,7 @@ class ContactFormBlock(blocks.StructBlock):
     subject = blocks.ChoiceBlock(ContactForm.declared_fields['subject'].choices)
     recruitment_type = blocks.ChoiceBlock(
         ContactForm.declared_fields['recruitment_type'].choices,
-        help_text=_("w przypadku formularza rekrutacyjnego to pole definiuje adres, na który wysyłane sa zgłoszenia"),
+        help_text=_("w przypadku formularza rekrutacyjnego to pole definiuje adres, na który wysyłane są zgłoszenia"),
     )
 
     class Meta:
