@@ -4,15 +4,19 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
 
-    <div class="container ee-contact-form__subject-container has-text-centered">
-        <h1 class="title">{% trans 'Co możemy razem zrobić?' %}</h1>
-        {% include 'main/partials/form/errors.html' with errors=form.subject.errors %}
-        <div class="ee-contact-form-type__container">
-            {% include 'main/partials/form/fancy_radio.html' with field=form.subject tile_value='offer' tile_svg_name='contact-form-icon-1' tile_label='Wdrożymy projekt' %}
-            {% include 'main/partials/form/fancy_radio.html' with field=form.subject tile_value='recruitment' tile_svg_name='contact-form-icon-2' tile_label='Dołącz do nas' %}
-            {% include 'main/partials/form/fancy_radio.html' with field=form.subject tile_value='other' tile_svg_name='contact-form-icon-3' tile_label='Inne' %}
+    {% if const_subject %}
+        <input hidden name="{{ form.subject.html_name }}" value="{{ const_subject }}">
+    {% else %}
+        <div class="container ee-contact-form__subject-container has-text-centered">
+            <h1 class="title">{% trans 'Co możemy razem zrobić?' %}</h1>
+            {% include 'main/partials/form/errors.html' with errors=form.subject.errors %}
+            <div class="ee-contact-form-type__container">
+                {% include 'main/partials/form/fancy_radio.html' with field=form.subject tile_value='offer' tile_svg_name='contact-form-icon-1' tile_label='Wdrożymy projekt' %}
+                {% include 'main/partials/form/fancy_radio.html' with field=form.subject tile_value='recruitment' tile_svg_name='contact-form-icon-2' tile_label='Dołącz do nas' %}
+                {% include 'main/partials/form/fancy_radio.html' with field=form.subject tile_value='other' tile_svg_name='contact-form-icon-3' tile_label='Inne' %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
     <span class="ee-form-field-required ee-form-field-required--small ">{% trans 'Required' %} *</span>
 
@@ -22,13 +26,13 @@
             {% include 'main/partials/form/text.html' with field=form.organization_name %}
             {% include 'main/partials/form/text.html' with field=form.recruitment_position %}
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ee-contact-form__textfield ee-formfield">
-                <textarea class="mdl-textfield__input" type="text" rows="1" id="id_message" name="message"></textarea>
-                <label class="mdl-textfield__label message_standard" for="id_message">{% trans 'jak możemy pomóc?' %} <span class="ee-form-field-required">*</span></label>
-                <label class="mdl-textfield__label message_job_offer" for="id_message">{% trans 'napisz nam o sobie' %} <span class="ee-form-field-required">*</span></label>
+                <textarea class="mdl-textfield__input" type="text" rows="1" id="{{ form.message.id_for_label }}" name="message">{{ form.message.value|default:'' }}</textarea>
+                <label class="mdl-textfield__label message_standard" for="{{ form.message.id_for_label }}">{% trans 'jak możemy pomóc?' %} <span class="ee-form-field-required">*</span></label>
+                <label class="mdl-textfield__label message_job_offer" for="{{ form.message.id_for_label }}">{% trans 'napisz nam o sobie' %} <span class="ee-form-field-required">*</span></label>
                 {% include 'main/partials/form/errors.html' with errors=form.message.errors %}
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--file ee-contact-form__textfield ee-formfield">
-                <input class="mdl-textfield__input" placeholder="{% trans 'załącz plik' %}" type="text" id="id_attachment" name="attachment" readonly/>
+                <input class="mdl-textfield__input" placeholder="{% trans 'załącz plik' %}" type="text" id="{{ form.attachemnt.id_for_label }}" name="attachment" readonly/>
                 <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
                     <i class="material-icons">attach_file</i><input type="file" id="contact_update_file_button">
                 </div>
