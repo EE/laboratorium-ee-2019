@@ -6,6 +6,10 @@ from django.core.mail import EmailMessage
 from django.utils.translation import gettext as _
 
 
+RECRUITMENT_TYPE_LONGTERM = 'longterm'
+RECRUITMENT_TYPE_IMMEDIATE = 'immediate'
+
+
 recaptcha_kwargs = dict(
     required=True,
     label='',
@@ -30,6 +34,14 @@ class ContactForm(forms.Form):
             ('offer', _('Offer')),
             ('recruitment', _('Recruitment')),
             ('other', _('Other')),
+        ]
+    )
+    # hidden field describing where to send recruitment messages
+    recruitment_type = forms.ChoiceField(
+        required=False,
+        choices=[
+            (RECRUITMENT_TYPE_LONGTERM, _("Longterm")),
+            (RECRUITMENT_TYPE_IMMEDIATE, _("Immediate")),
         ]
     )
     recruitment_position = forms.CharField(
@@ -105,7 +117,7 @@ class ContactForm(forms.Form):
             _('Kontakt w sprawie rekrutacji na stanowisko {}').format(self.cleaned_data['recruitment_position']),
             self.cleaned_data['message'],
             settings.DEFAULT_FROM_EMAIL,
-            [settings.RECRUITMENT_EMAIL],
+            [settings.RECRUITMENT_EMAILS[self.cleaned_data['recruitment_type']]],
             reply_to=[self.cleaned_data['reply_to']],
         )
 
