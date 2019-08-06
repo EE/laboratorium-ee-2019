@@ -5,8 +5,6 @@ from django.conf import settings
 from django.core.mail import EmailMessage
 from django.utils.translation import gettext as _
 
-from .models import ContactForm as ContactFormModel
-
 
 recaptcha_kwargs = dict(
     required=True,
@@ -63,6 +61,10 @@ class ContactForm(forms.Form):
     def __init__(self, request, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.request = request
+
+        # lazy import to avoid circular, unresolvable dependencies
+        from .models import ContactForm as ContactFormModel
+
         try:
             contact_form = ContactFormModel.objects.get(site=request.site)
             self.fields['terms_accepted'].label = contact_form.terms_accepted_label

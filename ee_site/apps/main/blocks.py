@@ -2,6 +2,8 @@ from django.conf import settings
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
+from .forms import ContactForm
+
 
 class Tile(blocks.StructBlock):
     heading = blocks.CharBlock()
@@ -60,6 +62,7 @@ class AnimatedProcessBlock(blocks.StructBlock):
 class ContactFormBlock(blocks.StructBlock):
     body = blocks.RichTextBlock()
     form_heading = blocks.CharBlock(required=False)
+    subject = blocks.ChoiceBlock(ContactForm.declared_fields['subject'].choices)
 
     class Meta:
         template = 'main/blocks/contact_form.html'

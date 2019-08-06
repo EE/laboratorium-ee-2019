@@ -88,11 +88,14 @@
                 other: noop,
             })[ subjectField.value ]();
 
-            // mark selected subject tile as active
-            form.querySelector(`*[for="id_subject__${subjectField.value}"] .ee-contact-form-type`).classList.add("active");
+            // mark selected subject tile as active if present
+            const tile = form.querySelector(`*[for="id_subject__${subjectField.value}"] .ee-contact-form-type`);
+            if (tile) {
+                tile.classList.add("active");
 
-            // scroll to juicy form fields
-            form.querySelector(".ee-contact-form__fields-container").scrollIntoView({ behavior: "smooth", block: "center" });
+                // scroll to juicy form fields
+                form.querySelector(".ee-contact-form__fields-container").scrollIntoView({ behavior: "smooth", block: "center" });
+            }
         };
 
         // we are intrested only in subject change, but it's not possible to watch RadioNodeList

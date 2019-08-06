@@ -15,11 +15,14 @@ register = template.Library()
 
 
 @register.inclusion_tag('main/partials/contact_form.html', takes_context=True)
-def contact_form(context):
+def contact_form(context, const_subject=None):
     """
     Returns basic email contact form.
     """
-    return {'form': ContactForm(request=context.get('request'))}
+    return {
+        'form': ContactForm(request=context.get('request')),
+        'const_subject': const_subject,
+    }
 
 
 @register.inclusion_tag('main/partials/contact_form.html', takes_context=True)
