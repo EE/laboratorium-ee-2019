@@ -15,7 +15,7 @@
 }
 
 .ee-hero__date {
-    color: rgba(#fff, 0.7);
+    color: rgba(#fff, .7);
 }
 
 .ee-subpage-hero {
@@ -26,9 +26,9 @@
 }
 
 .ee-hero-body {
-    flex: 1 0;
-
     @include touch {
         padding: 0 1rem;
     }
+
+    flex: 1 0;
 }

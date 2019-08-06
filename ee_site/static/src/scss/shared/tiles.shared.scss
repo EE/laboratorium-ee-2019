@@ -1,24 +1,24 @@
 .ee-tiles {
-    display: grid;
-    grid-column-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
-
     @include touch {
         grid-row-gap: 2rem;
         grid-template-columns: 1fr;
     }
+
+    display: grid;
+    grid-column-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
 }
 
 .ee-tile {
+    @include touch {
+        justify-content: center;
+    }
+
     align-items: center;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     justify-content: flex-start;
-
-    @include touch {
-        justify-content: center;
-    }
 }
 
 .ee-tile__image {
@@ -48,13 +48,13 @@
 }
 
 .ee-tile__headline {
-    color: rgba(#fff, 0.7);
+    color: rgba(#fff, .7);
     padding: 1rem 2rem;
 }
 
 .ee-tile-fancy {
     align-items: center;
-    border: 2px solid #fff;
+    border: 2px solid $white;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -75,14 +75,15 @@
 }
 
 .ee-tile-fancy__spacer {
-    background-color: #fff;
+    @include transition;
+
+    background-color: $white;
     height: 2px;
     position: relative;
     top: 50%;
-    @include transition();
 
     &::before {
-        background-color: #fff;
+        background-color: $white;
         border-radius: 4px;
         content: "";
         height: 8px;
@@ -93,7 +94,7 @@
     }
 
     &::after {
-        border-color: transparent transparent transparent #fff;
+        border-color: transparent transparent transparent $white;
         border-style: solid;
         border-width: 5px 0 5px 8.7px;
         content: "";
