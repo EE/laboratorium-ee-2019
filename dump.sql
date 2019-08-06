@@ -3570,35 +3570,6 @@ COPY public.wagtailimages_image (id, title, file, width, height, created_at, foc
 --
 
 COPY public.wagtailimages_rendition (id, file, width, height, focal_point_key, filter_spec, image_id) FROM stdin;
-1160	images/7293397.width-128.jpg	128	85		width-128	55
-1161	images/www_oferta_scrum_warsztaty.width-128.jpg	128	106		width-128	133
-1162	images/ochrona_srodowiska.width-128.jpg	128	40		width-128	136
-1163	images/seniorzy.width-128.jpg	128	41		width-128	138
-1164	images/media.width-128.jpg	128	41		width-128	139
-1165	images/prawo.width-128.jpg	128	41		width-128	140
-1166	images/topics-target-1.width-256.png	256	518		width-256	175
-1167	images/topics-target-1.width-371.png	371	751		width-371	175
-1168	images/topics-target-2.width-256.png	256	519		width-256	176
-1169	images/topics-target-2.width-371.png	371	753		width-371	176
-1170	images/topics-target-3.width-256.png	256	518		width-256	177
-1171	images/topics-target-3.width-371.png	371	751		width-371	177
-1172	images/prawo_mobile.width-256.png	256	184		width-256	122
-1173	images/prawo_mobile.width-512.png	512	369		width-512	122
-1174	images/prawo_mobile.width-1024.png	1024	739		width-1024	122
-1175	images/prawo_mobile.width-1344.png	1344	971		width-1344	122
-1176	images/kontrola_git1.width-128.jpg	128	62		width-128	132
-1177	images/memo_2.width-128.jpg	128	198		width-128	141
-1178	images/DARE_magazine_2.width-128.jpg	128	191		width-128	142
-1179	images/rodo_pass_2.width-128.jpg	128	191		width-128	143
-1180	images/7293397.2e16d0ba.fill-1448x724-c100.jpg	1448	724	2e16d0ba	fill-1448x724-c100	55
-1181	images/seniorzy.2e16d0ba.fill-1448x512-c100.jpg	1448	512	2e16d0ba	fill-1448x512-c100	138
-1182	images/ochrona_srodowiska.2e16d0ba.fill-1448x512-c100.jpg	1448	512	2e16d0ba	fill-1448x512-c100	136
-1183	images/media.2e16d0ba.fill-1448x512-c100.jpg	1448	512	2e16d0ba	fill-1448x512-c100	139
-1184	images/prawo.2e16d0ba.fill-1448x512-c100.jpg	1448	512	2e16d0ba	fill-1448x512-c100	140
-1185	images/kontrola_git1.2e16d0ba.fill-1440x512-c100.jpg	1440	512	2e16d0ba	fill-1440x512-c100	132
-1186	images/memo_2.2e16d0ba.fill-512x724-c100.jpg	512	724	2e16d0ba	fill-512x724-c100	141
-1187	images/DARE_magazine_2.2e16d0ba.fill-512x724-c100.jpg	512	724	2e16d0ba	fill-512x724-c100	142
-1188	images/rodo_pass_2.2e16d0ba.fill-512x724-c100.jpg	512	724	2e16d0ba	fill-512x724-c100	143
 \.
 
 
