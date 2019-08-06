@@ -1,16 +1,16 @@
 .mdl-checkbox {
     height: unset;
-    min-height: 24px;
     margin: 0.5rem 0;
+    min-height: 24px;
 }
 
 .mdl-button--file {
     input {
         cursor: pointer;
         height: 100%;
-        right: 0;
         opacity: 0;
         position: absolute;
+        right: 0;
         top: 0;
         width: 300px;
         z-index: 4;
@@ -22,6 +22,7 @@
         box-sizing: border-box;
         width: calc(100% - 32px);
     }
+
     .mdl-button--file {
         right: 0;
     }

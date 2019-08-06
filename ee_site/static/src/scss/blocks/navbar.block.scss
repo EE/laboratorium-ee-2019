@@ -1,17 +1,17 @@
 @import "../utilities/index.mixins";
 
 @mixin ee-navbar-item() {
-    font-weight: 900;
     font-size: 0.75rem;
+    font-weight: 900;
     letter-spacing: 2px;
 }
 
 .ee-navbar {
+    background-color: transparent;
+    background-image: linear-gradient(to bottom, rgba(#000, 0.9) 20%, rgba(#000, 0.3) 80%, rgba(#000, 0));
     position: fixed;
     top: 0;
     width: 100vw;
-    background-color: transparent;
-    background-image: linear-gradient(to bottom, rgba(black, 0.9) 20%, rgba(black, 0.3) 80%, rgba(black, 0));
     z-index: 10500;
 
     @include touch {
@@ -23,12 +23,12 @@
     .ee-navbar-item {
         @include ee-navbar-item;
         @include transition($time: 160ms);
+        border-bottom: 1px solid rgba(#fff, 0);
         margin-right: 1vw;
-        border-bottom: 1px solid rgba(white, 0);
 
         &:hover {
             background-color: unset;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid #fff;
         }
     }
 
@@ -43,35 +43,35 @@
 
         @include touch {
             background: transparent;
+            color: #000;
             font-size: 1.4rem;
             font-weight: 700;
-            color: black;
             letter-spacing: 0;
         }
     }
 
     @include touch {
-        display: flex;
         align-items: center;
-        justify-content: center;
+        background-color: #fff;
+        display: flex;
         flex-wrap: wrap;
-        position: fixed;
-        width: 100vw;
         height: 100vh;
-        top: 0;
+        justify-content: center;
         left: 0;
-        background-color: white;
         padding: 15rem 0;
+        position: fixed;
+        top: 0;
+        width: 100vw;
 
         .ee-navbar-item {
+            color: #000;
             flex-basis: 100vw;
-            color: black;
-            margin: 0;
-            text-align: center;
             font-size: 1.4rem;
             font-weight: 700;
-            line-height: 1.8;
             letter-spacing: 0;
+            line-height: 1.8;
+            margin: 0;
+            text-align: center;
         }
     }
 }
@@ -79,12 +79,12 @@
 .ee-navbar-close-button {
     display: none;
     position: absolute;
-    top: 1rem;
     right: 1rem;
+    top: 1rem;
 
     @include touch {
-        display: block;
         background-color: transparent;
-        border: none;
+        border: 0;
+        display: block;
     }
 }

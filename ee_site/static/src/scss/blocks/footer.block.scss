@@ -1,7 +1,7 @@
 .ee-footer {
-    background-color: black;
+    background-color: #000;
+    color: rgba(#fff, 0.7);
     padding: 4rem 0;
-    color: rgba(white, 0.7);
 
     @include touch {
         padding: 4rem 2rem;
@@ -9,8 +9,8 @@
 }
 
 .ee-footer__logo {
-    margin-top: 2rem;
     height: 4rem;
+    margin-top: 2rem;
 }
 
 .ee-footer__headline {
@@ -42,14 +42,14 @@
 
 .ee-footer__social-media-icons {
     display: grid;
-    grid-template-columns: repeat(3, 3rem);
     grid-column-gap: 2rem;
+    grid-template-columns: repeat(3, 3rem);
     justify-content: flex-end;
     margin-top: 4rem;
 
     & > .ee-share-button {
-        width: 3rem;
         height: 3rem;
+        width: 3rem;
     }
 
     @include touch {
