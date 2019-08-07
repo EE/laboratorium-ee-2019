@@ -16,7 +16,7 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['*'])
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 CONTACT_EMAIL = env.get_value('CONTACT_EMAIL', default='g.danton@bastille.fr')
 RECRUITMENT_EMAILS = {
-    '': 'default_recruitment@example.com',
+    'default': 'default_recruitment@example.com',
     'longterm': 'kariera@example.com',
     'immediate': 'przychodze_jutro@example.com',
 }

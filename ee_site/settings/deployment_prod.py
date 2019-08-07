@@ -47,7 +47,7 @@ EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'strona-ee@laboratorium.ee'
 CONTACT_EMAIL = 'kontakt@laboratorium.ee'
 RECRUITMENT_EMAILS = {
-    '': 'kariera@laboratorium.ee',  # default
+    'default': 'kariera@laboratorium.ee',
     'immediate': 'dolacz@laboratorium.ee',
     'longterm': 'kariera@laboratorium.ee',
 }

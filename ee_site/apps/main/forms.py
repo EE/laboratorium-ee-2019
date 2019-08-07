@@ -6,6 +6,7 @@ from django.core.mail import EmailMessage
 from django.utils.translation import gettext as _
 
 
+RECRUITMENT_TYPE_DEFAULT = 'default'
 RECRUITMENT_TYPE_LONGTERM = 'longterm'
 RECRUITMENT_TYPE_IMMEDIATE = 'immediate'
 
@@ -113,11 +114,14 @@ class ContactForm(forms.Form):
         ).send()
 
     def process_recruitment(self):
+        recruitment_type = self.cleaned_data['recruitment_type']
+        if not recruitment_type:
+            recruitment_type = RECRUITMENT_TYPE_DEFAULT
         email = EmailMessage(
             _('Kontakt w sprawie rekrutacji na stanowisko {}').format(self.cleaned_data['recruitment_position']),
             self.cleaned_data['message'],
             settings.DEFAULT_FROM_EMAIL,
-            [settings.RECRUITMENT_EMAILS[self.cleaned_data['recruitment_type']]],
+            [settings.RECRUITMENT_EMAILS[recruitment_type]],
             reply_to=[self.cleaned_data['reply_to']],
         )
 

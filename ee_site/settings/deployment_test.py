@@ -29,7 +29,7 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FROM_EMAIL = 'strona-ee-test@laboratorium.ee'
 CONTACT_EMAIL = 'kontakt-test@laboratorium.ee'
 RECRUITMENT_EMAILS = {
-    '': 'kariera-test@laboratorium.ee',  # default
+    'default': 'kariera-test@laboratorium.ee',
     'immediate': 'dolacz-test@laboratorium.ee',
     'longterm': 'kariera-test@laboratorium.ee',
 }
