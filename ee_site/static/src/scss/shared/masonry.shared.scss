@@ -1,12 +1,11 @@
 .ee-masonry {
     display: grid;
-    grid-auto-flow: column;
+    grid-auto-flow: row dense;
     grid-auto-rows: 25vw;
     grid-template-columns: repeat(4, 25vw);
     max-width: 100vw;
 
     @include touch {
-        grid-auto-flow: dense;
         grid-template-columns: repeat(2, 50vw);
     }
 }
@@ -28,7 +27,7 @@
         position: absolute;
         top: 0;
         width: 100%;
-        @include transition();
+        @include transition;
     }
 
     &:hover {
@@ -38,7 +37,8 @@
             opacity: 0;
         }
 
-        .ee-masonry__tile-title, .ee-masonry__tile-title--dark {
+        .ee-masonry__tile-title,
+        .ee-masonry__tile-title--dark {
             opacity: 1;
         }
     }
@@ -65,7 +65,9 @@
 }
 
 .ee-masonry__tile--featured-mobile {
-    grid-column-end: span 2;
+    @include touch {
+        grid-column-end: span 2;
+    }
 }
 
 .ee-masonry__tile-title {
