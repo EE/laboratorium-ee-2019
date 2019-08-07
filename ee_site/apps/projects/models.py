@@ -180,7 +180,6 @@ class ProjectPage(Page):
         ], heading="masonry display options"),
     ]
 
-    parent_page_types = ['SpecializationPage']
     subpage_types = []
 
     @property
