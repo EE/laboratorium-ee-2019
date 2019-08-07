@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.utils.translation import gettext as _
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -63,6 +64,10 @@ class ContactFormBlock(blocks.StructBlock):
     body = blocks.RichTextBlock()
     form_heading = blocks.CharBlock(required=False)
     subject = blocks.ChoiceBlock(ContactForm.declared_fields['subject'].choices)
+    recruitment_type = blocks.ChoiceBlock(
+        ContactForm.declared_fields['recruitment_type'].choices,
+        help_text=_("w przypadku formularza rekrutacyjnego to pole definiuje adres, na który wysyłane są zgłoszenia"),
+    )
 
     class Meta:
         template = 'main/blocks/contact_form.html'

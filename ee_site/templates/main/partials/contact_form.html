@@ -4,6 +4,10 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
 
+    {% if recruitment_type %}
+        <input hidden name="{{ form.recruitment_type.html_name }}" value="{{ recruitment_type }}">
+    {% endif %}
+
     {% if const_subject %}
         <input hidden name="{{ form.subject.html_name }}" value="{{ const_subject }}">
     {% else %}
