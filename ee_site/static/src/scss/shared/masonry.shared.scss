@@ -1,34 +1,33 @@
 .ee-masonry {
     display: grid;
-    grid-auto-flow: column;
-    max-width: 100vw;
-    grid-template-columns: repeat(4, 25vw);
+    grid-auto-flow: row dense;
     grid-auto-rows: 25vw;
+    grid-template-columns: repeat(4, 25vw);
+    max-width: 100vw;
 
     @include touch {
         grid-template-columns: repeat(2, 50vw);
-        grid-auto-flow: dense;
     }
 }
 
 .ee-masonry__tile {
-    display: flex;
     align-items: flex-end;
-    position: relative;
-    padding: 2rem;
-
-    background-size: cover;
     background-position: center center;
+    background-size: cover;
+    display: flex;
+
+    padding: 2rem;
+    position: relative;
 
     &::before {
+        background-color: rgba(#000, 0.5);
         content: "";
-        position: absolute;
-        width: 100%;
         height: 100%;
-        top: 0;
         left: 0;
-        background-color: rgba(black, 0.5);
-        @include transition();
+        position: absolute;
+        top: 0;
+        width: 100%;
+        @include transition;
     }
 
     &:hover {
@@ -38,7 +37,8 @@
             opacity: 0;
         }
 
-        .ee-masonry__tile-title, .ee-masonry__tile-title--dark {
+        .ee-masonry__tile-title,
+        .ee-masonry__tile-title--dark {
             opacity: 1;
         }
     }
@@ -55,6 +55,7 @@
         grid-column-end: unset;
     }
 }
+
 .ee-masonry__tile--featured-y {
     grid-row-end: span 2;
 
@@ -64,12 +65,14 @@
 }
 
 .ee-masonry__tile--featured-mobile {
-    grid-column-end: span 2;
+    @include touch {
+        grid-column-end: span 2;
+    }
 }
 
 .ee-masonry__tile-title {
-    opacity: 0;
     font-size: 2rem;
+    opacity: 0;
 
     @include touch {
         font-size: 0.5rem;
@@ -77,9 +80,9 @@
 }
 
 .ee-masonry__tile-title--dark {
-    opacity: 0;
+    color: #000;
     font-size: 2rem;
-    color: black;
+    opacity: 0;
 
     @include touch {
         font-size: 0.5rem;

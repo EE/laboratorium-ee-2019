@@ -1,4 +1,5 @@
 import random
+from datetime import date
 
 from django.apps import apps
 from django.conf import settings
@@ -341,7 +342,9 @@ class NewsPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    publication_date = models.DateField(auto_now_add=True)
+    publication_date = models.DateField(
+        default=date.today,
+    )
     marked = models.BooleanField(
         default=False,
         help_text=_('If True, this article would be visible on HomePage and on top of NewsIndexPage. Only one article '
@@ -354,6 +357,7 @@ class NewsPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('marked'),
+        FieldPanel('publication_date'),
         FieldPanel('headline'),
         FieldPanel('body', classname="full"),
         ImageChooserPanel('photo'),

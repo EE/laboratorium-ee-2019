@@ -1,74 +1,71 @@
 .ee-section {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 4rem 0;
-
     @include touch {
         padding: 4rem 1rem;
 
         &.has-slider {
-            padding: 0;
             overflow: hidden;
+            padding: 0;
         }
     }
+
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4rem 0;
 }
 
 .ee-section-title {
+    color: rgba(#fff, .7);
     flex: 1 0 100%;
-    justify-content: center;
 
-    text-align: center;
     font-size: 1.2rem;
-    text-transform: uppercase;
-    color: rgba(white, 0.7);
+    justify-content: center;
     letter-spacing: 4px;
     margin-bottom: 3em;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .ee-section-tiles {
-    display: grid;
-    flex-grow: 1;
-    grid-template-columns: repeat(3, 1fr);
-    grid-row-gap: 4rem;
-
     @include touch {
         grid-template-columns: repeat(1, 1fr);
     }
-}
 
-.ee-section-tile {
-    background-color: red;
+    display: grid;
+    flex-grow: 1;
+    grid-row-gap: 4rem;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .ee-section__slides-controls {
-    position: absolute;
-    bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-
     @include desktop {
         display: none;
     }
+
+    bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
 }
 
 .ee-section__slide-control-button {
-    width: 2rem;
-    height: 4px;
-    background-color: rgba(white, 0.4);
+    @include transition;
+
+    background-color: rgba(#fff, .4);
     cursor: pointer;
-    @include transition();
+    height: 4px;
+    width: 2rem;
 
     &:not(:last-child) {
         margin-right: 1rem;
     }
 
     &:hover {
-        background-color: white;
+        background-color: $white;
     }
 
     &.active {
-        background-color: white;
+        background-color: $white;
         width: 3rem;
     }
 }

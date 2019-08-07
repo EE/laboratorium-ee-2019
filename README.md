@@ -74,6 +74,22 @@ Remember to add the newly created server to the proper Pipeline.
 
 ## Development guidelines
 
+### Code style
+
+There are some linters to check low-level codestyle
+
+    flake8  # runthis inside pipenv
+    ./run_js_scss_linters.py
+
+For greater control over js and scss liters you can call them directly
+
+    ./node_modules/.bin/eslint ee_site/static/src/
+    ./node_modules/.bin/sass-lint -c .sass-lint.yml -v 'ee_site/static/src/**/*.scss'
+
+Some errors can be automatically fixed. In case of `eslint` use `--fix` flag. For `sass-lint` we have external tool
+
+    ./node_modules/.bin/sass-lint-auto-fix
+
 ### CMS content for local development
 
     # load test server db into local db

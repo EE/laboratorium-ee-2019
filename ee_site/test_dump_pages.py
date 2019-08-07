@@ -4,10 +4,15 @@ import subprocess
 from django.core import management
 from django.db import DEFAULT_DB_ALIAS, connections
 from django.test import TestCase
+from wagtail.core.models import Page
+from wagtail.images.models import Image
 
 
 class DumpPagesTestCase(TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+
         connection = connections[DEFAULT_DB_ALIAS]
         conn_params = connection.get_connection_params()
 
@@ -56,6 +61,21 @@ class DumpPagesTestCase(TestCase):
         # run migrations not included in SQL dump
         management.call_command('migrate', '--no-input')
 
+        # create dummy mediafiles
+        for image in Image.objects.all():
+            storage = image.file.storage
+            name = image.file.name
+            if not storage.exists(name):
+                path = storage.path(name)
+                os.makedirs(os.path.dirname(path), exist_ok=True)
+                os.symlink(storage.path('placeholder.jpg'), path)
+
     def test_suite_should_run(self):
         # This test verifies that dump.sql was loaded
         pass
+
+    def test_page_wont_crash(self):
+        #                               skip root page
+        for page in Page.objects.live().exclude(id=1):
+            response = self.client.get(page.url)
+            self.assertEqual(response.status_code, 200)

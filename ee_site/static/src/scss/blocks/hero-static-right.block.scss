@@ -1,15 +1,15 @@
 .ee-rodo-block {
-    background-size: cover;
-    background-repeat: no-repeat;
     background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0;
 }
 
 .ee-rodo-block__content-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     height: 100%;
+    justify-content: center;
     min-height: 30rem;
 
     & > * {
@@ -18,22 +18,22 @@
 }
 
 .ee-rodo-block__title {
-    font-weight: 700;
     font-size: 1.2rem;
+    font-weight: 700;
     margin-bottom: 2rem;
     text-transform: uppercase;
 }
 
 .ee-rodo-block__headline {
-    font-weight: 600;
     font-size: 3rem;
+    font-weight: 600;
     margin-bottom: 2rem;
 }
 
 .ee-rodo-block__body {
+    color: rgba(#fff, 0.7);
     font-weight: 600;
     line-height: 1.8;
-    color: rgba(white, 0.7);
     margin-bottom: 2rem;
 }
 

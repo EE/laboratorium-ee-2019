@@ -1,41 +1,43 @@
 .ee-contact-form__subject-container {
-    margin-top: 6rem;
-
     @include touch {
         margin-top: 2rem;
     }
+
+    margin-top: 6rem;
 }
 
 .ee-contact-form-type__container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 12%;
-    margin: 4rem 0;
-
     @include touch {
-        margin: 0;
-        grid-template-columns: 1fr;
         grid-row-gap: 2rem;
+        grid-template-columns: 1fr;
+        margin: 0;
     }
+
+    display: grid;
+    grid-column-gap: 12%;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 4rem 0;
 }
 
 .ee-contact-form-type {
+    @include transition;
+
+    border: 2px solid $white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    border: 2px solid white;
     height: 24rem;
+    justify-content: space-between;
     padding: 4rem 2rem;
-    @include transition();
 
-    &:hover, &.active {
-        background-color: white;
-        color: black;
+    &:hover,
+    &.active {
+        background-color: $white;
+        color: $black;
     }
 
     @include touch {
-        flex-direction: row;
         align-items: center;
+        flex-direction: row;
         height: auto;
         min-height: 8rem;
         padding: 1rem;
@@ -43,8 +45,8 @@
 }
 
 .ee-contact-form-type__icon {
-    pointer-events: none;
     color: inherit;
+    pointer-events: none;
 
     svg {
         fill: currentColor;
@@ -52,65 +54,6 @@
 }
 
 .ee-contact-form-type__title {
+    font-size: 1.5rem;
     pointer-events: none;
-    font-size: 1.5rem;
 }
-
-
-.ee-contact-form__textfield {
-    width: 100%;
-}
-
-
-.ee-form-field-required {
-    color: red;
-    font-size: 1.5rem;
-    vertical-align: text-top;
-}
-
-.ee-form-field-required--small {
-    font-size: 1rem;
-}
-
-
-.ee-contact-form__fields-container {
-    display: grid;
-}
-
-.ee-contact-form--single .ee-contact-form__fields-container {
-    grid-template-columns: 1fr;
-    grid-template-areas: "FIELDS" "RULES" "SUBMIT";
-}
-
-.ee-contact-form--double .ee-contact-form__fields-container {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "FIELDS RULES" ". SUBMIT";
-    grid-column-gap: 8rem;
-
-    @include touch {
-        grid-template-columns: 1fr;
-        grid-template-areas: "FIELDS" "RULES" "SUBMIT";
-        grid-column-gap: 0;
-    }
-}
-
-.ee-contact-form__fields {
-    grid-area: FIELDS;
-}
-
-.ee-contact-form__rules {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    grid-area: RULES;
-}
-
-.ee-contact-form__captcha {
-    margin-top: 2rem;
-}
-
-.ee-contact-form__submit-button {
-    margin-top: 2rem;
-    grid-area: SUBMIT;
-}
-
