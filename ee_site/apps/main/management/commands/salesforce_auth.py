@@ -9,7 +9,11 @@ class Command(BaseCommand):
     help = 'authenticate salesforce oauth2 device'
 
     def handle(self, *args, **options):
-        auth_endpoint = 'https://login.salesforce.com/services/oauth2/token'
+        if settings.SALESFORCE_DOMAIN is None:
+            print("authentication cannot be done for dummy integration (SALESFORCE_DOMAIN setting is None)")
+            return
+
+        auth_endpoint = f'https://{settings.SALESFORCE_DOMAIN}.salesforce.com/services/oauth2/token'
         client_id = settings.SALESFORCE_CLIENT_ID
         client_secret = settings.SALESFORCE_CLIENT_SECRET
 
