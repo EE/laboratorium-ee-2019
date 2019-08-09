@@ -43,3 +43,4 @@ RELEASE_STRING = 'test'
 
 # salesforce
 SALESFORCE_DOMAIN = 'test'
+SALESFORCE_INSTANCE = 'laboratoriumee--test.my.salesforce.com'

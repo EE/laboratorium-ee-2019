@@ -21,11 +21,10 @@ class SalesforceDummy:
         self.Lead = DummyObjectHandler(f'{name}.Lead')
 
 
-if settings.SALESFORCE_DOMAIN is None:
+if settings.SALESFORCE_INSTANCE is None:
     salesforce = SalesforceDummy('salesforce')
 else:
     salesforce = Salesforce(
         instance=settings.SALESFORCE_INSTANCE,
         session_id=settings.SALESFORCE_ACCESS_TOKEN,
-        domain=settings.SALESFORCE_DOMAIN,
     )

@@ -33,3 +33,4 @@ RELEASE_STRING = 'dev'
 
 # salesforce
 SALESFORCE_DOMAIN = env.str('SALESFORCE_DOMAIN', default=None)
+SALESFORCE_INSTANCE = env.str('SALESFORCE_INSTANCE', default=None)
