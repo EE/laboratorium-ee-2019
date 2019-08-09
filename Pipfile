@@ -20,6 +20,7 @@ boto3 = "*"
 django-bulma = "*"
 django-recaptcha = "*"
 django-inline-svg = "*"
+simple-salesforce = "*"
 
 [dev-packages]
 "flake8" = "*"

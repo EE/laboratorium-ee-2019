@@ -1,9 +1,19 @@
+import logging
+
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
 from django import forms
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.core.validators import validate_email, ValidationError
 from django.utils.translation import gettext as _
+
+from simple_salesforce.exceptions import SalesforceError
+
+from .salesforce import salesforce
+
+
+logger = logging.getLogger(__name__)
 
 
 RECRUITMENT_TYPE_DEFAULT = 'default'
@@ -112,6 +122,24 @@ class ContactForm(forms.Form):
             [settings.CONTACT_EMAIL],
             reply_to=[self.cleaned_data['reply_to']],
         ).send()
+
+        lead = {
+            'company': self.cleaned_data['organization_name'],
+            'status': 'new',
+            'lastname': '-',
+        }
+
+        # reply_to may be either email or phone number
+        try:
+            validate_email(self.cleaned_data['reply_to'])
+            lead['email'] = self.cleaned_data['reply_to']
+        except ValidationError:
+            lead['phone'] = self.cleaned_data['reply_to']
+
+        try:
+            salesforce.Lead.create(lead)
+        except SalesforceError:
+            logger.exception("failed to create salesforce lead object", extra={'lead': lead})
 
     def process_recruitment(self):
         recruitment_type = self.cleaned_data['recruitment_type']
