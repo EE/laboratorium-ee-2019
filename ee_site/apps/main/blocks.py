@@ -189,7 +189,17 @@ class LevelBlock(blocks.StructBlock):
         ('icon', ImageChooserBlock(required=False)),
         ('value', blocks.CharBlock()),
         ('property_name', blocks.CharBlock(required=False)),
+        ('page', blocks.PageChooserBlock(required=False)),
     ]))
+
+    def get_context(self, value, *args, **kwargs):
+        context = super().get_context(value, *args, **kwargs)
+
+        # Calculating if we have any icon in the level. Later this is used to decide wether tiles need space for icons.
+        # (CSS-based approach propably will be better...)
+        context['has_icons'] = any(tile.get('icon') for tile in value.get('tiles', []))
+
+        return context
 
     class Meta:
         template = 'main/blocks/level.html'
@@ -247,6 +257,7 @@ class TileGridBlock(blocks.StructBlock):
         ('image', ImageChooserBlock()),
         ('title', blocks.CharBlock(required=False)),
         ('body', blocks.RichTextBlock(features=settings.RICHTEXT_INLINE_FEATURES)),
+        ('page', blocks.PageChooserBlock(required=False)),
     ]))
 
     class Meta:
