@@ -1,7 +1,8 @@
 .ee-article-card {
+    @include transition;
+
     display: flex;
     min-height: 14rem;
-    @include transition();
 
     &:first-child {
         transform-origin: top right;
@@ -15,7 +16,7 @@
         transform: scale(1.05);
 
         .ee-article-card__image {
-            @include shadow($size: xl, $tint: #fff, $alpha: 0.2);
+            @include shadow($size: xl, $tint: $white, $alpha: .2);
         }
 
         .ee-article-card__headline {
@@ -25,43 +26,43 @@
 }
 
 .ee-article-card__image {
+    @include touch {
+        flex-basis: 20rem;
+    }
+
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
     height: 12rem;
-
     justify-content: space-between;
     padding: 2rem;
     width: 100%;
-
-    @include touch {
-        flex-basis: 20rem;
-    }
 }
 
 .ee-article-card__headline {
-    color: rgba(#fff, 0.7);
+    @include transition;
+
+    color: rgba(#fff, .7);
     opacity: 0;
     padding: 1rem 2rem;
-    @include transition();
 }
 
 .ee-article-card__button {
-    padding: 0 2rem;
-
     @include touch {
         padding: 0;
         width: 100%;
+
         & > * {
             width: 100%;
         }
     }
+
+    padding: 0 2rem;
 }
 
 .ee-article-card__date {
-
     @include touch {
         font-weight: 700;
     }
