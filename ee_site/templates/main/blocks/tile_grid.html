@@ -12,7 +12,7 @@
                 <div class="column is-10 is-offset-1">
                     <div class="ee-section-tiles ee-specialization-page__tools-tiles">
                         {% for tile in value.tiles %}
-                            <a {% if tile.page %}href="{% pageurl tile.page %}"{% endif %} class="ee-tile">
+                            <a {% pageurl_href_or_not_clickable tile.page %} class="ee-tile">
                                 <span class="ee-tile__background-image ee-has-background-image">
                                     {% dynamic_fill_image tile.image class='ee-background-image' %}
                                     <span class="ee-title is-relative">

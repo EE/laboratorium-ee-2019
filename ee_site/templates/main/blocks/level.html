@@ -1,5 +1,4 @@
 {% load main_tags %}
-{% load wagtailcore_tags %}
 
 <section class="ee-section">
     {% if value.title %}
@@ -10,7 +9,7 @@
     <div class="container">
         <div class="ee-tiles">
             {% for tile in value.tiles %}
-                <a {% if tile.page %}href="{% pageurl tile.page %}"{% endif %} class="ee-tile">
+                <a {% pageurl_href_or_not_clickable tile.page %} class="ee-tile">
                     {% if has_icons %}
                         <span class="ee-tile__image">
                             {% image_with_srcset tile.icon %}
