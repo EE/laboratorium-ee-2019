@@ -4,6 +4,13 @@ $initScale: 1.05;
 $rescale: 1 / $initScale;
 
 .ee-specialization-card {
+    @include transition;
+
+    @include touch {
+        padding: 2rem 2rem 6rem;
+        width: 100vw;
+    }
+
     align-items: flex-end;
     background-size: cover;
     display: flex;
@@ -11,12 +18,6 @@ $rescale: 1 / $initScale;
     height: 36rem;
     justify-content: flex-start;
     padding: 4rem 3rem;
-    @include transition();
-
-    @include touch {
-        padding: 2rem 2rem 6rem;
-        width: 100vw;
-    }
 
     &:first-child {
         padding-left: 5rem;
@@ -37,34 +38,37 @@ $rescale: 1 / $initScale;
     }
 
     &:hover {
-        cursor: pointer;
-        transform: scale($initScale);
-        @include shadow($size: xl, $tint: #f7cd87, $alpha: 0.2);
-
-        .ee-specialization-card__headline, .ee-specialization-card__buttons {
-            opacity: 1;
-            transform: scale($rescale);
-
-            @include touch {
-                transform: scale(1);
-            }
-        }
+        @include shadow($size: xl, $tint: #f7cd87, $alpha: .2);
 
         @include touch {
             transform: scale(1);
         }
+
+        cursor: pointer;
+        transform: scale($initScale);
+
+        .ee-specialization-card__headline,
+        .ee-specialization-card__buttons {
+            @include touch {
+                transform: scale(1);
+            }
+
+            opacity: 1;
+            transform: scale($rescale);
+        }
+
     }
 }
 
 .ee-specialization-card__content {
+    @include touch {
+        height: 100%;
+    }
+
     align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
     height: 85%;
-
-    @include touch {
-        height: 100%;
-    }
 }
 
 .ee-specialization-card__title {
@@ -74,19 +78,25 @@ $rescale: 1 / $initScale;
 }
 
 .ee-specialization-card__headline {
-    color: rgba(#fff, 0.7);
+    @include touch {
+        opacity: 1;
+    }
+
+    @include transition;
+
+    color: rgba(#fff, .7);
     flex-basis: 100%;
     font-size: 1rem;
     line-height: 1.8;
     opacity: 0;
-    @include transition();
-
-    @include touch {
-        opacity: 1;
-    }
 }
 
 .ee-specialization-card__buttons {
+    @include touch {
+        flex-basis: 100%;
+        opacity: 1;
+    }
+
     align-items: flex-end;
     display: grid;
     grid-template-rows: 2;
@@ -95,10 +105,5 @@ $rescale: 1 / $initScale;
 
     & > *:not(:last-child) {
         margin-bottom: 1rem;
-    }
-
-    @include touch {
-        flex-basis: 100%;
-        opacity: 1;
     }
 }

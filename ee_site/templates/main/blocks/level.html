@@ -9,17 +9,19 @@
     <div class="container">
         <div class="ee-tiles">
             {% for tile in value.tiles %}
-                <div class="ee-tile">
-                    <div class="ee-tile__image">
-                        {% image_with_srcset tile.icon %}
-                    </div>
+                <a {% pageurl_href_or_not_clickable tile.page %} class="ee-tile">
+                    {% if has_icons %}
+                        <span class="ee-tile__image">
+                            {% image_with_srcset tile.icon %}
+                        </span>
+                    {% endif %}
                     <h2 class="ee-title--bold">
                         {{ tile.value }}
                     </h2>
                     <h3 class="ee-title--small">
                         {{ tile.property_name }}
                     </h3>
-                </div>
+                </a>
             {% endfor %}
         </div>
     </div>

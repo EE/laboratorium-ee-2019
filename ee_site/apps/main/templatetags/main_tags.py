@@ -5,6 +5,7 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
+from wagtail.core.templatetags.wagtailcore_tags import pageurl
 
 from ee_site.apps.main.models import Footer
 from ee_site.apps.main.forms import ContactForm
@@ -117,3 +118,11 @@ def dynamic_fill_image(image, **kwargs):
         'image': image,
         'class': kwargs.get('class'),
     }
+
+
+@register.simple_tag(takes_context=True)
+def pageurl_href_or_not_clickable(context, page, *args, **kwargs):
+    if page:
+        return mark_safe(f'href="{pageurl(context, page, *args, **kwargs)}"')
+    else:
+        return mark_safe('style="pointer-events: none;"')

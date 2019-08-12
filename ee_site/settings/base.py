@@ -233,3 +233,26 @@ RICHTEXT_BLOCK_FEATURES = [
     'image', 'embed',
     'blockquote', 'code',
 ]
+
+
+# ### salesforce integration ###
+
+# Environment to use.
+#  * production
+#    SALESFORCE_DOMAIN = 'login'
+#    SALESFORCE_INSTANCE = 'laboratoriumee.my.salesforce.com' (use your SF organization name here)
+#
+#  * test
+#    SALESFORCE_DOMAIN = 'test'
+#    SALESFORCE_INSTANCE = 'laboratoriumee--test.my.salesforce.com' (`test` suffix is configurable
+#                                                                    via SF sandbox magement page)
+#
+#  * dummy - suitable for development environments
+#    SALESFORCE_DOMAIN = None
+#    SALESFORCE_INSTANCE = None
+SALESFORCE_DOMAIN = 'login'
+SALESFORCE_INSTANCE = 'laboratoriumee.my.salesforce.com'
+
+SALESFORCE_CLIENT_ID = '3MVG9I5UQ_0k_hTmaSws_TCivIuKUH8XiFhTOBY9TAlIbOu8zhRfYxujafSKRGXISgxS4jyIz1A6LIHePNrnZ'
+SALESFORCE_CLIENT_SECRET = env.str('SALESFORCE_CLIENT_SECRET', default=None)
+SALESFORCE_ACCESS_TOKEN = env.str('SALESFORCE_ACCESS_TOKEN', default=None)
