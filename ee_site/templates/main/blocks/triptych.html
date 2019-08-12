@@ -10,6 +10,7 @@
         {% for tile in value.tiles %}
 
             <div
+                {# JS-based solution seems optimal here because we have A tag inside this DIV. Nesting A elements is not ok. #}
                 onclick="javascript:window.location.href='{% pageurl tile.page %}'; return false;"
                 class="ee-specialization-card is-slide ee-has-background-image"
             >
