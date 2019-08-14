@@ -5,7 +5,6 @@ from captcha.widgets import ReCaptchaV2Checkbox
 from django import forms
 from django.conf import settings
 from django.core.mail import EmailMessage
-from django.core.validators import validate_email, ValidationError
 from django.utils.translation import gettext as _
 
 from simple_salesforce.exceptions import SalesforceError
@@ -33,9 +32,9 @@ recaptcha_kwargs = dict(
 
 
 class ContactForm(forms.Form):
-    reply_to = forms.CharField(
+    reply_to = forms.EmailField(
         required=True,
-        label=_('email or phone number'),
+        label=_('email'),
     )
     subject = forms.ChoiceField(
         required=True,
@@ -124,17 +123,12 @@ class ContactForm(forms.Form):
         ).send()
 
         lead = {
+            'email': self.cleaned_data['reply_to'],
             'company': self.cleaned_data['organization_name'],
             'status': 'new',
             'lastname': '-',
+            'desire__c': self.cleaned_data['message'],
         }
-
-        # reply_to may be either email or phone number
-        try:
-            validate_email(self.cleaned_data['reply_to'])
-            lead['email'] = self.cleaned_data['reply_to']
-        except ValidationError:
-            lead['phone'] = self.cleaned_data['reply_to']
 
         try:
             salesforce.Lead.create(lead)
