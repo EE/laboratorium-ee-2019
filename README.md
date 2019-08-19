@@ -118,6 +118,6 @@ To copy DB state from production to test do
     heroku pg:copy -a laboratorium-ee-test strona-ee-prod::DATABASE_URL DATABASE_URL
     heroku run -a laboratorium-ee-test ./manage.py migrate  # make sure all migrations are applied
 
-To copy mediafiles do
+To copy mediafiles
 
     aws s3 sync --acl public-read s3://strona-ee-prod s3://strona-ee-test
