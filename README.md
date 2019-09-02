@@ -121,3 +121,13 @@ To copy DB state from production to test do
 To copy mediafiles do
 
     aws s3 sync --acl public-read s3://strona-ee-prod s3://strona-ee-test
+
+### Salesforce integration
+
+Salesforce integration is used to send offer messages to salesforce.
+
+Setup instructions:
+
+1. Set `SALESFORCE_CLIENT_SECRET` for application you are using (determined by `SALESFORCE_CLIENT_ID`).
+2. Perform authentication of application instance: `./manage.py salesforce_auth`.
+3. Store obtained session id in env variable `SALESFORCE_SESSION_ID`.
