@@ -1,15 +1,13 @@
-(function () {
-    const fileUploadButton = document.querySelector("#contact_update_file_button");
-    const fileUploadInput = document.querySelector("#id_attachment");
+[...document.querySelectorAll(".ee-contact-form__attachment")].forEach(attachmentField => {
+    const fileUploadButton = attachmentField.querySelector("input[type=file]");
+    const fileUploadInput = attachmentField.querySelector("input[type=text]");
 
-    if (fileUploadButton) {
-        fileUploadButton.addEventListener("change", function () {
-            document.querySelector("#id_attachment").value = this.files[ 0 ].name;
-        });
-    }
-    if (fileUploadInput) {
-        fileUploadInput.addEventListener("click", () => {
-            fileUploadButton.click();
-        });
-    }
-})();
+    // display selected file's name
+    fileUploadButton.addEventListener("change", function () {
+        fileUploadInput.value = this.files[ 0 ].name;
+    });
+
+    fileUploadInput.addEventListener("click", () => {
+        fileUploadButton.click();
+    });
+});
