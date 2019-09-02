@@ -4,7 +4,7 @@
 
     // display selected file's name
     fileUploadButton.addEventListener("change", function () {
-            fileUploadInput.value = this.files[ 0 ].name;
+        fileUploadInput.value = this.files[ 0 ].name;
     });
 
     fileUploadInput.addEventListener("click", () => {
