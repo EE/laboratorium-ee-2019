@@ -35,10 +35,10 @@
                 <label class="mdl-textfield__label message_job_offer" for="{{ form.message.id_for_label }}">{% trans 'napisz nam o sobie' %} <span class="ee-form-field-required">*</span></label>
                 {% include 'main/partials/form/errors.html' with errors=form.message.errors %}
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file ee-contact-form__textfield ee-formfield">
-                <input class="mdl-textfield__input" placeholder="{% trans 'załącz plik' %}" type="text" id="{{ form.attachemnt.id_for_label }}" name="attachment" readonly/>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file ee-contact-form__textfield ee-formfield ee-contact-form__attachment">
+                <input class="mdl-textfield__input" placeholder="{% trans 'załącz plik' %}" type="text" id="{{ form.attachment.id_for_label }}" name="attachment" readonly/>
                 <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                    <i class="material-icons">attach_file</i><input type="file" id="contact_update_file_button">
+                    <i class="material-icons">attach_file</i><input type="file">
                 </div>
                 {% include 'main/partials/form/errors.html' with errors=form.attachment.errors %}
             </div>
