@@ -54,7 +54,7 @@ class Command(BaseCommand):
                     print('authorized!')
                     print('server response is:')
                     pprint(response_data)
-                    print(f"access token is: {response_data['access_token']}")
+                    print(f"refresh token is: {response_data['refresh_token']}")
                     print("(you need to add it to env variables)")
                     return
                 else:
