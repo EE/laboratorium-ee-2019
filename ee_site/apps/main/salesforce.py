@@ -18,14 +18,14 @@ class DummyObjectHandler:
 
 
 class SalesforceDummy:
-    def __init__(self, name):
+    def __init__(self, name='salesforce'):
         self.Lead = DummyObjectHandler(f'{name}.Lead')
 
 
-if settings.SALESFORCE_INSTANCE is None:
-    salesforce = SalesforceDummy('salesforce')
+def get_salesforce_integration():
+    if settings.SALESFORCE_INSTANCE is None:
+        return SalesforceDummy()
 
-else:
     # request new session id (aka. access token)
     r = requests.post(
         f'https://{settings.SALESFORCE_DOMAIN}.salesforce.com/services/oauth2/token',
@@ -37,15 +37,18 @@ else:
         },
     )
 
+    # check for authentication failure
     try:
         r.raise_for_status()
-        session_id = r.json()['access_token']
-
-        salesforce = Salesforce(
-            instance=settings.SALESFORCE_INSTANCE,
-            session_id=session_id,
-        )
-
     except requests.exceptions.HTTPError as e:
         logger.exception('failed to obtain salesforce session id', extra={'response': e.response.text})
-        salesforce = SalesforceDummy('salesforce')
+        return SalesforceDummy()
+
+    session_id = r.json()['access_token']
+    return Salesforce(
+        instance=settings.SALESFORCE_INSTANCE,
+        session_id=session_id,
+    )
+
+
+salesforce = get_salesforce_integration()
