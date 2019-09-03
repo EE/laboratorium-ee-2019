@@ -2,6 +2,7 @@ import logging
 
 from django.conf import settings
 from simple_salesforce import Salesforce
+import requests
 
 
 logger = logging.getLogger(__name__)
@@ -23,8 +24,28 @@ class SalesforceDummy:
 
 if settings.SALESFORCE_INSTANCE is None:
     salesforce = SalesforceDummy('salesforce')
+
 else:
-    salesforce = Salesforce(
-        instance=settings.SALESFORCE_INSTANCE,
-        session_id=settings.SALESFORCE_ACCESS_TOKEN,
+    # request new session id (aka. access token)
+    r = requests.post(
+        f'https://{settings.SALESFORCE_DOMAIN}.salesforce.com/services/oauth2/token',
+        data={
+            'grant_type': 'refresh_token',
+            'refresh_token': settings.SALESFORCE_REFRESH_TOKEN,
+            'client_id': settings.SALESFORCE_CLIENT_ID,
+            'client_secret': settings.SALESFORCE_CLIENT_SECRET,
+        },
     )
+
+    try:
+        r.raise_for_status()
+        session_id = r.json()['access_token']
+
+        salesforce = Salesforce(
+            instance=settings.SALESFORCE_INSTANCE,
+            session_id=session_id,
+        )
+
+    except requests.exceptions.HTTPError as e:
+        logger.exception('failed to obtain salesforce session id', extra={'response': e.response.text})
+        salesforce = SalesforceDummy('salesforce')
