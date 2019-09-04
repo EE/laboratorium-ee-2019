@@ -130,4 +130,4 @@ Setup instructions:
 
 1. Set `SALESFORCE_CLIENT_SECRET` for application you are using (determined by `SALESFORCE_CLIENT_ID`).
 2. Perform authentication of application instance: `./manage.py salesforce_auth`.
-3. Store obtained session id in env variable `SALESFORCE_SESSION_ID`.
+3. Store obtained refresh token in env variable `SALESFORCE_REFRESH_TOKEN`.
