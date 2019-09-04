@@ -120,7 +120,7 @@ class ContactForm(forms.Form):
             settings.DEFAULT_FROM_EMAIL,
             [settings.CONTACT_EMAIL],
             reply_to=[self.cleaned_data['reply_to']],
-        ).send()
+        ).send(fail_silently=False)
 
         lead = {
             'email': self.cleaned_data['reply_to'],
@@ -151,7 +151,7 @@ class ContactForm(forms.Form):
         if attachment:
             email.attach(attachment.name, attachment.read(), attachment.content_type)
 
-        email.send()
+        email.send(fail_silently=False)
 
     def process_other(self):
         EmailMessage(
@@ -160,7 +160,7 @@ class ContactForm(forms.Form):
             settings.DEFAULT_FROM_EMAIL,
             [settings.CONTACT_EMAIL],
             reply_to=[self.cleaned_data['reply_to']],
-        ).send()
+        ).send(fail_silently=False)
 
     def process(self):
         handlers = {
