@@ -26,12 +26,12 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 
 # AWS email
-DEFAULT_FROM_EMAIL = 'strona-ee-test@laboratorium.ee'
-CONTACT_EMAIL = 'kontakt-test@laboratorium.ee'
+DEFAULT_FROM_EMAIL = 'jan.rydzewski+strona-ee-test@laboratorium.ee'
+CONTACT_EMAIL = 'jan.rydzewski+kontakt-test@laboratorium.ee'
 RECRUITMENT_EMAILS = {
-    'default': 'kariera-test@laboratorium.ee',
-    'immediate': 'dolacz-test@laboratorium.ee',
-    'longterm': 'kariera-test@laboratorium.ee',
+    'default': 'jan.rydzewski+kariera-test@laboratorium.ee',
+    'immediate': 'jan.rydzewski+dolacz-test@laboratorium.ee',
+    'longterm': 'jan.rydzewski+kariera-test@laboratorium.ee',
 }
 
 # recaptha
