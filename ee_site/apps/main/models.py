@@ -108,6 +108,8 @@ class SubPageMetric(Orderable, models.Model):
 
 class OldHomePage(Page):
     """ This is legacy HP model. It will be deleted once `HomePage` model (above) is complete and operational. """
+    is_creatable = False
+
     header = models.CharField(max_length=255)
     specializations_headline = models.CharField(max_length=128)
 
@@ -382,6 +384,9 @@ class NewsPage(Page):
 
 
 class JobOfferIndexPage(Page):
+    """ Deprecated page type - replaced with generic SubPage. """
+    is_creatable = False
+
     cooperation = models.CharField(max_length=500)
     recruitment = StreamField([
         ('text', blocks.CharBlock(template='projects/blocks/paragraph.html')),
@@ -403,6 +408,9 @@ class JobOfferIndexPage(Page):
 
 
 class JobOfferPage(Page):
+    """ Deprecated page type - replaced with generic SubPage. """
+    is_creatable = False
+
     icon = models.ForeignKey(
         'wagtailimages.Image',
         # icon is required. null=True is here just to make migration easy
@@ -427,6 +435,10 @@ class JobOfferPage(Page):
 
 class InfoPage(Page):
     """Static content page linked in footer."""
+
+    """ Deprecated page type - replaced with generic SubPage. """
+    is_creatable = False
+
     content = RichTextField()
     consent_required = models.BooleanField(
         help_text=_('whether this document is linked in consent checkbox under the contact form'),
