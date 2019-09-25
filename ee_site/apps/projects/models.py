@@ -21,6 +21,9 @@ from ee_site.apps.main.blocks import (
 
 
 class SpecializationIndexPage(Page):
+    """ Deprecated page type - replaced with generic SubPage. """
+    is_creatable = False
+
     @property
     def specializations(self):
         return SpecializationPage.objects.live().descendant_of(self)
@@ -29,6 +32,9 @@ class SpecializationIndexPage(Page):
 
 
 class SpecializationPage(Page):
+    """ Deprecated page type - replaced with generic SubPage. """
+    is_creatable = False
+
     short_description = RichTextField()
     background_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -83,6 +89,10 @@ class SpecializationPage(Page):
 class TopicPage(Page):
     """Topic is a classification of work orthogonal to specializations.
     Examples for topics are: "fighting smog", "design for elderly"."""
+
+    """ Deprecated page type - replaced with generic SubPage. """
+    is_creatable = False
+
     marked = models.BooleanField(
         default=False,
         help_text=_('If True, this topic would be visible on HomePage.'),
@@ -114,6 +124,9 @@ class TopicPage(Page):
 
 
 class ProjectPage(Page):
+    """ Deprecated page type - replaced with generic SubPage. """
+    is_creatable = False
+
     short_name = models.CharField(max_length=32, blank=True, default='', help_text=_('Brief name of the project'))
     self_initiated = models.BooleanField(default=False)
     subtitle = models.CharField(max_length=255, blank=True)
@@ -193,6 +206,9 @@ class ProjectPage(Page):
 
 
 class TeamIndexPage(Page):
+    """ Deprecated page type - replaced with generic SubPage. """
+    is_creatable = False
+
     who_we_are = RichTextField()
     our_values = StreamField([
         ('description', EERichTextBlock()),
@@ -217,6 +233,9 @@ class TeamMemberSpecializationTag(TaggedItemBase):
 
 
 class TeamMember(Page):
+    """ Deprecated page type - replaced with generic SubPage. """
+    is_creatable = False
+
     name = models.CharField(max_length=128)
     short_description = models.CharField(
         max_length=128,
