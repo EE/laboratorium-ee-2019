@@ -10,17 +10,6 @@
                     <img src="{% webpack_static 'images/logoEE.svg' %}">
                 </a>
             </div>
-            {% if RELEASE_STRING %}
-                <div class="column is-marginless is-paddingless">
-                    <article class="message is-small" style="background: transparent;">
-                        <div class="message-body is-invisible-touch">
-                            To jest wersja <a href="https://github.com/EE/laboratorium-ee-2019/commit/{{ RELEASE_COMMIT_HASH|default:'' }}" class="tag is-warning ee-tag" target="_blank">
-                                {{ RELEASE_STRING }}
-                            </a> strony. Ulepszamy ją iteracyjnie.
-                        </div>
-                    </article>
-                </div>
-            {% endif %}
         </div>
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="ee-mobile-navbar">
             <span aria-hidden="true"></span>
