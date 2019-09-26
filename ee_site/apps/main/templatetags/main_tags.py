@@ -1,7 +1,6 @@
 import logging
 
 from django import template
-from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
