@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
-{% load main_tags %}
-{% load wagtailimages_tags %}
+{% load menu_tags %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block title %}
     {{ page.title }} - {{ block.super }}
@@ -23,7 +23,7 @@
 {% image page.background_image max-2560x2048 as background_image %}
 <section class="hero is-fullheight" style="background: url('{{ background_image.url }}') center center; background-size: cover;">
     <div class="hero-head">
-        {% navbar %}
+        {% main_menu template="main/partials/navbar.html" %}
     </div>
     <div class="hero-body">
         <div class="container">

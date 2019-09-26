@@ -1,5 +1,4 @@
 {% load i18n %}
-{% load wagtailcore_tags %}
 {% load webpack_static from webpack_loader %}
 
 <nav class="navbar is-spaced ee-navbar" role="navigation" aria-label="main navigation">
@@ -24,15 +23,15 @@
             <button class="ee-navbar-close-button">
                 <img src="{% webpack_static 'images/ico-x.svg' %}" alt="Close">
             </button>
-            {% for page_in_menu in menus %}
-                <a class="navbar-item is-uppercase is-radiusless ee-navbar-item" href="{% pageurl page_in_menu %}">
-                    {{ page_in_menu.title }}
+            {% for menu_item in menu_items %}
+                <a class="navbar-item is-uppercase is-radiusless ee-navbar-item" href="{{ menu_item.href }}">
+                    {{ menu_item.text }}
                 </a>
             {% endfor %}
 
             <div class="navbar-item">
                 <a href="{% url 'send_mail' %}" class="button is-light is-uppercase is-radiusless ee-contact-us-button ee-contact-button">
-                    {% trans 'Wypróbuj nas' %}
+                    {% trans 'Napisz do nas' %}
                 </a>
             </div>
         </div>
