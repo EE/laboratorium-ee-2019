@@ -28,9 +28,6 @@ INTERNAL_IPS = ['127.0.0.1', ]
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 
-RELEASE_STRING = 'dev'
-
-
 # salesforce
 SALESFORCE_DOMAIN = env.str('SALESFORCE_DOMAIN', default=None)
 SALESFORCE_INSTANCE = env.str('SALESFORCE_INSTANCE', default=None)
