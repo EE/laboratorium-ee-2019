@@ -190,10 +190,6 @@ SENTRY_DSN = env.str('SENTRY_DSN', default=None)
 # Facebook pixel
 FACEBOOK_PIXEL_ID = None
 
-# release string
-RELEASE_STRING = None
-RELEASE_COMMIT_HASH = None
-
 # settings-context-processor
 TEMPLATE_VISIBLE_SETTINGS = [
     'FACEBOOK_PIXEL_ID',

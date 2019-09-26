@@ -42,8 +42,6 @@ def recruitment_contact_form(context):
 def navbar(context):
     return {
         'menus': context['request'].site.root_page.get_descendants().live().in_menu(),
-        'RELEASE_STRING': settings.RELEASE_STRING,
-        'RELEASE_COMMIT_HASH': settings.RELEASE_COMMIT_HASH,
     }
 
 
