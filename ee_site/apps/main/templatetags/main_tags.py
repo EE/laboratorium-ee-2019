@@ -37,13 +37,6 @@ def recruitment_contact_form(context):
     )}
 
 
-@register.inclusion_tag('main/partials/navbar.html', takes_context=True)
-def navbar(context):
-    return {
-        'menus': context['request'].site.root_page.get_descendants().live().in_menu(),
-    }
-
-
 # Footer
 @register.inclusion_tag('main/partials/footer.html', takes_context=True)
 def footer(context):

@@ -21,6 +21,7 @@ django-bulma = "*"
 django-recaptcha = "*"
 django-inline-svg = "*"
 simple-salesforce = "*"
+wagtailmenus = "*"
 
 [dev-packages]
 "flake8" = "*"
