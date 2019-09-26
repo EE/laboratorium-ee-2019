@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.4
--- Dumped by pg_dump version 11.4
+-- Dumped from database version 11.5
+-- Dumped by pg_dump version 11.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -22,6 +22,12 @@ ALTER TABLE ONLY public.wagtailsearch_editorspick DROP CONSTRAINT wagtailsearch_
 ALTER TABLE ONLY public.wagtailsearch_editorspick DROP CONSTRAINT wagtailsearch_editor_page_id_28cbc274_fk_wagtailco;
 ALTER TABLE ONLY public.wagtailredirects_redirect DROP CONSTRAINT wagtailredirects_red_site_id_780a0e1e_fk_wagtailco;
 ALTER TABLE ONLY public.wagtailredirects_redirect DROP CONSTRAINT wagtailredirects_red_redirect_page_id_b5728a8f_fk_wagtailco;
+ALTER TABLE ONLY public.wagtailmenus_mainmenu DROP CONSTRAINT wagtailmenus_mainmenu_site_id_84b0fde4_fk_wagtailcore_site_id;
+ALTER TABLE ONLY public.wagtailmenus_mainmenuitem DROP CONSTRAINT wagtailmenus_mainmen_menu_id_6505d4c4_fk_wagtailme;
+ALTER TABLE ONLY public.wagtailmenus_mainmenuitem DROP CONSTRAINT wagtailmenus_mainmen_link_page_id_208a4a4d_fk_wagtailco;
+ALTER TABLE ONLY public.wagtailmenus_flatmenu DROP CONSTRAINT wagtailmenus_flatmenu_site_id_516a598d_fk_wagtailcore_site_id;
+ALTER TABLE ONLY public.wagtailmenus_flatmenuitem DROP CONSTRAINT wagtailmenus_flatmen_menu_id_757c39da_fk_wagtailme;
+ALTER TABLE ONLY public.wagtailmenus_flatmenuitem DROP CONSTRAINT wagtailmenus_flatmen_link_page_id_36779c0f_fk_wagtailco;
 ALTER TABLE ONLY public.wagtailimages_rendition DROP CONSTRAINT wagtailimages_rendit_image_id_3e1fd774_fk_wagtailim;
 ALTER TABLE ONLY public.wagtailimages_image DROP CONSTRAINT wagtailimages_image_uploaded_by_user_id_5d73dc75_fk_auth_user;
 ALTER TABLE ONLY public.wagtailimages_image DROP CONSTRAINT wagtailimages_image_collection_id_c2f8af7e_fk_wagtailco;
@@ -101,6 +107,13 @@ DROP INDEX public.wagtailredirects_redirect_site_id_780a0e1e;
 DROP INDEX public.wagtailredirects_redirect_redirect_page_id_b5728a8f;
 DROP INDEX public.wagtailredirects_redirect_old_path_bb35247b_like;
 DROP INDEX public.wagtailredirects_redirect_old_path_bb35247b;
+DROP INDEX public.wagtailmenus_mainmenuitem_menu_id_6505d4c4;
+DROP INDEX public.wagtailmenus_mainmenuitem_link_page_id_208a4a4d;
+DROP INDEX public.wagtailmenus_flatmenuitem_menu_id_757c39da;
+DROP INDEX public.wagtailmenus_flatmenuitem_link_page_id_36779c0f;
+DROP INDEX public.wagtailmenus_flatmenu_site_id_516a598d;
+DROP INDEX public.wagtailmenus_flatmenu_handle_fd420cad_like;
+DROP INDEX public.wagtailmenus_flatmenu_handle_fd420cad;
 DROP INDEX public.wagtailimages_rendition_image_id_3e1fd774;
 DROP INDEX public.wagtailimages_rendition_filter_spec_1cba3201_like;
 DROP INDEX public.wagtailimages_rendition_filter_spec_1cba3201;
@@ -186,6 +199,12 @@ ALTER TABLE ONLY public.wagtailsearch_query DROP CONSTRAINT wagtailsearch_query_
 ALTER TABLE ONLY public.wagtailsearch_editorspick DROP CONSTRAINT wagtailsearch_editorspick_pkey;
 ALTER TABLE ONLY public.wagtailredirects_redirect DROP CONSTRAINT wagtailredirects_redirect_pkey;
 ALTER TABLE ONLY public.wagtailredirects_redirect DROP CONSTRAINT wagtailredirects_redirect_old_path_site_id_783622d7_uniq;
+ALTER TABLE ONLY public.wagtailmenus_mainmenuitem DROP CONSTRAINT wagtailmenus_mainmenuitem_pkey;
+ALTER TABLE ONLY public.wagtailmenus_mainmenu DROP CONSTRAINT wagtailmenus_mainmenu_site_id_key;
+ALTER TABLE ONLY public.wagtailmenus_mainmenu DROP CONSTRAINT wagtailmenus_mainmenu_pkey;
+ALTER TABLE ONLY public.wagtailmenus_flatmenuitem DROP CONSTRAINT wagtailmenus_flatmenuitem_pkey;
+ALTER TABLE ONLY public.wagtailmenus_flatmenu DROP CONSTRAINT wagtailmenus_flatmenu_site_id_handle_7b0cab3a_uniq;
+ALTER TABLE ONLY public.wagtailmenus_flatmenu DROP CONSTRAINT wagtailmenus_flatmenu_pkey;
 ALTER TABLE ONLY public.wagtailimages_rendition DROP CONSTRAINT wagtailimages_rendition_pkey;
 ALTER TABLE ONLY public.wagtailimages_rendition DROP CONSTRAINT wagtailimages_rendition_image_id_filter_spec_foc_323c8fe0_uniq;
 ALTER TABLE ONLY public.wagtailimages_image DROP CONSTRAINT wagtailimages_image_pkey;
@@ -262,6 +281,10 @@ ALTER TABLE public.wagtailsearch_querydailyhits ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.wagtailsearch_query ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.wagtailsearch_editorspick ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.wagtailredirects_redirect ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.wagtailmenus_mainmenuitem ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.wagtailmenus_mainmenu ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.wagtailmenus_flatmenuitem ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.wagtailmenus_flatmenu ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.wagtailimages_rendition ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.wagtailimages_image ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.wagtailforms_formsubmission ALTER COLUMN id DROP DEFAULT;
@@ -306,6 +329,14 @@ DROP SEQUENCE public.wagtailsearch_editorspick_id_seq;
 DROP TABLE public.wagtailsearch_editorspick;
 DROP SEQUENCE public.wagtailredirects_redirect_id_seq;
 DROP TABLE public.wagtailredirects_redirect;
+DROP SEQUENCE public.wagtailmenus_mainmenuitem_id_seq;
+DROP TABLE public.wagtailmenus_mainmenuitem;
+DROP SEQUENCE public.wagtailmenus_mainmenu_id_seq;
+DROP TABLE public.wagtailmenus_mainmenu;
+DROP SEQUENCE public.wagtailmenus_flatmenuitem_id_seq;
+DROP TABLE public.wagtailmenus_flatmenuitem;
+DROP SEQUENCE public.wagtailmenus_flatmenu_id_seq;
+DROP TABLE public.wagtailmenus_flatmenu;
 DROP SEQUENCE public.wagtailimages_rendition_id_seq;
 DROP TABLE public.wagtailimages_rendition;
 DROP SEQUENCE public.wagtailimages_image_id_seq;
@@ -1830,6 +1861,151 @@ ALTER SEQUENCE public.wagtailimages_rendition_id_seq OWNED BY public.wagtailimag
 
 
 --
+-- Name: wagtailmenus_flatmenu; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.wagtailmenus_flatmenu (
+    id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    handle character varying(100) NOT NULL,
+    heading character varying(255) NOT NULL,
+    site_id integer NOT NULL,
+    max_levels smallint NOT NULL,
+    use_specific smallint NOT NULL,
+    CONSTRAINT wagtailmenus_flatmenu_max_levels_check CHECK ((max_levels >= 0)),
+    CONSTRAINT wagtailmenus_flatmenu_use_specific_check CHECK ((use_specific >= 0))
+);
+
+
+--
+-- Name: wagtailmenus_flatmenu_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.wagtailmenus_flatmenu_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: wagtailmenus_flatmenu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.wagtailmenus_flatmenu_id_seq OWNED BY public.wagtailmenus_flatmenu.id;
+
+
+--
+-- Name: wagtailmenus_flatmenuitem; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.wagtailmenus_flatmenuitem (
+    id integer NOT NULL,
+    sort_order integer,
+    link_text character varying(255) NOT NULL,
+    link_url character varying(255),
+    link_page_id integer,
+    menu_id integer NOT NULL,
+    url_append character varying(255) NOT NULL,
+    allow_subnav boolean NOT NULL,
+    handle character varying(100) NOT NULL
+);
+
+
+--
+-- Name: wagtailmenus_flatmenuitem_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.wagtailmenus_flatmenuitem_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: wagtailmenus_flatmenuitem_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.wagtailmenus_flatmenuitem_id_seq OWNED BY public.wagtailmenus_flatmenuitem.id;
+
+
+--
+-- Name: wagtailmenus_mainmenu; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.wagtailmenus_mainmenu (
+    id integer NOT NULL,
+    site_id integer NOT NULL,
+    max_levels smallint NOT NULL,
+    use_specific smallint NOT NULL,
+    CONSTRAINT wagtailmenus_mainmenu_max_levels_check CHECK ((max_levels >= 0)),
+    CONSTRAINT wagtailmenus_mainmenu_use_specific_check CHECK ((use_specific >= 0))
+);
+
+
+--
+-- Name: wagtailmenus_mainmenu_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.wagtailmenus_mainmenu_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: wagtailmenus_mainmenu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.wagtailmenus_mainmenu_id_seq OWNED BY public.wagtailmenus_mainmenu.id;
+
+
+--
+-- Name: wagtailmenus_mainmenuitem; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.wagtailmenus_mainmenuitem (
+    id integer NOT NULL,
+    sort_order integer,
+    link_text character varying(255) NOT NULL,
+    link_url character varying(255),
+    link_page_id integer,
+    menu_id integer NOT NULL,
+    allow_subnav boolean NOT NULL,
+    url_append character varying(255) NOT NULL,
+    handle character varying(100) NOT NULL
+);
+
+
+--
+-- Name: wagtailmenus_mainmenuitem_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.wagtailmenus_mainmenuitem_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: wagtailmenus_mainmenuitem_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.wagtailmenus_mainmenuitem_id_seq OWNED BY public.wagtailmenus_mainmenuitem.id;
+
+
+--
 -- Name: wagtailredirects_redirect; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2233,6 +2409,34 @@ ALTER TABLE ONLY public.wagtailimages_rendition ALTER COLUMN id SET DEFAULT next
 
 
 --
+-- Name: wagtailmenus_flatmenu id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_flatmenu ALTER COLUMN id SET DEFAULT nextval('public.wagtailmenus_flatmenu_id_seq'::regclass);
+
+
+--
+-- Name: wagtailmenus_flatmenuitem id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_flatmenuitem ALTER COLUMN id SET DEFAULT nextval('public.wagtailmenus_flatmenuitem_id_seq'::regclass);
+
+
+--
+-- Name: wagtailmenus_mainmenu id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_mainmenu ALTER COLUMN id SET DEFAULT nextval('public.wagtailmenus_mainmenu_id_seq'::regclass);
+
+
+--
+-- Name: wagtailmenus_mainmenuitem id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_mainmenuitem ALTER COLUMN id SET DEFAULT nextval('public.wagtailmenus_mainmenuitem_id_seq'::regclass);
+
+
+--
 -- Name: wagtailredirects_redirect id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2502,6 +2706,22 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 196	Can change sub page metric	50	change_subpagemetric
 197	Can delete sub page metric	50	delete_subpagemetric
 198	Can view sub page metric	50	view_subpagemetric
+199	Can add flat menu	51	add_flatmenu
+200	Can change flat menu	51	change_flatmenu
+201	Can delete flat menu	51	delete_flatmenu
+202	Can view flat menu	51	view_flatmenu
+203	Can add menu item	52	add_flatmenuitem
+204	Can change menu item	52	change_flatmenuitem
+205	Can delete menu item	52	delete_flatmenuitem
+206	Can view menu item	52	view_flatmenuitem
+207	Can add main menu	53	add_mainmenu
+208	Can change main menu	53	change_mainmenu
+209	Can delete main menu	53	delete_mainmenu
+210	Can view main menu	53	view_mainmenu
+211	Can add menu item	54	add_mainmenuitem
+212	Can change menu item	54	change_mainmenuitem
+213	Can delete menu item	54	delete_mainmenuitem
+214	Can view menu item	54	view_mainmenuitem
 \.
 
 
@@ -2601,6 +2821,10 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 48	main	homepage
 49	main	subpage
 50	main	subpagemetric
+51	wagtailmenus	flatmenu
+52	wagtailmenus	flatmenuitem
+53	wagtailmenus	mainmenu
+54	wagtailmenus	mainmenuitem
 \.
 
 
@@ -2800,6 +3024,30 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 191	main	0034_auto_20190718_1305	2019-07-18 13:28:30.101487+02
 192	main	0035_auto_20190719_1052	2019-07-19 14:34:09.798573+02
 193	main	0036_auto_20190729_1112	2019-08-01 14:52:19.054974+02
+194	main	0037_auto_20190807_0957	2019-09-26 14:08:44.233345+02
+195	main	0038_auto_20190812_1006	2019-09-26 14:08:44.372999+02
+196	wagtailmenus	0001_initial	2019-09-26 14:08:44.625569+02
+197	wagtailmenus	0002_auto_20160129_0901	2019-09-26 14:08:44.693257+02
+198	wagtailmenus	0003_auto_20160129_2339	2019-09-26 14:08:44.802334+02
+199	wagtailmenus	0004_auto_20160130_0024	2019-09-26 14:08:44.875668+02
+200	wagtailmenus	0005_auto_20160130_2209	2019-09-26 14:08:44.936407+02
+201	wagtailmenus	0006_auto_20160131_1347	2019-09-26 14:08:45.100658+02
+202	wagtailmenus	0007_auto_20160131_2000	2019-09-26 14:08:45.283997+02
+203	wagtailmenus	0008_auto_20160131_2327	2019-09-26 14:08:45.541538+02
+204	wagtailmenus	0009_auto_20160201_0859	2019-09-26 14:08:45.622089+02
+205	wagtailmenus	0010_auto_20160201_1558	2019-09-26 14:08:45.666598+02
+206	wagtailmenus	0011_auto_20160415_1519	2019-09-26 14:08:45.728452+02
+207	wagtailmenus	0012_auto_20160419_0039	2019-09-26 14:08:46.132161+02
+208	wagtailmenus	0013_auto_20160423_1124	2019-09-26 14:08:46.230329+02
+209	wagtailmenus	0014_auto_20160423_1339	2019-09-26 14:08:46.327135+02
+210	wagtailmenus	0015_auto_20160423_1348	2019-09-26 14:08:46.421685+02
+211	wagtailmenus	0016_auto_20160930_0645	2019-09-26 14:08:46.53103+02
+212	wagtailmenus	0017_auto_20161013_1658	2019-09-26 14:08:46.663148+02
+213	wagtailmenus	0018_auto_20161204_2043	2019-09-26 14:08:46.750456+02
+214	wagtailmenus	0019_auto_20161204_2143	2019-09-26 14:08:46.774182+02
+215	wagtailmenus	0020_auto_20161210_0004	2019-09-26 14:08:47.049917+02
+216	wagtailmenus	0021_auto_20170106_2352	2019-09-26 14:08:47.159001+02
+217	wagtailmenus	0022_auto_20170913_2125	2019-09-26 14:08:47.253642+02
 \.
 
 
@@ -3270,6 +3518,7 @@ COPY public.wagtailcore_page (id, path, depth, numchild, title, slug, live, has_
 5	0001000300010003	4	3	Specjalizacje	specializacje	t	f	/strona-główna/ee/specializacje/		f		\N	\N	f	32	\N	f	2019-07-22 20:19:42.096167+02	2019-05-20 11:45:32.933843+02	\N	2019-07-22 20:19:42.139734+02	Specjalizacje	\N	\N			/strona-główna/ee/specializacje/	/strona-główna/ee/specializations/	specializacje	specializations	Specjalizacje	specializations
 33	000100030001000300020001	6	0	Dare Magazine	dare-magazine	t	f	/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/dare-magazine/		f		\N	\N	f	30	\N	f	2019-07-12 13:09:54.858628+02	2019-07-04 09:28:19.486759+02	\N	2019-07-12 13:09:54.918056+02	Dare Magazine	\N	\N			/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/dare-magazine/	/strona-główna/ee/specializations/digital-products-and-services/dare-magazine/	dare-magazine	\N	Dare Magazine	\N
 14	00010003000100010004	5	0	Szkolenie z Data Driven Business	szkolenie-z-data-driven-business	t	f	/strona-główna/ee/aktualności/szkolenie-z-data-driven-business/	Szkolenie z Data Driven Business	f	Rozwiń swoją organizację w oparciu o dane. Wykorzystaj do tego celu rozwiązania oparte o Machine Learning i Data Science.	\N	\N	f	34	\N	f	2019-07-23 17:13:21.636117+02	2019-05-29 09:36:38.220127+02	\N	2019-07-23 17:13:21.765663+02	Szkolenie z Data Driven Business	Szkolenie z Data Driven Business	\N	Rozwiń swoją organizację w oparciu o dane. Wykorzystaj do tego celu rozwiązania oparte o Machine Learning i Data Science.		/strona-główna/ee/aktualności/szkolenie-z-data-driven-business/	/strona-główna/ee/news/szkolenie-z-data-driven-business/	szkolenie-z-data-driven-business	\N	Szkolenie z Data Driven Business	\N
+66	00010003000100030002000D	6	0	SPECYFIKACJA TECHNOLOGICZNA DLA NGO.PL	specyfikacja-technologiczna-dla-ngopl	t	f	/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/specyfikacja-technologiczna-dla-ngopl/		f		\N	\N	f	30	\N	f	2019-07-17 15:47:53.479273+02	2019-07-17 15:47:53.572136+02	\N	2019-07-17 15:47:53.572136+02	SPECYFIKACJA TECHNOLOGICZNA DLA NGO.PL	\N	\N			/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/specyfikacja-technologiczna-dla-ngopl/	/strona-główna/ee/specializations/digital-products-and-services/specyfikacja-technologiczna-dla-ngopl/	specyfikacja-technologiczna-dla-ngopl	\N	SPECYFIKACJA TECHNOLOGICZNA DLA NGO.PL	\N
 31	00010003000100010005	5	0	Realizuj przyrosty i dostarczaj wartość biznesową w Sprintach	realizuj-przyrosty-i-dostarczaj-wartość-biznesową-w-sprintach	t	f	/strona-główna/ee/aktualności/realizuj-przyrosty-i-dostarczaj-wartość-biznesową-w-sprintach/	Zwiększ efektywność zarządzania projektami, usprawnij procesy decyzyjne dzięki Scrumowi.	f	Pomożemy Ci wdrożyć Scrum, w Twoim projekcie i organizacji. Pozwól pracować swoim zespołom komfortowo i efektywnie.	\N	\N	f	34	\N	f	2019-07-23 17:22:57.940132+02	2019-07-08 10:43:26.673992+02	\N	2019-07-23 17:22:58.002675+02	Realizuj przyrosty i dostarczaj wartość biznesową w Sprintach	Zwiększ efektywność zarządzania projektami, usprawnij procesy decyzyjne dzięki Scrumowi.	\N	Pomożemy Ci wdrożyć Scrum, w Twoim projekcie i organizacji. Pozwól pracować swoim zespołom komfortowo i efektywnie.		/strona-główna/ee/aktualności/realizuj-przyrosty-i-dostarczaj-wartość-biznesową-w-sprintach/	/strona-główna/ee/news/realizuj-przyrosty-i-dostarczaj-wartość-biznesową-w-sprintach/	realizuj-przyrosty-i-dostarczaj-wartość-biznesową-w-sprintach	\N	Realizuj przyrosty i dostarczaj wartość biznesową w Sprintach	\N
 36	0001000300010008	4	0	Seniorzy	seniorzy	t	f	/strona-główna/ee/seniorzy/		f		\N	\N	f	46	\N	f	2019-07-12 12:54:13.810322+02	2019-07-08 10:27:52.495894+02	\N	2019-07-12 12:54:13.879503+02	Seniorzy	\N	\N			/strona-główna/ee/seniorzy/	/strona-główna/ee/seniorzy/	seniorzy	\N	Seniorzy	\N
 10	0001000300010001	4	2	Aktualności	aktualności	t	f	/strona-główna/ee/aktualności/		f		\N	\N	f	37	\N	f	2019-06-19 12:12:24.095023+02	2019-05-28 16:08:25.294766+02	\N	2019-06-19 12:12:24.143837+02	Aktualności	\N	\N			/strona-główna/ee/aktualności/	/strona-główna/ee/news/	aktualności	news	Aktualności	news
@@ -3284,7 +3533,6 @@ COPY public.wagtailcore_page (id, path, depth, numchild, title, slug, live, has_
 69	00010003000100030002000G	6	0	SERWIS DLA SPOŁECZNOŚCI LOKALNYCH NAPRAWMYTO.PL	serwis-dla-społeczności-lokalnych-naprawmytopl	t	f	/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/serwis-dla-społeczności-lokalnych-naprawmytopl/		f		\N	\N	f	30	\N	f	2019-07-17 15:53:54.086209+02	2019-07-17 15:53:54.167588+02	\N	2019-07-17 15:53:54.167588+02	SERWIS DLA SPOŁECZNOŚCI LOKALNYCH NAPRAWMYTO.PL	\N	\N			/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/serwis-dla-społeczności-lokalnych-naprawmytopl/	/strona-główna/ee/specializations/digital-products-and-services/serwis-dla-społeczności-lokalnych-naprawmytopl/	serwis-dla-społeczności-lokalnych-naprawmytopl	\N	SERWIS DLA SPOŁECZNOŚCI LOKALNYCH NAPRAWMYTO.PL	\N
 62	000100030001000300020009	6	0	INTERAKTYWNE ŻYCIE RELIGIJNE	interaktywne-życie-religijne	t	f	/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/interaktywne-życie-religijne/		f		\N	\N	f	30	\N	f	2019-07-17 15:36:45.944484+02	2019-07-17 15:36:46.030756+02	\N	2019-07-17 15:36:46.030756+02	INTERAKTYWNE ŻYCIE RELIGIJNE	\N	\N			/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/interaktywne-życie-religijne/	/strona-główna/ee/specializations/digital-products-and-services/interaktywne-życie-religijne/	interaktywne-życie-religijne	\N	INTERAKTYWNE ŻYCIE RELIGIJNE	\N
 42	000100030002	3	0	Zasady ochrony danych osobowych	obowiązek-informacyjny-i-polityka-prywatności	t	f	/strona-główna/obowiązek-informacyjny-i-polityka-prywatności/	Zasady ochrony danych osobowych	f	Obowiązek informacyjny i polityka prywatności.	\N	\N	f	49	\N	f	2019-07-23 16:23:13.222946+02	2019-07-17 12:22:12.430415+02	\N	2019-07-23 16:23:13.309257+02	Zasady ochrony danych osobowych	Zasady ochrony danych osobowych	\N	Obowiązek informacyjny i polityka prywatności.		/strona-główna/obowiązek-informacyjny-i-polityka-prywatności/	/strona-główna/obowiązek-informacyjny-i-polityka-prywatności/	obowiązek-informacyjny-i-polityka-prywatności	\N	Zasady ochrony danych osobowych	\N
-66	00010003000100030002000D	6	0	SPECYFIKACJA TECHNOLOGICZNA DLA NGO.PL	specyfikacja-technologiczna-dla-ngopl	t	f	/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/specyfikacja-technologiczna-dla-ngopl/		f		\N	\N	f	30	\N	f	2019-07-17 15:47:53.479273+02	2019-07-17 15:47:53.572136+02	\N	2019-07-17 15:47:53.572136+02	SPECYFIKACJA TECHNOLOGICZNA DLA NGO.PL	\N	\N			/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/specyfikacja-technologiczna-dla-ngopl/	/strona-główna/ee/specializations/digital-products-and-services/specyfikacja-technologiczna-dla-ngopl/	specyfikacja-technologiczna-dla-ngopl	\N	SPECYFIKACJA TECHNOLOGICZNA DLA NGO.PL	\N
 58	000100030001000300020005	6	0	APLIKACJA SIECIOWA	aplikacja-sieciowa	t	f	/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/aplikacja-sieciowa/		f		\N	\N	f	30	\N	f	2019-07-17 15:19:41.640511+02	2019-07-17 15:19:41.72428+02	\N	2019-07-17 15:19:41.72428+02	APLIKACJA SIECIOWA	\N	\N			/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/aplikacja-sieciowa/	/strona-główna/ee/specializations/digital-products-and-services/aplikacja-sieciowa/	aplikacja-sieciowa	\N	APLIKACJA SIECIOWA	\N
 70	00010003000100030002000H	6	0	GRAJ I KODUJ!	graj-i-koduj	t	f	/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/graj-i-koduj/		f		\N	\N	f	30	\N	f	2019-07-17 15:56:22.978127+02	2019-07-17 15:56:23.049306+02	\N	2019-07-17 15:56:23.049306+02	GRAJ I KODUJ!	\N	\N			/strona-główna/ee/specializacje/produkty-i-usługi-cyfrowe/graj-i-koduj/	/strona-główna/ee/specializations/digital-products-and-services/graj-i-koduj/	graj-i-koduj	\N	GRAJ I KODUJ!	\N
 54	00010003000100030001000C	6	0	APLIKACJA CYFROWA GOODOO	aplikacja-cyfrowa-goodoo	t	f	/strona-główna/ee/specializacje/stare-innowacje/aplikacja-cyfrowa-goodoo/		f		\N	\N	f	30	\N	f	2019-07-18 10:23:53.97703+02	2019-07-17 14:58:51.778167+02	\N	2019-07-18 10:23:54.143304+02	APLIKACJA CYFROWA GOODOO	\N	\N			/strona-główna/ee/specializacje/stare-innowacje/aplikacja-cyfrowa-goodoo/	/strona-główna/ee/specializations/stare-innowacje/aplikacja-cyfrowa-goodoo/	aplikacja-cyfrowa-goodoo	\N	APLIKACJA CYFROWA GOODOO	\N
@@ -3574,6 +3822,38 @@ COPY public.wagtailimages_rendition (id, file, width, height, focal_point_key, f
 
 
 --
+-- Data for Name: wagtailmenus_flatmenu; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.wagtailmenus_flatmenu (id, title, handle, heading, site_id, max_levels, use_specific) FROM stdin;
+\.
+
+
+--
+-- Data for Name: wagtailmenus_flatmenuitem; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.wagtailmenus_flatmenuitem (id, sort_order, link_text, link_url, link_page_id, menu_id, url_append, allow_subnav, handle) FROM stdin;
+\.
+
+
+--
+-- Data for Name: wagtailmenus_mainmenu; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.wagtailmenus_mainmenu (id, site_id, max_levels, use_specific) FROM stdin;
+\.
+
+
+--
+-- Data for Name: wagtailmenus_mainmenuitem; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.wagtailmenus_mainmenuitem (id, sort_order, link_text, link_url, link_page_id, menu_id, allow_subnav, url_append, handle) FROM stdin;
+\.
+
+
+--
 -- Data for Name: wagtailredirects_redirect; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -3632,7 +3912,7 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 14, true);
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 198, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 214, true);
 
 
 --
@@ -3674,14 +3954,14 @@ SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, false);
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 50, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 54, true);
 
 
 --
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 193, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 217, true);
 
 
 --
@@ -3850,6 +4130,34 @@ SELECT pg_catalog.setval('public.wagtailimages_image_id_seq', 198, true);
 --
 
 SELECT pg_catalog.setval('public.wagtailimages_rendition_id_seq', 1188, true);
+
+
+--
+-- Name: wagtailmenus_flatmenu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.wagtailmenus_flatmenu_id_seq', 1, false);
+
+
+--
+-- Name: wagtailmenus_flatmenuitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.wagtailmenus_flatmenuitem_id_seq', 1, false);
+
+
+--
+-- Name: wagtailmenus_mainmenu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.wagtailmenus_mainmenu_id_seq', 1, false);
+
+
+--
+-- Name: wagtailmenus_mainmenuitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.wagtailmenus_mainmenuitem_id_seq', 1, false);
 
 
 --
@@ -4456,6 +4764,54 @@ ALTER TABLE ONLY public.wagtailimages_rendition
 
 
 --
+-- Name: wagtailmenus_flatmenu wagtailmenus_flatmenu_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_flatmenu
+    ADD CONSTRAINT wagtailmenus_flatmenu_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: wagtailmenus_flatmenu wagtailmenus_flatmenu_site_id_handle_7b0cab3a_uniq; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_flatmenu
+    ADD CONSTRAINT wagtailmenus_flatmenu_site_id_handle_7b0cab3a_uniq UNIQUE (site_id, handle);
+
+
+--
+-- Name: wagtailmenus_flatmenuitem wagtailmenus_flatmenuitem_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_flatmenuitem
+    ADD CONSTRAINT wagtailmenus_flatmenuitem_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: wagtailmenus_mainmenu wagtailmenus_mainmenu_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_mainmenu
+    ADD CONSTRAINT wagtailmenus_mainmenu_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: wagtailmenus_mainmenu wagtailmenus_mainmenu_site_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_mainmenu
+    ADD CONSTRAINT wagtailmenus_mainmenu_site_id_key UNIQUE (site_id);
+
+
+--
+-- Name: wagtailmenus_mainmenuitem wagtailmenus_mainmenuitem_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_mainmenuitem
+    ADD CONSTRAINT wagtailmenus_mainmenuitem_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: wagtailredirects_redirect wagtailredirects_redirect_old_path_site_id_783622d7_uniq; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5057,6 +5413,55 @@ CREATE INDEX wagtailimages_rendition_filter_spec_1cba3201_like ON public.wagtail
 --
 
 CREATE INDEX wagtailimages_rendition_image_id_3e1fd774 ON public.wagtailimages_rendition USING btree (image_id);
+
+
+--
+-- Name: wagtailmenus_flatmenu_handle_fd420cad; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wagtailmenus_flatmenu_handle_fd420cad ON public.wagtailmenus_flatmenu USING btree (handle);
+
+
+--
+-- Name: wagtailmenus_flatmenu_handle_fd420cad_like; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wagtailmenus_flatmenu_handle_fd420cad_like ON public.wagtailmenus_flatmenu USING btree (handle varchar_pattern_ops);
+
+
+--
+-- Name: wagtailmenus_flatmenu_site_id_516a598d; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wagtailmenus_flatmenu_site_id_516a598d ON public.wagtailmenus_flatmenu USING btree (site_id);
+
+
+--
+-- Name: wagtailmenus_flatmenuitem_link_page_id_36779c0f; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wagtailmenus_flatmenuitem_link_page_id_36779c0f ON public.wagtailmenus_flatmenuitem USING btree (link_page_id);
+
+
+--
+-- Name: wagtailmenus_flatmenuitem_menu_id_757c39da; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wagtailmenus_flatmenuitem_menu_id_757c39da ON public.wagtailmenus_flatmenuitem USING btree (menu_id);
+
+
+--
+-- Name: wagtailmenus_mainmenuitem_link_page_id_208a4a4d; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wagtailmenus_mainmenuitem_link_page_id_208a4a4d ON public.wagtailmenus_mainmenuitem USING btree (link_page_id);
+
+
+--
+-- Name: wagtailmenus_mainmenuitem_menu_id_6505d4c4; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX wagtailmenus_mainmenuitem_menu_id_6505d4c4 ON public.wagtailmenus_mainmenuitem USING btree (menu_id);
 
 
 --
@@ -5681,6 +6086,54 @@ ALTER TABLE ONLY public.wagtailimages_image
 
 ALTER TABLE ONLY public.wagtailimages_rendition
     ADD CONSTRAINT wagtailimages_rendit_image_id_3e1fd774_fk_wagtailim FOREIGN KEY (image_id) REFERENCES public.wagtailimages_image(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: wagtailmenus_flatmenuitem wagtailmenus_flatmen_link_page_id_36779c0f_fk_wagtailco; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_flatmenuitem
+    ADD CONSTRAINT wagtailmenus_flatmen_link_page_id_36779c0f_fk_wagtailco FOREIGN KEY (link_page_id) REFERENCES public.wagtailcore_page(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: wagtailmenus_flatmenuitem wagtailmenus_flatmen_menu_id_757c39da_fk_wagtailme; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_flatmenuitem
+    ADD CONSTRAINT wagtailmenus_flatmen_menu_id_757c39da_fk_wagtailme FOREIGN KEY (menu_id) REFERENCES public.wagtailmenus_flatmenu(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: wagtailmenus_flatmenu wagtailmenus_flatmenu_site_id_516a598d_fk_wagtailcore_site_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_flatmenu
+    ADD CONSTRAINT wagtailmenus_flatmenu_site_id_516a598d_fk_wagtailcore_site_id FOREIGN KEY (site_id) REFERENCES public.wagtailcore_site(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: wagtailmenus_mainmenuitem wagtailmenus_mainmen_link_page_id_208a4a4d_fk_wagtailco; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_mainmenuitem
+    ADD CONSTRAINT wagtailmenus_mainmen_link_page_id_208a4a4d_fk_wagtailco FOREIGN KEY (link_page_id) REFERENCES public.wagtailcore_page(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: wagtailmenus_mainmenuitem wagtailmenus_mainmen_menu_id_6505d4c4_fk_wagtailme; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_mainmenuitem
+    ADD CONSTRAINT wagtailmenus_mainmen_menu_id_6505d4c4_fk_wagtailme FOREIGN KEY (menu_id) REFERENCES public.wagtailmenus_mainmenu(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: wagtailmenus_mainmenu wagtailmenus_mainmenu_site_id_84b0fde4_fk_wagtailcore_site_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.wagtailmenus_mainmenu
+    ADD CONSTRAINT wagtailmenus_mainmenu_site_id_84b0fde4_fk_wagtailcore_site_id FOREIGN KEY (site_id) REFERENCES public.wagtailcore_site(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
