@@ -45,20 +45,22 @@ INSTALLED_APPS = [
     'settings_context_processor',
     'captcha',
 
+    'wagtail.admin',
     'wagtail.contrib.forms',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
+    'wagtail.core',
     'wagtail.documents',
+    'wagtail.embeds',
     'wagtail.images',
     'wagtail.search',
-    'wagtail.admin',
-    'wagtail.core',
+    'wagtail.sites',
+    'wagtail.snippets',
+    'wagtail.users',
     'wagtail_modeltranslation',
     'wagtail_modeltranslation.makemigrations',
     'wagtail_modeltranslation.migrate',
+    'wagtailmenus',
 
     'modelcluster',
     'taggit',
@@ -99,6 +101,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.request',
                 'settings_context_processor.context_processors.settings',
+                'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     },
@@ -189,10 +192,6 @@ SENTRY_DSN = env.str('SENTRY_DSN', default=None)
 
 # Facebook pixel
 FACEBOOK_PIXEL_ID = None
-
-# release string
-RELEASE_STRING = None
-RELEASE_COMMIT_HASH = None
 
 # settings-context-processor
 TEMPLATE_VISIBLE_SETTINGS = [

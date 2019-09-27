@@ -38,9 +38,6 @@ RECRUITMENT_EMAILS = {
 RECAPTCHA_PUBLIC_KEY = '6Leuu6oUAAAAAJDawsl8RLG7gGvWzBzHHmN64GAS'
 
 
-RELEASE_STRING = 'test'
-
-
 # salesforce
 SALESFORCE_DOMAIN = 'test'
 SALESFORCE_INSTANCE = 'laboratoriumee--test.my.salesforce.com'

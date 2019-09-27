@@ -1,9 +1,6 @@
-{% load i18n %}
-{% load svg %}
 {% load main_tags %}
+{% load menu_tags %}
 {% load render_bundle from webpack_loader %}
-{% load static %}
-{% load wagtailcore_tags %}
 {% load webpack_static from webpack_loader %}
 
 <!DOCTYPE html>
@@ -31,7 +28,7 @@
 
 <body>
     {% block navbar %}
-        {% navbar %}
+        {% main_menu template="main/partials/navbar.html" %}
     {% endblock %}
 
     {% block content %}
