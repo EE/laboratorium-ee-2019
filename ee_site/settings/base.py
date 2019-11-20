@@ -152,8 +152,7 @@ USE_TZ = True
 
 LANGUAGES = [
     ('pl', _('Polish')),
-    # temporarily disabled
-    # ('en', _('English')),
+    ('en', _('English')),
 ]
 MODELTRANSLATION_LANGUAGES = [
     'pl',
