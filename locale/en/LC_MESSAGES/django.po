@@ -237,7 +237,7 @@ msgstr ""
 #: ee_site/templates/main/news_page.html:61
 #: ee_site/templates/main/partials/navbar.html:34
 msgid "Napisz do nas"
-msgstr "Write to us"
+msgstr "Contact us"
 
 #: ee_site/templates/main/partials/contact_form.html:15
 msgid "Co możemy razem zrobić?"
