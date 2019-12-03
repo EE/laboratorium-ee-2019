@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 09:02+0200\n"
+"POT-Creation-Date: 2019-11-27 09:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,6 +122,14 @@ msgid ""
 "whether this document is linked in consent checkbox under the contact form"
 msgstr ""
 
+#: ee_site/apps/main/urls.py:8
+msgid "contact-form/"
+msgstr "formularz-kontaktowy/"
+
+#: ee_site/apps/main/urls.py:13
+msgid "thanks/"
+msgstr "dziękujemy/"
+
 #: ee_site/apps/projects/models.py:98
 msgid "If True, this topic would be visible on HomePage."
 msgstr ""
@@ -142,12 +150,15 @@ msgstr "Opis pokazywany na stronie TeamIndex."
 msgid "More comprehensive description visible on Home Page"
 msgstr "Bardziej wyczerpujący opis widoczny na Home Page"
 
-#: ee_site/settings/base.py:151
+#: ee_site/settings/base.py:154
 msgid "Polish"
 msgstr "Polski"
 
+#: ee_site/settings/base.py:155
+msgid "English"
+msgstr "Angielski"
+
 #: ee_site/templates/main/blocks/contact_us_button.html:7
-#: ee_site/templates/main/partials/navbar.html:46
 #: ee_site/templates/projects/specialization_page.html:39
 #: ee_site/templates/projects/specialization_page.html:66
 msgid "Wypróbuj nas"
@@ -226,6 +237,7 @@ msgid "No more articles"
 msgstr "Nie ma więcej artykułów"
 
 #: ee_site/templates/main/news_page.html:61
+#: ee_site/templates/main/partials/navbar.html:34
 msgid "Napisz do nas"
 msgstr ""
 
@@ -274,19 +286,19 @@ msgid "Partners"
 msgstr "Partnerzy"
 
 #: ee_site/templates/main/sub_page.html:34
-#: ee_site/templates/projects/project_page.html:29
+#: ee_site/templates/projects/project_page.html:23
 msgid "Odwiedź stronę"
 msgstr ""
 
-#: ee_site/templates/projects/project_page.html:58
+#: ee_site/templates/projects/project_page.html:52
 msgid "Challenges"
 msgstr "Wyzwania"
 
-#: ee_site/templates/projects/project_page.html:67
+#: ee_site/templates/projects/project_page.html:61
 msgid "Process"
 msgstr "Proces"
 
-#: ee_site/templates/projects/project_page.html:94
+#: ee_site/templates/projects/project_page.html:88
 msgid "Similiar projects"
 msgstr "Podobne projekty"
 
@@ -313,9 +325,3 @@ msgstr "Projekty"
 #: ee_site/templates/projects/team_index_page.html:36
 msgid "Our values"
 msgstr "Nasze wartości"
-
-#~ msgid "email or phone number"
-#~ msgstr "adres email lub numer telefonu"
-
-#~ msgid "how can we help you?"
-#~ msgstr "jak możemy pomóc?"

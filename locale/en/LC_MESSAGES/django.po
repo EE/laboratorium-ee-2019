@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 09:02+0200\n"
+"POT-Creation-Date: 2019-11-27 09:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #: ee_site/apps/main/forms.py:43
 msgid "wybierz temat"
-msgstr ""
+msgstr "choose a subject"
 
 #: ee_site/apps/main/forms.py:44
 msgid "Offer"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: ee_site/apps/main/forms.py:73
 msgid "załącz CV"
-msgstr ""
+msgstr "attach your CV"
 
 #: ee_site/apps/main/forms.py:111
 msgid "This field is required."
@@ -89,7 +89,7 @@ msgstr ""
 
 #: ee_site/apps/main/models.py:212
 msgid "Poznaj nas przez nasze historie"
-msgstr ""
+msgstr "Get to know us through our stories"
 
 #: ee_site/apps/main/models.py:228
 msgid "Działamy w tematach"
@@ -97,7 +97,7 @@ msgstr ""
 
 #: ee_site/apps/main/models.py:256
 msgid "Nasze inicjatywy"
-msgstr ""
+msgstr "Our initiatives"
 
 #: ee_site/apps/main/models.py:272
 msgid "We have worked with"
@@ -120,6 +120,14 @@ msgid ""
 "whether this document is linked in consent checkbox under the contact form"
 msgstr ""
 
+#: ee_site/apps/main/urls.py:8
+msgid "contact-form/"
+msgstr ""
+
+#: ee_site/apps/main/urls.py:13
+msgid "thanks/"
+msgstr ""
+
 #: ee_site/apps/projects/models.py:98
 msgid "If True, this topic would be visible on HomePage."
 msgstr ""
@@ -140,16 +148,19 @@ msgstr ""
 msgid "More comprehensive description visible on Home Page"
 msgstr ""
 
-#: ee_site/settings/base.py:151
+#: ee_site/settings/base.py:154
 msgid "Polish"
 msgstr ""
 
+#: ee_site/settings/base.py:155
+msgid "English"
+msgstr ""
+
 #: ee_site/templates/main/blocks/contact_us_button.html:7
-#: ee_site/templates/main/partials/navbar.html:46
 #: ee_site/templates/projects/specialization_page.html:39
 #: ee_site/templates/projects/specialization_page.html:66
 msgid "Wypróbuj nas"
-msgstr ""
+msgstr "Check us out"
 
 #: ee_site/templates/main/blocks/hero_carousel.html:34
 msgid "Check us out"
@@ -163,34 +174,34 @@ msgstr ""
 
 #: ee_site/templates/main/blocks/hero_join_us.html:18
 msgid "Pracuj z nami"
-msgstr ""
+msgstr "Work with us"
 
 #: ee_site/templates/main/blocks/hero_join_us.html:28
 msgid "Stawiamy na rozwiązania"
-msgstr ""
+msgstr "We focus on solutions"
 
 #: ee_site/templates/main/blocks/hero_join_us.html:34
 msgid "Pobudzamy kreatywność"
-msgstr ""
+msgstr "We stimulate creativity"
 
 #: ee_site/templates/main/blocks/hero_join_us.html:40
 msgid "Nie boimy się myśleć samodzielnie"
-msgstr ""
+msgstr "We are not afraid to think for ourselves"
 
 #: ee_site/templates/main/blocks/hero_static_left.html:30
 #: ee_site/templates/main/blocks/hero_static_right.html:30
 #: ee_site/templates/main/blocks/triptych.html:30
 msgid "Sprawdź"
-msgstr ""
+msgstr "Check it out"
 
 #: ee_site/templates/main/blocks/tile_grid_with_icons.html:22
 #: ee_site/templates/main/partials/job_offer_card.html:15
 msgid "Więcej"
-msgstr ""
+msgstr "More"
 
 #: ee_site/templates/main/job_offer_index_page.html:25
 msgid "Aktualne oferty"
-msgstr ""
+msgstr "Current offers"
 
 #: ee_site/templates/main/job_offer_index_page.html:43
 msgid "Współpraca"
@@ -199,7 +210,7 @@ msgstr "Cooperation"
 #: ee_site/templates/main/job_offer_index_page.html:64
 #: ee_site/templates/main/job_offer_page.html:56
 msgid "Jesteś <b>zainteresowana ofertą?</b>"
-msgstr ""
+msgstr "Are you <b>interested in the offer?</b>"
 
 #: ee_site/templates/main/job_offer_index_page.html:67
 #: ee_site/templates/main/job_offer_page.html:59
@@ -209,11 +220,11 @@ msgstr ""
 #: ee_site/templates/main/job_offer_index_page.html:73
 #: ee_site/templates/main/job_offer_page.html:65
 msgid "Aplikuj!"
-msgstr ""
+msgstr "Apply!"
 
 #: ee_site/templates/main/news_index_page.html:19
 msgid "Wyróżnione"
-msgstr ""
+msgstr "Featured"
 
 #: ee_site/templates/main/news_index_page.html:40
 msgid "Dzieje się"
@@ -224,12 +235,13 @@ msgid "No more articles"
 msgstr ""
 
 #: ee_site/templates/main/news_page.html:61
+#: ee_site/templates/main/partials/navbar.html:34
 msgid "Napisz do nas"
-msgstr ""
+msgstr "Write to us"
 
 #: ee_site/templates/main/partials/contact_form.html:15
 msgid "Co możemy razem zrobić?"
-msgstr ""
+msgstr "What can we do together?"
 
 #: ee_site/templates/main/partials/contact_form.html:25
 msgid "Required"
@@ -237,15 +249,15 @@ msgstr ""
 
 #: ee_site/templates/main/partials/contact_form.html:34
 msgid "jak możemy pomóc?"
-msgstr ""
+msgstr "how can we help?"
 
 #: ee_site/templates/main/partials/contact_form.html:35
 msgid "napisz nam o sobie"
-msgstr ""
+msgstr "write us about yourself"
 
 #: ee_site/templates/main/partials/contact_form.html:39
 msgid "załącz plik"
-msgstr ""
+msgstr "attach a file"
 
 #: ee_site/templates/main/partials/contact_form.html:56
 msgid "Send"
@@ -272,19 +284,19 @@ msgid "Partners"
 msgstr ""
 
 #: ee_site/templates/main/sub_page.html:34
-#: ee_site/templates/projects/project_page.html:29
+#: ee_site/templates/projects/project_page.html:23
 msgid "Odwiedź stronę"
-msgstr ""
+msgstr "Visit the webpage"
 
-#: ee_site/templates/projects/project_page.html:58
+#: ee_site/templates/projects/project_page.html:52
 msgid "Challenges"
 msgstr ""
 
-#: ee_site/templates/projects/project_page.html:67
+#: ee_site/templates/projects/project_page.html:61
 msgid "Process"
 msgstr ""
 
-#: ee_site/templates/projects/project_page.html:94
+#: ee_site/templates/projects/project_page.html:88
 msgid "Similiar projects"
 msgstr ""
 
