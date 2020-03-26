@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.urls import re_path, include, path
 from django.views import defaults as views_defaults
 from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.core import urls as wagtail_urls
 
 from .apps.main.views import DynamicRenditionView
@@ -31,6 +32,7 @@ urlpatterns = [
         path('', include('ee_site.apps.main.urls')),
     ),
     re_path(r'^cms/', include(wagtailadmin_urls)),
+    re_path(r'^documents/', include(wagtaildocs_urls)),
     url(r'^rendition/(\d+)/(\d*)/(\d*)/$', DynamicRenditionView.as_view(), name='dynamic_rendition'),
 
     *i18n_patterns(
