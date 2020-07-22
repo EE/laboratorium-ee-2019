@@ -216,6 +216,7 @@ WEBPACK_LOADER = {
 WAGTAIL_SITE_NAME = 'Laboratorium EE'
 WAGTAILIMAGES_JPEG_QUALITY = 70
 
+
 # enable features for wagtail's richtext field
 @hooks.register('register_rich_text_features')
 def register_extra_features(features):
