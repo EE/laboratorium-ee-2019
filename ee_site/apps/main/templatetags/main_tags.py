@@ -4,6 +4,7 @@ from django import template
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
+from wagtail.core.models import Site
 from wagtail.core.templatetags.wagtailcore_tags import pageurl
 
 from ee_site.apps.main.models import Footer
@@ -41,7 +42,7 @@ def recruitment_contact_form(context):
 @register.inclusion_tag('main/partials/footer.html', takes_context=True)
 def footer(context):
     try:
-        footer = Footer.objects.get(site=context['request'].site)
+        footer = Footer.objects.get(site=Site.find_for_request(request=context['request']))
     except ObjectDoesNotExist:
         footer = None
     finally:
