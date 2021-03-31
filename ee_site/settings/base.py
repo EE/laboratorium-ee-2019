@@ -82,7 +82,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
@@ -215,6 +214,7 @@ WEBPACK_LOADER = {
 # wagtail related setting
 WAGTAIL_SITE_NAME = 'Laboratorium EE'
 WAGTAILIMAGES_JPEG_QUALITY = 70
+
 
 # enable features for wagtail's richtext field
 @hooks.register('register_rich_text_features')
