@@ -9,7 +9,6 @@ django-settings-context-processor = "*"
 "psycopg2" = "*"
 django-webpack-loader = "*"
 Django = "==2.2.*"
-django_compressor = "*"
 gunicorn = "*"
 whitenoise = "*"
 wagtail = "==2.12.*"
@@ -28,4 +27,4 @@ wagtailmenus = "*"
 ipdb = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8"
