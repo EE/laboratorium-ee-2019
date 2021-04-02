@@ -40,4 +40,4 @@ RECAPTCHA_PUBLIC_KEY = '6Leuu6oUAAAAAJDawsl8RLG7gGvWzBzHHmN64GAS'
 
 # salesforce
 SALESFORCE_DOMAIN = 'test'
-SALESFORCE_INSTANCE = 'laboratoriumee--test.my.salesforce.com'
+SALESFORCE_INSTANCE = None
