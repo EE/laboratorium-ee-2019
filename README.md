@@ -34,17 +34,9 @@
 
        python manage.py migrate
 
-   or
+   or dump DB from test server (heroku access needed)
 
-       cat dump.sql | ./manage.py dbshell
-       python manage.py migrate  # just to be sure
-
-   You can log in as superuser using the following data:
-
-       username: admin
-       password: adminadmin
-
-   (It's hard to create fixtures which work with wagtail table inheritance - thus we use database dump instead of fixtures.)
+       heroku pg:pull DATABASE_URL <your_new_db_name> --app strona-ee-test
 
 6. Run test command to make sure everything is in order:
 
