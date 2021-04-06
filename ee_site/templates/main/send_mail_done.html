@@ -12,7 +12,8 @@
     <section class="section is-medium">
         <div class="container">
             <div class="content">
-                {{ request.site.contact_form.after_send_text|richtext }}
+                {% wagtail_site as site %}
+                {{ site.contact_form.after_send_text|richtext }}
             </div>
         </div>
     </section>

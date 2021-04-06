@@ -8,6 +8,7 @@ from django.core.mail import EmailMessage
 from django.utils.translation import gettext as _
 
 from simple_salesforce.exceptions import SalesforceError
+from wagtail.core.models import Site
 
 from .salesforce import salesforce
 
@@ -88,7 +89,7 @@ class ContactForm(forms.Form):
         from .models import ContactForm as ContactFormModel
 
         try:
-            contact_form = ContactFormModel.objects.get(site=request.site)
+            contact_form = ContactFormModel.objects.get(site=Site.find_for_request(request))
             self.fields['terms_accepted'].label = contact_form.terms_accepted_label
             self.fields['recruitment_terms_accepted'].label = contact_form.recruitment_terms_accepted_label
         except ContactFormModel.DoesNotExist:
