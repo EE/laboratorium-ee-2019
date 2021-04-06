@@ -1,6 +1,7 @@
 {# Base template for all wagtail pages. #}
 
 {% extends 'base.html' %}
+{% load wagtailcore_tags %}
 
 {% block title %}
     {{ page.seo_title }}
@@ -14,5 +15,6 @@
     {{ block.super }}
     <meta property="og:title" content="{{ page.seo_title }}" />
     <meta property="og:description" content="{{ page.search_description }}" />
-    <meta property="og:site_name" content="{{ request.site.site_name }}" />
+    {% wagtail_site as site %}
+    <meta property="og:site_name" content="{{ site.site_name }}" />
 {% endblock %}
