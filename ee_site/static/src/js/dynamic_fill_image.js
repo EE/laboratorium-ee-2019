@@ -20,12 +20,39 @@ const roundSize = (size) => {
  **/
 const assignDynamicSrc = (image) => {
     if (!image.dataset.imageId) return;
+
+    // compute proper size image url
     const width = roundSize(image.clientWidth);
     const height = roundSize(image.clientHeight);
     const newSrc = `${domainWithProtocol}/rendition/${image.dataset.imageId}/${width}/${height}/`;
-    if (newSrc != image.src) {
-        image.src = newSrc;
+    if (newSrc == image.src) return;
+
+    // create clone to cover image during src change
+    const clonedImage = image.cloneNode();
+    clonedImage.classList.remove('dynamic');
+    clonedImage.style.transition = "opacity 0.3s";
+    if (image.nextSibling) {
+        image.parentNode.insertBefore(clonedImage, image.nextSibling);
+    } else {
+        image.parentNode.appendChild(clonedImage);
     }
+
+    // hide original image
+    image.style.opacity = 0;
+
+    // load proper size image into original img tag
+    const onloaded = () => {
+        // show image
+        image.style.opacity = clonedImage.style.opacity;
+
+        // delete cover image
+        clonedImage.style.opacity = 0;
+        setTimeout(() => clonedImage.remove(), 1000);
+
+        image.removeEventListener('load', onloaded);
+    };
+    image.addEventListener('load', onloaded);
+    image.src = newSrc;
 };
 
 /**
