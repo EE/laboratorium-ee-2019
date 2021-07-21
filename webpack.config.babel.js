@@ -5,7 +5,7 @@ import webpack from "webpack";
 import autoprefixer from "autoprefixer";
 
 import BundleTracker from "webpack-bundle-tracker";
-import CleanWebpackPlugin from "clean-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
@@ -19,13 +19,17 @@ const outputDir = "./ee_site/static/dist/bundles";
 /* RULES */
 
 const styleRule = {
-    test: /\.(sa|sc|c)ss$/,
-    use: [
-        MiniCssExtractPlugin.loader,
-        { loader: "css-loader", options: { sourceMap: true } },
-        { loader: "postcss-loader", options: { plugins: () => [autoprefixer()] } },
-        "sass-loader"
-    ]
+  test: /\.(sa|sc|c)ss$/,
+  include: path.resolve(`${inputDir}/scss`),
+  use: [
+    MiniCssExtractPlugin.loader,
+    { loader: "css-loader", options: { sourceMap: true } },
+    {
+      loader: "postcss-loader",
+      options: { postcssOptions: () => [autoprefixer()] },
+    },
+    "sass-loader",
+  ],
 };
 
 const jsRule = {
@@ -42,17 +46,32 @@ const assetRule = {
 
 /* PLUGINS */
 const plugins = [
-    new BundleTracker({ filename: "./.webpack-stats.json" }),
-    new MiniCssExtractPlugin({
-        filename: devMode ? "[name].css" : "[name].[hash].css",
-        chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin([outputDir]),
-    new CopyWebpackPlugin([
-        { from: `${inputDir}/images/**/*`, to: path.resolve(`${outputDir}/images/[name].[ext]`), toType: "template" },
-        { from: `${inputDir}/fonts/**/*`, to: path.resolve(`${outputDir}/fonts/[name].[ext]`), toType: "template" },
-    ])
+  new BundleTracker({
+    path: __dirname, // eslint-disable-line no-undef
+    filename: ".webpack-stats.json",
+  }),
+  new MiniCssExtractPlugin({
+    filename: devMode ? "[name].css" : "[name].[hash].css",
+    chunkFilename: devMode ? "[id].css" : "[id].[hash].css",
+  }),
+  new webpack.HotModuleReplacementPlugin(),
+  new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: [outputDir] }),
+  new CopyWebpackPlugin({
+    patterns: [
+      {
+        from: `${inputDir}/images/**/*`,
+        to: path.resolve(`${outputDir}/images/[name].[ext]`),
+        toType: "template",
+        noErrorOnMissing: true,
+      },
+      {
+        from: `${inputDir}/fonts/**/*`,
+        to: path.resolve(`${outputDir}/fonts/[name].[ext]`),
+        toType: "template",
+        noErrorOnMissing: true,
+      },
+    ],
+  }),
 ];
 
 if (devMode) {
@@ -61,30 +80,30 @@ if (devMode) {
 
 /* WEBPACK OPTIONS */
 export default {
-    context: __dirname, // eslint-disable-line no-undef
-    entry: `${inputDir}/js/main.js`,
-    output: {
-        path: path.resolve(outputDir),
-        filename: "[name]-[hash].js",
-        publicPath: hotReload ? "http://localhost:8080/" : "/static/bundles/",
-    },
-    devtool: devMode ? "cheap-eval-source-map" : "source-map",
-    devServer: {
-        hot: true,
-        quiet: false,
-        headers: { "Access-Control-Allow-Origin": "*" },
-        port: 8080,
-    },
-    module: { rules: [jsRule, styleRule, assetRule] },
-    plugins,
-    optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true,
-            }),
-            new OptimizeCSSAssetsPlugin({}),
-        ],
-    },
+  context: __dirname, // eslint-disable-line no-undef
+  entry: `${inputDir}/js/main.js`,
+  output: {
+    path: path.resolve(outputDir),
+    filename: "[name]-[hash].js",
+    publicPath: hotReload ? "http://localhost:8080/" : "/static/bundles/",
+  },
+  devtool: devMode ? "eval-cheap-source-map" : "source-map",
+  devServer: {
+    hot: true,
+    quiet: false,
+    headers: { "Access-Control-Allow-Origin": "*" },
+    port: 8080,
+  },
+  module: { rules: [jsRule, styleRule, assetRule] },
+  plugins,
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  },
 };

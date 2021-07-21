@@ -5,9 +5,9 @@ name = "pypi"
 
 [packages]
 django-environ = "*"
+django-webpack-loader = "==1.*"
 django-settings-context-processor = "*"
 "psycopg2" = "*"
-django-webpack-loader = "*"
 Django = "==3.2.*"
 gunicorn = "*"
 whitenoise = "*"
