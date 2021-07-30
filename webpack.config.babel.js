@@ -86,14 +86,5 @@ export default {
             }),
             new OptimizeCSSAssetsPlugin({}),
         ],
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendor",
-                    chunks: "initial",
-                },
-            },
-        },
     },
 };

@@ -34,7 +34,7 @@ urlpatterns = [
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
     url(r'^rendition/(\d+)/(\d*)/(\d*)/$', DynamicRenditionView.as_view(), name='dynamic_rendition'),
-
+    path('i18n/', include('django.conf.urls.i18n')),
     *i18n_patterns(
         re_path(r'', include(wagtail_urls)),
     ),
