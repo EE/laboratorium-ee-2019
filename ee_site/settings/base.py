@@ -254,3 +254,6 @@ SALESFORCE_INSTANCE = 'laboratoriumee.my.salesforce.com'
 SALESFORCE_CLIENT_ID = '3MVG9I5UQ_0k_hTmaSws_TCivIpexLZoEP.S63TsK3Sj.3MFQRMclngn44zah.u1dVKpcvH3Bq6d8ejRArxJE'
 SALESFORCE_CLIENT_SECRET = env.str('SALESFORCE_CLIENT_SECRET', default=None)
 SALESFORCE_REFRESH_TOKEN = env.str('SALESFORCE_REFRESH_TOKEN', default=None)
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

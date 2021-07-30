@@ -36,7 +36,7 @@
 
    or dump DB from test server (heroku access needed)
 
-       heroku pg:pull DATABASE_URL <your_new_db_name> --app strona-ee-test
+       heroku pg:pull DATABASE_URL <your_new_db_name> --app laboratorium-ee-test
 
 6. Run test command to make sure everything is in order:
 
