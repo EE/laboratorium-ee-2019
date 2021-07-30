@@ -67,9 +67,10 @@ INSTALLED_APPS = [
 
     'bulma',  # for automatic form rendering
 
+    'ee_site.apps.layout.apps.LayoutConfig',
     'ee_site.apps.main',
     'ee_site.apps.projects',
-    'svg'
+    'svg',
 ]
 
 MIDDLEWARE = [

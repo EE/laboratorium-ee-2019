@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load layout %}
 {% load webpack_static from webpack_loader %}
 
 <nav class="navbar is-spaced ee-navbar" role="navigation" aria-label="main navigation">
@@ -33,6 +34,25 @@
                 <a href="{% url 'send_mail' %}" class="button is-light is-uppercase is-radiusless ee-contact-us-button ee-contact-button">
                     {% trans 'Napisz do nas' %}
                 </a>
+            </div>
+
+            <div class="navbar-item navbar-language-selector">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              {% for language in languages %}
+                <form action="{% url 'set_language' %}" method="post" class="language">
+                  {% csrf_token %}
+                  <input name="next" type="hidden" value="{% translate_current_url language.code %}">
+                  <input name="language" type="hidden" value="{{ language.code }}">
+                  <button
+                    type="submit"
+                    class="navbar-item button is-uppercase is-radiusless {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+                  >
+                    {{ language.code }}
+                  </button>
+                </form>
+              {% endfor %}
             </div>
         </div>
     </div>
