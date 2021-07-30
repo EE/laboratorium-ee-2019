@@ -18,7 +18,6 @@
     {% wagtail_site as site %}
     <title>{% block title %}{{ site.root_page.title }}{% endblock title %}</title>
 
-  {% render_bundle "vendor" "css" %}
   {% render_bundle "main" "css" %}
 
   {% block extrahead %}
@@ -46,7 +45,6 @@
 
     <script type="text/plain" id="SENTRY_DSN">{{ SENTRY_DSN|default:"" }}</script>
 
-    {% render_bundle "vendor" "js" %}
     {% render_bundle "main" "js" %}
 
     {% if GOOGLE_ANALYTICS_ID %}
