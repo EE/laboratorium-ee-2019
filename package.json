@@ -16,8 +16,7 @@
     "bulmaswatch": "^0.7.5",
     "hammerjs": "^2.0.8",
     "material-design-lite": "^1.3.0",
-    "sass": "^1.36.0",
-    "sass-lint-auto-fix": "^0.17.0"
+    "sass": "^1.36.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
