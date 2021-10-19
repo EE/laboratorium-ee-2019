@@ -1,7 +1,5 @@
 import path from "path";
 
-import webpack from "webpack";
-
 import BundleTracker from "webpack-bundle-tracker";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
@@ -19,7 +17,7 @@ const styleRule = {
   test: /\.(sa|sc|c)ss$/,
   include: [path.resolve(`${inputPath}/scss`), path.resolve("node_modules")],
   use: [
-    MiniCssExtractPlugin.loader,
+    devMode ? "style-loader" : MiniCssExtractPlugin.loader,
     { loader: "css-loader", options: { sourceMap: true } },
     {
       loader: "postcss-loader",
@@ -41,8 +39,8 @@ const jsRule = {
 };
 
 const assetRule = {
-    test: /.(jpg|png|woff(2)?|eot|ttf|svg)$/,
-    loader: "file-loader"
+  test: /.(jpe?g|svg|png|gif|ico|eot|ttf|woff2?)$/,
+  type: "asset/resource",
 };
 
 /* PLUGINS */
@@ -55,7 +53,6 @@ const plugins = [
     filename: devMode ? "[name].css" : "[name].[fullhash].css",
     chunkFilename: devMode ? "[id].css" : "[id].[fullhash].css",
   }),
-  new webpack.HotModuleReplacementPlugin(),
   new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: [outputPath] }),
   new CopyWebpackPlugin({
     patterns: [
@@ -74,10 +71,6 @@ const plugins = [
     ],
   }),
 ];
-
-if (devMode) {
-    styleRule.use = ["css-hot-loader", ...styleRule.use];
-}
 
 /* WEBPACK OPTIONS */
 export default {
