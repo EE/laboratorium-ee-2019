@@ -84,6 +84,7 @@ export default {
   devtool: devMode ? "eval-cheap-source-map" : "source-map",
   devServer: {
     headers: { "Access-Control-Allow-Origin": "*" },
+    host: "127.0.0.1",
     port: 8080,
     static: [path.resolve(__dirname, "static")], // eslint-disable-line no-undef
   },
