@@ -1,30 +1,30 @@
 .ee-specialization-page__case-study {
-    background-size: cover;
-    position: relative;
+  background-size: cover;
+  position: relative;
 
-    &::before {
-        content: "";
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-    }
+  &::before {
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }
 
 .ee-specialization-page__tools-tiles {
-    grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
-    @include touch {
-        grid-template-columns: 1fr;
-    }
+  @include touch {
+    grid-template-columns: 1fr;
+  }
 }
 
 .ee-specialization-page__tools-tile__background-image {
-    justify-content: flex-end;
-    padding: 2rem 4rem;
+  justify-content: flex-end;
+  padding: 2rem 4rem;
 
-    .ee-title {
-        font-size: 2rem;
-    }
+  .ee-title {
+    font-size: 2rem;
+  }
 }

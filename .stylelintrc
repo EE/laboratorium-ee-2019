@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "stylelint-config-recommended-scss",
+    "stylelint-config-prettier"
+  ],
+  "ignoreFiles": [
+    "ee_site/static/dist/**",
+    "staticdir/**",
+    "mediadir/**"
+  ],
+  "rules": {}
+}

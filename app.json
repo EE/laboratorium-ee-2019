@@ -1,15 +1,12 @@
 {
   "name": "Laboratorium.ee",
   "repository": "https://github.com/EE/laboratorium-ee-2019",
-  "scripts": {
-  },
+  "scripts": {},
   "environments": {
     "test": {
-      "addons": [
-        "heroku-postgresql:in-dyno"
-      ],
+      "addons": ["heroku-postgresql:in-dyno"],
       "scripts": {
-        "test": "flake8 && python run_js_scss_linters.py && python manage.py test"
+        "test": "sh run_linters.sh && python manage.py test"
       },
       "env": {
         "DJANGO_SECRET_KEY": {
@@ -29,9 +26,7 @@
       "quantity": 1
     }
   },
-  "addons": [
-    "heroku-postgresql"
-  ],
+  "addons": ["heroku-postgresql"],
   "buildpacks": [
     {
       "url": "heroku/nodejs"

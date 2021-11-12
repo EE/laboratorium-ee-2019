@@ -1,34 +1,34 @@
 .ee-hero {
-    align-items: stretch;
-    background-position: center center;
-    background-size: cover;
-    display: flex;
+  align-items: stretch;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
 
-    flex-direction: column;
-    justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
 
-    padding: 8rem 0 3rem;
+  padding: 8rem 0 3rem;
 }
 
 .ee-hero__spacer {
-    flex-basis: 100%;
+  flex-basis: 100%;
 }
 
 .ee-hero__date {
-    color: rgba(#fff, .7);
+  color: rgba(#fff, 0.7);
 }
 
 .ee-subpage-hero {
-    background-position: center center;
+  background-position: center center;
 
-    background-size: cover;
-    height: 70vh;
+  background-size: cover;
+  height: 70vh;
 }
 
 .ee-hero-body {
-    @include touch {
-        padding: 0 1rem;
-    }
+  @include touch {
+    padding: 0 1rem;
+  }
 
-    flex: 1 0;
+  flex: 1 0;
 }

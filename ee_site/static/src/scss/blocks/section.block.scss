@@ -1,39 +1,39 @@
 .ee-section {
-    background-size: cover;
-    display: flex;
-    flex-wrap: wrap;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
 
-    position: relative;
+  position: relative;
 }
 
 .ee-section__title-container {
-    display: flex;
-    flex-basis: 100%;
-    justify-content: center;
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
 }
 
 .ee-section__title {
-    color: rgba(#fff, 0.7);
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 4px;
-    padding: 2rem 0 4rem;
-    text-align: center;
-    text-transform: uppercase;
+  color: rgba(#fff, 0.7);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  padding: 2rem 0 4rem;
+  text-align: center;
+  text-transform: uppercase;
 
-    @include touch {
-        padding: 4rem 0 4rem;
-    }
+  @include touch {
+    padding: 4rem 0 4rem;
+  }
 }
 
 .ee-section__triptych {
-    display: grid;
-    flex-basis: 100%;
-    grid-template-columns: repeat(3, 1fr);
-    @include transition();
+  display: grid;
+  flex-basis: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  @include transition();
 
-    @include touch {
-        flex-basis: 100vw;
-        grid-template-columns: repeat(3, 100vw);
-    }
+  @include touch {
+    flex-basis: 100vw;
+    grid-template-columns: repeat(3, 100vw);
+  }
 }

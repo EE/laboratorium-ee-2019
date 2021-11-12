@@ -1,71 +1,71 @@
 .ee-section {
-    @include touch {
-        padding: 4rem 1rem;
+  @include touch {
+    padding: 4rem 1rem;
 
-        &.has-slider {
-            overflow: hidden;
-            padding: 0;
-        }
+    &.has-slider {
+      overflow: hidden;
+      padding: 0;
     }
+  }
 
-    display: flex;
-    flex-wrap: wrap;
-    padding: 4rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4rem 0;
 }
 
 .ee-section-title {
-    color: rgba(#fff, .7);
-    flex: 1 0 100%;
+  color: rgba(#fff, 0.7);
+  flex: 1 0 100%;
 
-    font-size: 1.2rem;
-    justify-content: center;
-    letter-spacing: 4px;
-    margin-bottom: 3em;
-    text-align: center;
-    text-transform: uppercase;
+  font-size: 1.2rem;
+  justify-content: center;
+  letter-spacing: 4px;
+  margin-bottom: 3em;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .ee-section-tiles {
-    @include touch {
-        grid-template-columns: repeat(1, 1fr);
-    }
+  @include touch {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
-    display: grid;
-    flex-grow: 1;
-    grid-row-gap: 4rem;
-    grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  flex-grow: 1;
+  grid-row-gap: 4rem;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .ee-section__slides-controls {
-    @include desktop {
-        display: none;
-    }
+  @include desktop {
+    display: none;
+  }
 
-    bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    width: 100%;
+  bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
 }
 
 .ee-section__slide-control-button {
-    @include transition;
+  @include transition;
 
-    background-color: rgba(#fff, .4);
-    cursor: pointer;
-    height: 4px;
-    width: 2rem;
+  background-color: rgba(#fff, 0.4);
+  cursor: pointer;
+  height: 4px;
+  width: 2rem;
 
-    &:not(:last-child) {
-        margin-right: 1rem;
-    }
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
 
-    &:hover {
-        background-color: $white;
-    }
+  &:hover {
+    background-color: $white;
+  }
 
-    &.active {
-        background-color: $white;
-        width: 3rem;
-    }
+  &.active {
+    background-color: $white;
+    width: 3rem;
+  }
 }

@@ -1,42 +1,42 @@
 @import "../utilities/index.mixins";
 
 .ee-button {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    padding: 0.25rem 2rem;
-    text-transform: uppercase;
-    @include transition();
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  padding: 0.25rem 2rem;
+  text-transform: uppercase;
+  @include transition();
 
-    &:hover {
-        @include shadow();
-        transform: translateY(-2px);
-    }
+  &:hover {
+    @include shadow();
+    transform: translateY(-2px);
+  }
 }
 
 .ee-share-button {
-    align-items: center;
-    background-color: #fff;
-    border-radius: 2rem;
-    display: inline-flex;
-    height: 2.25rem;
-    justify-content: center;
-    width: 2.25rem;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2rem;
+  display: inline-flex;
+  height: 2.25rem;
+  justify-content: center;
+  width: 2.25rem;
 
-    & svg {
-        width: 1rem;
-        @include transition();
-    }
+  & svg {
+    width: 1rem;
+    @include transition();
+  }
 
-    &:hover {
-        svg {
-            width: 1.5rem;
-        }
+  &:hover {
+    svg {
+      width: 1.5rem;
     }
+  }
 }
 
 .ee-contact-button {
-    background-color: #ff4081 !important;
-    color: #fff !important;
+  background-color: #ff4081 !important;
+  color: #fff !important;
 }

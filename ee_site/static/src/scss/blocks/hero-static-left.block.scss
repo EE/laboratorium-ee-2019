@@ -1,51 +1,51 @@
 .ee-team-block {
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 40rem;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 40rem;
 
-    @include touch {
-        background-position: top right;
-        background-size: contain;
-        padding-top: 8rem;
-    }
+  @include touch {
+    background-position: top right;
+    background-size: contain;
+    padding-top: 8rem;
+  }
 }
 
 .ee-team-block__title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
 }
 
 .ee-team-block__headline {
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
 .ee-team-block__body {
-    color: rgba(#fff, 0.7);
-    font-weight: 600;
-    line-height: 1.8;
-    margin-bottom: 2rem;
+  color: rgba(#fff, 0.7);
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 2rem;
 }
 
 .ee-team-block__buttons-container {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    width: 12rem;
 
-    & > * {
-        display: flex;
-        justify-content: center;
-        width: 12rem;
-
-        &:not(:last-child) {
-            margin-bottom: 1rem;
-        }
-
-        @include touch {
-            width: 100%;
-        }
+    &:not(:last-child) {
+      margin-bottom: 1rem;
     }
+
+    @include touch {
+      width: 100%;
+    }
+  }
 }

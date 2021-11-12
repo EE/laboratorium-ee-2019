@@ -3,107 +3,106 @@
 $initScale: 1.05;
 $rescale: 1 / $initScale;
 
-.ee-specialization-card {
-    @include transition;
-
-    @include touch {
-        padding: 2rem 2rem 6rem;
-        width: 100vw;
-    }
-
-    align-items: flex-end;
-    background-size: cover;
-    display: flex;
-    flex-wrap: wrap;
-    height: 36rem;
-    justify-content: flex-start;
-    padding: 4rem 3rem;
-
-    &:first-child {
-        padding-left: 5rem;
-        transform-origin: right;
-
-        @include touch {
-            padding-left: 2rem;
-        }
-    }
-
-    &:last-child {
-        padding-right: 5rem;
-        transform-origin: left;
-
-        @include touch {
-            padding-left: 2rem;
-        }
-    }
-
-    &:hover {
-        @include shadow($size: xl, $tint: #f7cd87, $alpha: .2);
-
-        @include touch {
-            transform: scale(1);
-        }
-
-        cursor: pointer;
-        transform: scale($initScale);
-
-        .ee-specialization-card__headline,
-        .ee-specialization-card__buttons {
-            @include touch {
-                transform: scale(1);
-            }
-
-            opacity: 1;
-            transform: scale($rescale);
-        }
-
-    }
-}
-
 .ee-specialization-card__content {
-    @include touch {
-        height: 100%;
-    }
+  @include touch {
+    height: 100%;
+  }
 
-    align-items: flex-start;
-    display: flex;
-    flex-wrap: wrap;
-    height: 85%;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  height: 85%;
 }
 
 .ee-specialization-card__title {
-    flex-basis: 100%;
-    font-size: 2rem;
-    font-weight: 700;
+  flex-basis: 100%;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .ee-specialization-card__headline {
-    @include touch {
-        opacity: 1;
-    }
+  @include touch {
+    opacity: 1;
+  }
 
-    @include transition;
+  @include transition;
 
-    color: rgba(#fff, .7);
-    flex-basis: 100%;
-    font-size: 1rem;
-    line-height: 1.8;
-    opacity: 0;
+  color: rgba(#fff, 0.7);
+  flex-basis: 100%;
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0;
 }
 
 .ee-specialization-card__buttons {
+  @include touch {
+    flex-basis: 100%;
+    opacity: 1;
+  }
+
+  align-items: flex-end;
+  display: grid;
+  grid-template-rows: 2;
+  margin-top: auto;
+  opacity: 0;
+
+  & > *:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+.ee-specialization-card {
+  @include transition;
+
+  @include touch {
+    padding: 2rem 2rem 6rem;
+    width: 100vw;
+  }
+
+  align-items: flex-end;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  height: 36rem;
+  justify-content: flex-start;
+  padding: 4rem 3rem;
+
+  &:first-child {
+    padding-left: 5rem;
+    transform-origin: right;
+
     @include touch {
-        flex-basis: 100%;
-        opacity: 1;
+      padding-left: 2rem;
+    }
+  }
+
+  &:last-child {
+    padding-right: 5rem;
+    transform-origin: left;
+
+    @include touch {
+      padding-left: 2rem;
+    }
+  }
+
+  &:hover {
+    @include shadow($size: xl, $tint: #f7cd87, $alpha: 0.2);
+
+    @include touch {
+      transform: scale(1);
     }
 
-    align-items: flex-end;
-    display: grid;
-    grid-template-rows: 2;
-    margin-top: auto;
-    opacity: 0;
+    cursor: pointer;
+    transform: scale($initScale);
 
-    & > *:not(:last-child) {
-        margin-bottom: 1rem;
+    .ee-specialization-card__headline,
+    .ee-specialization-card__buttons {
+      @include touch {
+        transform: scale(1);
+      }
+
+      opacity: 1;
+      transform: scale($rescale);
     }
+  }
 }

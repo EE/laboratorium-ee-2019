@@ -1,53 +1,53 @@
 .ee-rodo-block {
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
 }
 
 .ee-rodo-block__content-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    min-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  min-height: 30rem;
 
-    & > * {
-        flex-basis: 100%;
-    }
+  & > * {
+    flex-basis: 100%;
+  }
 }
 
 .ee-rodo-block__title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
 }
 
 .ee-rodo-block__headline {
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
 .ee-rodo-block__body {
-    color: rgba(#fff, 0.7);
-    font-weight: 600;
-    line-height: 1.8;
-    margin-bottom: 2rem;
+  color: rgba(#fff, 0.7);
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 2rem;
 }
 
 .ee-rodo-block__buttons-container {
-    & > * {
-        &:not(:last-child) {
-            margin-bottom: 1rem;
-        }
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
     }
+  }
 
-    @include touch {
-        width: 100%;
-        & > * {
-            width: 100%;
-        }
+  @include touch {
+    width: 100%;
+    & > * {
+      width: 100%;
     }
+  }
 }
