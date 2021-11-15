@@ -6,7 +6,7 @@ extends:
   - prettier
 parserOptions:
   sourceType: module
-  ecmaVersion: 2017
+  ecmaVersion: 2022
 rules:
   constructor-super: warn
   generator-star-spacing: warn
