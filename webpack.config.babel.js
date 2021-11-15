@@ -1,90 +1,101 @@
-// Loosely based on https://eldarion.com/blog/2018/10/09/setup-guide-django-vue-webpack/
-
 import path from "path";
-import webpack from "webpack";
-import autoprefixer from "autoprefixer";
 
 import BundleTracker from "webpack-bundle-tracker";
-import CleanWebpackPlugin from "clean-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
-import UglifyJsPlugin from "uglifyjs-webpack-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
-const devMode = process.env.NODE_ENV !== "production";  // eslint-disable-line no-undef
-const hotReload = process.env.HOT_RELOAD === "1";  // eslint-disable-line no-undef
-const inputDir = "./ee_site/static/src";
-const outputDir = "./ee_site/static/dist/bundles";
+const devMode = process.env.NODE_ENV !== "production"; // eslint-disable-line no-undef
+const hotReload = process.env.HOT_RELOAD === "1"; // eslint-disable-line no-undef
+const inputPath = "./ee_site/static/src";
+const outputPath = "./ee_site/static/dist/bundles";
 
 /* RULES */
 
 const styleRule = {
-    test: /\.(sa|sc|c)ss$/,
-    use: [
-        MiniCssExtractPlugin.loader,
-        { loader: "css-loader", options: { sourceMap: true } },
-        { loader: "postcss-loader", options: { plugins: () => [autoprefixer()] } },
-        "sass-loader"
-    ]
+  test: /\.(sa|sc|c)ss$/,
+  include: [path.resolve(`${inputPath}/scss`), path.resolve("node_modules")],
+  use: [
+    devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+    { loader: "css-loader", options: { sourceMap: true } },
+    {
+      loader: "postcss-loader",
+      options: {
+        postcssOptions: {
+          plugins: ["autoprefixer"],
+        },
+      },
+    },
+    "sass-loader",
+  ],
 };
 
 const jsRule = {
-    test: /\.js$/,
-    loader: "babel-loader",
-    include: path.resolve(`${inputDir}/js`),
-    exclude: /node_modules/
+  test: /\.js$/,
+  loader: "babel-loader",
+  include: path.resolve(`${inputPath}/js`),
+  exclude: /node_modules/,
 };
 
 const assetRule = {
-    test: /.(jpg|png|woff(2)?|eot|ttf|svg)$/,
-    loader: "file-loader"
+  test: /.(jpe?g|svg|png|gif|ico|eot|ttf|woff2?)$/,
+  type: "asset/resource",
 };
 
 /* PLUGINS */
 const plugins = [
-    new BundleTracker({ filename: "./.webpack-stats.json" }),
-    new MiniCssExtractPlugin({
-        filename: devMode ? "[name].css" : "[name].[hash].css",
-        chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin([outputDir]),
-    new CopyWebpackPlugin([
-        { from: `${inputDir}/images/**/*`, to: path.resolve(`${outputDir}/images/[name].[ext]`), toType: "template" },
-        { from: `${inputDir}/fonts/**/*`, to: path.resolve(`${outputDir}/fonts/[name].[ext]`), toType: "template" },
-    ])
+  new BundleTracker({
+    path: __dirname, // eslint-disable-line no-undef
+    filename: ".webpack-stats.json",
+  }),
+  new MiniCssExtractPlugin({
+    filename: devMode ? "[name].css" : "[name].[fullhash].css",
+    chunkFilename: devMode ? "[id].css" : "[id].[fullhash].css",
+  }),
+  new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: [outputPath] }),
+  new CopyWebpackPlugin({
+    patterns: [
+      {
+        from: `${inputPath}/images/**/*`,
+        to: path.resolve(`${outputPath}/images/[name][ext]`),
+        toType: "template",
+        noErrorOnMissing: true,
+      },
+      {
+        from: `${inputPath}/fonts/**/*`,
+        to: path.resolve(`${outputPath}/fonts/[name][ext]`),
+        toType: "template",
+        noErrorOnMissing: true,
+      },
+    ],
+  }),
 ];
-
-if (devMode) {
-    styleRule.use = ["css-hot-loader", ...styleRule.use];
-}
 
 /* WEBPACK OPTIONS */
 export default {
-    context: __dirname, // eslint-disable-line no-undef
-    entry: `${inputDir}/js/main.js`,
-    output: {
-        path: path.resolve(outputDir),
-        filename: "[name]-[hash].js",
-        publicPath: hotReload ? "http://localhost:8080/" : "/static/bundles/",
+  context: __dirname, // eslint-disable-line no-undef
+  entry: `${inputPath}/js/main.js`,
+  output: {
+    path: path.resolve(outputPath),
+    filename: "[name]-[fullhash].js",
+    publicPath: hotReload ? "http://localhost:8080/" : "/static/bundles/",
+  },
+  devtool: devMode ? "eval-cheap-source-map" : "source-map",
+  devServer: {
+    headers: { "Access-Control-Allow-Origin": "*" },
+    host: "127.0.0.1",
+    port: 8080,
+    static: [path.resolve(__dirname, "static")], // eslint-disable-line no-undef
+  },
+  module: { rules: [jsRule, styleRule, assetRule] },
+  plugins,
+  optimization: {
+    minimizer: [new CssMinimizerPlugin(), "..."], // add default minimizer - https://webpack.js.org/configuration/optimization/#optimizationminimizer,
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "ee_site/static/src"), // eslint-disable-line no-undef
     },
-    devtool: devMode ? "cheap-eval-source-map" : "source-map",
-    devServer: {
-        hot: true,
-        quiet: false,
-        headers: { "Access-Control-Allow-Origin": "*" },
-        port: 8080,
-    },
-    module: { rules: [jsRule, styleRule, assetRule] },
-    plugins,
-    optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true,
-            }),
-            new OptimizeCSSAssetsPlugin({}),
-        ],
-    },
+  },
 };

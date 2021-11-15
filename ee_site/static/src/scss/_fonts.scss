@@ -1,15 +1,20 @@
 @import "utilities/font-face.mixin";
 
-
 $fonts-files: (
-    "spartanmb-light-webfont": 300,
-    "spartanmb-regular-webfont": 400,
-    "spartanmb-semibold-webfont": 600,
-    "spartanmb-bold-webfont": 700,
-    "spartanmb-extra-bold-webfont": 800,
-    "spartanmb-black-webfont": 900
+  "spartanmb-light-webfont": 300,
+  "spartanmb-regular-webfont": 400,
+  "spartanmb-semibold-webfont": 600,
+  "spartanmb-bold-webfont": 700,
+  "spartanmb-extra-bold-webfont": 800,
+  "spartanmb-black-webfont": 900,
 );
 
 @each $font-file, $font-weight in $fonts-files {
-    @include font-face(Spartan, "../fonts/spartan/#{$font-file}", $font-weight, normal, woff2 woff);
+  @include font-face(
+    Spartan,
+    "../fonts/spartan/#{$font-file}",
+    $font-weight,
+    normal,
+    woff2 woff
+  );
 }
