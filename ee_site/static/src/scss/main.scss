@@ -33,6 +33,7 @@
 // SHARED
 // =================================
 @import "shared/index.shared";
+@import "shared/youtube_embed";
 
 // =================================
 // IMPORTS
@@ -41,22 +42,20 @@
 @import "blocks/index.blocks";
 @import "overrides/index.overrides";
 
-
-
 // ======
 // hacking
 // ======
 .ee-has-background-image {
-    position: relative;
+  position: relative;
 }
 
 .ee-background-image {
-    height: 100%;
-    left: 0;
-    object-fit: cover;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -1;
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
 }

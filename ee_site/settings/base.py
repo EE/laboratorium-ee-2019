@@ -234,6 +234,16 @@ RICHTEXT_BLOCK_FEATURES = [
 ]
 
 
+WAGTAILEMBEDS_FINDERS = [
+    {
+        'class': 'ee_site.youtube_embed_finder.YouTubeEmbedFinder',
+    },
+    {
+        'class': 'wagtail.embeds.finders.oembed',
+    },
+]
+
+
 # ### salesforce integration ###
 
 # Environment to use.

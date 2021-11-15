@@ -5,14 +5,15 @@ name = "pypi"
 
 [packages]
 django-environ = "*"
+django-webpack-loader = "==1.*"
 django-settings-context-processor = "*"
 "psycopg2" = "*"
-django-webpack-loader = "*"
 Django = "==3.2.*"
 gunicorn = "*"
 whitenoise = "*"
-wagtail = "==2.13.*"
-wagtail-modeltranslation = "*"
+wagtail = "==2.15.*"
+# Pypi released version (0.10.17) doesn't support wagtail >= 2.14. So we are using dev version.
+wagtail-modeltranslation = {file = "https://github.com/infoportugal/wagtail-modeltranslation/archive/c0c3788628b9d6c5bb3f6c3d06dbfd483c2b2a2a.zip"}
 sentry-sdk = "*"
 django-storages = "*"
 boto3 = "*"

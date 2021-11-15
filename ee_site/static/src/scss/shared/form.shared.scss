@@ -1,151 +1,148 @@
+.ee-formfield {
+  // inline display for richtext content
+  & .rich-text {
+    display: inline;
+    & p {
+      display: inline;
+    }
+  }
+}
+
 .ee-form-control {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 
-    position: relative;
+  position: relative;
 
-    label {
-        @include transition;
+  label {
+    @include transition;
 
-        font-size: .875rem;
-        opacity: 1;
-        pointer-events: none;
-        position: absolute;
-        right: 0;
-        top: 0;
+    font-size: 0.875rem;
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
 
-        &.active {
-            transform: translateY(-110%);
-        }
-
-        &.required::before {
-            color: $red;
-            content: "* ";
-        }
-
-        // force inline display for richtext content
-        & .rich-text {
-            display: inline;
-            & p {
-                display: inline;
-            }
-        }
+    &.active {
+      transform: translateY(-110%);
     }
 
-    input[type="checkbox"] + label {
-        @include touch {
-            font-size: .75rem;
-        }
-
-        padding-left: 2rem;
-        pointer-events: auto;
+    &.required::before {
+      color: $red;
+      content: "* ";
     }
 
-    input[type="text"] {
-        border-bottom: 3px solid rgba(#fff, .7);
-        border-radius: 0;
-        font-weight: 600;
-        padding: 1rem;
-        text-align: right;
+    // force inline display for richtext content
+    & .rich-text {
+      display: inline;
+      & p {
+        display: inline;
+      }
+    }
+  }
+
+  textarea {
+    border-bottom: 3px solid rgba(#fff, 0.7);
+    border-radius: 0;
+    font-weight: 600;
+    padding: 0 1rem 0.5rem;
+    text-align: right;
+  }
+
+  textarea + label {
+    color: rgba(#fff, 0.7);
+  }
+
+  textarea:active + label,
+  textarea:focus + label {
+    color: $white;
+    font-size: 0.875rem;
+    transform: translateY(-110%);
+  }
+
+  textarea:hover,
+  textarea:active,
+  textarea:focus {
+    border: 0;
+    border-bottom: 3px solid rgba(#fff, 0.7);
+  }
+
+  input[type="checkbox"] + label {
+    @include touch {
+      font-size: 0.75rem;
     }
 
-    input[type="text"] + label {
-        color: rgba(#fff, .7);
+    padding-left: 2rem;
+    pointer-events: auto;
+  }
+
+  input[type="text"] {
+    border-bottom: 3px solid rgba(#fff, 0.7);
+    border-radius: 0;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: right;
+  }
+
+  input[type="text"] + label {
+    color: rgba(#fff, 0.7);
+  }
+
+  input[type="text"]:active + label,
+  input[type="text"]:focus + label {
+    color: $white;
+    font-size: 0.875rem;
+    transform: translateY(-110%);
+  }
+
+  input[type="text"]:hover,
+  input[type="text"]:active,
+  input[type="text"]:focus {
+    border: 0;
+    border-bottom: 3px solid rgba(#fff, 0.7);
+  }
+
+  .select {
+    display: block;
+    height: unset;
+
+    &:hover::after {
+      display: none !important;
     }
 
-    input[type="text"]:active + label,
-    input[type="text"]:focus + label {
-        color: $white;
-        font-size: .875rem;
-        transform: translateY(-110%);
+    select {
+      border-bottom: 3px solid rgba(#fff, 0.7);
+      border-radius: 0;
+      direction: rtl;
+      font-weight: 600;
+      padding-right: 1rem;
+      width: 100%;
     }
+  }
 
-    input[type="text"]:hover,
-    input[type="text"]:active,
-    input[type="text"]:focus {
-        border: 0;
-        border-bottom: 3px solid rgba(#fff, .7);
-    }
+  .select select:hover,
+  .select select:active,
+  .select select:focus {
+    border: 0;
+    border-bottom: 3px solid rgba(#fff, 0.7);
+  }
 
-
-    textarea {
-        border-bottom: 3px solid rgba(#fff, .7);
-        border-radius: 0;
-        font-weight: 600;
-        padding: 0 1rem .5rem;
-        text-align: right;
-    }
-
-    textarea + label {
-        color: rgba(#fff, .7);
-    }
-
-    textarea:active + label,
-    textarea:focus + label {
-        color: $white;
-        font-size: .875rem;
-        transform: translateY(-110%);
-    }
-
-    textarea:hover,
-    textarea:active,
-    textarea:focus {
-        border: 0;
-        border-bottom: 3px solid rgba(#fff, .7);
-    }
-
-
-    .select {
-        display: block;
-        height: unset;
-
-        &:hover::after {
-            display: none !important;
-        }
-
-        select {
-            border-bottom: 3px solid rgba(#fff, 0.7);
-            border-radius: 0;
-            direction: rtl;
-            font-weight: 600;
-            padding-right: 1rem;
-            width: 100%;
-        }
-    }
-
-    .select select:hover,
-    .select select:active,
-    .select select:focus {
-        border: 0;
-        border-bottom: 3px solid rgba(#fff, .7);
-    }
-
-
-    input[type="file"] {
-        direction: rtl;
-        width: 100%;
-    }
+  input[type="file"] {
+    direction: rtl;
+    width: 100%;
+  }
 }
 
 .ee-contact-form-button {
-    @include touch {
-        width: 100%;
-    }
+  @include touch {
+    width: 100%;
+  }
 }
 
 .ee-contact-form-header {
-    font-size: .75rem;
+  font-size: 0.75rem;
 
-    span {
-        color: $red;
-    }
-}
-
-.ee-formfield {
-    // inline display for richtext content
-    & .rich-text {
-        display: inline;
-        & p {
-            display: inline;
-        }
-    }
+  span {
+    color: $red;
+  }
 }

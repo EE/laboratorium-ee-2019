@@ -1,0 +1,6 @@
+ee_site/static/dist/**
+staticdir/
+mediadir/
+
+# ignore hidden files (mostly because of Heroku)
+.*

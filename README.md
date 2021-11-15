@@ -12,53 +12,55 @@
 
 ### Installation instructions
 
-1. Install the Python requirements:
+1.  Install the Python requirements:
 
-       pipenv install --dev
-       pipenv shell  # to enter the environment
+    pipenv install --dev
+    pipenv shell # to enter the environment
 
-2. Install the npm requirements:
+2.  Install the npm requirements:
 
-       npm install
+    npm install
 
-3. Create and fill out the local settings file:
+3.  Create and fill out the local settings file:
 
-       cp ee_site/settings/env.local.example ee_site/settings/.env
+    cp ee_site/settings/env.local.example ee_site/settings/.env
     (alternatively you can set those settings as environment variables)
 
-4. Configure your local database by filling out `DATABASE_URL` setting in `.env` file.
+4.  Configure your local database by filling out `DATABASE_URL` setting in `.env` file.
 
     If there is no good reason to do otherwise, it should be a [Postgres](https://www.postgresql.org/) database since that's what we are using by default on production servers.
 
-5. Run database migrations if you want an empty database or use saved database state with basic models:
+5.  Run database migrations if you want an empty database or use saved database state with basic models:
 
-       python manage.py migrate
+        python manage.py migrate
 
-   or dump DB from test server (heroku access needed)
+    or dump DB from test server (heroku access needed)
 
-       heroku pg:pull DATABASE_URL <your_new_db_name> --app laboratorium-ee-test
+        heroku pg:pull DATABASE_URL <your_new_db_name> --app laboratorium-ee-test
 
-6. Run test command to make sure everything is in order:
+6.  Run test command to make sure everything is in order:
 
         python manage.py test
 
-8. Start the frontend dev server:
+7.  Start the frontend dev server:
 
-       npm run start
+    npm run start
 
-9. Start the backend dev server (in a different console):
+8.  Start the backend dev server (in a different console):
 
-       python manage.py runserver
-
+    python manage.py runserver
 
 ## Installation (Heroku)
+
 You can create a new Heroku server configured for this app by clicking one of the buttons below and filling out a simple form. For this to work, you need first to link your Heroku account with your Github account.
 Remember to add the newly created server to the proper Pipeline.
 
 ### Using branch `develop`
+
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)][deploy-develop]
 
 ### Using branch `master`
+
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)][deploy-master]
 
 [deploy-develop]: https://heroku.com/deploy?template=https://github.com/EE/laboratorium-ee-2019/tree/develop
