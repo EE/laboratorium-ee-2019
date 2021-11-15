@@ -1,0 +1,7 @@
+.instagram-embed {
+  iframe {
+    /* center with force to overcome instagram's inline styles */
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
