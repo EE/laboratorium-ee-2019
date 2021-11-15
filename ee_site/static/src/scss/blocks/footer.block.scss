@@ -1,60 +1,60 @@
 .ee-footer {
-    background-color: #000;
-    color: rgba(#fff, 0.7);
-    padding: 4rem 0;
+  background-color: #000;
+  color: rgba(#fff, 0.7);
+  padding: 4rem 0;
 
-    @include touch {
-        padding: 4rem 2rem;
-    }
+  @include touch {
+    padding: 4rem 2rem;
+  }
 }
 
 .ee-footer__logo {
-    height: 4rem;
-    margin-top: 2rem;
+  height: 4rem;
+  margin-top: 2rem;
 }
 
 .ee-footer__headline {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
 
-    &:not(:first-child) {
-        margin: 1em 0 0.5em;
-    }
+  &:not(:first-child) {
+    margin: 1em 0 0.5em;
+  }
 
-    @include touch {
-        font-size: 1.2rem;
-    }
+  @include touch {
+    font-size: 1.2rem;
+  }
 }
 
 .ee-footer__body {
-    font-size: 0.875rem;
-    line-height: 1.8;
+  font-size: 0.875rem;
+  line-height: 1.8;
 }
 
 .ee-footer__last-column {
-    text-align: right;
+  text-align: right;
 
-    @include touch {
-        text-align: left;
-    }
+  @include touch {
+    text-align: left;
+  }
 }
 
 .ee-footer__social-media-icons {
-    display: grid;
-    grid-column-gap: 2rem;
-    grid-template-columns: repeat(3, 3rem);
-    justify-content: flex-end;
-    margin-top: 4rem;
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-template-columns: repeat(3, 3rem);
+  justify-content: flex-end;
+  margin-top: 4rem;
 
-    & > .ee-share-button {
-        height: 3rem;
-        width: 3rem;
-    }
+  & > .ee-share-button {
+    height: 3rem;
+    width: 3rem;
+  }
 
-    @include touch {
-        grid-template-columns: repeat(3, 2rem);
-        justify-content: flex-start;
-        margin-top: 1rem;
-    }
+  @include touch {
+    grid-template-columns: repeat(3, 2rem);
+    justify-content: flex-start;
+    margin-top: 1rem;
+  }
 }

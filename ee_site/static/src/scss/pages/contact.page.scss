@@ -1,59 +1,59 @@
 .ee-contact-form__subject-container {
-    @include touch {
-        margin-top: 2rem;
-    }
+  @include touch {
+    margin-top: 2rem;
+  }
 
-    margin-top: 6rem;
+  margin-top: 6rem;
 }
 
 .ee-contact-form-type__container {
-    @include touch {
-        grid-row-gap: 2rem;
-        grid-template-columns: 1fr;
-        margin: 0;
-    }
+  @include touch {
+    grid-row-gap: 2rem;
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
 
-    display: grid;
-    grid-column-gap: 12%;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 4rem 0;
+  display: grid;
+  grid-column-gap: 12%;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 4rem 0;
 }
 
 .ee-contact-form-type {
-    @include transition;
+  @include transition;
 
-    border: 2px solid $white;
-    display: flex;
-    flex-direction: column;
-    height: 24rem;
-    justify-content: space-between;
-    padding: 4rem 2rem;
+  border: 2px solid $white;
+  display: flex;
+  flex-direction: column;
+  height: 24rem;
+  justify-content: space-between;
+  padding: 4rem 2rem;
 
-    &:hover,
-    &.active {
-        background-color: $white;
-        color: $black;
-    }
+  &:hover,
+  &.active {
+    background-color: $white;
+    color: $black;
+  }
 
-    @include touch {
-        align-items: center;
-        flex-direction: row;
-        height: auto;
-        min-height: 8rem;
-        padding: 1rem;
-    }
+  @include touch {
+    align-items: center;
+    flex-direction: row;
+    height: auto;
+    min-height: 8rem;
+    padding: 1rem;
+  }
 }
 
 .ee-contact-form-type__icon {
-    color: inherit;
-    pointer-events: none;
+  color: inherit;
+  pointer-events: none;
 
-    svg {
-        fill: currentColor;
-    }
+  svg {
+    fill: currentColor;
+  }
 }
 
 .ee-contact-form-type__title {
-    font-size: 1.5rem;
-    pointer-events: none;
+  font-size: 1.5rem;
+  pointer-events: none;
 }

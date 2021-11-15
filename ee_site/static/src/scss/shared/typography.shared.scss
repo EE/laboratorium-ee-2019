@@ -3,138 +3,135 @@
 // =================================
 
 .ee-title {
-    font-size: 1.4rem;
-    text-transform: uppercase;
+  font-size: 1.4rem;
+  text-transform: uppercase;
 
-    &:not(:last-child) {
-        margin-bottom: .5em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
 }
 
 .ee-title--super {
-    color: rgba(#fff, .7);
-    font-size: 1.2rem;
-    letter-spacing: 8px;
-    text-transform: uppercase;
+  color: rgba(#fff, 0.7);
+  font-size: 1.2rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
 
-    &:not(:last-child) {
-        margin-bottom: .5em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
 }
 
 .ee-title--small {
-    font-size: 1rem;
+  font-size: 1rem;
 
-    &:not(:last-child) {
-        margin-bottom: .5em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
 }
 
 .ee-title--large {
-    font-size: 2.25rem;
+  font-size: 2.25rem;
 
-    &:not(:last-child) {
-        margin-bottom: .5em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
 }
 
 .ee-title--bold {
-    font-size: 1.8rem;
-    font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 800;
 
-    &:not(:last-child) {
-        margin-bottom: .5em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
 }
 
 .ee-title--small-bold {
-    font-size: 1.2rem;
-    font-weight: 800;
-    text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
 
-    &:not(:last-child) {
-        margin-bottom: .5em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
 }
-
 
 // =================================
 // Headline
 // =================================
 
 .ee-headline {
-    color: rgba(#fff, .7);
-    font-size: 1.2rem;
+  color: rgba(#fff, 0.7);
+  font-size: 1.2rem;
 
-    &:not(:last-child) {
-        margin-bottom: .75em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.75em;
+  }
 }
 
 .ee-headline--light {
-    font-size: 1.2rem;
-    font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 600;
 
-    &:not(:last-child) {
-        margin-bottom: .75em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.75em;
+  }
 }
 
 .ee-headline--large {
-    font-size: 1.8rem;
-    font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 600;
 
-    &:not(:last-child) {
-        margin-bottom: .75em;
-    }
+  &:not(:last-child) {
+    margin-bottom: 0.75em;
+  }
 }
-
 
 // =================================
 // Global Paragraph
 // =================================
 .content {
-    .rich-text p {
-        line-height: 1.8;
+  .rich-text p {
+    line-height: 1.8;
 
-        &:not(:last-of-type) {
-            margin-bottom: 1em;
-        }
+    &:not(:last-of-type) {
+      margin-bottom: 1em;
     }
+  }
 
-    .rich-text ul {
-        line-height: 1.8;
-        list-style: unset;
-        margin-bottom: 1em;
-        margin-left: 1.5em;
+  .rich-text ul {
+    line-height: 1.8;
+    list-style: unset;
+    margin-bottom: 1em;
+    margin-left: 1.5em;
+  }
+
+  .rich-text ol {
+    line-height: 1.8;
+    margin-bottom: 1em;
+    margin-left: 1.5em;
+  }
+
+  .rich-text {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 500;
+      margin-bottom: 1em;
+
+      &:not(:first-of-type) {
+        margin-top: 2.5em;
+      }
     }
+  }
 
-
-    .rich-text ol {
-        line-height: 1.8;
-        margin-bottom: 1em;
-        margin-left: 1.5em;
-    }
-
-    .rich-text {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-weight: 500;
-            margin-bottom: 1em;
-
-            &:not(:first-of-type) {
-                margin-top: 2.5em;
-            }
-        }
-    }
-
-    .ee-body-text {
-        line-height: 1.8;
-    }
+  .ee-body-text {
+    line-height: 1.8;
+  }
 }
 
 // =================================
@@ -142,29 +139,28 @@
 // =================================
 
 .ee-cite {
-    font-size: 1.2rem;
-    line-height: 1.8;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-top: 2rem;
+
+  footer {
+    font-size: 1rem;
     margin-top: 2rem;
+    text-align: right;
+    text-transform: uppercase;
 
-    footer {
-        font-size: 1rem;
-        margin-top: 2rem;
-        text-align: right;
-        text-transform: uppercase;
-
-        strong {
-            font-weight: 900;
-        }
+    strong {
+      font-weight: 900;
     }
+  }
 }
-
 
 // =================================
 // Anchors
 // =================================
 
 a {
-    &:hover {
-        color: $white;
-    }
+  &:hover {
+    color: $white;
+  }
 }

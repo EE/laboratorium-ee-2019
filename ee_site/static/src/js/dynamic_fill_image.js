@@ -14,7 +14,7 @@ const sizeOrderBase = Math.log(Math.sqrt(2));
 const roundSize = (size) => {
   const sizeOrder = Math.log(size) / sizeOrderBase;
   const roundedSize = Math.round(
-    Math.pow(Math.E, Math.ceil(sizeOrder) * sizeOrderBase)
+    Math.pow(Math.E, Math.ceil(sizeOrder) * sizeOrderBase),
   );
   return roundedSize;
 };
@@ -27,7 +27,7 @@ const assignDynamicSrc = (image) => {
   const width = roundSize(image.clientWidth);
   const height = roundSize(image.clientHeight);
   const newSrc = `${domainWithProtocol}/rendition/${image.dataset.imageId}/${width}/${height}/`;
-  if (newSrc != image.src) {
+  if (newSrc !== image.src) {
     image.src = newSrc;
   }
 };
