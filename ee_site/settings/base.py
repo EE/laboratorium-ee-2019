@@ -213,6 +213,7 @@ WEBPACK_LOADER = {
 
 
 # wagtail related setting
+WAGTAIL_ALLOW_UNICODE_SLUGS = False
 WAGTAIL_SITE_NAME = 'Laboratorium EE'
 WAGTAILIMAGES_JPEG_QUALITY = 70
 
@@ -237,6 +238,9 @@ RICHTEXT_BLOCK_FEATURES = [
 WAGTAILEMBEDS_FINDERS = [
     {
         'class': 'ee_site.youtube_embed_finder.YouTubeEmbedFinder',
+    },
+    {
+        'class': 'ee_site.instagram_embed_finder.InstagramEmbedFinder',
     },
     {
         'class': 'wagtail.embeds.finders.oembed',

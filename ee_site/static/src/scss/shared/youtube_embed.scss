@@ -5,7 +5,7 @@
   padding-bottom: 56.25%;
 
   position: relative;
-  /* Shouldn't be required, because YT iframe is 9:16. In case it isn't prevent it from covering other elements. */
+  /* Shouldn't be required, because YT iframe is 16:9. In case it isn't prevent it from covering other elements. */
   overflow: hidden;
 
   iframe {
