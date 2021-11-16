@@ -234,11 +234,8 @@ RICHTEXT_BLOCK_FEATURES = [
     'blockquote', 'code',
 ]
 
-
+WAGTAILEMBEDS_RESPONSIVE_HTML = True
 WAGTAILEMBEDS_FINDERS = [
-    {
-        'class': 'ee_site.youtube_embed_finder.YouTubeEmbedFinder',
-    },
     {
         'class': 'ee_site.instagram_embed_finder.InstagramEmbedFinder',
     },
