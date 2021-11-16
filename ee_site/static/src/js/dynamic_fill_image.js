@@ -36,7 +36,7 @@ const assignDynamicSrc = (image) => {
  * call function for every image of our interest
  */
 const doForAllImages = (f) => {
-  [...document.querySelectorAll("img.dynamic").values()].forEach(f);
+  document.querySelectorAll("img.dynamic").forEach(f);
 };
 
 if ("IntersectionObserver" in window) {
