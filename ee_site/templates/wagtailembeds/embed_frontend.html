@@ -1,0 +1,9 @@
+<div
+    {% if embed.is_responsive %}
+        style="padding-bottom: {{ embed.ratio_css }};" class="responsive-object"
+    {% else %}
+        class="fixed-size-object"
+    {% endif %}
+>
+    {{ embed.html|safe }}
+</div>
