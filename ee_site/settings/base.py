@@ -237,7 +237,7 @@ RICHTEXT_BLOCK_FEATURES = [
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
 WAGTAILEMBEDS_FINDERS = [
     {
-        'class': 'ee_site.instagram_embed_finder.InstagramEmbedFinder',
+        'class': 'ee_site.instagram_embed_finder',
     },
     {
         'class': 'wagtail.embeds.finders.oembed',

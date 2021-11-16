@@ -6,14 +6,12 @@ class InstagramEmbedFinder(InstagramOEmbedFinder):
 
     def find_embed(self, url, max_width=None, max_height=None):
         html = f'''
-            <div class="instagram-embed">
-                <blockquote class="instagram-media"
-                    data-instgrm-captioned data-instgrm-permalink="{url}" data-instgrm-version="14"
-                >
-                    <a href="{url}">{url}</a>
-                </blockquote>
-                <script async src="https://www.instagram.com/embed.js"></script>
-            </div>
+            <blockquote class="instagram-media"
+                data-instgrm-captioned data-instgrm-permalink="{url}" data-instgrm-version="14"
+            >
+                <a href="{url}">{url}</a>
+            </blockquote>
+            <script async src="https://www.instagram.com/embed.js"></script>
         '''
         return {
             'title': '',
@@ -25,3 +23,6 @@ class InstagramEmbedFinder(InstagramOEmbedFinder):
             'height': None,
             'html': html,
         }
+
+
+embed_finder_class = InstagramEmbedFinder
